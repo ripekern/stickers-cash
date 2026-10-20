@@ -62,6 +62,17 @@ python3 -m http.server 8765
 # open http://localhost:8765/
 ```
 
-It's a fully static site — deploy by copying the folder to any static host
-(GitHub Pages, Cloudflare Pages, nginx…). All artwork: official BCH graphics
-(promo use allowed) and Open Peeps (CC0) — see `media/README.md`.
+## Deploy
+
+It's a fully static site — **GitHub Pages**: https://github.com/ripekern/stickers-cash
+
+Push to `main` and Pages rebuilds automatically:
+
+```sh
+git add -A && git commit -m "Update store" && git push
+```
+
+- Live site: **https://stickers.cash** (custom domain via `CNAME`, HTTP→HTTPS enforced)
+- `www.stickers.cash` redirects to the apex; cert is auto-renewed by GitHub
+
+All artwork: official BCH graphics (promo use allowed) and Open Peeps (CC0) — see `media/README.md`.
