@@ -207,10 +207,11 @@ section{scroll-margin-top:80px}
 }
 .card:hover .card-art img{transform:rotate(-3deg) scale(1.05)}
 .card-art .collage{
-  display:grid;grid-template-columns:1fr 1fr;gap:6px;width:82%;
+  display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:6px;
+  width:min(158px, 100%);aspect-ratio:1;   /* always fits the 164px art content box */
 }
 .card-art .collage img{
-  width:100%;max-height:none;filter:drop-shadow(0 5px 10px rgba(15,24,32,.14));
+  width:100%;height:100%;max-height:none;object-fit:contain;filter:drop-shadow(0 5px 10px rgba(15,24,32,.14));
 }
 .card-art .collage img:nth-child(1){transform:rotate(-6deg)}
 .card-art .collage img:nth-child(2){transform:rotate(5deg)}
@@ -276,6 +277,7 @@ select, input, .ship-methods{
 /* ---------- why bch band ---------- */
 .bch-band{background:var(--dark);color:#fff;padding:46px 0}
 .bch-band-inner{display:grid;grid-template-columns:auto 1.4fr 1fr;gap:30px;align-items:center}
+.bch-band-inner > *{min-width:0}   /* let tracks shrink; chip code ellipsizes instead of forcing width */
 .bch-band-mark{width:74px;height:74px}
 .bch-band h2{margin:0 0 8px;font-size:26px}
 .bch-band p{margin:0;color:#B9CBD4;font-size:15px}
@@ -285,7 +287,7 @@ select, input, .ship-methods{
   border:1px solid rgba(255,255,255,.16);border-radius:12px;padding:10px 12px;
 }
 .bch-addr-chip code{
-  font-size:11.5px;color:#8FE9CC;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;
+  font-size:11.5px;color:#8FE9CC;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;min-width:0;
 }
 .bch-band-action small{color:#7E939E;font-size:12.5px}
 
