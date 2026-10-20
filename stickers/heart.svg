@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-label="Bitcoin Cash heart sticker">
+  <title>I love BCH</title>
+  <!-- kiss-cut square die with rounded corners -->
+  <rect x="2" y="2" width="596" height="596" rx="76" fill="#ffffff"/>
+  <rect x="34" y="34" width="532" height="532" rx="48" fill="#0AC18E"/>
+  <!-- white heart, centered upper -->
+  <path transform="translate(300,248) scale(0.56) translate(-300,-306)" fill="#FFFFFF"
+        d="M300 552 C104 424 40 302 40 212 C40 122 110 60 192 60 C246 60 284 90 300 130 C316 90 354 60 408 60 C490 60 560 122 560 212 C560 302 496 424 300 552 Z"/>
+  <g font-family="Arial, Helvetica, sans-serif" text-anchor="middle" fill="#FFFFFF">
+    <text x="300" y="492" font-size="112" font-weight="700" letter-spacing="4">BCH</text>
+    <text x="300" y="540" font-size="24" font-weight="700" letter-spacing="5" opacity="0.9">STICKERS.CASH</text>
+  </g>
+</svg>

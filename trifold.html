@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why You Need Internet Cash - Trifold</title>
+<style>
+  :root{
+    --green:#0a9e6b;
+    --dark:#0f2020;
+    --ice:#dff3ff;
+    --paper:#ffffff;
+    --muted:#5b6b6b;
+    --accent:#ff8a00;
+    --danger:#c81e1e;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background:#2d3434;
+    color:var(--dark);
+    line-height:1.4;
+  }
+  .toolbar{
+    color:#fff;
+    padding:16px 20px;
+    max-width:11in;
+    margin:0 auto;
+  }
+  .toolbar h1{font-size:18px;margin:0 0 6px 0}
+  .toolbar p{font-size:13px;margin:4px 0;opacity:.9}
+  .toolbar button{
+    margin-top:10px;
+    padding:10px 18px;
+    font-size:15px;
+    font-weight:700;
+    border:0;border-radius:8px;
+    background:var(--green);
+    color:#fff;cursor:pointer;
+  }
+  .sheet-wrap{padding:0 20px 30px 20px}
+  .sheet-label{
+    max-width:11in;margin:18px auto 6px auto;
+    color:#fff;font-size:12px;letter-spacing:.08em;font-weight:700;
+  }
+  .sheet{
+    width:11in;max-width:100%;
+    height:8.5in;
+    margin:0 auto;
+    background:var(--paper);
+    display:flex;
+    border-radius:6px;
+    overflow:hidden;
+    box-shadow:0 8px 30px rgba(0,0,0,.4);
+  }
+  .panel{
+    width:33.3333%;
+    height:100%;
+    padding:.42in .32in .35in .32in;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+  }
+  .panel + .panel{border-left:2px dashed #c9d6d6}
+  .eyebrow{
+    font-size:10px;font-weight:800;letter-spacing:.14em;
+    color:var(--green);margin-bottom:8px;
+  }
+  h2{font-size:22px;line-height:1.1;margin:0 0 10px 0}
+  h3{font-size:15px;margin:0 0 8px 0}
+  p{font-size:11.5px;margin:0 0 9px 0}
+  ul{margin:6px 0 10px 18px;padding:0;font-size:11.5px}
+  li{margin-bottom:6px}
+  .danger h2{color:var(--danger)}
+  .cover{
+    background:linear-gradient(180deg,#0f2020 0%, #143a3a 55%, #0a9e6b 100%);
+    color:#fff;
+    text-align:center;
+    justify-content:center;
+    align-items:center;
+  }
+  .cover h2{font-size:30px;line-height:1.05}
+  .cover .sub{font-size:12px;opacity:.95;margin-top:10px}
+  .ice-graphic{
+    margin:16px auto;
+    width:90%;
+    background:var(--ice);
+    color:#0b3d5f;
+    border-radius:12px;
+    padding:12px;
+    font-size:11px;
+    font-weight:700;
+  }
+  .badge{
+    display:inline-block;
+    font-size:10px;font-weight:800;letter-spacing:.1em;
+    background:#fff;color:#0f2020;
+    padding:6px 10px;border-radius:999px;margin-bottom:12px;
+  }
+  .back{
+    background:#f3fbf7;
+  }
+  .callout{
+    background:#0f2020;color:#fff;
+    border-radius:10px;padding:12px;
+    font-size:11px;margin-top:auto;
+  }
+  .steps{list-style:none;margin:8px 0 0 0;padding:0}
+  .steps li{
+    background:#fff;color:#0f2020;
+    border-radius:8px;padding:7px 9px;margin-bottom:6px;
+    font-size:11px;
+  }
+  .qr{
+    margin-top:10px;
+    border:2px dashed #0a9e6b;
+    border-radius:10px;
+    padding:10px;
+    text-align:center;
+    font-size:10px;color:var(--muted);
+  }
+  .small{font-size:10px;color:var(--muted)}
+  .check{color:var(--green);font-weight:800}
+  .check-icon{width:13px;height:13px;vertical-align:-2px;margin-right:4px}
+  .arrow-icon{width:12px;height:12px;vertical-align:-1px}
+  .qr-box{display:flex;gap:8px;align-items:center;text-align:left}
+  .qr-code{width:.85in;height:.85in;flex:none;background:#fff;border-radius:8px;padding:5px}
+  .warn{color:var(--danger);font-weight:800}
+  .arrow{font-size:11px;font-weight:700;color:var(--green);margin-top:12px}
+  .bch-logo{width:100%;max-width:1.9in;height:auto;display:block;margin:0 0 8px 0}
+  .bch-mark{width:.55in;height:.55in;flex:none}
+  .peep{width:100%;height:auto;display:block}
+  .peep-sm{max-width:1.6in;margin:8px auto}
+  .peep-row{display:flex;align-items:flex-end;gap:8px;margin-top:6px}
+  .float{animation: bob 3.2s ease-in-out infinite}
+  .float-slow{animation: bob 4.5s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+  .panel-num{
+    position:absolute;top:.12in;right:.14in;
+    font-size:9px;font-weight:800;letter-spacing:.08em;
+    border:1px solid #9fb3b3;color:#4b5f5f;
+    border-radius:999px;padding:2px 8px;
+    background:rgba(255,255,255,.9);
+  }
+  .cover .panel-num{border-color:rgba(255,255,255,.7);color:#fff;background:rgba(0,0,0,.25)}
+  .dark-panel .panel-num{border-color:rgba(255,255,255,.5);color:#cfe8de;background:rgba(0,0,0,.3)}
+
+  @page{
+    size: Letter landscape;
+    margin:0;
+  }
+  @media print{
+    .float,.float-slow{animation:none}
+    body{background:#fff}
+    .toolbar{display:none}
+    .sheet-wrap{padding:0}
+    .sheet-label{display:none}
+    .sheet{
+      width:11in;height:8.5in;
+      border-radius:0;box-shadow:none;
+      page-break-after:always;
+      break-after:page;
+    }
+    .sheet:last-child{page-break-after:auto}
+    .panel + .panel{border-left:1px dashed #999}
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <h1>Trifold — 8.5 x 11 Letter, double-sided</h1>
+  <p>Print settings: Paper = <strong>Letter 8.5x11</strong> &bull; Orientation = <strong>Landscape</strong> &bull; Margins = <strong>None</strong> &bull; Double-sided = <strong>Flip on SHORT edge</strong> &bull; Scale = 100%</p>
+  <p>Fold: C-fold. Side 1 is OUTSIDE (Back | Flap | Front Cover). Side 2 is INSIDE (opens to full story). Fold Right panel in first, then Left over it.</p>
+  <button onclick="window.print()">Print Trifold</button>
+</div>
+
+<div class="sheet-label">SIDE 1 — OUTSIDE (print this side first)</div>
+<div class="sheet-wrap">
+<div class="sheet">
+  <!-- BACK COVER -->
+  <div class="panel back">
+    <div class="panel-num">6 — BACK</div>
+    <img class="bch-logo" src="media/bch/bch-logo-horizontal.svg" alt="Bitcoin Cash">
+    <div class="eyebrow">YOU ARE SAFE NOW</div>
+    <h2>Thankful you learned it in time.</h2>
+    <img class="peep float-slow" src="media/characters/peep-standing-5.svg" alt="Relieved safe character" style="max-height:1.3in;width:auto;margin:2px auto">
+    <p>People who switch all say it:</p>
+    <p><em>“How did I get by without this? I sleep better now.”</em></p>
+    <ul>
+      <li><svg class="check-icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="#0a9e6b"/><path d="M4.5 8.2 L7 10.7 L11.5 5.5" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Rent money can’t be frozen</li>
+      <li><svg class="check-icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="#0a9e6b"/><path d="M4.5 8.2 L7 10.7 L11.5 5.5" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Donations can’t be censored</li>
+      <li><svg class="check-icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="#0a9e6b"/><path d="M4.5 8.2 L7 10.7 L11.5 5.5" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Business can’t be de-platformed</li>
+      <li><svg class="check-icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="#0a9e6b"/><path d="M4.5 8.2 L7 10.7 L11.5 5.5" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Savings aren’t melting on someone’s ledger</li>
+    </ul>
+    <div class="callout">
+      <strong>Get off the ice in 5 minutes:</strong>
+      <ol class="steps">
+        <li><strong>1.</strong> Get a Bitcoin Cash wallet</li>
+        <li><strong>2.</strong> Get $5 in BCH</li>
+        <li><strong>3.</strong> Send your first peer-to-peer payment</li>
+      </ol>
+      <div class="qr qr-box">
+        <a href="https://selene.cash" style="flex:none;line-height:0">
+          <img class="qr-code" src="media/selene-qr.svg" alt="QR code to selene.cash" style="background:#fff">
+        </a>
+        <span><strong>Scan to start</strong><br>Get Selene Wallet at<br><a href="https://selene.cash" style="color:#0a9e6b;font-weight:800">selene.cash</a></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- OUTSIDE FLAP - DANGER -->
+  <div class="panel danger">
+    <div class="panel-num">5 — FLAP</div>
+    <div class="eyebrow" style="color:#c81e1e">LOOK DOWN — THIN ICE</div>
+    <h2>Every digital dollar is exposed.</h2>
+    <img class="peep float" src="media/characters/peep-10.svg" alt="Concerned person noticing thin ice" style="max-height:1.5in;width:auto;margin:4px auto">
+    <p>You were forced online where cash doesn’t work. So 100% of modern life now depends on middlemen.</p>
+    <ul>
+      <li><span class="warn">Watched:</span> bought, sold, leaked in hacks you can’t prevent.</li>
+      <li><span class="warn">Permissioned:</span> freezable, blockable. Ask truckers, protesters, immigrants — anyone out of favor.</li>
+      <li><span class="warn">Taxed:</span> $0.30 + 3% kills $1 sales. $5 across borders costs $2, takes days.</li>
+      <li><span class="warn">Melting:</span> inflation steals 2–10%/yr while banks pay 0.01%.</li>
+    </ul>
+    <p><strong>Slowly, then all at once:</strong> locked on rent day, flagged while traveling, de-banked overnight.</p>
+    <p class="small">This is the route you’re on. Follow the guide inside to get off it.</p>
+  </div>
+
+  <!-- FRONT COVER -->
+  <div class="panel cover">
+    <div class="panel-num">1 — FRONT</div>
+    <div class="badge">CASH FOR THE INTERNET</div>
+    <img class="bch-mark float" src="media/bch/bch-circle.svg" alt="Bitcoin Cash logo" style="width:.7in;height:.7in;margin:6px auto">
+    <h2>Why You Need Internet Cash Before the Ice Breaks</h2>
+    <img class="peep peep-sm float-slow" src="media/characters/peep-standing-22.svg" alt="Worried person walking on thin ice" style="max-height:1.7in;width:auto">
+    <div class="ice-graphic">
+      YOU ARE HERE
+      <svg viewBox="0 0 200 36" width="100%" height="28" aria-hidden="true" style="display:block;margin:6px 0">
+        <path d="M5 26 L45 14 L75 22 L105 10 L135 20 L165 11 L195 19" fill="none" stroke="#0b3d5f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M45 14 L38 4 M75 22 L80 32 M105 10 L112 2 M135 20 L130 30 M165 11 L172 3" fill="none" stroke="#0b3d5f" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      Walking on thin ice<br>and you don’t know it
+    </div>
+    <p class="sub">Cash kept you safe for centuries.<br>But cash can’t go online.<br><strong>Bitcoin Cash (BCH) can.</strong></p>
+    <p class="sub" style="margin-top:14px;letter-spacing:.1em;font-weight:800">OPEN INSIDE <svg class="arrow-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8 H13 M9 4 L13 8 L9 12" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></p>
+  </div>
+</div>
+</div>
+
+<div class="sheet-label">SIDE 2 — INSIDE (print on back, flip on short edge)</div>
+<div class="sheet-wrap">
+<div class="sheet">
+  <!-- INSIDE LEFT -->
+  <div class="panel">
+    <div class="panel-num">2 — INSIDE</div>
+    <div class="eyebrow">1 — SOLID GROUND</div>
+    <h3>Cash: anonymous, no middlemen.</h3>
+    <img class="peep float" src="media/characters/peep-sitting-1.svg" alt="Person paying with cash, relaxed" style="max-height:1.2in;width:auto">
+    <p>Hand a $10 bill to a friend, farmer, or kid mowing the lawn — done.</p>
+    <ul>
+      <li>No bank permission</li>
+      <li>No 3% to Visa</li>
+      <li>No 3–5 day “clearing”</li>
+      <li>No company recording who, where, what</li>
+    </ul>
+    <p>The bill has no name on it. The seller doesn’t see your balance or history.</p>
+    <p>That’s not criminal. That’s normal life — gifts, tips, donations, private buys.</p>
+    <p><strong>Why we need cash:</strong> privacy, freedom, access for everyone, final payment.</p>
+  </div>
+
+  <!-- INSIDE MIDDLE -->
+  <div class="panel">
+    <div class="panel-num">3 — INSIDE</div>
+    <div class="eyebrow">2 — THE PROBLEM</div>
+    <h3>But you can’t push cash through a screen.</h3>
+    <p>You can’t hand a dollar through your phone to pay another city, get paid remote, help family overseas, or donate in a crisis.</p>
+    <p>Online, cash never existed. So we lost it. Every digital payment became trackable, permissioned, fee-taking, reversible, censorable.</p>
+    <p>No bank account? You can’t participate. Wrong politics, country, or business? You can’t pay.</p>
+    <p><strong>You didn’t choose thin ice. You were forced onto it.</strong></p>
+    <div class="arrow"><svg class="arrow-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8 H13 M9 4 L13 8 L9 12" fill="none" stroke="#0a9e6b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> The way out is on the next panel</div>
+  </div>
+
+  <!-- INSIDE RIGHT -->
+  <div class="panel dark-panel" style="background:#0f2020;color:#fff">
+    <div class="panel-num">4 — INSIDE</div>
+    <img class="bch-logo" src="media/bch/bch-logo-horizontal-wt.svg" alt="Bitcoin Cash" style="filter:brightness(1)">
+    <div class="eyebrow" style="color:#5df0b0">3 — GET TO SAFETY</div>
+    <h3 style="font-size:19px">Bitcoin Cash (BCH) is internet cash.</h3>
+    <div class="peep-row">
+      <img class="peep float" src="media/characters/peep-standing-1.svg" alt="Safe character with internet cash" style="max-height:1.25in;width:auto">
+      <img src="media/bch/bch-accepted-here-frame.svg" alt="Bitcoin Cash accepted here" style="width:1.1in;height:auto;background:#fff;border-radius:6px;padding:4px">
+    </div>
+    <p style="color:#d6ece6">Like handing a bill, but online. Hold it yourself, send peer-to-peer directly. No bank, Visa, or PayPal in the middle.</p>
+    <ul style="color:#fff">
+      <li><strong>Permissionless:</strong> wallet in seconds, no ID</li>
+      <li><strong>Private:</strong> no identity to expose</li>
+      <li><strong>Final:</strong> settled in seconds, &lt;1¢ fee even for $1,000 worldwide</li>
+    </ul>
+    <p style="background:#0a9e6b;border-radius:8px;padding:10px;font-weight:700">Don’t wait to fall through to value solid ground. Start now while ice holds — then you’re safe.</p>
+    <p class="small" style="color:#9fc2b8">Not a stock. Not get-rich. Money that is yours, spendable freely, privately, with anyone, anywhere.</p>
+  </div>
+</div>
+</div>
+
+</body>
+</html>

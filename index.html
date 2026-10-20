@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>stickers.cash — Vinyl stickers, paid in Bitcoin Cash</title>
+<meta name="description" content="Kiss-cut vinyl stickers for laptops, bottles and shop windows. Ships from the USA to anywhere on Earth. The only payment we accept is Bitcoin Cash (BCH).">
+<meta name="theme-color" content="#0AC18E">
+<meta property="og:title" content="stickers.cash — Vinyl stickers, paid in Bitcoin Cash">
+<meta property="og:description" content="Waterproof kiss-cut vinyl stickers. Ships worldwide from the USA. Paid only in Bitcoin Cash.">
+<meta property="og:url" content="https://stickers.cash/">
+<meta property="og:type" content="website">
+<link rel="icon" href="media/bch/bch-circle.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Store",
+  "name": "stickers.cash",
+  "url": "https://stickers.cash/",
+  "description": "Bitcoin Cash sticker shop. Kiss-cut vinyl stickers shipped in the USA and internationally. Payment accepted: Bitcoin Cash (BCH) only.",
+  "currenciesAccepted": "BCH",
+  "paymentAccepted": "Bitcoin Cash",
+  "areaServed": ["US", "Worldwide"],
+  "address": { "@type": "PostalAddress", "addressCountry": "US" }
+}
+</script>
+</head>
+<body id="top">
+
+<!-- ======================= ANNOUNCEMENT ======================= -->
+<div class="announce">
+  <div class="container announce-inner">
+    <span>🚀 Ships from the USA to your door — anywhere on Earth</span>
+    <span class="sep">·</span>
+    <span>💧 Waterproof vinyl, kiss-cut</span>
+    <span class="sep">·</span>
+    <span>⚡ Paid in Bitcoin Cash only</span>
+  </div>
+</div>
+
+<!-- ======================= HEADER ======================= -->
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="#top" aria-label="stickers.cash home">
+      <img class="brand-mark" src="media/bch/bch-circle.svg" alt="">
+      <span class="brand-name">stickers<span class="dot">.</span>cash</span>
+    </a>
+
+    <nav class="nav" id="mainNav" aria-label="Main">
+      <a href="#shop">Shop</a>
+      <a href="#how">How it works</a>
+      <a href="#shipping">Shipping</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="cart-btn" id="cartBtn" aria-label="Open cart">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6h15l-1.5 9h-12z"/><path d="M6 6L5 2H2"/><circle cx="9" cy="20" r="1.6"/><circle cx="18" cy="20" r="1.6"/></svg>
+        <span class="cart-label">Cart</span>
+        <span class="cart-count" id="cartCount" hidden>0</span>
+      </button>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ======================= HERO ======================= -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">The Bitcoin Cash sticker shop</span>
+      <h1>Stickers that stick.<br>Cash that <em>doesn't bounce.</em></h1>
+      <p class="lede">Premium kiss-cut vinyl stickers for laptops, bottles, and shop windows.
+        Packed flat in the USA, mailed anywhere on Earth — and the only payment we take
+        is <strong>Bitcoin Cash</strong>.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary btn-lg" href="#shop">Shop stickers</a>
+        <a class="btn btn-ghost btn-lg" href="#how">How to pay</a>
+      </div>
+      <div class="hero-note">
+        <img src="media/bch/bch-circle.svg" alt="" width="18" height="18">
+        <span>US shipping $2 <b>·</b> International $6 <b>·</b> Free US shipping over $25</span>
+      </div>
+    </div>
+
+    <div class="hero-art" aria-hidden="true">
+      <img class="ha ha-1 bob-a" src="stickers/circle-mark.svg" alt="">
+      <img class="ha ha-2 bob-b" src="stickers/internet-cash.svg" alt="">
+      <img class="ha ha-3 bob-c" src="stickers/heart.svg" alt="">
+      <img class="ha ha-4 bob-a" src="stickers/p2p-badge.svg" alt="">
+      <img class="ha ha-5 bob-b" src="stickers/pay-me.svg" alt="">
+    </div>
+  </div>
+</section>
+
+<!-- ======================= TRUST STRIP ======================= -->
+<section class="trust">
+  <div class="container trust-grid">
+    <div class="trust-item"><span class="ti">💧</span><div><b>Real vinyl</b><small>Waterproof, kiss-cut, dish-safe</small></div></div>
+    <div class="trust-item"><span class="ti">✈️</span><div><b>USA &amp; worldwide</b><small>$2 US · $6 international</small></div></div>
+    <div class="trust-item"><span class="ti">⚡</span><div><b>Seconds to confirm</b><small>BCH settles fast, fees under 1¢</small></div></div>
+    <div class="trust-item"><span class="ti">🏦</span><div><b>No cards, no banks</b><small>Checkout exists for everyone</small></div></div>
+  </div>
+</section>
+
+<!-- ======================= SHOP ======================= -->
+<section class="shop" id="shop">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">The shop</span>
+        <h2>Pick your stickers</h2>
+        <p class="section-sub">Every design in three sizes, three finishes — or grab a bundle and save.</p>
+      </div>
+      <div class="filters" id="filters" role="tablist" aria-label="Filter stickers">
+        <button class="chip active" data-filter="all">All</button>
+        <button class="chip" data-filter="logos">Logos &amp; badges</button>
+        <button class="chip" data-filter="sayings">Sayings</button>
+        <button class="chip" data-filter="characters">Characters</button>
+        <button class="chip" data-filter="bundles">Bundles</button>
+      </div>
+    </div>
+
+    <div class="grid" id="grid"><!-- cards rendered by app.js --></div>
+
+    <noscript>
+      <p class="noscript-note">This store needs JavaScript for the cart and BCH checkout.
+        The payment address is <code>bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh</code>.</p>
+    </noscript>
+  </div>
+</section>
+
+<!-- ======================= HOW IT WORKS ======================= -->
+<section class="how" id="how">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Checkout in three steps</span>
+      <h2>How paying with Bitcoin Cash works</h2>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card reveal">
+        <span class="step-num">1</span>
+        <h3>Fill your cart</h3>
+        <p>Choose size (3″, 4″, 6″), finish (matte, glossy, transparent) and quantity.
+           Buy 5+ stickers and automatic bundle savings kick in.</p>
+      </div>
+      <div class="step-card reveal">
+        <span class="step-num">2</span>
+        <h3>Lock the rate, send BCH</h3>
+        <p>Your total converts to an exact BCH amount with a 15-minute rate lock.
+           Scan the QR with any BCH wallet — or copy the address and amount.</p>
+      </div>
+      <div class="step-card reveal">
+        <span class="step-num">3</span>
+        <h3>We print &amp; mail</h3>
+        <p>Same-business-day printing (before 12:00 ET), packed flat in a rigid
+           waterproof mailer, then handed to the post office.</p>
+      </div>
+    </div>
+    <div class="wallet-row">
+      <span>No wallet yet?</span>
+      <a class="wallet-link" href="https://selene.cash" target="_blank" rel="noopener">Selene Wallet →</a>
+      <a class="wallet-link" href="https://paytaca.com" target="_blank" rel="noopener">Paytaca →</a>
+      <a class="wallet-link" href="https://badger.bitcoin.com" target="_blank" rel="noopener">Badger →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= WHY BCH BAND ======================= -->
+<section class="bch-band">
+  <div class="container bch-band-inner">
+    <img class="bch-band-mark" src="media/bch/bch-circle.svg" alt="Bitcoin Cash">
+    <div>
+      <h2>Why Bitcoin Cash only?</h2>
+      <p>No chargebacks, no frozen processors, no 3% card tax that would force us to raise
+         prices. Payment settles in seconds for a fraction of a cent — and anyone on Earth
+         can pay us, bank account or not. So that's the only payment we accept.</p>
+    </div>
+    <div class="bch-band-action">
+      <div class="bch-addr-chip">
+        <code id="footerAddr">bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh</code>
+        <button class="btn-copy" data-copy="bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh">Copy</button>
+      </div>
+      <small>Our payment address — verify it matches on any order confirmation.</small>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= SHIPPING ======================= -->
+<section class="shipping" id="shipping">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">From the USA to your door</span>
+      <h2>Shipping</h2>
+    </div>
+    <div class="ship-grid">
+      <div class="ship-card reveal">
+        <div class="ship-flag">🇺🇸</div>
+        <h3>United States</h3>
+        <div class="ship-price">$2 <span>flat</span></div>
+        <ul>
+          <li><b>Free</b> when your order is over $25</li>
+          <li>USPS First Class · <b>3–7 business days</b></li>
+          <li>Tracking included</li>
+        </ul>
+      </div>
+      <div class="ship-card reveal featured">
+        <div class="ship-flag">🌍</div>
+        <h3>International</h3>
+        <div class="ship-price">$6 <span>flat</span></div>
+        <ul>
+          <li><b>Free</b> when your order is over $50</li>
+          <li>Tracked airmail · <b>7–21 business days</b></li>
+          <li>190+ countries · duties may apply</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ship-notes">
+      <div class="note">📦 Orders placed before <b>12:00 ET</b> ship the same business day.</div>
+      <div class="note">🧱 Packed flat between rigid mailers — <b>no bent corners</b>.</div>
+      <div class="note">🏪 Wholesale &amp; custom sizes → <a href="mailto:orders@stickers.cash">orders@stickers.cash</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= FAQ ======================= -->
+<section class="faq" id="faq">
+  <div class="container faq-wrap">
+    <div class="section-head">
+      <span class="eyebrow">Questions</span>
+      <h2>FAQ</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item" open>
+        <summary>Why don't you accept cards or PayPal?</summary>
+        <p>Card processors take ~3% and can reverse payments months later — we'd have to bake
+           both costs into every sticker. Bitcoin Cash payments settle permanently in seconds
+           for a fraction of a cent, and anyone can pay, anywhere, no bank account required.
+           So BCH is the only payment we accept.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How exactly do I pay?</summary>
+        <p>At checkout we show an exact BCH amount (rate locked for 15 minutes), a QR code and
+           our address. Open your Bitcoin Cash wallet, scan, confirm the amount, send. That's it —
+           most orders confirm in under a minute.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Which wallet should I use?</summary>
+        <p>Any Bitcoin Cash wallet works: <a href="https://selene.cash" target="_blank" rel="noopener">Selene</a>,
+           <a href="https://paytaca.com" target="_blank" rel="noopener">Paytaca</a>,
+           <a href="https://badger.bitcoin.com" target="_blank" rel="noopener">Badger</a>, Electron Cash,
+           or the Bitcoin.com wallet. New to BCH? Get a wallet and $5 of BCH in about five minutes,
+           then send your first payment here.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What if the exchange rate moves?</summary>
+        <p>Your quote is locked for 15 minutes. If it expires, the amount refreshes to the live
+           rate before you send — always pay the amount shown at the moment you send.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Do you ship everywhere?</summary>
+        <p>Anywhere the postal service delivers: all 50 US states plus 190+ countries.
+           International mail takes 7–21 business days and import duties, if any, are the
+           buyer's responsibility.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Refunds or mistakes?</summary>
+        <p>Overpaid by more than $1 equivalent? We refund the difference in BCH. Sticker
+           damaged or lost in mail? We reprint and reship, free. Cancel within one hour of
+           ordering by emailing <a href="mailto:orders@stickers.cash">orders@stickers.cash</a>.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can I get custom stickers or wholesale?</summary>
+        <p>Yes — custom cuts, your artwork, and bulk pricing for shops and conferences.
+           Email <a href="mailto:orders@stickers.cash">orders@stickers.cash</a> with what you need.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ======================= FOOTER ======================= -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="#top">
+        <img class="brand-mark" src="media/bch/bch-circle.svg" alt="">
+        <span class="brand-name">stickers<span class="dot">.</span>cash</span>
+      </a>
+      <p>The Bitcoin Cash sticker shop. Ships from the USA, worldwide.</p>
+      <img class="accepted-badge" src="media/bch/bch-accepted-here-frame.svg" alt="Bitcoin Cash accepted here">
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <a href="#shop">All stickers</a>
+      <a href="#shop" data-jump-filter="bundles">Bundles</a>
+      <a href="#shipping">Shipping rates</a>
+    </div>
+    <div class="footer-col">
+      <h4>Pay</h4>
+      <a href="#how">How to pay</a>
+      <a href="https://selene.cash" target="_blank" rel="noopener">Get a wallet</a>
+      <button class="linklike" data-copy="bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh">Copy our address</button>
+    </div>
+    <div class="footer-col">
+      <h4>Help</h4>
+      <a href="#faq">FAQ</a>
+      <a href="mailto:orders@stickers.cash">orders@stickers.cash</a>
+      <a href="mailto:orders@stickers.cash?subject=Wholesale%20%2F%20custom%20stickers">Wholesale</a>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 stickers.cash — paid exclusively in Bitcoin Cash (BCH)</span>
+    <code>bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh</code>
+  </div>
+</footer>
+
+<!-- ======================= CART DRAWER ======================= -->
+<div class="backdrop" id="drawerBackdrop" hidden></div>
+<aside class="drawer" id="cartDrawer" aria-label="Shopping cart" aria-hidden="true">
+  <div class="drawer-head">
+    <h3>Your cart <span id="drawerCount" class="muted"></span></h3>
+    <button class="icon-btn" id="closeCart" aria-label="Close cart">✕</button>
+  </div>
+
+  <div class="drawer-body" id="cartBody">
+    <div class="cart-empty" id="cartEmpty">
+      <img src="stickers/heart.svg" alt="" width="90" height="90">
+      <p><b>Nothing here yet.</b></p>
+      <p class="muted">Go grab a sticker — they're cheap and they stick to everything.</p>
+      <button class="btn btn-primary" id="emptyBrowse">Browse stickers</button>
+    </div>
+    <ul class="cart-lines" id="cartLines"></ul>
+  </div>
+
+  <div class="drawer-foot" id="cartFoot" hidden>
+    <label class="ship-to">
+      <span>Ship to</span>
+      <select id="destSelect">
+        <option value="us">🇺🇸 United States</option>
+        <option value="intl">🌍 International</option>
+      </select>
+    </label>
+    <div class="totals">
+      <div class="t-row"><span>Subtotal</span><span id="tSub">$0.00</span></div>
+      <div class="t-row discount" id="savingsRow" hidden><span>Bundle savings</span><span id="tSave">−$0.00</span></div>
+      <div class="t-row"><span>Shipping</span><span id="tShip">$0.00</span></div>
+      <div class="t-row grand"><span>Total</span><span id="tTotal">$0.00</span></div>
+    </div>
+    <p class="pay-note">Paid in <b>Bitcoin Cash</b> at checkout — exact amount, rate locked 15 min.</p>
+    <button class="btn btn-primary btn-block" id="checkoutBtn">Checkout with BCH</button>
+  </div>
+</aside>
+
+<!-- ======================= CHECKOUT MODAL ======================= -->
+<div class="modal" id="checkoutModal" hidden>
+  <div class="modal-backdrop" id="modalBackdrop"></div>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-label="Checkout">
+    <div class="modal-head">
+      <div class="steps-nav" id="stepsNav">
+        <span class="snav active" data-step="details"><i>1</i> Details</span>
+        <span class="snav" data-step="pay"><i>2</i> Pay in BCH</span>
+        <span class="snav" data-step="done"><i>3</i> Done</span>
+      </div>
+      <button class="icon-btn" id="closeModal" aria-label="Close checkout">✕</button>
+    </div>
+
+    <!-- STEP 1: DETAILS -->
+    <form class="step active" id="stepDetails" novalidate>
+      <div class="step-grid">
+        <div class="fields">
+          <h3 class="step-title">Where should the stickers go?</h3>
+
+          <div class="field">
+            <label for="fEmail">Email <em>(for order updates)</em></label>
+            <input type="email" id="fEmail" autocomplete="email" placeholder="you@example.com" required>
+            <small class="err" data-for="fEmail"></small>
+          </div>
+
+          <div class="field">
+            <label for="fName">Full name</label>
+            <input type="text" id="fName" autocomplete="name" placeholder="Satoshi Nakamoto" required>
+            <small class="err" data-for="fName"></small>
+          </div>
+
+          <div class="field">
+            <label for="fAddr">Address</label>
+            <input type="text" id="fAddr" autocomplete="street-address" placeholder="123 Main St, Apt 4" required>
+            <small class="err" data-for="fAddr"></small>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="fCity">City</label>
+              <input type="text" id="fCity" autocomplete="address-level2" required>
+              <small class="err" data-for="fCity"></small>
+            </div>
+            <div class="field">
+              <label for="fRegion">State / Province</label>
+              <input type="text" id="fRegion" autocomplete="address-level1" required>
+              <small class="err" data-for="fRegion"></small>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="fPostal">Postal code</label>
+              <input type="text" id="fPostal" autocomplete="postal-code" required>
+              <small class="err" data-for="fPostal"></small>
+            </div>
+            <div class="field">
+              <label for="fCountry">Country</label>
+              <select id="fCountry" autocomplete="country-name" required></select>
+              <small class="err" data-for="fCountry"></small>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Shipping method</label>
+            <div class="ship-methods" id="shipMethods"></div>
+          </div>
+        </div>
+
+        <aside class="order-box">
+          <h4>Order summary</h4>
+          <ul class="mini-lines" id="miniLines"></ul>
+          <div class="totals">
+            <div class="t-row"><span>Subtotal</span><span id="mSub">$0.00</span></div>
+            <div class="t-row discount" id="mSavingsRow" hidden><span>Bundle savings</span><span id="mSave">−$0.00</span></div>
+            <div class="t-row"><span>Shipping</span><span id="mShip">$0.00</span></div>
+            <div class="t-row grand"><span>Total</span><span id="mTotal">$0.00</span></div>
+          </div>
+          <p class="pay-note">Payment: <b>Bitcoin Cash only</b> ⚡ next step.</p>
+        </aside>
+      </div>
+
+      <div class="step-actions">
+        <button type="button" class="btn btn-ghost" id="backToCart">← Back to cart</button>
+        <button type="submit" class="btn btn-primary btn-lg">Continue to payment →</button>
+      </div>
+    </form>
+
+    <!-- STEP 2: PAY -->
+    <section class="step" id="stepPay">
+      <div class="pay-grid">
+        <div class="pay-main">
+          <div class="pay-head">
+            <div>
+              <span class="eyebrow">Order <b id="payOrderId">—</b></span>
+              <div class="bch-amount-row">
+                <span class="bch-amount" id="payBchAmount">—</span>
+                <button class="btn-copy lg" id="copyAmt">Copy</button>
+              </div>
+              <div class="bch-usd" id="payUsdLine">= $0.00 USD</div>
+            </div>
+            <div class="quote" id="quoteBox">
+              <span class="quote-label">Rate locked</span>
+              <span class="quote-time" id="quoteTimer">15:00</span>
+            </div>
+          </div>
+
+          <div class="qr-wrap">
+            <img id="payQr" class="qr-img" src="" alt="QR code for our Bitcoin Cash payment address" width="240" height="240">
+            <div class="qr-side">
+              <p class="qr-title">Scan with any BCH wallet</p>
+              <div class="addr-box">
+                <code id="payAddr">bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh</code>
+                <button class="btn-copy" id="copyAddr">Copy</button>
+              </div>
+              <p class="qr-hint" id="qrHint">QR includes the exact amount — just scan and send.</p>
+            </div>
+          </div>
+
+          <ol class="pay-steps">
+            <li>Open your Bitcoin Cash wallet</li>
+            <li>Scan the QR (or paste the address + amount)</li>
+            <li>Send the <b>exact amount</b> shown above</li>
+          </ol>
+
+          <div class="pay-actions">
+            <button class="btn btn-primary btn-lg" id="paidBtn">✓ I've sent the payment</button>
+            <button class="btn btn-ghost" id="backToDetails">← Edit details</button>
+          </div>
+          <p class="pay-fineprint">Quote refreshes automatically if the 15 minutes expire. Sending a different
+            amount delays matching — email <a href="mailto:orders@stickers.cash">orders@stickers.cash</a> if you already paid.</p>
+        </div>
+
+        <aside class="order-box">
+          <h4>You're buying</h4>
+          <ul class="mini-lines" id="payLines"></ul>
+          <div class="totals">
+            <div class="t-row grand"><span>Total due</span><span id="payTotalUsd">$0.00</span></div>
+          </div>
+          <div class="rate-line" id="rateLine">Rate: fetching…</div>
+          <p class="pay-note">Ship to <b id="payShipTo">—</b></p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- STEP 3: DONE -->
+    <section class="step" id="stepDone">
+      <div class="done-wrap">
+        <div class="done-check" aria-hidden="true">
+          <svg viewBox="0 0 64 64" width="44" height="44"><circle cx="32" cy="32" r="32" fill="#0AC18E"/><path d="M18 33l10 10 19-21" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Order <span id="doneOrderId">—</span> is in!</h3>
+        <p class="done-sub">Thank you — you just paid with internet cash. 🎉</p>
+
+        <div class="done-box">
+          <p><b>1.</b> Send your wallet's receipt (screenshot or txid) with your order number:</p>
+          <div class="done-actions">
+            <a class="btn btn-primary" id="receiptMail" href="#">Email payment receipt</a>
+            <button class="btn btn-ghost" id="copyOrderId">Copy order ID</button>
+          </div>
+          <p><b>2.</b> We match the payment and print — same business day if before 12:00 ET.</p>
+          <p><b>3.</b> Tracking lands in your inbox. Stickers land on your stuff.</p>
+        </div>
+
+        <button class="btn btn-ghost" id="newOrderBtn">Start another order</button>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="app.js"></script>
+</body>
+</html>

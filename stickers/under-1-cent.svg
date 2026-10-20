@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-label="Under 1 cent network fee sticker">
+  <title>Under 1 cent per transaction</title>
+  <!-- kiss-cut square die with rounded corners -->
+  <rect x="2" y="2" width="596" height="596" rx="76" fill="#ffffff"/>
+  <rect x="34" y="34" width="532" height="532" rx="48" fill="#0AC18E"/>
+  <g font-family="Arial, Helvetica, sans-serif" text-anchor="middle" fill="#FFFFFF">
+    <text x="300" y="190" font-size="46" font-weight="700" letter-spacing="10">UNDER</text>
+    <text x="300" y="392" font-size="200" font-weight="700">1&#162;</text>
+    <text x="300" y="474" font-size="30" font-weight="700" letter-spacing="6">PER TRANSACTION</text>
+  </g>
+  <g stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.7">
+    <line x1="160" y1="230" x2="440" y2="230"/>
+    <line x1="160" y1="430" x2="440" y2="430"/>
+  </g>
+</svg>

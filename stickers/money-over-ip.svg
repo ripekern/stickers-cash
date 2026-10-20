@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-label="Money over IP sticker">
+  <title>Money Over IP</title>
+  <rect x="2" y="2" width="596" height="596" rx="76" fill="#ffffff"/>
+  <rect x="34" y="34" width="532" height="532" rx="48" fill="#0F1820"/>
+  <!-- globe -->
+  <g fill="none" stroke="#0AC18E" stroke-width="9" stroke-linecap="round">
+    <circle cx="300" cy="212" r="96"/>
+    <ellipse cx="300" cy="212" rx="42" ry="96"/>
+    <line x1="204" y1="212" x2="396" y2="212"/>
+    <path d="M224 158 Q300 196 376 158"/>
+    <path d="M224 266 Q300 228 376 266"/>
+  </g>
+  <!-- packet dots flying off the globe -->
+  <g fill="#0AC18E">
+    <circle cx="418" cy="120" r="9"/>
+    <circle cx="452" cy="152" r="7"/>
+    <circle cx="478" cy="184" r="5"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif" text-anchor="middle">
+    <text x="300" y="432" font-size="86" font-weight="700" letter-spacing="2" fill="#FFFFFF">MONEY</text>
+    <text x="300" y="524" font-size="86" font-weight="700" letter-spacing="2" fill="#0AC18E">OVER IP</text>
+  </g>
+</svg>
