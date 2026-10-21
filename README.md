@@ -41,7 +41,8 @@ qrencode -t SVG -o media/bch/pay-qr.svg 'bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta
 
 1. Customer checks out client-side and is shown the exact BCH amount + QR.
 2. They click "I've sent the payment" → order ID (`STK-XXXXXX`) + prefilled
-   receipt email to `orders@stickers.cash`.
+   receipt email to `orders@stickers.cash`, including every cart line (product,
+   size, finish, qty, line total) plus the subtotal/discount/shipping breakdown.
 3. You match the payment against your wallet and ship.
 
 Change `STORE_EMAIL` in `app.js` if the inbox differs. For automated payment

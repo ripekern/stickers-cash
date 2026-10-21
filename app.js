@@ -642,10 +642,24 @@ function paintQuote() {
 
 function mailtoLink(t) {
   const amount = bchAmount(t);
+  const items = cart.map(l => {
+    const p = byId(l.id);
+    const unit = unitPrice(p, l.size, l.finish);
+    const opts = lineOptions(l);
+    return `  ${l.qty} × ${p.name}${opts ? ` (${opts})` : ''} — ${usd(unit * l.qty)}`;
+  });
   const body = [
     `Order: ${orderId}`,
     `Amount sent: ${amount} BCH (${usd(t.total)} USD)`,
     `To address: ${BCH_ADDRESS}`,
+    '',
+    `Items (${t.count} sticker${t.count === 1 ? '' : 's'}):`,
+    ...items,
+    '',
+    `Subtotal: ${usd(t.subtotal)}`,
+    ...(t.savings ? [`Volume discount: −${usd(t.savings)}`] : []),
+    `Shipping: ${t.shipping === 0 ? 'FREE' : usd(t.shipping)}`,
+    `Total: ${usd(t.total)}`,
     '',
     'Shipping details:',
     `  ${$('#fName').value}`,
