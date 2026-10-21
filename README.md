@@ -16,7 +16,7 @@ A static storefront for selling vinyl stickers worldwide, paid **only in Bitcoin
 ### Products & options
 
 9 single designs + 3 bundles. Singles offer size (**3″ / 4″ / 6″**, +$1 / +$3),
-finish (**matte / glossy / transparent**, transparent +$0.50) and quantity.
+finish (**matte / glossy**) and quantity.
 Automatic bundle savings: 3–4 stickers −5%, 5–9 −10%, 10+ −15%.
 
 | Shipping | Rate | Free over | Time |

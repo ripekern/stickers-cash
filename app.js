@@ -23,7 +23,6 @@ const SIZES = [
 const FINISHES = [
   { v: 'matte', label: 'Matte vinyl',   add: 0 },
   { v: 'gloss', label: 'Glossy vinyl',  add: 0 },
-  { v: 'clear', label: 'Transparent',   add: 0.5 },
 ];
 
 const COUNTRIES = [
@@ -121,8 +120,17 @@ function loadCart() {
   try {
     const raw = JSON.parse(localStorage.getItem(STORE_KEY) || '[]');
     if (!Array.isArray(raw)) return [];
-    return raw.filter(l => l && byId(l.id) && l.qty > 0);
+    return raw.filter(l => l && byId(l.id) && l.qty > 0).map(normalizeLine);
   } catch { return []; }
+}
+
+// keep saved carts valid when an option is discontinued (e.g. the transparent finish)
+function normalizeLine(l) {
+  if (l.finish && !FINISHES.some(f => f.v === l.finish)) {
+    l.finish = 'matte';
+    l.key = byId(l.id).bundle ? `${l.id}|pack` : `${l.id}|${l.size}|matte`;
+  }
+  return l;
 }
 function saveCart() { localStorage.setItem(STORE_KEY, JSON.stringify(cart)); }
 
