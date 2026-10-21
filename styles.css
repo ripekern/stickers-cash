@@ -147,7 +147,7 @@ code{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace}
 .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
 .hero-note{display:flex;align-items:center;gap:9px;margin-top:24px;font-size:14px;color:var(--muted)}
 .hero-note .ship-facts{display:flex;align-items:center;flex-wrap:wrap;gap:4px}
-.hero-note .ship-facts .sep{color:var(--green);font-weight:400}
+.hero-note .ship-facts > span + span::before{content:"·";color:var(--green);font-weight:400;margin-right:4px}
 
 .hero-art{position:relative;height:470px}
 .ha{position:absolute;filter:drop-shadow(0 14px 24px rgba(15,24,32,.16))}
@@ -570,9 +570,7 @@ select, input, .ship-methods{
 }
 @media (max-width: 560px){
   .announce .sep, .announce span:nth-child(n+4){display:none}
-  .hero-note .ship-facts{gap:6px 14px}
-  .hero-note .ship-facts .sep{display:none}
-  .trust-grid{grid-template-columns:1fr}
+  .trust-grid{grid-template-columns:1fr;gap:0}
   .grid{grid-template-columns:1fr}
   .field-row{grid-template-columns:1fr}
   .hero-art{height:300px}
