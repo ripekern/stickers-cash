@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why waiting ten minutes is normal — The internet cash field guide — stickers.cash</title>
+<meta name="description" content="Crypto payments feel instant because the message travels instantly. Settlement is a separate step — and ten minutes is the design, not a bug.">
+<meta name="theme-color" content="#0AC18E">
+<meta property="og:title" content="Why waiting ten minutes is normal — The internet cash field guide — stickers.cash">
+<meta property="og:description" content="Crypto payments feel instant because the message travels instantly. Settlement is a separate step — and ten minutes is the design, not a bug.">
+<meta property="og:url" content="https://stickers.cash/blog/why-waiting-ten-minutes-is-normal.html">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://stickers.cash/blog/why-waiting-ten-minutes-is-normal.html">
+<link rel="icon" href="../media/bch/bch-circle.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Why waiting ten minutes is normal",
+  "description": "Crypto payments feel instant because the message travels instantly. Settlement is a separate step — and ten minutes is the design, not a bug.",
+  "url": "https://stickers.cash/blog/why-waiting-ten-minutes-is-normal.html",
+  "mainEntityOfPage": "https://stickers.cash/blog/why-waiting-ten-minutes-is-normal.html",
+  "datePublished": "2026-10-22",
+  "dateModified": "2026-10-22",
+  "author": {
+    "@type": "Organization",
+    "name": "stickers.cash",
+    "url": "https://stickers.cash/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "stickers.cash",
+    "url": "https://stickers.cash/"
+  },
+  "articleSection": "Chapter two · The machine",
+  "position": 13,
+  "about": [
+    "Bitcoin Cash",
+    "money",
+    "inflation",
+    "self-custody"
+  ],
+  "isPartOf": {
+    "@type": "Blog",
+    "name": "The internet cash field guide",
+    "url": "https://stickers.cash/blog.html"
+  }
+}
+</script>
+</head>
+<body>
+
+<!-- ======================= ANNOUNCEMENT ======================= -->
+<div class="announce">
+  <div class="container announce-inner">
+    <span>🧊 The internet cash guide — now in 20 posts</span>
+    <span class="sep">·</span>
+    <span>⚡ Paid in Bitcoin Cash only</span>
+    <span class="sep">·</span>
+    <span>🚀 Ships worldwide from the USA</span>
+  </div>
+</div>
+
+<!-- ======================= HEADER ======================= -->
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="../index.html" aria-label="stickers.cash home">
+      <img class="brand-mark" src="../media/bch/bch-circle.svg" alt="">
+      <span class="brand-name">stickers<span class="dot">.</span>cash</span>
+    </a>
+
+    <nav class="nav" id="mainNav" aria-label="Main">
+      <a href="../index.html">Shop</a>
+      <a href="../index.html#how">How it works</a>
+      <a href="../index.html#shipping">Shipping</a>
+      <a href="../index.html#faq">FAQ</a>
+      <a href="../blog.html" aria-current="true">Blog</a>
+    </nav>
+
+    <div class="header-actions">
+      <a class="btn btn-primary" href="../index.html#shop"><span class="shop-long">Shop stickers</span><span class="shop-short">Shop</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ======================= POST HEAD ======================= -->
+<section class="post-head">
+  <div class="container post-head-inner">
+    <a class="post-back" href="../blog.html">← All posts</a>
+    <span class="eyebrow">Chapter two · The machine</span>
+    <h1>Why waiting ten minutes is normal</h1>
+    <p class="lede">Crypto payments feel instant because the message travels instantly. Settlement is a separate step — and ten minutes is the design, not a bug.</p>
+    <div class="post-meta">
+      <span>Post 13 of 20</span>
+      <span class="dot">·</span>
+      <span>3 min read</span>
+      <span class="dot">·</span>
+      <span>Oct 22, 2026</span>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= POST BODY ======================= -->
+<div class="post-body">
+  <article class="article post-article">
+
+    <p>One of the most common complaints about crypto payments is that they are not really instant.
+      The screen says “sent” immediately, but the payment is not final until it is in a block. For
+      BCH, that block can take ten minutes on average. Is that slow?</p>
+
+    <p>It depends on what you mean by instant. The message travels in seconds. The settlement takes
+      longer. Those are two different promises, and traditional payments blur them together.</p>
+
+    <h2>Blocks are batches, not individual payments</h2>
+
+    <p>BCH does not process one payment at a time. It collects valid transactions into a block and
+      adds that block to the chain. The network targets one block every ten minutes. That target is
+      an average, not a schedule. Because block discovery is probabilistic, you might get a block in
+      one minute or wait forty. The average still comes out near ten.</p>
+
+    <p>A payment can be visible to the receiver as soon as it is broadcast. The merchant's wallet
+      sees it in the mempool and can choose to accept it before confirmation. This is called a
+      <strong>zero-confirmation</strong> payment, or 0-conf. It is a calculated risk: the sender
+      could theoretically try to double-spend, but for small amounts the risk is usually not worth
+      the friction of waiting.</p>
+
+    <h2>Confirmations stack</h2>
+
+    <p>Once a transaction is in a block, it has one confirmation. Each additional block makes it
+      harder to reverse because an attacker would have to outrun the chain. Six confirmations is a
+      common convention inherited from Bitcoin, but it is not a law. A four-dollar sticker does not
+      need the same settlement assurance as a car.</p>
+
+    <p>For face-to-face purchases, many merchants accept 0-conf because the customer is standing
+      there and the amount is small. For remote or high-value payments, waiting for one or more
+      confirmations is the safer default. BCH also has tools such as double-spend proofs that help
+      merchants detect certain conflicts, but no tool turns an unconfirmed transaction into a
+      guaranteed final one.</p>
+
+    <h2>Compare it with a card</h2>
+
+    <p>A card payment feels instant because the authorization is instant. The money does not
+      necessarily settle between banks for days. The merchant can also face a chargeback weeks or
+      months later. The card network sits in the middle, which makes reversibility possible and also
+      makes fraud, disputes, and fees possible.</p>
+
+    <p>BCH flips the sequence. The payment is final at the protocol level once confirmed. There is
+      no chargeback department and no issuer to appeal to. That is good for a merchant who wants
+      certainty, and bad for a customer who wants an undo button. The trade-off is real.</p>
+
+    <h2>Why ten minutes?</h2>
+
+    <p>Block time is a security parameter. Faster blocks mean more frequent chain tips, more
+      propagation pressure, and more orphaned blocks. Slower blocks give the network time to agree.
+      BCH could change the parameter, but it would not make settlement free. It would move the
+      trade-off around.</p>
+
+    <p>The practical answer is to stop treating “sent” and “settled” as the same event. For a coffee,
+      the visible broadcast is enough. For a laptop, wait for a confirmation. For a house, wait for
+      more. The protocol gives you a spectrum; the amount at risk tells you where to stand on it.</p>
+
+    <aside class="callout">
+      <p class="callout-title">The useful rule</p>
+      <p>Match the wait to the value. Small and local: 0-conf is often fine. Larger or remote: wait
+        for confirmations. The goal is not to make every payment feel like a card. The goal is to
+        know what you are trusting at each step.</p>
+    </aside>
+
+
+    <p class="post-disclaimer">We do not provide financial advice.</p>
+
+    <aside class="blog-donate" aria-label="Blog donation">
+  <div class="blog-donate-head">
+    <span class="blog-donate-title">Tip the blog</span>
+    <span class="blog-donate-note">Blog donation</span>
+  </div>
+  <p>If this guide was useful, you can send BCH to support more posts.</p>
+  <div class="bch-addr-chip">
+    <code>bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh?message=stickerscashblog</code>
+    <button class="btn-copy" data-copy="bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh?message=stickerscashblog" data-copied="Blog donation address copied">Copy</button>
+  </div>
+</aside>
+
+    <nav class="post-pager" aria-label="More posts">
+        <a class="pager-card prev" href="one-transaction-end-to-end.html">
+          <span>← Previous post</span>
+          <b>One transaction, end to end</b>
+        </a>
+        <a class="pager-card next" href="the-fee-that-is-almost-nothing.html">
+          <span>Next post →</span>
+          <b>The fee that is almost nothing</b>
+        </a>
+    </nav>
+  </article>
+</div>
+
+<!-- ======================= POST CTA ======================= -->
+<section class="post-cta-band">
+  <div class="container post-cta-inner">
+    <img class="post-cta-mark" src="../media/bch/bch-circle.svg" alt="Bitcoin Cash">
+    <div>
+      <h2>Internet cash needs places to spend it.</h2>
+      <p>Every order at stickers.cash is paid in BCH — a cheap, real-world way to move your first
+        coins, practice self-custody, and put a sticker on something you own.</p>
+    </div>
+    <div class="post-cta-actions">
+      <a class="btn btn-primary btn-lg" href="../index.html#shop">Shop stickers</a>
+      <div class="bch-addr-chip">
+        <code>bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh</code>
+        <button class="btn-copy" data-copy="bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh" data-copied="Payment address copied">Copy</button>
+      </div>
+      <small class="post-cta-wallets">No wallet yet?
+        <a href="https://selene.cash" target="_blank" rel="noopener">Selene</a> ·
+        <a href="https://paytaca.com" target="_blank" rel="noopener">Paytaca</a> ·
+        <a href="https://badger.bitcoin.com" target="_blank" rel="noopener">Badger</a>
+      </small>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ======================= FOOTER ======================= -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="../index.html">
+        <img class="brand-mark" src="../media/bch/bch-circle.svg" alt="">
+        <span class="brand-name">stickers<span class="dot">.</span>cash</span>
+      </a>
+      <p>The Bitcoin Cash sticker shop. Ships from the USA, worldwide.</p>
+      <img class="accepted-badge" src="../media/bch/bch-accepted-here-frame.svg" alt="Bitcoin Cash accepted here">
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <a href="../index.html#shop">All stickers</a>
+      <a href="../index.html#how">How to pay</a>
+      <a href="../index.html#shipping">Shipping rates</a>
+    </div>
+    <div class="footer-col">
+      <h4>Read</h4>
+      <a href="../blog.html">Internet cash guide</a>
+      <a href="https://whybitcoincash.com" target="_blank" rel="noopener">Why Bitcoin Cash</a>
+      <a href="https://bitcoincash.org" target="_blank" rel="noopener">bitcoincash.org</a>
+    </div>
+    <div class="footer-col">
+      <h4>Help</h4>
+      <a href="../index.html#faq">FAQ</a>
+      <a href="mailto:orders@stickers.cash">orders@stickers.cash</a>
+      <a href="mailto:orders@stickers.cash?subject=Wholesale%20%2F%20custom%20stickers">Wholesale</a>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 stickers.cash — paid exclusively in Bitcoin Cash (BCH)</span>
+    <code>bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh</code>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../blog.js"></script>
+</body>
+</html>

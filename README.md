@@ -7,8 +7,9 @@ A static storefront for selling vinyl stickers worldwide, paid **only in Bitcoin
 ## The site
 
 - `index.html` — storefront (hero, product grid, how-it-works, shipping, FAQ, footer)
-- `blog.html` — blog index: hero plus card grid for the ten-part internet cash guide
-  (built from `why-bitcoin-is-like-cash.md` + `teachBitcoinCash.md`)
+- `blog.html` — blog index: hero plus card grid for the twenty-part internet cash guide.
+  Chapter one (posts 1–10) is built from `why-bitcoin-is-like-cash.md` +
+  `teachBitcoinCash.md`; chapter two (posts 11–20) is the practical BCH handbook.
 - `blog/` — one static page per post, with previous/next navigation
 - `blog.js` — mobile nav + copy-address toast for the blog pages
 - `styles.css` — all styling (brand: BCH green `#0AC18E`, dark `#0F1820`, Ubuntu font;
@@ -62,8 +63,8 @@ detection you'd add a server watching the address — nothing here requires one.
   background, white kiss-cut border built in), then add a product entry.
 - **Blog:** the index and every post are plain HTML. Add a new post in `blog/`, then add a
   matching card to `blog.html` and update the previous post's "next" link. `blog.js` handles
-  the mobile menu and copy-address toast. The two markdown files are source drafts, not loaded
-  at runtime.
+  the mobile menu and copy-address toast. The markdown files are chapter-one source drafts, not
+  loaded at runtime; chapter two lives in the static post pages.
 
 ## Run locally
 

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scaling is a choice — The internet cash field guide — stickers.cash</title>
+<meta name="description" content="Every payment network has a capacity limit. The question is what you do when you hit it: ration space, build layers, or make more space.">
+<meta name="theme-color" content="#0AC18E">
+<meta property="og:title" content="Scaling is a choice — The internet cash field guide — stickers.cash">
+<meta property="og:description" content="Every payment network has a capacity limit. The question is what you do when you hit it: ration space, build layers, or make more space.">
+<meta property="og:url" content="https://stickers.cash/blog/scaling-is-a-choice.html">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://stickers.cash/blog/scaling-is-a-choice.html">
+<link rel="icon" href="../media/bch/bch-circle.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Scaling is a choice",
+  "description": "Every payment network has a capacity limit. The question is what you do when you hit it: ration space, build layers, or make more space.",
+  "url": "https://stickers.cash/blog/scaling-is-a-choice.html",
+  "mainEntityOfPage": "https://stickers.cash/blog/scaling-is-a-choice.html",
+  "datePublished": "2026-10-22",
+  "dateModified": "2026-10-22",
+  "author": {
+    "@type": "Organization",
+    "name": "stickers.cash",
+    "url": "https://stickers.cash/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "stickers.cash",
+    "url": "https://stickers.cash/"
+  },
+  "articleSection": "Chapter two · The practice",
+  "position": 19,
+  "about": [
+    "Bitcoin Cash",
+    "money",
+    "inflation",
+    "self-custody"
+  ],
+  "isPartOf": {
+    "@type": "Blog",
+    "name": "The internet cash field guide",
+    "url": "https://stickers.cash/blog.html"
+  }
+}
+</script>
+</head>
+<body>
+
+<!-- ======================= ANNOUNCEMENT ======================= -->
+<div class="announce">
+  <div class="container announce-inner">
+    <span>🧊 The internet cash guide — now in 20 posts</span>
+    <span class="sep">·</span>
+    <span>⚡ Paid in Bitcoin Cash only</span>
+    <span class="sep">·</span>
+    <span>🚀 Ships worldwide from the USA</span>
+  </div>
+</div>
+
+<!-- ======================= HEADER ======================= -->
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="../index.html" aria-label="stickers.cash home">
+      <img class="brand-mark" src="../media/bch/bch-circle.svg" alt="">
+      <span class="brand-name">stickers<span class="dot">.</span>cash</span>
+    </a>
+
+    <nav class="nav" id="mainNav" aria-label="Main">
+      <a href="../index.html">Shop</a>
+      <a href="../index.html#how">How it works</a>
+      <a href="../index.html#shipping">Shipping</a>
+      <a href="../index.html#faq">FAQ</a>
+      <a href="../blog.html" aria-current="true">Blog</a>
+    </nav>
+
+    <div class="header-actions">
+      <a class="btn btn-primary" href="../index.html#shop"><span class="shop-long">Shop stickers</span><span class="shop-short">Shop</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ======================= POST HEAD ======================= -->
+<section class="post-head">
+  <div class="container post-head-inner">
+    <a class="post-back" href="../blog.html">← All posts</a>
+    <span class="eyebrow">Chapter two · The practice</span>
+    <h1>Scaling is a choice</h1>
+    <p class="lede">Every payment network has a capacity limit. The question is what you do when you hit it: ration space, build layers, or make more space.</p>
+    <div class="post-meta">
+      <span>Post 19 of 20</span>
+      <span class="dot">·</span>
+      <span>3 min read</span>
+      <span class="dot">·</span>
+      <span>Oct 22, 2026</span>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= POST BODY ======================= -->
+<div class="post-body">
+  <article class="article post-article">
+
+    <p>Every payment network has a capacity limit. A card network has servers and settlement
+      windows. A blockchain has blocks. The interesting question is not whether a limit exists. It
+      is what the network does when demand hits it.</p>
+
+    <h2>Blocks are batches</h2>
+
+    <p>A block is a batch of transactions. The block size limit decides how much can fit in one
+      batch. If demand exceeds capacity, users bid for space through fees. If capacity exceeds
+      demand, fees stay low. That is the basic economics of every block chain.</p>
+
+    <p>Bitcoin Cash made a deliberate choice: increase the batch size and keep payments cheap on the
+      base layer. It launched in 2017 with 8 MB blocks, moved to 32 MB in 2018, and since 2024 has
+      used an adaptive block-size limit that can grow with demand while keeping 32 MB as a floor.
+      The goal is to make on-chain payments practical for ordinary amounts.</p>
+
+    <h2>The trade-off is real</h2>
+
+    <p>Bigger blocks are not free. They require more bandwidth to propagate, more storage to keep,
+      and more processing power to validate. If the requirements grow too high, fewer people can run
+      a full node, and the network becomes more dependent on large operators. That is the
+      centralization concern, and it is legitimate.</p>
+
+    <p>Smaller blocks keep node requirements low but force more transactions into a fee market or
+      onto secondary layers. That can make the base layer more expensive and push small payments
+      elsewhere. It is a different set of trade-offs, not a free lunch.</p>
+
+    <aside class="callout warn">
+      <p class="callout-title">Capacity is a spectrum</p>
+      <p>“Big blocks” and “small blocks” are shorthand for different bets about how people will use
+        the chain. BCH bets that cheap on-chain payments are worth the higher resource cost. The
+        adaptive limit is an attempt to let capacity follow demand instead of freezing the argument
+        at one number forever.</p>
+    </aside>
+
+    <h2>The 2017 split was about more than a number</h2>
+
+    <p>The Bitcoin Cash fork grew out of a disagreement about scaling, but the block size was only
+      the visible part. The deeper disagreement was about what the network was for. One side wanted
+      the base layer to be settlement for a layered system. The other wanted it to remain
+      peer-to-peer cash that ordinary people could use directly.</p>
+
+    <p>BCH chose the second path. That choice shapes everything else: low fees, 0-conf acceptance for
+      small purchases, and a strong preference for on-chain utility. It also means BCH inherits the
+      burden of proving that bigger blocks can stay decentralized enough to be credible.</p>
+
+    <h2>Scaling is not only technical</h2>
+
+    <p>A network can have plenty of capacity and still fail to scale if wallets are confusing,
+      merchants do not accept it, liquidity is thin, or regulation makes the on-ramps difficult.
+      Technology sets the ceiling. Adoption decides whether you get near it.</p>
+
+    <p>BCH has added tools beyond simple payments, including CashTokens for assets and lightweight
+      contracts on layer one. Those features expand what the chain can do, but they do not replace
+      the basics: people need a reason to use it, a wallet they trust, and a place to spend it.</p>
+
+    <p>The honest summary is that BCH chose a direction and is still building toward it. The
+      adaptive block limit answers the “what happens when demand grows?” question better than a
+      fixed number, but it does not answer the “will people show up?” question. That one is settled
+      in the world, not in the protocol.</p>
+
+
+    <p class="post-disclaimer">We do not provide financial advice.</p>
+
+    <aside class="blog-donate" aria-label="Blog donation">
+  <div class="blog-donate-head">
+    <span class="blog-donate-title">Tip the blog</span>
+    <span class="blog-donate-note">Blog donation</span>
+  </div>
+  <p>If this guide was useful, you can send BCH to support more posts.</p>
+  <div class="bch-addr-chip">
+    <code>bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh?message=stickerscashblog</code>
+    <button class="btn-copy" data-copy="bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh?message=stickerscashblog" data-copied="Blog donation address copied">Copy</button>
+  </div>
+</aside>
+
+    <nav class="post-pager" aria-label="More posts">
+        <a class="pager-card prev" href="how-a-shop-takes-bch.html">
+          <span>← Previous post</span>
+          <b>How a shop takes BCH</b>
+        </a>
+        <a class="pager-card next" href="what-internet-cash-still-cant-do.html">
+          <span>Next post →</span>
+          <b>What internet cash still can't do</b>
+        </a>
+    </nav>
+  </article>
+</div>
+
+<!-- ======================= POST CTA ======================= -->
+<section class="post-cta-band">
+  <div class="container post-cta-inner">
+    <img class="post-cta-mark" src="../media/bch/bch-circle.svg" alt="Bitcoin Cash">
+    <div>
+      <h2>Internet cash needs places to spend it.</h2>
+      <p>Every order at stickers.cash is paid in BCH — a cheap, real-world way to move your first
+        coins, practice self-custody, and put a sticker on something you own.</p>
+    </div>
+    <div class="post-cta-actions">
+      <a class="btn btn-primary btn-lg" href="../index.html#shop">Shop stickers</a>
+      <div class="bch-addr-chip">
+        <code>bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh</code>
+        <button class="btn-copy" data-copy="bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh" data-copied="Payment address copied">Copy</button>
+      </div>
+      <small class="post-cta-wallets">No wallet yet?
+        <a href="https://selene.cash" target="_blank" rel="noopener">Selene</a> ·
+        <a href="https://paytaca.com" target="_blank" rel="noopener">Paytaca</a> ·
+        <a href="https://badger.bitcoin.com" target="_blank" rel="noopener">Badger</a>
+      </small>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ======================= FOOTER ======================= -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="../index.html">
+        <img class="brand-mark" src="../media/bch/bch-circle.svg" alt="">
+        <span class="brand-name">stickers<span class="dot">.</span>cash</span>
+      </a>
+      <p>The Bitcoin Cash sticker shop. Ships from the USA, worldwide.</p>
+      <img class="accepted-badge" src="../media/bch/bch-accepted-here-frame.svg" alt="Bitcoin Cash accepted here">
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <a href="../index.html#shop">All stickers</a>
+      <a href="../index.html#how">How to pay</a>
+      <a href="../index.html#shipping">Shipping rates</a>
+    </div>
+    <div class="footer-col">
+      <h4>Read</h4>
+      <a href="../blog.html">Internet cash guide</a>
+      <a href="https://whybitcoincash.com" target="_blank" rel="noopener">Why Bitcoin Cash</a>
+      <a href="https://bitcoincash.org" target="_blank" rel="noopener">bitcoincash.org</a>
+    </div>
+    <div class="footer-col">
+      <h4>Help</h4>
+      <a href="../index.html#faq">FAQ</a>
+      <a href="mailto:orders@stickers.cash">orders@stickers.cash</a>
+      <a href="mailto:orders@stickers.cash?subject=Wholesale%20%2F%20custom%20stickers">Wholesale</a>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 stickers.cash — paid exclusively in Bitcoin Cash (BCH)</span>
+    <code>bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh</code>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../blog.js"></script>
+</body>
+</html>

@@ -548,7 +548,7 @@ select, input, .ship-methods{
 /* blog index */
 .blog-hero .hero-cta{margin-bottom:22px}
 .blog-index{padding:56px 0 0}
-.series-block{margin:0 0 52px}
+.series-block{margin:0 0 52px;scroll-margin-top:88px}
 .series-head{
   display:flex;justify-content:space-between;align-items:flex-end;gap:20px;
   border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:24px;
