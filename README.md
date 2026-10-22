@@ -4,10 +4,15 @@ A static storefront for selling vinyl stickers worldwide, paid **only in Bitcoin
 
 **Live site:** https://stickers.cash/
 
-## The store
+## The site
 
 - `index.html` — storefront (hero, product grid, how-it-works, shipping, FAQ, footer)
-- `styles.css` — all styling (brand: BCH green `#0AC18E`, dark `#0F1820`, Ubuntu font)
+- `blog.html` — blog index: hero plus card grid for the ten-part internet cash guide
+  (built from `why-bitcoin-is-like-cash.md` + `teachBitcoinCash.md`)
+- `blog/` — one static page per post, with previous/next navigation
+- `blog.js` — mobile nav + copy-address toast for the blog pages
+- `styles.css` — all styling (brand: BCH green `#0AC18E`, dark `#0F1820`, Ubuntu font;
+  blog cards and post layout live in the long-form section)
 - `app.js` — catalog, cart (localStorage), checkout, BCH quotes, QR, order flow
 - `stickers/` — the 9 sticker designs as die-cut SVGs (the product art)
 - `media/` — official BCH graphics, character art, payment QR (see `media/README.md`)
@@ -55,11 +60,15 @@ detection you'd add a server watching the address — nothing here requires one.
 - **Countries list:** `COUNTRIES` in `app.js`.
 - **New sticker design:** drop an SVG in `stickers/` (600×600-ish, transparent
   background, white kiss-cut border built in), then add a product entry.
+- **Blog:** the index and every post are plain HTML. Add a new post in `blog/`, then add a
+  matching card to `blog.html` and update the previous post's "next" link. `blog.js` handles
+  the mobile menu and copy-address toast. The two markdown files are source drafts, not loaded
+  at runtime.
 
 ## Run locally
 
 ```sh
-python3 -m http.server 8765
+python3 -m http.server 8765 --bind ::
 # open http://localhost:8765/
 ```
 
