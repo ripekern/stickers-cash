@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Covenants: rules that follow the coin — The internet cash field guide — stickers.cash</title>
+<meta name="description" content="A covenant is a restriction on how money can be spent. BCH's introspection opcodes let a contract inspect the transaction that is spending it.">
+<meta name="theme-color" content="#0AC18E">
+<meta property="og:title" content="Covenants: rules that follow the coin — The internet cash field guide — stickers.cash">
+<meta property="og:description" content="A covenant is a restriction on how money can be spent. BCH's introspection opcodes let a contract inspect the transaction that is spending it.">
+<meta property="og:url" content="https://stickers.cash/blog/covenants-rules-that-follow-the-coin.html">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://stickers.cash/blog/covenants-rules-that-follow-the-coin.html">
+<link rel="icon" href="../media/bch/bch-circle.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Covenants: rules that follow the coin",
+  "description": "A covenant is a restriction on how money can be spent. BCH's introspection opcodes let a contract inspect the transaction that is spending it.",
+  "url": "https://stickers.cash/blog/covenants-rules-that-follow-the-coin.html",
+  "mainEntityOfPage": "https://stickers.cash/blog/covenants-rules-that-follow-the-coin.html",
+  "datePublished": "2026-10-22",
+  "dateModified": "2026-10-22",
+  "author": {
+    "@type": "Organization",
+    "name": "stickers.cash",
+    "url": "https://stickers.cash/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "stickers.cash",
+    "url": "https://stickers.cash/"
+  },
+  "articleSection": "Chapter three · The application layer",
+  "position": 26,
+  "about": [
+    "Bitcoin Cash",
+    "money",
+    "inflation",
+    "self-custody"
+  ],
+  "isPartOf": {
+    "@type": "Blog",
+    "name": "The internet cash field guide",
+    "url": "https://stickers.cash/blog.html"
+  }
+}
+</script>
+</head>
+<body>
+
+<!-- ======================= ANNOUNCEMENT ======================= -->
+<div class="announce">
+  <div class="container announce-inner">
+    <span>🧊 The internet cash guide — now in 30 posts</span>
+    <span class="sep">·</span>
+    <span>⚡ Paid in Bitcoin Cash only</span>
+    <span class="sep">·</span>
+    <span>🚀 Ships worldwide from the USA</span>
+  </div>
+</div>
+
+<!-- ======================= HEADER ======================= -->
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="../index.html" aria-label="stickers.cash home">
+      <img class="brand-mark" src="../media/bch/bch-circle.svg" alt="">
+      <span class="brand-name">stickers<span class="dot">.</span>cash</span>
+    </a>
+
+    <nav class="nav" id="mainNav" aria-label="Main">
+      <a href="../index.html">Shop</a>
+      <a href="../index.html#how">How it works</a>
+      <a href="../index.html#shipping">Shipping</a>
+      <a href="../index.html#faq">FAQ</a>
+      <a href="../blog.html" aria-current="true">Blog</a>
+    </nav>
+
+    <div class="header-actions">
+      <a class="btn btn-primary" href="../index.html#shop"><span class="shop-long">Shop stickers</span><span class="shop-short">Shop</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ======================= POST HEAD ======================= -->
+<section class="post-head">
+  <div class="container post-head-inner">
+    <a class="post-back" href="../blog.html">← All posts</a>
+    <span class="eyebrow">Chapter three · The application layer</span>
+    <h1>Covenants: rules that follow the coin</h1>
+    <p class="lede">A covenant is a restriction on how money can be spent. BCH's introspection opcodes let a contract inspect the transaction that is spending it.</p>
+    <div class="post-meta">
+      <span>Post 26 of 30</span>
+      <span class="dot">·</span>
+      <span>3 min read</span>
+      <span class="dot">·</span>
+      <span>Oct 22, 2026</span>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= POST BODY ======================= -->
+<div class="post-body">
+  <article class="article post-article">
+
+    <p>A covenant is a restriction on how money can be spent. The word comes from property law:
+      a covenant constrains the use of an object even after it changes hands. In Bitcoin Cash, the
+      idea is literal. A contract can require that a coin be spent in a particular way, not just by
+      a particular person.</p>
+
+    <h2>Before introspection</h2>
+
+    <p>Older BCH scripts could check who signed, when the spend was allowed, and whether a hash
+      preimage was correct. That is enough for multisig and timelocks, but not enough to say “this
+      money may only go to this address.” A script could not easily inspect the outputs of the
+      transaction spending it.</p>
+
+    <p>Native introspection, activated in May 2022, changed that. A contract can now read details
+      of the spending transaction: the values and locking scripts of outputs, the active input
+      index, transaction fields, and later the token data on inputs and outputs. That is the
+      foundation of covenants on BCH.</p>
+
+    <h2>Rules that follow the coin</h2>
+
+    <p>The simplest covenant restricts the destination. A vault can hold savings and refuse to send
+      them anywhere except a designated cold address. Even if the spending key is compromised, the
+      attacker cannot redirect the funds to themselves. The rule is enforced by the network, not by
+      a policy document.</p>
+
+    <p>More interesting covenants constrain the shape of the transaction. A contract can require
+      that part of the money return to the contract, that a token move with the payment, or that a
+      specific output carry a particular commitment. That is how you build a recurring payment, a
+      token pool, or a contract that carries state forward from one spend to the next.</p>
+
+    <p>The pattern is always the same: the contract inspects the transaction, checks the conditions,
+      and either allows the spend or rejects it. The “state” is the set of coins and tokens the
+      contract controls. Updating the state means spending them into a new output with the same
+      contract lock.</p>
+
+    <h2>What covenants make possible</h2>
+
+    <ul>
+      <li><strong>Vaults:</strong> savings that can only be withdrawn to a known address, with an
+        optional delay.</li>
+      <li><strong>Inheritance:</strong> funds that a family key can claim after a long inactivity
+        period.</li>
+      <li><strong>Recurring payments:</strong> an allowance that releases on a schedule and returns
+        the remainder to the contract.</li>
+      <li><strong>Escrow:</strong> funds that can only pay the buyer or the seller, with an arbiter
+        who cannot redirect them.</li>
+      <li><strong>Token protocols:</strong> contracts that enforce supply, minting, or redemption
+        rules for CashTokens.</li>
+    </ul>
+
+    <h2>Bugs are permanent</h2>
+
+    <p>A covenant is powerful because it removes discretion. That is also the danger. If the rule
+      is wrong, the money can be locked forever or released to the wrong person. There is no support
+      line to reverse a bad contract. Audits, small test transactions, and simple designs are not
+      optional.</p>
+
+    <p>The 2026 P2S upgrade helps at the edges: standard pay-to-script outputs reduce transaction
+      sizes and simplify contract design for vaults and multi-party applications. But better
+      tooling does not remove the need to think. A covenant is a promise the network will keep
+      whether you still like it or not.</p>
+
+    <p>That is the trade. You give up the ability to change your mind, and you get a rule that no
+      middleman can bend. For the right use case, that is exactly what money needs.</p>
+
+
+    <p class="post-disclaimer">We do not provide financial advice.</p>
+
+    <aside class="blog-donate" aria-label="Blog donation">
+  <div class="blog-donate-head">
+    <span class="blog-donate-title">Tip the blog</span>
+    <span class="blog-donate-note">Blog donation</span>
+  </div>
+  <p>If this guide was useful, you can send BCH to support more posts.</p>
+  <div class="bch-addr-chip">
+    <code>bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh?message=stickerscashblog</code>
+    <button class="btn-copy" data-copy="bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh?message=stickerscashblog" data-copied="Blog donation address copied">Copy</button>
+  </div>
+</aside>
+
+    <nav class="post-pager" aria-label="More posts">
+        <a class="pager-card prev" href="nfts-with-the-receipt-built-in.html">
+          <span>← Previous post</span>
+          <b>NFTs with the receipt built in</b>
+        </a>
+        <a class="pager-card next" href="escrow-without-a-company.html">
+          <span>Next post →</span>
+          <b>Escrow without a company</b>
+        </a>
+    </nav>
+  </article>
+</div>
+
+<!-- ======================= POST CTA ======================= -->
+<section class="post-cta-band">
+  <div class="container post-cta-inner">
+    <img class="post-cta-mark" src="../media/bch/bch-circle.svg" alt="Bitcoin Cash">
+    <div>
+      <h2>Internet cash needs places to spend it.</h2>
+      <p>Every order at stickers.cash is paid in BCH — a cheap, real-world way to move your first
+        coins, practice self-custody, and put a sticker on something you own.</p>
+    </div>
+    <div class="post-cta-actions">
+      <a class="btn btn-primary btn-lg" href="../index.html#shop">Shop stickers</a>
+      <div class="bch-addr-chip">
+        <code>bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh</code>
+        <button class="btn-copy" data-copy="bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh" data-copied="Payment address copied">Copy</button>
+      </div>
+      <small class="post-cta-wallets">No wallet yet?
+        <a href="https://selene.cash" target="_blank" rel="noopener">Selene</a> ·
+        <a href="https://paytaca.com" target="_blank" rel="noopener">Paytaca</a> ·
+        <a href="https://badger.bitcoin.com" target="_blank" rel="noopener">Badger</a>
+      </small>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ======================= FOOTER ======================= -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="../index.html">
+        <img class="brand-mark" src="../media/bch/bch-circle.svg" alt="">
+        <span class="brand-name">stickers<span class="dot">.</span>cash</span>
+      </a>
+      <p>The Bitcoin Cash sticker shop. Ships from the USA, worldwide.</p>
+      <img class="accepted-badge" src="../media/bch/bch-accepted-here-frame.svg" alt="Bitcoin Cash accepted here">
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <a href="../index.html#shop">All stickers</a>
+      <a href="../index.html#how">How to pay</a>
+      <a href="../index.html#shipping">Shipping rates</a>
+    </div>
+    <div class="footer-col">
+      <h4>Read</h4>
+      <a href="../blog.html">Internet cash guide</a>
+      <a href="https://whybitcoincash.com" target="_blank" rel="noopener">Why Bitcoin Cash</a>
+      <a href="https://bitcoincash.org" target="_blank" rel="noopener">bitcoincash.org</a>
+    </div>
+    <div class="footer-col">
+      <h4>Help</h4>
+      <a href="../index.html#faq">FAQ</a>
+      <a href="mailto:orders@stickers.cash">orders@stickers.cash</a>
+      <a href="mailto:orders@stickers.cash?subject=Wholesale%20%2F%20custom%20stickers">Wholesale</a>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 stickers.cash — paid exclusively in Bitcoin Cash (BCH)</span>
+    <code>bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh</code>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../blog.js"></script>
+</body>
+</html>

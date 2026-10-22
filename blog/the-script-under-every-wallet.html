@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The script under every wallet — The internet cash field guide — stickers.cash</title>
+<meta name="description" content="Before CashScript, before tokens, there was a stack, a few opcodes, and a rule: the transaction either validates or it does not.">
+<meta name="theme-color" content="#0AC18E">
+<meta property="og:title" content="The script under every wallet — The internet cash field guide — stickers.cash">
+<meta property="og:description" content="Before CashScript, before tokens, there was a stack, a few opcodes, and a rule: the transaction either validates or it does not.">
+<meta property="og:url" content="https://stickers.cash/blog/the-script-under-every-wallet.html">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://stickers.cash/blog/the-script-under-every-wallet.html">
+<link rel="icon" href="../media/bch/bch-circle.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "The script under every wallet",
+  "description": "Before CashScript, before tokens, there was a stack, a few opcodes, and a rule: the transaction either validates or it does not.",
+  "url": "https://stickers.cash/blog/the-script-under-every-wallet.html",
+  "mainEntityOfPage": "https://stickers.cash/blog/the-script-under-every-wallet.html",
+  "datePublished": "2026-10-22",
+  "dateModified": "2026-10-22",
+  "author": {
+    "@type": "Organization",
+    "name": "stickers.cash",
+    "url": "https://stickers.cash/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "stickers.cash",
+    "url": "https://stickers.cash/"
+  },
+  "articleSection": "Chapter three · The contract layer",
+  "position": 22,
+  "about": [
+    "Bitcoin Cash",
+    "money",
+    "inflation",
+    "self-custody"
+  ],
+  "isPartOf": {
+    "@type": "Blog",
+    "name": "The internet cash field guide",
+    "url": "https://stickers.cash/blog.html"
+  }
+}
+</script>
+</head>
+<body>
+
+<!-- ======================= ANNOUNCEMENT ======================= -->
+<div class="announce">
+  <div class="container announce-inner">
+    <span>🧊 The internet cash guide — now in 30 posts</span>
+    <span class="sep">·</span>
+    <span>⚡ Paid in Bitcoin Cash only</span>
+    <span class="sep">·</span>
+    <span>🚀 Ships worldwide from the USA</span>
+  </div>
+</div>
+
+<!-- ======================= HEADER ======================= -->
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="../index.html" aria-label="stickers.cash home">
+      <img class="brand-mark" src="../media/bch/bch-circle.svg" alt="">
+      <span class="brand-name">stickers<span class="dot">.</span>cash</span>
+    </a>
+
+    <nav class="nav" id="mainNav" aria-label="Main">
+      <a href="../index.html">Shop</a>
+      <a href="../index.html#how">How it works</a>
+      <a href="../index.html#shipping">Shipping</a>
+      <a href="../index.html#faq">FAQ</a>
+      <a href="../blog.html" aria-current="true">Blog</a>
+    </nav>
+
+    <div class="header-actions">
+      <a class="btn btn-primary" href="../index.html#shop"><span class="shop-long">Shop stickers</span><span class="shop-short">Shop</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ======================= POST HEAD ======================= -->
+<section class="post-head">
+  <div class="container post-head-inner">
+    <a class="post-back" href="../blog.html">← All posts</a>
+    <span class="eyebrow">Chapter three · The contract layer</span>
+    <h1>The script under every wallet</h1>
+    <p class="lede">Before CashScript, before tokens, there was a stack, a few opcodes, and a rule: the transaction either validates or it does not.</p>
+    <div class="post-meta">
+      <span>Post 22 of 30</span>
+      <span class="dot">·</span>
+      <span>4 min read</span>
+      <span class="dot">·</span>
+      <span>Oct 22, 2026</span>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= POST BODY ======================= -->
+<div class="post-body">
+  <article class="article post-article">
+
+    <p>A Bitcoin Cash wallet looks simple: an address, a balance, a send button. Underneath, every
+      payment is a script execution. The script is small, stack-based, and deliberately boring.
+      That is what makes it possible for every full node to validate it quickly.</p>
+
+    <h2>The standard payment script</h2>
+
+    <p>A normal BCH address is usually a pay-to-public-key-hash, or P2PKH, lock. The locking script
+      says, in effect: take the public key provided by the spender, hash it, compare it to the hash
+      in the output, then check that the signature matches the key. The classic opcode sequence is
+      <code>OP_DUP OP_HASH160 &lt;pubkeyhash&gt; OP_EQUALVERIFY OP_CHECKSIG</code>.</p>
+
+    <p>The spending transaction provides the signature and public key in its unlocking script. The
+      two scripts run in sequence. If the stack ends with a true value, the input is valid. If it
+      ends with false, or an opcode fails, the transaction is rejected.</p>
+
+    <p>There is no account balance being edited. The input is consumed, and new outputs are created.
+      The wallet hides this, but the model explains why a transaction can have multiple inputs,
+      why change is a real output, and why the fee depends on bytes rather than the dollar amount.</p>
+
+    <h2>Pay to script hash</h2>
+
+    <p>P2PKH is only the default. A more flexible lock is pay-to-script-hash, or P2SH. Instead of
+      locking to a single key, the output locks to the hash of a redeem script. The spender reveals
+      the full script when spending it, and the network checks that the hash matches and that the
+      script evaluates to true.</p>
+
+    <p>P2SH is how more complex contracts fit into a normal-looking address. The contract can
+      require multiple signatures, a timelock, a hash preimage, or a combination of conditions.
+      BCH added P2SH32 in 2023, using a stronger 32-byte hash for new contracts while keeping the
+      old format compatible.</p>
+
+    <h2>Multisig and timelocks</h2>
+
+    <p>Two building blocks show up in almost every application. The first is multisignature:
+      require <em>m</em> of <em>n</em> keys to sign before the money can move. A 2-of-3 escrow is
+      the classic example. The second is a timelock: make a coin unspendable until a certain time
+      or block height, using <code>OP_CHECKLOCKTIMEVERIFY</code>, or until a relative delay has
+      passed, using <code>OP_CHECKSEQUENCEVERIFY</code>.</p>
+
+    <p>Combine them and you get useful contracts. An inheritance vault can let the owner spend now,
+      but let a family key spend after a year of inactivity. An escrow can let the buyer and seller
+      agree, but let the buyer reclaim the funds if the seller disappears past a deadline. A swap
+      can release funds only when a secret is revealed before a timeout.</p>
+
+    <h2>Introspection changed the ceiling</h2>
+
+    <p>For a long time, a BCH script could check signatures and time, but it could not easily check
+      where the money was going. Native introspection, activated in 2022, changed that. A contract
+      can now inspect details of the transaction spending it: output values, locking scripts, token
+      data, the active input index, and more.</p>
+
+    <p>That is what makes covenants possible. A vault can refuse to send funds anywhere except a
+      designated cold address. A contract can require that part of the money returns to itself, or
+      that a token moves with the payment. The script is no longer only asking “who signed?” It can
+      ask “what does this transaction actually do?”</p>
+
+    <h2>The limits are the design</h2>
+
+    <p>BCH Script is not a general-purpose programming language. It has no global memory, no
+      network calls, and no unbounded loops in the base rules. The 2026 upgrade adds bounded loops
+      and reusable functions, but the principle remains: every contract must be cheap enough to
+      validate and small enough to audit.</p>
+
+    <p>That sounds restrictive until you remember what the script is for. It is not trying to run a
+      social network. It is trying to make money behave predictably. For that job, a small,
+      deterministic language with explicit rules is a feature, not a limitation.</p>
+
+
+    <p class="post-disclaimer">We do not provide financial advice.</p>
+
+    <aside class="blog-donate" aria-label="Blog donation">
+  <div class="blog-donate-head">
+    <span class="blog-donate-title">Tip the blog</span>
+    <span class="blog-donate-note">Blog donation</span>
+  </div>
+  <p>If this guide was useful, you can send BCH to support more posts.</p>
+  <div class="bch-addr-chip">
+    <code>bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh?message=stickerscashblog</code>
+    <button class="btn-copy" data-copy="bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh?message=stickerscashblog" data-copied="Blog donation address copied">Copy</button>
+  </div>
+</aside>
+
+    <nav class="post-pager" aria-label="More posts">
+        <a class="pager-card prev" href="money-that-can-run-rules.html">
+          <span>← Previous post</span>
+          <b>Money that can run rules</b>
+        </a>
+        <a class="pager-card next" href="cashscript-without-the-ceremony.html">
+          <span>Next post →</span>
+          <b>CashScript without the ceremony</b>
+        </a>
+    </nav>
+  </article>
+</div>
+
+<!-- ======================= POST CTA ======================= -->
+<section class="post-cta-band">
+  <div class="container post-cta-inner">
+    <img class="post-cta-mark" src="../media/bch/bch-circle.svg" alt="Bitcoin Cash">
+    <div>
+      <h2>Internet cash needs places to spend it.</h2>
+      <p>Every order at stickers.cash is paid in BCH — a cheap, real-world way to move your first
+        coins, practice self-custody, and put a sticker on something you own.</p>
+    </div>
+    <div class="post-cta-actions">
+      <a class="btn btn-primary btn-lg" href="../index.html#shop">Shop stickers</a>
+      <div class="bch-addr-chip">
+        <code>bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh</code>
+        <button class="btn-copy" data-copy="bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh" data-copied="Payment address copied">Copy</button>
+      </div>
+      <small class="post-cta-wallets">No wallet yet?
+        <a href="https://selene.cash" target="_blank" rel="noopener">Selene</a> ·
+        <a href="https://paytaca.com" target="_blank" rel="noopener">Paytaca</a> ·
+        <a href="https://badger.bitcoin.com" target="_blank" rel="noopener">Badger</a>
+      </small>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ======================= FOOTER ======================= -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="../index.html">
+        <img class="brand-mark" src="../media/bch/bch-circle.svg" alt="">
+        <span class="brand-name">stickers<span class="dot">.</span>cash</span>
+      </a>
+      <p>The Bitcoin Cash sticker shop. Ships from the USA, worldwide.</p>
+      <img class="accepted-badge" src="../media/bch/bch-accepted-here-frame.svg" alt="Bitcoin Cash accepted here">
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <a href="../index.html#shop">All stickers</a>
+      <a href="../index.html#how">How to pay</a>
+      <a href="../index.html#shipping">Shipping rates</a>
+    </div>
+    <div class="footer-col">
+      <h4>Read</h4>
+      <a href="../blog.html">Internet cash guide</a>
+      <a href="https://whybitcoincash.com" target="_blank" rel="noopener">Why Bitcoin Cash</a>
+      <a href="https://bitcoincash.org" target="_blank" rel="noopener">bitcoincash.org</a>
+    </div>
+    <div class="footer-col">
+      <h4>Help</h4>
+      <a href="../index.html#faq">FAQ</a>
+      <a href="mailto:orders@stickers.cash">orders@stickers.cash</a>
+      <a href="mailto:orders@stickers.cash?subject=Wholesale%20%2F%20custom%20stickers">Wholesale</a>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 stickers.cash — paid exclusively in Bitcoin Cash (BCH)</span>
+    <code>bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh</code>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../blog.js"></script>
+</body>
+</html>

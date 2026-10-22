@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Money that streams — The internet cash field guide — stickers.cash</title>
+<meta name="description" content="If a coin can carry rules, it can pay over time. Streaming, subscriptions, and vesting become contract logic instead of a payment processor.">
+<meta name="theme-color" content="#0AC18E">
+<meta property="og:title" content="Money that streams — The internet cash field guide — stickers.cash">
+<meta property="og:description" content="If a coin can carry rules, it can pay over time. Streaming, subscriptions, and vesting become contract logic instead of a payment processor.">
+<meta property="og:url" content="https://stickers.cash/blog/money-that-streams.html">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://stickers.cash/blog/money-that-streams.html">
+<link rel="icon" href="../media/bch/bch-circle.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Money that streams",
+  "description": "If a coin can carry rules, it can pay over time. Streaming, subscriptions, and vesting become contract logic instead of a payment processor.",
+  "url": "https://stickers.cash/blog/money-that-streams.html",
+  "mainEntityOfPage": "https://stickers.cash/blog/money-that-streams.html",
+  "datePublished": "2026-10-22",
+  "dateModified": "2026-10-22",
+  "author": {
+    "@type": "Organization",
+    "name": "stickers.cash",
+    "url": "https://stickers.cash/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "stickers.cash",
+    "url": "https://stickers.cash/"
+  },
+  "articleSection": "Chapter three · The application layer",
+  "position": 29,
+  "about": [
+    "Bitcoin Cash",
+    "money",
+    "inflation",
+    "self-custody"
+  ],
+  "isPartOf": {
+    "@type": "Blog",
+    "name": "The internet cash field guide",
+    "url": "https://stickers.cash/blog.html"
+  }
+}
+</script>
+</head>
+<body>
+
+<!-- ======================= ANNOUNCEMENT ======================= -->
+<div class="announce">
+  <div class="container announce-inner">
+    <span>🧊 The internet cash guide — now in 30 posts</span>
+    <span class="sep">·</span>
+    <span>⚡ Paid in Bitcoin Cash only</span>
+    <span class="sep">·</span>
+    <span>🚀 Ships worldwide from the USA</span>
+  </div>
+</div>
+
+<!-- ======================= HEADER ======================= -->
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="../index.html" aria-label="stickers.cash home">
+      <img class="brand-mark" src="../media/bch/bch-circle.svg" alt="">
+      <span class="brand-name">stickers<span class="dot">.</span>cash</span>
+    </a>
+
+    <nav class="nav" id="mainNav" aria-label="Main">
+      <a href="../index.html">Shop</a>
+      <a href="../index.html#how">How it works</a>
+      <a href="../index.html#shipping">Shipping</a>
+      <a href="../index.html#faq">FAQ</a>
+      <a href="../blog.html" aria-current="true">Blog</a>
+    </nav>
+
+    <div class="header-actions">
+      <a class="btn btn-primary" href="../index.html#shop"><span class="shop-long">Shop stickers</span><span class="shop-short">Shop</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ======================= POST HEAD ======================= -->
+<section class="post-head">
+  <div class="container post-head-inner">
+    <a class="post-back" href="../blog.html">← All posts</a>
+    <span class="eyebrow">Chapter three · The application layer</span>
+    <h1>Money that streams</h1>
+    <p class="lede">If a coin can carry rules, it can pay over time. Streaming, subscriptions, and vesting become contract logic instead of a payment processor.</p>
+    <div class="post-meta">
+      <span>Post 29 of 30</span>
+      <span class="dot">·</span>
+      <span>3 min read</span>
+      <span class="dot">·</span>
+      <span>Oct 22, 2026</span>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= POST BODY ======================= -->
+<div class="post-body">
+  <article class="article post-article">
+
+    <p>Most payments are discrete events: you buy a coffee, you send an invoice, you pay rent once a
+      month. But money often behaves more like a flow. Salaries accrue. Rent is owed continuously.
+      A subscription gives access for a period. A vesting schedule releases tokens over years.</p>
+
+    <p>On a traditional payment rail, those flows are approximated with charges and invoices. On
+      BCH, a contract can represent the flow directly.</p>
+
+    <h2>Lock the money, release it over time</h2>
+
+    <p>The basic pattern is a contract that holds a balance and lets the recipient withdraw the
+      portion that has accrued so far. The contract checks the current time or block height, allows
+      a withdrawal up to that amount, and requires the remainder to return to the contract. The next
+      withdrawal repeats the calculation.</p>
+
+    <p>That is a streaming payment. It is not a recurring card charge. It is a continuous claim on a
+      locked balance. The recipient can withdraw when they want, and the sender does not need to be
+      online for every payment. The contract enforces the schedule.</p>
+
+    <p>CashScript’s covenant support makes this practical. The contract can inspect the outputs of
+      the withdrawal transaction, require the remainder to go back to the same contract lock, and
+      use a timelock to calculate how much has vested. The 2025 BigInt upgrade and the 2026 loops
+      and functions make the math and structure more manageable.</p>
+
+    <h2>What it can model</h2>
+
+    <ul>
+      <li><strong>Salaries:</strong> pay accrues per second and the employee withdraws when needed.</li>
+      <li><strong>Subscriptions:</strong> access is paid continuously, with cancellation stopping
+        future accrual.</li>
+      <li><strong>Vesting:</strong> tokens unlock on a schedule, with the remainder held by the
+        contract.</li>
+      <li><strong>Allowances:</strong> a parent or employer sets a budget that a child or contractor
+        can draw down over time.</li>
+      <li><strong>Rental:</strong> a deposit and rent stream are held in one contract, with the
+        deposit returned when the conditions are met.</li>
+    </ul>
+
+    <h2>The UX problem</h2>
+
+    <p>A streaming contract still needs someone to submit the withdrawal transaction. If the
+      recipient is offline, the money does not move by itself. That creates room for a service
+      provider, a wallet background process, or a “watchtower” that submits withdrawals on the
+      recipient’s behalf. The service can be non-custodial: it can only send the money to the
+      recipient the contract already specifies.</p>
+
+    <p>That is a different kind of middleman. It does not hold the funds and cannot redirect them.
+      It provides availability and convenience. If the service disappears, the recipient can still
+      withdraw manually. The contract remains the source of truth.</p>
+
+    <h2>What streaming does not solve</h2>
+
+    <p>It does not create credit. A stream can only release money that is already locked. It does
+      not guarantee that a service will be delivered, or that a subscription is worth the price. It
+      also does not make volatility disappear: a stream denominated in BCH still moves in local
+      currency terms.</p>
+
+    <p>Those are application-layer problems. The contract solves the payment mechanics: how much is
+      available, when, and to whom. That is a meaningful piece of the puzzle. The rest still needs
+      clear terms and accountable people.</p>
+
+    <p>The bigger idea is that money can be conditional in time, not just in amount. Once that is
+      cheap and programmable, a lot of “subscription” and “payroll” software starts to look like a
+      thin interface over a contract.</p>
+
+
+    <p class="post-disclaimer">We do not provide financial advice.</p>
+
+    <aside class="blog-donate" aria-label="Blog donation">
+  <div class="blog-donate-head">
+    <span class="blog-donate-title">Tip the blog</span>
+    <span class="blog-donate-note">Blog donation</span>
+  </div>
+  <p>If this guide was useful, you can send BCH to support more posts.</p>
+  <div class="bch-addr-chip">
+    <code>bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh?message=stickerscashblog</code>
+    <button class="btn-copy" data-copy="bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh?message=stickerscashblog" data-copied="Blog donation address copied">Copy</button>
+  </div>
+</aside>
+
+    <nav class="post-pager" aria-label="More posts">
+        <a class="pager-card prev" href="atomic-swaps-without-an-exchange.html">
+          <span>← Previous post</span>
+          <b>Atomic swaps without an exchange</b>
+        </a>
+        <a class="pager-card next" href="the-2026-upgrade.html">
+          <span>Next post →</span>
+          <b>The 2026 upgrade</b>
+        </a>
+    </nav>
+  </article>
+</div>
+
+<!-- ======================= POST CTA ======================= -->
+<section class="post-cta-band">
+  <div class="container post-cta-inner">
+    <img class="post-cta-mark" src="../media/bch/bch-circle.svg" alt="Bitcoin Cash">
+    <div>
+      <h2>Internet cash needs places to spend it.</h2>
+      <p>Every order at stickers.cash is paid in BCH — a cheap, real-world way to move your first
+        coins, practice self-custody, and put a sticker on something you own.</p>
+    </div>
+    <div class="post-cta-actions">
+      <a class="btn btn-primary btn-lg" href="../index.html#shop">Shop stickers</a>
+      <div class="bch-addr-chip">
+        <code>bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh</code>
+        <button class="btn-copy" data-copy="bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh" data-copied="Payment address copied">Copy</button>
+      </div>
+      <small class="post-cta-wallets">No wallet yet?
+        <a href="https://selene.cash" target="_blank" rel="noopener">Selene</a> ·
+        <a href="https://paytaca.com" target="_blank" rel="noopener">Paytaca</a> ·
+        <a href="https://badger.bitcoin.com" target="_blank" rel="noopener">Badger</a>
+      </small>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ======================= FOOTER ======================= -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="../index.html">
+        <img class="brand-mark" src="../media/bch/bch-circle.svg" alt="">
+        <span class="brand-name">stickers<span class="dot">.</span>cash</span>
+      </a>
+      <p>The Bitcoin Cash sticker shop. Ships from the USA, worldwide.</p>
+      <img class="accepted-badge" src="../media/bch/bch-accepted-here-frame.svg" alt="Bitcoin Cash accepted here">
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <a href="../index.html#shop">All stickers</a>
+      <a href="../index.html#how">How to pay</a>
+      <a href="../index.html#shipping">Shipping rates</a>
+    </div>
+    <div class="footer-col">
+      <h4>Read</h4>
+      <a href="../blog.html">Internet cash guide</a>
+      <a href="https://whybitcoincash.com" target="_blank" rel="noopener">Why Bitcoin Cash</a>
+      <a href="https://bitcoincash.org" target="_blank" rel="noopener">bitcoincash.org</a>
+    </div>
+    <div class="footer-col">
+      <h4>Help</h4>
+      <a href="../index.html#faq">FAQ</a>
+      <a href="mailto:orders@stickers.cash">orders@stickers.cash</a>
+      <a href="mailto:orders@stickers.cash?subject=Wholesale%20%2F%20custom%20stickers">Wholesale</a>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 stickers.cash — paid exclusively in Bitcoin Cash (BCH)</span>
+    <code>bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh</code>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../blog.js"></script>
+</body>
+</html>

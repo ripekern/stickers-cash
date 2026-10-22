@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NFTs with the receipt built in — The internet cash field guide — stickers.cash</title>
+<meta name="description" content="A BCH NFT is not a link to a picture. It is a token with an on-chain commitment that contracts can read — a receipt, a ticket, or a piece of state.">
+<meta name="theme-color" content="#0AC18E">
+<meta property="og:title" content="NFTs with the receipt built in — The internet cash field guide — stickers.cash">
+<meta property="og:description" content="A BCH NFT is not a link to a picture. It is a token with an on-chain commitment that contracts can read — a receipt, a ticket, or a piece of state.">
+<meta property="og:url" content="https://stickers.cash/blog/nfts-with-the-receipt-built-in.html">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://stickers.cash/blog/nfts-with-the-receipt-built-in.html">
+<link rel="icon" href="../media/bch/bch-circle.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "NFTs with the receipt built in",
+  "description": "A BCH NFT is not a link to a picture. It is a token with an on-chain commitment that contracts can read — a receipt, a ticket, or a piece of state.",
+  "url": "https://stickers.cash/blog/nfts-with-the-receipt-built-in.html",
+  "mainEntityOfPage": "https://stickers.cash/blog/nfts-with-the-receipt-built-in.html",
+  "datePublished": "2026-10-22",
+  "dateModified": "2026-10-22",
+  "author": {
+    "@type": "Organization",
+    "name": "stickers.cash",
+    "url": "https://stickers.cash/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "stickers.cash",
+    "url": "https://stickers.cash/"
+  },
+  "articleSection": "Chapter three · The contract layer",
+  "position": 25,
+  "about": [
+    "Bitcoin Cash",
+    "money",
+    "inflation",
+    "self-custody"
+  ],
+  "isPartOf": {
+    "@type": "Blog",
+    "name": "The internet cash field guide",
+    "url": "https://stickers.cash/blog.html"
+  }
+}
+</script>
+</head>
+<body>
+
+<!-- ======================= ANNOUNCEMENT ======================= -->
+<div class="announce">
+  <div class="container announce-inner">
+    <span>🧊 The internet cash guide — now in 30 posts</span>
+    <span class="sep">·</span>
+    <span>⚡ Paid in Bitcoin Cash only</span>
+    <span class="sep">·</span>
+    <span>🚀 Ships worldwide from the USA</span>
+  </div>
+</div>
+
+<!-- ======================= HEADER ======================= -->
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="../index.html" aria-label="stickers.cash home">
+      <img class="brand-mark" src="../media/bch/bch-circle.svg" alt="">
+      <span class="brand-name">stickers<span class="dot">.</span>cash</span>
+    </a>
+
+    <nav class="nav" id="mainNav" aria-label="Main">
+      <a href="../index.html">Shop</a>
+      <a href="../index.html#how">How it works</a>
+      <a href="../index.html#shipping">Shipping</a>
+      <a href="../index.html#faq">FAQ</a>
+      <a href="../blog.html" aria-current="true">Blog</a>
+    </nav>
+
+    <div class="header-actions">
+      <a class="btn btn-primary" href="../index.html#shop"><span class="shop-long">Shop stickers</span><span class="shop-short">Shop</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ======================= POST HEAD ======================= -->
+<section class="post-head">
+  <div class="container post-head-inner">
+    <a class="post-back" href="../blog.html">← All posts</a>
+    <span class="eyebrow">Chapter three · The contract layer</span>
+    <h1>NFTs with the receipt built in</h1>
+    <p class="lede">A BCH NFT is not a link to a picture. It is a token with an on-chain commitment that contracts can read — a receipt, a ticket, or a piece of state.</p>
+    <div class="post-meta">
+      <span>Post 25 of 30</span>
+      <span class="dot">·</span>
+      <span>4 min read</span>
+      <span class="dot">·</span>
+      <span>Oct 22, 2026</span>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= POST BODY ======================= -->
+<div class="post-body">
+  <article class="article post-article">
+
+    <p>The phrase “NFT” usually brings to mind a JPEG and a marketplace. On Bitcoin Cash, the
+      technical object is more interesting: an indivisible token with a commitment, a short piece
+      of data that the network can attest to and contracts can inspect.</p>
+
+    <h2>What is inside a BCH NFT</h2>
+
+    <p>A CashToken NFT has three properties: a category, a commitment, and a capability. The
+      category identifies the token family. The commitment is the data payload. The capability
+      controls whether the NFT can be changed or whether new NFTs can be minted.</p>
+
+    <p>There are three capabilities. A <strong>minting</strong> NFT can create more NFTs in the same
+      category. A <strong>mutable</strong> NFT can update its commitment when spent. An
+      <strong>immutable</strong> NFT cannot change. That gives issuers a way to model supply,
+      state, and permanence without a separate contract database.</p>
+
+    <p>The 2026 upgrade raised the standard commitment limit from 40 bytes to 128 bytes and made
+      bare pay-to-script outputs standard. That is still small compared with a file, but it is
+      plenty for a hash, an identifier, a timestamp, a score, a ticket number, or a compact state
+      record.</p>
+
+    <h2>A receipt, not a picture</h2>
+
+    <p>The useful question is not “what image is attached?” It is “what claim does this token
+      enforce?” A ticket NFT can carry the event ID and seat. A membership NFT can carry a tier and
+      expiry. A receipt NFT can carry an order hash. A game item can carry stats that a contract
+      reads when the item is used.</p>
+
+    <p>Because the commitment is on-chain, a contract can require it. A gate contract can check
+      that the NFT has the right category and commitment before releasing funds. A marketplace can
+      verify that a ticket is authentic without asking a platform. The token is not just a
+      collectible; it is a verifiable input to a rule.</p>
+
+    <h2>Metadata lives at the edges</h2>
+
+    <p>Large media and rich metadata do not belong in a 128-byte commitment. The practical pattern
+      is to put a hash or identifier on-chain and the larger content elsewhere. Bitcoin Cash
+      Metadata Registries (BCMR) provide a standard way to publish authenticated metadata such as
+      names, descriptions, and icons for tokens.</p>
+
+    <p>That split is honest about what the chain does. The chain proves the token and the
+      commitment. The metadata registry or application provides the presentation. If the
+      off-chain content disappears, the token still exists, but the picture may not. Designs that
+      need permanence should account for that.</p>
+
+    <h2>What NFTs unlock</h2>
+
+    <p>NFTs are most useful when they are part of a contract, not an isolated collectible. A
+      redeemable NFT can act as a receipt: return it to a contract and receive the underlying
+      asset. A role NFT can act as an admin key: the contract checks for it before allowing a
+      privileged spend. A state NFT can hold the latest commitment for a vault or a streaming
+      payment.</p>
+
+    <p>That is the pattern to watch. The NFT is not the product. It is the proof that the product’s
+      rule was followed. The product might be a ticket, a membership, a loan, a game, or a claim on
+      a real-world asset.</p>
+
+    <h2>The limits are real</h2>
+
+    <p>A BCH NFT cannot store a song, a video, or a large document. It cannot enforce a copyright.
+      It cannot force an issuer to honor a promise. It is a compact, verifiable token, not a magic
+      container. The value comes from the rule around it and the trust behind it.</p>
+
+    <p>Used well, that is enough. A ticket that can be verified offline by a contract, a receipt
+      that can be redeemed without a platform, or a membership that unlocks a service without a
+      centralized database is a real improvement. The JPEG was never the point.</p>
+
+
+    <p class="post-disclaimer">We do not provide financial advice.</p>
+
+    <aside class="blog-donate" aria-label="Blog donation">
+  <div class="blog-donate-head">
+    <span class="blog-donate-title">Tip the blog</span>
+    <span class="blog-donate-note">Blog donation</span>
+  </div>
+  <p>If this guide was useful, you can send BCH to support more posts.</p>
+  <div class="bch-addr-chip">
+    <code>bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh?message=stickerscashblog</code>
+    <button class="btn-copy" data-copy="bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh?message=stickerscashblog" data-copied="Blog donation address copied">Copy</button>
+  </div>
+</aside>
+
+    <nav class="post-pager" aria-label="More posts">
+        <a class="pager-card prev" href="tokens-on-the-cash-layer.html">
+          <span>← Previous post</span>
+          <b>Tokens on the cash layer</b>
+        </a>
+        <a class="pager-card next" href="covenants-rules-that-follow-the-coin.html">
+          <span>Next post →</span>
+          <b>Covenants: rules that follow the coin</b>
+        </a>
+    </nav>
+  </article>
+</div>
+
+<!-- ======================= POST CTA ======================= -->
+<section class="post-cta-band">
+  <div class="container post-cta-inner">
+    <img class="post-cta-mark" src="../media/bch/bch-circle.svg" alt="Bitcoin Cash">
+    <div>
+      <h2>Internet cash needs places to spend it.</h2>
+      <p>Every order at stickers.cash is paid in BCH — a cheap, real-world way to move your first
+        coins, practice self-custody, and put a sticker on something you own.</p>
+    </div>
+    <div class="post-cta-actions">
+      <a class="btn btn-primary btn-lg" href="../index.html#shop">Shop stickers</a>
+      <div class="bch-addr-chip">
+        <code>bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh</code>
+        <button class="btn-copy" data-copy="bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh" data-copied="Payment address copied">Copy</button>
+      </div>
+      <small class="post-cta-wallets">No wallet yet?
+        <a href="https://selene.cash" target="_blank" rel="noopener">Selene</a> ·
+        <a href="https://paytaca.com" target="_blank" rel="noopener">Paytaca</a> ·
+        <a href="https://badger.bitcoin.com" target="_blank" rel="noopener">Badger</a>
+      </small>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ======================= FOOTER ======================= -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="../index.html">
+        <img class="brand-mark" src="../media/bch/bch-circle.svg" alt="">
+        <span class="brand-name">stickers<span class="dot">.</span>cash</span>
+      </a>
+      <p>The Bitcoin Cash sticker shop. Ships from the USA, worldwide.</p>
+      <img class="accepted-badge" src="../media/bch/bch-accepted-here-frame.svg" alt="Bitcoin Cash accepted here">
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <a href="../index.html#shop">All stickers</a>
+      <a href="../index.html#how">How to pay</a>
+      <a href="../index.html#shipping">Shipping rates</a>
+    </div>
+    <div class="footer-col">
+      <h4>Read</h4>
+      <a href="../blog.html">Internet cash guide</a>
+      <a href="https://whybitcoincash.com" target="_blank" rel="noopener">Why Bitcoin Cash</a>
+      <a href="https://bitcoincash.org" target="_blank" rel="noopener">bitcoincash.org</a>
+    </div>
+    <div class="footer-col">
+      <h4>Help</h4>
+      <a href="../index.html#faq">FAQ</a>
+      <a href="mailto:orders@stickers.cash">orders@stickers.cash</a>
+      <a href="mailto:orders@stickers.cash?subject=Wholesale%20%2F%20custom%20stickers">Wholesale</a>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 stickers.cash — paid exclusively in Bitcoin Cash (BCH)</span>
+    <code>bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh</code>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../blog.js"></script>
+</body>
+</html>

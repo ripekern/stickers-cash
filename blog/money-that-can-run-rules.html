@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Money that can run rules — The internet cash field guide — stickers.cash</title>
+<meta name="description" content="Bitcoin Cash is not just a payment rail. Every coin is locked by a small program. Programmability starts with that fact — and it changes what money can do.">
+<meta name="theme-color" content="#0AC18E">
+<meta property="og:title" content="Money that can run rules — The internet cash field guide — stickers.cash">
+<meta property="og:description" content="Bitcoin Cash is not just a payment rail. Every coin is locked by a small program. Programmability starts with that fact — and it changes what money can do.">
+<meta property="og:url" content="https://stickers.cash/blog/money-that-can-run-rules.html">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://stickers.cash/blog/money-that-can-run-rules.html">
+<link rel="icon" href="../media/bch/bch-circle.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Money that can run rules",
+  "description": "Bitcoin Cash is not just a payment rail. Every coin is locked by a small program. Programmability starts with that fact — and it changes what money can do.",
+  "url": "https://stickers.cash/blog/money-that-can-run-rules.html",
+  "mainEntityOfPage": "https://stickers.cash/blog/money-that-can-run-rules.html",
+  "datePublished": "2026-10-22",
+  "dateModified": "2026-10-22",
+  "author": {
+    "@type": "Organization",
+    "name": "stickers.cash",
+    "url": "https://stickers.cash/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "stickers.cash",
+    "url": "https://stickers.cash/"
+  },
+  "articleSection": "Chapter three · The contract layer",
+  "position": 21,
+  "about": [
+    "Bitcoin Cash",
+    "money",
+    "inflation",
+    "self-custody"
+  ],
+  "isPartOf": {
+    "@type": "Blog",
+    "name": "The internet cash field guide",
+    "url": "https://stickers.cash/blog.html"
+  }
+}
+</script>
+</head>
+<body>
+
+<!-- ======================= ANNOUNCEMENT ======================= -->
+<div class="announce">
+  <div class="container announce-inner">
+    <span>🧊 The internet cash guide — now in 30 posts</span>
+    <span class="sep">·</span>
+    <span>⚡ Paid in Bitcoin Cash only</span>
+    <span class="sep">·</span>
+    <span>🚀 Ships worldwide from the USA</span>
+  </div>
+</div>
+
+<!-- ======================= HEADER ======================= -->
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="../index.html" aria-label="stickers.cash home">
+      <img class="brand-mark" src="../media/bch/bch-circle.svg" alt="">
+      <span class="brand-name">stickers<span class="dot">.</span>cash</span>
+    </a>
+
+    <nav class="nav" id="mainNav" aria-label="Main">
+      <a href="../index.html">Shop</a>
+      <a href="../index.html#how">How it works</a>
+      <a href="../index.html#shipping">Shipping</a>
+      <a href="../index.html#faq">FAQ</a>
+      <a href="../blog.html" aria-current="true">Blog</a>
+    </nav>
+
+    <div class="header-actions">
+      <a class="btn btn-primary" href="../index.html#shop"><span class="shop-long">Shop stickers</span><span class="shop-short">Shop</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ======================= POST HEAD ======================= -->
+<section class="post-head">
+  <div class="container post-head-inner">
+    <a class="post-back" href="../blog.html">← All posts</a>
+    <span class="eyebrow">Chapter three · The contract layer</span>
+    <h1>Money that can run rules</h1>
+    <p class="lede">Bitcoin Cash is not just a payment rail. Every coin is locked by a small program. Programmability starts with that fact — and it changes what money can do.</p>
+    <div class="post-meta">
+      <span>Post 21 of 30</span>
+      <span class="dot">·</span>
+      <span>3 min read</span>
+      <span class="dot">·</span>
+      <span>Oct 22, 2026</span>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= POST BODY ======================= -->
+<div class="post-body">
+  <article class="article post-article">
+
+    <p>Every Bitcoin Cash transaction is already a small program. When you pay someone, your
+      wallet does not send a file or update an account. It creates a transaction that spends coins
+      locked by a script and creates new coins locked by another script. The network checks the
+      script and either accepts the result or rejects it.</p>
+
+    <p>That is the foundation of programmability. BCH is not a payment rail with a separate smart
+      contract platform bolted on top. The payment layer <em>is</em> the contract layer. The
+      question is how much logic the network will enforce, and how cleanly that logic can be
+      written.</p>
+
+    <h2>Coins carry their own rules</h2>
+
+    <p>BCH uses an unspent transaction output model. Each coin is an output with a locking script.
+      To spend it, you provide an unlocking script that satisfies the lock. A normal payment uses a
+      simple lock: “this can be spent by whoever can sign with the key behind this address.”</p>
+
+    <p>A contract uses a more interesting lock. It might say: “this can be spent only if two of
+      these three keys sign,” or “only after this date,” or “only if the money goes back to this
+      address,” or “only if the transaction also moves this token.” The rule travels with the coin.
+      There is no central account that has to approve it.</p>
+
+    <p>This is the key mental shift. On an account-based smart contract chain, a contract has a
+      persistent balance and a global state that everyone reads and writes. On BCH, a contract is a
+      lock on a set of coins. Its “state” lives in the outputs it controls, in the tokens attached
+      to them, or in data committed inside an NFT. Spending the coins is how you update the state.</p>
+
+    <h2>Local state, not global state</h2>
+
+    <p>That difference is not a detail. It changes how applications are designed. A BCH contract
+      does not need every node to execute a shared application state for every user. It validates a
+      transaction locally: do the inputs satisfy the locks, and do the outputs follow the rules?
+      If yes, the transaction is valid.</p>
+
+    <p>This is why BCH contracts can be cheap and parallel-friendly. There is no global contract
+      storage to synchronize and no separate gas token to buy. The fee is paid in BCH, and it is
+      based on transaction size, not on how many computational steps a global virtual machine
+      performed.</p>
+
+    <p>The trade-off is that you cannot build arbitrary web applications with a single shared
+      database directly on layer one. BCH is designed for rules about money, assets, and
+      settlement. That is a narrower target than a general-purpose computer, and it is deliberate.</p>
+
+    <h2>The toolbox has been growing</h2>
+
+    <p>For years, BCH Script could already do multisig, timelocks, hashes, and conditional
+      payments. Then the toolbox expanded quickly:</p>
+
+    <ul>
+      <li><strong>2022:</strong> native introspection, which enabled covenants — contracts that can
+        inspect the transaction spending them.</li>
+      <li><strong>2023:</strong> CashTokens, adding native fungible tokens and NFTs to the same
+        chain.</li>
+      <li><strong>2025:</strong> reworked VM limits and arbitrary-precision integers, removing
+        artificial ceilings on more advanced contracts.</li>
+      <li><strong>2026:</strong> bounded loops, reusable functions, bitwise operations, and
+        standard pay-to-script outputs — more expressive contracts without a separate VM.</li>
+    </ul>
+
+    <p>None of this turns BCH into Ethereum. It turns BCH into a better version of itself: money
+      that can enforce useful rules, with the same cheap settlement and self-custody that made it
+      interesting in the first place.</p>
+
+    <p>The rest of this chapter is about what those rules can actually do. We start with the
+      script that sits under every wallet, then move up to the languages and primitives built on
+      top of it.</p>
+
+
+    <p class="post-disclaimer">We do not provide financial advice.</p>
+
+    <aside class="blog-donate" aria-label="Blog donation">
+  <div class="blog-donate-head">
+    <span class="blog-donate-title">Tip the blog</span>
+    <span class="blog-donate-note">Blog donation</span>
+  </div>
+  <p>If this guide was useful, you can send BCH to support more posts.</p>
+  <div class="bch-addr-chip">
+    <code>bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh?message=stickerscashblog</code>
+    <button class="btn-copy" data-copy="bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh?message=stickerscashblog" data-copied="Blog donation address copied">Copy</button>
+  </div>
+</aside>
+
+    <nav class="post-pager" aria-label="More posts">
+        <a class="pager-card prev" href="the-network-that-passed-the-test.html">
+          <span>← Previous post</span>
+          <b>The network that passed the test</b>
+        </a>
+        <a class="pager-card next" href="the-script-under-every-wallet.html">
+          <span>Next post →</span>
+          <b>The script under every wallet</b>
+        </a>
+    </nav>
+  </article>
+</div>
+
+<!-- ======================= POST CTA ======================= -->
+<section class="post-cta-band">
+  <div class="container post-cta-inner">
+    <img class="post-cta-mark" src="../media/bch/bch-circle.svg" alt="Bitcoin Cash">
+    <div>
+      <h2>Internet cash needs places to spend it.</h2>
+      <p>Every order at stickers.cash is paid in BCH — a cheap, real-world way to move your first
+        coins, practice self-custody, and put a sticker on something you own.</p>
+    </div>
+    <div class="post-cta-actions">
+      <a class="btn btn-primary btn-lg" href="../index.html#shop">Shop stickers</a>
+      <div class="bch-addr-chip">
+        <code>bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh</code>
+        <button class="btn-copy" data-copy="bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh" data-copied="Payment address copied">Copy</button>
+      </div>
+      <small class="post-cta-wallets">No wallet yet?
+        <a href="https://selene.cash" target="_blank" rel="noopener">Selene</a> ·
+        <a href="https://paytaca.com" target="_blank" rel="noopener">Paytaca</a> ·
+        <a href="https://badger.bitcoin.com" target="_blank" rel="noopener">Badger</a>
+      </small>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ======================= FOOTER ======================= -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="../index.html">
+        <img class="brand-mark" src="../media/bch/bch-circle.svg" alt="">
+        <span class="brand-name">stickers<span class="dot">.</span>cash</span>
+      </a>
+      <p>The Bitcoin Cash sticker shop. Ships from the USA, worldwide.</p>
+      <img class="accepted-badge" src="../media/bch/bch-accepted-here-frame.svg" alt="Bitcoin Cash accepted here">
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <a href="../index.html#shop">All stickers</a>
+      <a href="../index.html#how">How to pay</a>
+      <a href="../index.html#shipping">Shipping rates</a>
+    </div>
+    <div class="footer-col">
+      <h4>Read</h4>
+      <a href="../blog.html">Internet cash guide</a>
+      <a href="https://whybitcoincash.com" target="_blank" rel="noopener">Why Bitcoin Cash</a>
+      <a href="https://bitcoincash.org" target="_blank" rel="noopener">bitcoincash.org</a>
+    </div>
+    <div class="footer-col">
+      <h4>Help</h4>
+      <a href="../index.html#faq">FAQ</a>
+      <a href="mailto:orders@stickers.cash">orders@stickers.cash</a>
+      <a href="mailto:orders@stickers.cash?subject=Wholesale%20%2F%20custom%20stickers">Wholesale</a>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 stickers.cash — paid exclusively in Bitcoin Cash (BCH)</span>
+    <code>bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh</code>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../blog.js"></script>
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Escrow without a company — The internet cash field guide — stickers.cash</title>
+<meta name="description" content="A 2-of-3 multisig or a small covenant can hold funds until the conditions are met. The middleman becomes a key, not a company.">
+<meta name="theme-color" content="#0AC18E">
+<meta property="og:title" content="Escrow without a company — The internet cash field guide — stickers.cash">
+<meta property="og:description" content="A 2-of-3 multisig or a small covenant can hold funds until the conditions are met. The middleman becomes a key, not a company.">
+<meta property="og:url" content="https://stickers.cash/blog/escrow-without-a-company.html">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://stickers.cash/blog/escrow-without-a-company.html">
+<link rel="icon" href="../media/bch/bch-circle.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Escrow without a company",
+  "description": "A 2-of-3 multisig or a small covenant can hold funds until the conditions are met. The middleman becomes a key, not a company.",
+  "url": "https://stickers.cash/blog/escrow-without-a-company.html",
+  "mainEntityOfPage": "https://stickers.cash/blog/escrow-without-a-company.html",
+  "datePublished": "2026-10-22",
+  "dateModified": "2026-10-22",
+  "author": {
+    "@type": "Organization",
+    "name": "stickers.cash",
+    "url": "https://stickers.cash/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "stickers.cash",
+    "url": "https://stickers.cash/"
+  },
+  "articleSection": "Chapter three · The application layer",
+  "position": 27,
+  "about": [
+    "Bitcoin Cash",
+    "money",
+    "inflation",
+    "self-custody"
+  ],
+  "isPartOf": {
+    "@type": "Blog",
+    "name": "The internet cash field guide",
+    "url": "https://stickers.cash/blog.html"
+  }
+}
+</script>
+</head>
+<body>
+
+<!-- ======================= ANNOUNCEMENT ======================= -->
+<div class="announce">
+  <div class="container announce-inner">
+    <span>🧊 The internet cash guide — now in 30 posts</span>
+    <span class="sep">·</span>
+    <span>⚡ Paid in Bitcoin Cash only</span>
+    <span class="sep">·</span>
+    <span>🚀 Ships worldwide from the USA</span>
+  </div>
+</div>
+
+<!-- ======================= HEADER ======================= -->
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="../index.html" aria-label="stickers.cash home">
+      <img class="brand-mark" src="../media/bch/bch-circle.svg" alt="">
+      <span class="brand-name">stickers<span class="dot">.</span>cash</span>
+    </a>
+
+    <nav class="nav" id="mainNav" aria-label="Main">
+      <a href="../index.html">Shop</a>
+      <a href="../index.html#how">How it works</a>
+      <a href="../index.html#shipping">Shipping</a>
+      <a href="../index.html#faq">FAQ</a>
+      <a href="../blog.html" aria-current="true">Blog</a>
+    </nav>
+
+    <div class="header-actions">
+      <a class="btn btn-primary" href="../index.html#shop"><span class="shop-long">Shop stickers</span><span class="shop-short">Shop</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ======================= POST HEAD ======================= -->
+<section class="post-head">
+  <div class="container post-head-inner">
+    <a class="post-back" href="../blog.html">← All posts</a>
+    <span class="eyebrow">Chapter three · The application layer</span>
+    <h1>Escrow without a company</h1>
+    <p class="lede">A 2-of-3 multisig or a small covenant can hold funds until the conditions are met. The middleman becomes a key, not a company.</p>
+    <div class="post-meta">
+      <span>Post 27 of 30</span>
+      <span class="dot">·</span>
+      <span>3 min read</span>
+      <span class="dot">·</span>
+      <span>Oct 22, 2026</span>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= POST BODY ======================= -->
+<div class="post-body">
+  <article class="article post-article">
+
+    <p>Escrow is one of the oldest reasons to need a middleman. A buyer does not want to pay before
+      delivery. A seller does not want to deliver before payment. A platform holds the money, takes
+      a fee, and decides who is right when something goes wrong.</p>
+
+    <p>Bitcoin Cash can move the custody part onto a contract. It cannot remove the need for
+      judgment, but it can remove the need for a company to hold the funds.</p>
+
+    <h2>The 2-of-3 escrow</h2>
+
+    <p>The classic design uses three keys: buyer, seller, and arbiter. The funds are locked in a
+      2-of-3 multisignature output. Any two keys can release the money. If the buyer and seller
+      agree, they can settle without the arbiter. If they disagree, the arbiter sides with one of
+      them. The arbiter cannot unilaterally take the money, because one key is not enough.</p>
+
+    <p>This is a real improvement over a platform escrow. The arbiter’s power is limited by the
+      script. The funds are visible on-chain. The buyer and seller do not have to trust the
+      arbiter’s balance sheet or wait for a withdrawal queue. The fee is a normal BCH transaction
+      fee, not a percentage of the sale.</p>
+
+    <h2>Adding time</h2>
+
+    <p>Multisig handles cooperation. Timelocks handle disappearance. A contract can add a deadline:
+      if the seller does not deliver and the buyer cannot get a response, the buyer can reclaim the
+      funds after a certain block height. Or if the buyer goes silent after delivery, the seller can
+      claim after a deadline.</p>
+
+    <p>Those fallback paths need careful design. A badly chosen deadline can let one party steal
+      from the other. A good contract makes the default path obvious and the exceptional path
+      narrow. The goal is not to eliminate trust; it is to make the trust explicit and bounded.</p>
+
+    <h2>Blind escrow</h2>
+
+    <p>A covenant can go further than multisig. In a “blind escrow,” the contract itself restricts
+      the possible recipients. The arbiter can approve a release, but the money can only go to the
+      buyer or the seller. The arbiter cannot redirect it to a friend, a exchange, or themselves.</p>
+
+    <p>That is a meaningful check on the middleman. The arbiter still decides who wins a dispute,
+      but the payout rule is enforced by the network. The contract can also require that the full
+      amount be paid, or that a fee be deducted in a specific way, so the parties know the settlement
+      math in advance.</p>
+
+    <h2>What escrow still needs</h2>
+
+    <p>The chain enforces payment, not justice. An arbiter can still make a bad decision. A buyer
+      can still lie about non-delivery. A seller can still ship a brick. The contract reduces
+      custody risk and fee overhead; it does not create a court.</p>
+
+    <p>That means the social layer still matters: clear terms, evidence, reputation, and a
+      recognizable arbiter. The difference is that the money is not sitting in the arbiter’s bank
+      account while the dispute is argued. It is locked in a contract that both sides can inspect.</p>
+
+    <p>For small transactions, a simple 2-of-3 setup may be enough. For larger ones, a covenant with
+      restricted payouts and timelocks is stronger. Either way, the principle is the same: put the
+      custody rule in code, and keep the judgment rule in the hands of people who are accountable.</p>
+
+
+    <p class="post-disclaimer">We do not provide financial advice.</p>
+
+    <aside class="blog-donate" aria-label="Blog donation">
+  <div class="blog-donate-head">
+    <span class="blog-donate-title">Tip the blog</span>
+    <span class="blog-donate-note">Blog donation</span>
+  </div>
+  <p>If this guide was useful, you can send BCH to support more posts.</p>
+  <div class="bch-addr-chip">
+    <code>bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh?message=stickerscashblog</code>
+    <button class="btn-copy" data-copy="bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh?message=stickerscashblog" data-copied="Blog donation address copied">Copy</button>
+  </div>
+</aside>
+
+    <nav class="post-pager" aria-label="More posts">
+        <a class="pager-card prev" href="covenants-rules-that-follow-the-coin.html">
+          <span>← Previous post</span>
+          <b>Covenants: rules that follow the coin</b>
+        </a>
+        <a class="pager-card next" href="atomic-swaps-without-an-exchange.html">
+          <span>Next post →</span>
+          <b>Atomic swaps without an exchange</b>
+        </a>
+    </nav>
+  </article>
+</div>
+
+<!-- ======================= POST CTA ======================= -->
+<section class="post-cta-band">
+  <div class="container post-cta-inner">
+    <img class="post-cta-mark" src="../media/bch/bch-circle.svg" alt="Bitcoin Cash">
+    <div>
+      <h2>Internet cash needs places to spend it.</h2>
+      <p>Every order at stickers.cash is paid in BCH — a cheap, real-world way to move your first
+        coins, practice self-custody, and put a sticker on something you own.</p>
+    </div>
+    <div class="post-cta-actions">
+      <a class="btn btn-primary btn-lg" href="../index.html#shop">Shop stickers</a>
+      <div class="bch-addr-chip">
+        <code>bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh</code>
+        <button class="btn-copy" data-copy="bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh" data-copied="Payment address copied">Copy</button>
+      </div>
+      <small class="post-cta-wallets">No wallet yet?
+        <a href="https://selene.cash" target="_blank" rel="noopener">Selene</a> ·
+        <a href="https://paytaca.com" target="_blank" rel="noopener">Paytaca</a> ·
+        <a href="https://badger.bitcoin.com" target="_blank" rel="noopener">Badger</a>
+      </small>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ======================= FOOTER ======================= -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="../index.html">
+        <img class="brand-mark" src="../media/bch/bch-circle.svg" alt="">
+        <span class="brand-name">stickers<span class="dot">.</span>cash</span>
+      </a>
+      <p>The Bitcoin Cash sticker shop. Ships from the USA, worldwide.</p>
+      <img class="accepted-badge" src="../media/bch/bch-accepted-here-frame.svg" alt="Bitcoin Cash accepted here">
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <a href="../index.html#shop">All stickers</a>
+      <a href="../index.html#how">How to pay</a>
+      <a href="../index.html#shipping">Shipping rates</a>
+    </div>
+    <div class="footer-col">
+      <h4>Read</h4>
+      <a href="../blog.html">Internet cash guide</a>
+      <a href="https://whybitcoincash.com" target="_blank" rel="noopener">Why Bitcoin Cash</a>
+      <a href="https://bitcoincash.org" target="_blank" rel="noopener">bitcoincash.org</a>
+    </div>
+    <div class="footer-col">
+      <h4>Help</h4>
+      <a href="../index.html#faq">FAQ</a>
+      <a href="mailto:orders@stickers.cash">orders@stickers.cash</a>
+      <a href="mailto:orders@stickers.cash?subject=Wholesale%20%2F%20custom%20stickers">Wholesale</a>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 stickers.cash — paid exclusively in Bitcoin Cash (BCH)</span>
+    <code>bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh</code>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../blog.js"></script>
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atomic swaps without an exchange — The internet cash field guide — stickers.cash</title>
+<meta name="description" content="Two parties can trade coins on different chains without trusting each other, using a hash lock and a time lock. Either both legs settle, or neither does.">
+<meta name="theme-color" content="#0AC18E">
+<meta property="og:title" content="Atomic swaps without an exchange — The internet cash field guide — stickers.cash">
+<meta property="og:description" content="Two parties can trade coins on different chains without trusting each other, using a hash lock and a time lock. Either both legs settle, or neither does.">
+<meta property="og:url" content="https://stickers.cash/blog/atomic-swaps-without-an-exchange.html">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://stickers.cash/blog/atomic-swaps-without-an-exchange.html">
+<link rel="icon" href="../media/bch/bch-circle.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Atomic swaps without an exchange",
+  "description": "Two parties can trade coins on different chains without trusting each other, using a hash lock and a time lock. Either both legs settle, or neither does.",
+  "url": "https://stickers.cash/blog/atomic-swaps-without-an-exchange.html",
+  "mainEntityOfPage": "https://stickers.cash/blog/atomic-swaps-without-an-exchange.html",
+  "datePublished": "2026-10-22",
+  "dateModified": "2026-10-22",
+  "author": {
+    "@type": "Organization",
+    "name": "stickers.cash",
+    "url": "https://stickers.cash/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "stickers.cash",
+    "url": "https://stickers.cash/"
+  },
+  "articleSection": "Chapter three · The application layer",
+  "position": 28,
+  "about": [
+    "Bitcoin Cash",
+    "money",
+    "inflation",
+    "self-custody"
+  ],
+  "isPartOf": {
+    "@type": "Blog",
+    "name": "The internet cash field guide",
+    "url": "https://stickers.cash/blog.html"
+  }
+}
+</script>
+</head>
+<body>
+
+<!-- ======================= ANNOUNCEMENT ======================= -->
+<div class="announce">
+  <div class="container announce-inner">
+    <span>🧊 The internet cash guide — now in 30 posts</span>
+    <span class="sep">·</span>
+    <span>⚡ Paid in Bitcoin Cash only</span>
+    <span class="sep">·</span>
+    <span>🚀 Ships worldwide from the USA</span>
+  </div>
+</div>
+
+<!-- ======================= HEADER ======================= -->
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="../index.html" aria-label="stickers.cash home">
+      <img class="brand-mark" src="../media/bch/bch-circle.svg" alt="">
+      <span class="brand-name">stickers<span class="dot">.</span>cash</span>
+    </a>
+
+    <nav class="nav" id="mainNav" aria-label="Main">
+      <a href="../index.html">Shop</a>
+      <a href="../index.html#how">How it works</a>
+      <a href="../index.html#shipping">Shipping</a>
+      <a href="../index.html#faq">FAQ</a>
+      <a href="../blog.html" aria-current="true">Blog</a>
+    </nav>
+
+    <div class="header-actions">
+      <a class="btn btn-primary" href="../index.html#shop"><span class="shop-long">Shop stickers</span><span class="shop-short">Shop</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ======================= POST HEAD ======================= -->
+<section class="post-head">
+  <div class="container post-head-inner">
+    <a class="post-back" href="../blog.html">← All posts</a>
+    <span class="eyebrow">Chapter three · The application layer</span>
+    <h1>Atomic swaps without an exchange</h1>
+    <p class="lede">Two parties can trade coins on different chains without trusting each other, using a hash lock and a time lock. Either both legs settle, or neither does.</p>
+    <div class="post-meta">
+      <span>Post 28 of 30</span>
+      <span class="dot">·</span>
+      <span>3 min read</span>
+      <span class="dot">·</span>
+      <span>Oct 22, 2026</span>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= POST BODY ======================= -->
+<div class="post-body">
+  <article class="article post-article">
+
+    <p>An atomic swap lets two parties trade coins on different chains without handing their funds
+      to an exchange. The “atomic” part means the trade either completes in full or does not happen
+      at all. There is no moment where one side has paid and the other can walk away.</p>
+
+    <h2>The hash lock</h2>
+
+    <p>The core primitive is a hash time-locked contract, or HTLC. One party locks funds with a
+      condition: the money can be claimed by anyone who reveals a secret value whose hash matches a
+      known hash. The other party locks the matching asset with the same hash on their chain.</p>
+
+    <p>When the first party reveals the secret to claim the second asset, the secret becomes public.
+      The second party can then use it to claim the first asset. If one side stalls, a timelock
+      refunds the funds after a deadline. The two legs are linked by the same secret and protected
+      by the same kind of timeout.</p>
+
+    <p>Neither party needs to trust the other’s custody. The worst case is that the trade does not
+      happen and the funds return. That is a different risk profile from a centralized exchange,
+      where the exchange holds the keys and can freeze withdrawals.</p>
+
+    <h2>Why BCH fits</h2>
+
+    <p>BCH has the pieces an HTLC needs: hash locks, timelocks, and cheap transactions. Low fees
+      matter because an atomic swap is at least two transactions, often more if the parties need to
+      refund or retry. On a high-fee chain, the swap can become uneconomical for small amounts. On
+      BCH, the fee is usually a rounding error.</p>
+
+    <p>CashTokens make the idea more general. A swap can exchange BCH for a token, or two tokens
+      for each other, using the same UTXO model. The contract can inspect token categories and
+      amounts, so the trade can be conditional on the right asset arriving. That is the foundation
+      of peer-to-peer trading without a centralized order book.</p>
+
+    <h2>What can go wrong</h2>
+
+    <p>Atomic swaps are not risk-free. Chain reorganizations, fee spikes, wallet bugs, and
+      mismatched timelocks can all cause trouble. If one chain’s blocks are slower than expected,
+      the refund window may close before the other leg settles. The parties need to agree on the
+      hash, the amounts, the assets, and the deadlines before locking anything.</p>
+
+    <p>Privacy is another consideration. The swap is visible on both chains, and the linkage can
+      reveal more than either party expects. Atomicity protects the trade; it does not hide it.</p>
+
+    <p>There is also the problem of finding a counterparty. A swap contract is not a marketplace.
+      It is a settlement mechanism. You still need discovery, pricing, and reputation, whether
+      through a peer-to-peer network, a chat group, or an order-book service that never takes
+      custody.</p>
+
+    <h2>The point of the primitive</h2>
+
+    <p>The important shift is custody. A centralized exchange is convenient because it holds both
+      sides of the trade and updates a database. An atomic swap replaces that database with a
+      cryptographic link. The parties keep their keys until the trade, and the worst case is a
+      refund rather than a frozen account.</p>
+
+    <p>That does not make exchanges obsolete. It gives people an alternative for the trades that do
+      not need a custodian. For a community that wants peer-to-peer money, having a peer-to-peer way
+      to trade it is a natural extension.</p>
+
+
+    <p class="post-disclaimer">We do not provide financial advice.</p>
+
+    <aside class="blog-donate" aria-label="Blog donation">
+  <div class="blog-donate-head">
+    <span class="blog-donate-title">Tip the blog</span>
+    <span class="blog-donate-note">Blog donation</span>
+  </div>
+  <p>If this guide was useful, you can send BCH to support more posts.</p>
+  <div class="bch-addr-chip">
+    <code>bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh?message=stickerscashblog</code>
+    <button class="btn-copy" data-copy="bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh?message=stickerscashblog" data-copied="Blog donation address copied">Copy</button>
+  </div>
+</aside>
+
+    <nav class="post-pager" aria-label="More posts">
+        <a class="pager-card prev" href="escrow-without-a-company.html">
+          <span>← Previous post</span>
+          <b>Escrow without a company</b>
+        </a>
+        <a class="pager-card next" href="money-that-streams.html">
+          <span>Next post →</span>
+          <b>Money that streams</b>
+        </a>
+    </nav>
+  </article>
+</div>
+
+<!-- ======================= POST CTA ======================= -->
+<section class="post-cta-band">
+  <div class="container post-cta-inner">
+    <img class="post-cta-mark" src="../media/bch/bch-circle.svg" alt="Bitcoin Cash">
+    <div>
+      <h2>Internet cash needs places to spend it.</h2>
+      <p>Every order at stickers.cash is paid in BCH — a cheap, real-world way to move your first
+        coins, practice self-custody, and put a sticker on something you own.</p>
+    </div>
+    <div class="post-cta-actions">
+      <a class="btn btn-primary btn-lg" href="../index.html#shop">Shop stickers</a>
+      <div class="bch-addr-chip">
+        <code>bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh</code>
+        <button class="btn-copy" data-copy="bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh" data-copied="Payment address copied">Copy</button>
+      </div>
+      <small class="post-cta-wallets">No wallet yet?
+        <a href="https://selene.cash" target="_blank" rel="noopener">Selene</a> ·
+        <a href="https://paytaca.com" target="_blank" rel="noopener">Paytaca</a> ·
+        <a href="https://badger.bitcoin.com" target="_blank" rel="noopener">Badger</a>
+      </small>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ======================= FOOTER ======================= -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="../index.html">
+        <img class="brand-mark" src="../media/bch/bch-circle.svg" alt="">
+        <span class="brand-name">stickers<span class="dot">.</span>cash</span>
+      </a>
+      <p>The Bitcoin Cash sticker shop. Ships from the USA, worldwide.</p>
+      <img class="accepted-badge" src="../media/bch/bch-accepted-here-frame.svg" alt="Bitcoin Cash accepted here">
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <a href="../index.html#shop">All stickers</a>
+      <a href="../index.html#how">How to pay</a>
+      <a href="../index.html#shipping">Shipping rates</a>
+    </div>
+    <div class="footer-col">
+      <h4>Read</h4>
+      <a href="../blog.html">Internet cash guide</a>
+      <a href="https://whybitcoincash.com" target="_blank" rel="noopener">Why Bitcoin Cash</a>
+      <a href="https://bitcoincash.org" target="_blank" rel="noopener">bitcoincash.org</a>
+    </div>
+    <div class="footer-col">
+      <h4>Help</h4>
+      <a href="../index.html#faq">FAQ</a>
+      <a href="mailto:orders@stickers.cash">orders@stickers.cash</a>
+      <a href="mailto:orders@stickers.cash?subject=Wholesale%20%2F%20custom%20stickers">Wholesale</a>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 stickers.cash — paid exclusively in Bitcoin Cash (BCH)</span>
+    <code>bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh</code>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../blog.js"></script>
+</body>
+</html>
