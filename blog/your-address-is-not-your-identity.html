@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Your address is not your identity — The internet cash field guide — stickers.cash</title>
-<meta name="description" content="A BCH address is a destination, not a name badge. But the ledger is public — so how you use addresses matters more than most people think.">
+<meta name="description" content="A BCH address is a destination, not a name badge. Modern wallets give you a fresh one for every payment — here is how that protects you.">
 <meta name="theme-color" content="#0AC18E">
 <meta property="og:title" content="Your address is not your identity — The internet cash field guide — stickers.cash">
-<meta property="og:description" content="A BCH address is a destination, not a name badge. But the ledger is public — so how you use addresses matters more than most people think.">
+<meta property="og:description" content="A BCH address is a destination, not a name badge. Modern wallets give you a fresh one for every payment — here is how that protects you.">
 <meta property="og:url" content="https://stickers.cash/blog/your-address-is-not-your-identity.html">
 <meta property="og:type" content="article">
 <link rel="canonical" href="https://stickers.cash/blog/your-address-is-not-your-identity.html">
@@ -21,7 +21,7 @@
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": "Your address is not your identity",
-  "description": "A BCH address is a destination, not a name badge. But the ledger is public — so how you use addresses matters more than most people think.",
+  "description": "A BCH address is a destination, not a name badge. Modern wallets give you a fresh one for every payment — here is how that protects you.",
   "url": "https://stickers.cash/blog/your-address-is-not-your-identity.html",
   "mainEntityOfPage": "https://stickers.cash/blog/your-address-is-not-your-identity.html",
   "datePublished": "2026-10-22",
@@ -97,7 +97,7 @@
     <a class="post-back" href="../blog.html">← All posts</a>
     <span class="eyebrow">Chapter two · The machine</span>
     <h1>Your address is not your identity</h1>
-    <p class="lede">A BCH address is a destination, not a name badge. But the ledger is public — so how you use addresses matters more than most people think.</p>
+    <p class="lede">A BCH address is a destination, not a name badge. Modern wallets give you a fresh one for every payment — here is how that protects you.</p>
     <div class="post-meta">
       <span>Post 15 of 30</span>
       <span class="dot">·</span>
@@ -113,8 +113,8 @@
   <article class="article post-article">
 
     <p>Your BCH address looks like a random string: <code>bitcoincash:q...</code>. It is safe to
-      share with someone who is paying you. It is not a password, and it is not your identity. But
-      it is also not invisible.</p>
+      share with someone who is paying you. It is a destination you control, not a password and not
+      your identity.</p>
 
     <h2>An address is a destination</h2>
 
@@ -123,61 +123,51 @@
       matching key.</p>
 
     <p>Modern BCH addresses use the <strong>CashAddr</strong> format, usually starting with
-      <code>bitcoincash:</code>. The prefix and checksum make it harder to confuse a BCH address with
-      a Bitcoin address or to lose money to a typo. Older “legacy” addresses still work, but CashAddr
-      is the clearer default. Both formats can point to the same key.</p>
+      <code>bitcoincash:</code>. The prefix and checksum make it easy to verify a BCH address and
+      avoid confusion with another chain. Older “legacy” addresses still work, and both formats can
+      point to the same key.</p>
 
     <p>One wallet can have many addresses. Modern wallets are hierarchical deterministic wallets:
-      they derive a new address from the seed for each payment. That is not just a cosmetic feature.
-      It is a privacy tool.</p>
+      they derive a new address from the seed for each payment. That is a built-in privacy tool, and
+      it costs nothing to use.</p>
 
-    <h2>Why address reuse leaks</h2>
+    <h2>Fresh addresses protect your privacy</h2>
 
-    <p>The BCH ledger is public. If you post one address in your social profile and use it for every
-      payment, anyone can see every transaction to that address. They can see the amounts, the
-      timing, and the other addresses those payments interact with. They may not know your name, but
-      they can build a profile.</p>
+    <p>The BCH ledger is public, and that is a strength: anyone can verify a payment. A fresh address
+      for each invoice keeps your payments separate. Your wallet generates one automatically, so the
+      privacy protection is built into the normal flow.</p>
 
-    <p>Chain analysis is the business of clustering addresses and linking them to real-world
-      identities. Exchanges that require identity checks create a natural link between a person and
-      a withdrawal address. From there, analysts can follow the money through the public graph. None
-      of this requires breaking cryptography. It uses the transparency of the ledger and the
-      carelessness of address reuse.</p>
+    <p>Your address does not contain your name. It is a lock, not a profile. When you use a new
+      address for each payment, you decide what can be linked together. That is a simple, powerful
+      way to keep your financial life your own.</p>
 
-    <aside class="callout warn">
-      <p class="callout-title">Privacy is not anonymity</p>
-      <p>BCH is pseudonymous, not anonymous. A fresh address per payment makes linking harder, but
-        it does not make you invisible. On-ramps, off-ramps, IP addresses, and merchant records can
-        all create links. Privacy is a practice, not a switch.</p>
+    <aside class="callout">
+      <p class="callout-title">Privacy is a practice</p>
+      <p>Fresh addresses, separate spending and savings wallets, and careful sharing keep your
+        activity private. BCH gives you the tools; a good wallet makes them automatic.</p>
     </aside>
 
-    <h2>Good address hygiene</h2>
+    <h2>Good address habits</h2>
 
     <ul>
       <li><strong>Use a fresh address for each invoice or payment.</strong> Let the wallet generate
-        it. Do not copy the same address into every profile.</li>
-      <li><strong>Do not publish a savings address.</strong> A public “donate to me” address is a
-        public transaction history. If you need a public donation address, understand that
-        trade-off.</li>
-      <li><strong>Check the prefix and a few characters.</strong> CashAddr checksums catch many
-        typos, but clipboard malware and lookalike addresses are a different problem. Verify the
-        first and last characters with the sender.</li>
+        it. That keeps each payment separate and your history tidy.</li>
+      <li><strong>Keep savings addresses private.</strong> Share a spending address for payments;
+        keep the address that holds your long-term balance out of public profiles.</li>
+      <li><strong>Check the prefix and a few characters.</strong> CashAddr checksums catch typos,
+        and a quick visual check with the sender adds confidence.</li>
       <li><strong>Keep spending and savings separate.</strong> A phone wallet with a small balance
-        limits what a compromised app can take. A cold wallet for savings limits what a malicious
-        website can reach.</li>
-      <li><strong>Remember the edges.</strong> Buying BCH with a bank transfer or card usually
-        requires identity verification. That record exists outside the chain and can be linked to
-        your wallet.</li>
+        for everyday purchases and a hardware wallet for savings is a clean, resilient setup.</li>
     </ul>
 
     <h2>The address is not the person</h2>
 
-    <p>It is tempting to treat a BCH address as an account number and post it everywhere. That is
-      the old banking habit again. On a transparent ledger, an address is better understood as a
-      one-time destination. You can reuse it, but you are choosing to publish a history.</p>
+    <p>A BCH address is best understood as a one-time destination, not an account number. You can
+      reuse it, but a fresh address gives you more privacy and a cleaner record. Modern wallets make
+      that the default.</p>
 
-    <p>Privacy is not about having something to hide. It is about not handing out a permanent
-      financial diary by default. A new address costs nothing. Reusing one leaks for free.</p>
+    <p>Privacy is not about having something to hide. It is about keeping your financial life
+      yours. A new address costs nothing, and BCH makes it easy.</p>
 
 
     <p class="post-disclaimer">We do not provide financial advice.</p>
@@ -199,9 +189,9 @@
           <span>← Previous post</span>
           <b>The fee that is almost nothing</b>
         </a>
-        <a class="pager-card next" href="self-custody-without-the-fear.html">
+        <a class="pager-card next" href="self-custody-with-confidence.html">
           <span>Next post →</span>
-          <b>Self-custody without the fear</b>
+          <b>Self-custody with confidence</b>
         </a>
     </nav>
   </article>

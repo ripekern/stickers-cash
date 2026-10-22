@@ -158,26 +158,25 @@
 
     <h2>Introspection changed the ceiling</h2>
 
-    <p>For a long time, a BCH script could check signatures and time, but it could not easily check
-      where the money was going. Native introspection, activated in 2022, changed that. A contract
-      can now inspect details of the transaction spending it: output values, locking scripts, token
-      data, the active input index, and more.</p>
+    <p>BCH scripts have always been able to check signatures and time. Native introspection,
+      activated in 2022, added the ability to inspect where the money is going. A contract can now
+      read details of the transaction spending it: output values, locking scripts, token data, the
+      active input index, and more.</p>
 
     <p>That is what makes covenants possible. A vault can refuse to send funds anywhere except a
       designated cold address. A contract can require that part of the money returns to itself, or
       that a token moves with the payment. The script is no longer only asking “who signed?” It can
       ask “what does this transaction actually do?”</p>
 
-    <h2>The limits are the design</h2>
+    <h2>Focused by design</h2>
 
-    <p>BCH Script is not a general-purpose programming language. It has no global memory, no
-      network calls, and no unbounded loops in the base rules. The 2026 upgrade adds bounded loops
-      and reusable functions, but the principle remains: every contract must be cheap enough to
-      validate and small enough to audit.</p>
+    <p>BCH Script is a focused language. It has no global memory and no network calls, and the 2026
+      upgrade adds bounded loops and reusable functions. The principle is simple: every contract must
+      be cheap to validate and small enough to audit.</p>
 
-    <p>That sounds restrictive until you remember what the script is for. It is not trying to run a
-      social network. It is trying to make money behave predictably. For that job, a small,
-      deterministic language with explicit rules is a feature, not a limitation.</p>
+    <p>That focus is what makes BCH contracts reliable. The script is not trying to run a social
+      network. It is making money behave predictably. A small, deterministic language with explicit
+      rules is exactly the right tool for that job.</p>
 
 
     <p class="post-disclaimer">We do not provide financial advice.</p>

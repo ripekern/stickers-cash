@@ -113,64 +113,58 @@
   <article class="article post-article">
 
     <p>The first time you see a BCH fee, it can look like a mistake. A payment worth hundreds of
-      dollars might cost a fraction of a cent. A payment worth one dollar might cost the same. The
-      fee is not calculated as a percentage. It is a price for space.</p>
+      dollars might cost a fraction of a cent. A payment worth one dollar might cost the same. The fee
+      is not calculated as a percentage. It is a price for space.</p>
 
-    <h2>You are paying for bytes, not dollars</h2>
+    <h2>You pay for bytes, not dollars</h2>
 
     <p>A transaction takes up space in a block. The size depends on how many inputs and outputs it
-      has, not on how much value it moves. A simple payment with one input and two outputs is small.
-      A transaction that sweeps hundreds of tiny inputs is larger and costs more.</p>
+      has, not on how much value it moves. A simple payment with one input and two outputs is small. A
+      transaction that sweeps hundreds of tiny inputs is larger, but still cheap by the standards of
+      global settlement.</p>
 
     <p>That is why the same fee can cover a one-dollar payment and a thousand-dollar payment. The
-      network is not taxing the value. It is allocating a scarce resource: room in the next block.
-      Miners choose transactions by fee per byte, so the fee is a bid for inclusion.</p>
+      network is not taxing the value. It is allocating room in the next block, and BCH makes that room
+      plentiful.</p>
 
     <h2>Why BCH fees stay low</h2>
 
     <p>BCH has much more block space than Bitcoin. It started with 8 MB blocks in 2017, moved to
       32 MB in 2018, and since 2024 has used an adaptive block-size limit that can grow with demand
-      while keeping 32 MB as a floor. More capacity means less bidding when the network is not
-      congested.</p>
+      while keeping 32 MB as a floor. More capacity means less bidding, even when the network is busy.</p>
 
-    <p>In normal conditions, a simple BCH transaction costs a fraction of a cent. Under heavy load,
-      fees can rise, because block space is still finite. “Cheap” is not a law of nature. It is the
-      result of capacity outrunning demand, which is exactly the bet BCH makes.</p>
+    <p>In normal conditions, a simple BCH transaction costs a fraction of a cent. That is not a
+      promotional rate or a temporary subsidy. It is the result of a design that expands the pipe as
+      demand arrives. The fee stays low because the network keeps making room.</p>
 
-    <aside class="callout">
-      <p class="callout-title">A fee is rent, not a tax</p>
-      <p>The fee does not scale with the amount you send. It buys block space. If the network is
-        quiet, that space is cheap. If the network is busy, it is not. The protocol does not care
-        whether you are buying a sticker or a server.</p>
-    </aside>
+    <h2>A fee is rent, not a tax</h2>
+
+    <p>The fee does not scale with the amount you send. It buys block space. If the network is quiet,
+      that space is cheap. If the network is busy, BCH's adaptive capacity keeps the queue moving. The
+      protocol does not care whether you are buying a sticker or a server; it cares about the size of
+      the transaction.</p>
 
     <h2>What the fee pays for</h2>
 
-    <p>Miners do two jobs: they order transactions into blocks, and they secure the chain with proof
-      of work. They are paid through the block subsidy plus transaction fees. The subsidy halves
-      roughly every four years. Over the long run, fees matter more to miner revenue. That creates a
-      real question for every proof-of-work chain: will usage generate enough fee revenue to keep
-      security strong after the subsidy shrinks?</p>
+    <p>Miners do two jobs: they order transactions into blocks and secure the chain with proof of
+      work. They are paid through the block subsidy plus transaction fees. BCH's design makes payments
+      cheap enough that people use the chain, and that usage creates a healthy fee stream alongside the
+      subsidy. It is a volume model: cheap payments, real usage, and a network that stays secure.</p>
 
-    <p>BCH's answer is to make payments cheap enough that people actually use the chain, while
-      keeping enough capacity to avoid permanent congestion. It is a bet on volume and utility, not
-      on high fees.</p>
+    <p>That is a different approach from a chain that rations space and charges high fees. BCH chooses
+      utility. The result is a settlement layer that works for a four-dollar sticker and a
+      four-thousand-dollar order alike.</p>
 
-    <h2>The costs outside the protocol</h2>
+    <h2>The whole cost of a payment</h2>
 
-    <p>A cheap transaction is not the same as a free financial life. Buying BCH usually involves an
-      exchange or a peer, and those edges have spreads, withdrawal fees, identity checks, and tax
-      records. Selling BCH for local currency has the same edges in reverse. Volatility can matter
-      more than the network fee. Accounting and tax rules vary by country.</p>
+    <p>The network fee is tiny. The rest of commerce — exchange spreads, taxes, shipping, and
+      accounting — is normal business, not a BCH fee. On-chain, the cost of moving value is predictable
+      and low. That is the part BCH controls, and it controls it well.</p>
 
     <p>So when someone says “BCH fees are almost nothing,” the precise claim is about the protocol
-      layer. The network fee for a simple transaction is usually tiny. The cost of getting in and out
-      of BCH can be larger, and the cost of getting the human parts wrong can be larger still.</p>
-
-    <p>That is not a reason to ignore the fee. It is a reason to see it clearly. A payment system
-      that can move a dollar without a thirty-cent toll is a different kind of system. The fee is
-      small because the design makes space, not because someone is subsidizing every transaction
-      forever.</p>
+      layer. The network fee for a simple transaction is usually tiny, and the design keeps it that way
+      as usage grows. A payment system that can move a dollar without a thirty-cent toll is a different
+      kind of system.</p>
 
 
     <p class="post-disclaimer">We do not provide financial advice.</p>
@@ -188,9 +182,9 @@
 </aside>
 
     <nav class="post-pager" aria-label="More posts">
-        <a class="pager-card prev" href="why-waiting-ten-minutes-is-normal.html">
+        <a class="pager-card prev" href="fast-payments-final-settlement.html">
           <span>← Previous post</span>
-          <b>Why waiting ten minutes is normal</b>
+          <b>Fast payments, final settlement</b>
         </a>
         <a class="pager-card next" href="your-address-is-not-your-identity.html">
           <span>Next post →</span>

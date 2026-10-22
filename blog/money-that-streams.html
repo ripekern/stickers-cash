@@ -149,32 +149,28 @@
         deposit returned when the conditions are met.</li>
     </ul>
 
-    <h2>The UX problem</h2>
+    <h2>Automation makes it seamless</h2>
 
-    <p>A streaming contract still needs someone to submit the withdrawal transaction. If the
-      recipient is offline, the money does not move by itself. That creates room for a service
-      provider, a wallet background process, or a “watchtower” that submits withdrawals on the
-      recipient’s behalf. The service can be non-custodial: it can only send the money to the
-      recipient the contract already specifies.</p>
+    <p>A streaming contract releases the accrued balance when a withdrawal is submitted. A wallet
+      background process or a non-custodial service can submit it for the recipient. The service
+      cannot redirect the money; it can only send it to the recipient the contract specifies. If the
+      service is unavailable, the recipient can withdraw manually. The contract remains the source of
+      truth.</p>
 
-    <p>That is a different kind of middleman. It does not hold the funds and cannot redirect them.
-      It provides availability and convenience. If the service disappears, the recipient can still
-      withdraw manually. The contract remains the source of truth.</p>
+    <p>That is a good division of labor: the contract enforces the schedule, and a service provides
+      convenience without custody.</p>
 
-    <h2>What streaming does not solve</h2>
+    <h2>What streaming is for</h2>
 
-    <p>It does not create credit. A stream can only release money that is already locked. It does
-      not guarantee that a service will be delivered, or that a subscription is worth the price. It
-      also does not make volatility disappear: a stream denominated in BCH still moves in local
-      currency terms.</p>
-
-    <p>Those are application-layer problems. The contract solves the payment mechanics: how much is
-      available, when, and to whom. That is a meaningful piece of the puzzle. The rest still needs
-      clear terms and accountable people.</p>
+    <p>Streaming is a payment tool. It releases money that is already locked on a schedule, so it is
+      a natural fit for salaries, subscriptions, vesting, allowances, and rental deposits. It makes
+      the payment mechanics automatic, transparent, and cheap.</p>
 
     <p>The bigger idea is that money can be conditional in time, not just in amount. Once that is
-      cheap and programmable, a lot of “subscription” and “payroll” software starts to look like a
-      thin interface over a contract.</p>
+      cheap and programmable, a lot of subscription and payroll software starts to look like a thin
+      interface over a contract.</p>
+
+
 
 
     <p class="post-disclaimer">We do not provide financial advice.</p>

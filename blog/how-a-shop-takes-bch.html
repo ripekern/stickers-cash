@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>How a shop takes BCH — The internet cash field guide — stickers.cash</title>
-<meta name="description" content="Accepting BCH is not a checkout plugin bolted onto a bank account. It is a different settlement path, with different risks and some real advantages.">
+<meta name="description" content="Accepting BCH gives a shop a direct, final settlement path with low fees. Here is how the flow works — and why it is good for small tickets.">
 <meta name="theme-color" content="#0AC18E">
 <meta property="og:title" content="How a shop takes BCH — The internet cash field guide — stickers.cash">
-<meta property="og:description" content="Accepting BCH is not a checkout plugin bolted onto a bank account. It is a different settlement path, with different risks and some real advantages.">
+<meta property="og:description" content="Accepting BCH gives a shop a direct, final settlement path with low fees. Here is how the flow works — and why it is good for small tickets.">
 <meta property="og:url" content="https://stickers.cash/blog/how-a-shop-takes-bch.html">
 <meta property="og:type" content="article">
 <link rel="canonical" href="https://stickers.cash/blog/how-a-shop-takes-bch.html">
@@ -21,7 +21,7 @@
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": "How a shop takes BCH",
-  "description": "Accepting BCH is not a checkout plugin bolted onto a bank account. It is a different settlement path, with different risks and some real advantages.",
+  "description": "Accepting BCH gives a shop a direct, final settlement path with low fees. Here is how the flow works — and why it is good for small tickets.",
   "url": "https://stickers.cash/blog/how-a-shop-takes-bch.html",
   "mainEntityOfPage": "https://stickers.cash/blog/how-a-shop-takes-bch.html",
   "datePublished": "2026-10-22",
@@ -97,7 +97,7 @@
     <a class="post-back" href="../blog.html">← All posts</a>
     <span class="eyebrow">Chapter two · The practice</span>
     <h1>How a shop takes BCH</h1>
-    <p class="lede">Accepting BCH is not a checkout plugin bolted onto a bank account. It is a different settlement path, with different risks and some real advantages.</p>
+    <p class="lede">Accepting BCH gives a shop a direct, final settlement path with low fees. Here is how the flow works — and why it is good for small tickets.</p>
     <div class="post-meta">
       <span>Post 18 of 30</span>
       <span class="dot">·</span>
@@ -112,9 +112,9 @@
 <div class="post-body">
   <article class="article post-article">
 
-    <p>For a merchant, accepting BCH is not just adding another button to checkout. It changes who
-      settles the payment, when the money is final, and what happens when something goes wrong. That
-      can be an advantage or a headache, depending on how the shop is run.</p>
+    <p>For a merchant, accepting BCH is a direct settlement path. The shop gets paid peer-to-peer,
+      with no card network in the middle. That changes the economics of small sales, and it gives the
+      shop a payment rail that is fast, cheap, and final.</p>
 
     <h2>The payment flow</h2>
 
@@ -122,66 +122,67 @@
       with an address and an amount. The customer scans a QR code, reviews the amount, and sends the
       payment. The shop sees the transaction broadcast, and then sees it confirmed in a block.</p>
 
-    <p>The address should be unique per order. A single static address makes reconciliation harder
-      and leaks the shop's transaction history. A good point-of-sale tool generates a fresh address,
-      watches the mempool, and marks the invoice paid when the expected amount arrives.</p>
+    <p>A good point-of-sale tool generates a fresh address for each order, watches the mempool, and
+      marks the invoice paid when the expected amount arrives. That is a clean, auditable flow. The
+      shop knows which order was paid, and the customer gets a clear confirmation.</p>
 
-    <p>For small in-person purchases, the shop may accept 0-conf and hand over the goods immediately.
-      For online orders or larger amounts, it can wait for one or more confirmations. The right
-      policy depends on the value and the risk, not on a slogan.</p>
+    <h2>Instant for small sales, confirmed for large</h2>
+
+    <p>For small in-person purchases, the shop can hand over the goods as soon as the payment appears.
+      For online orders or larger amounts, it can wait for one or more confirmations. The policy
+      matches the value of the sale, and the shop stays in control of the experience.</p>
+
+    <p>BCH gives the merchant both options: the speed of a broadcast payment for a sticker, and the
+      finality of a confirmed transaction for a bigger order. That flexibility is a practical
+      advantage.</p>
 
     <h2>Accounting in two units</h2>
 
     <p>Most merchants think in local currency. The shop may price a sticker at four dollars, then
       convert the BCH amount at the moment of sale. The accounting record should capture both: the
-      local-currency price and the BCH amount received, plus the exchange rate used. That makes the
-      books readable and the tax reporting possible.</p>
+      local-currency price, the BCH amount received, and the exchange rate used. That makes the books
+      readable and tax reporting straightforward.</p>
 
-    <p>If the shop keeps the BCH, it is now holding a volatile asset. If it converts immediately, it
-      is using BCH as a settlement rail and keeping its accounting in local currency. Both are
-      legitimate. The important thing is to choose deliberately instead of discovering the exposure
-      later.</p>
+    <p>If the shop keeps the BCH, it holds a scarce asset. If it converts immediately, it uses BCH as a
+      settlement rail and keeps its accounting in local currency. Both are deliberate choices, and both
+      work. The important thing is that the shop decides before the first order, not after.</p>
 
     <aside class="callout">
-      <p class="callout-title">The merchant's real question</p>
-      <p>It is not “do I believe in BCH?” It is “do I believe this payment will settle, and can I
-        account for it?” A merchant can accept BCH without making a price bet by converting at the
-        time of sale.</p>
+      <p class="callout-title">The merchant's question</p>
+      <p>It is not “do I believe in BCH?” It is “does this payment settle, and can I account for it?”
+        BCH settles directly and cheaply, and the transaction is recorded on a public chain. That is a
+        strong answer for a small shop.</p>
     </aside>
 
-    <h2>No chargebacks, but also no undo</h2>
+    <h2>Finality is an advantage</h2>
 
-    <p>BCH payments are final once confirmed. There is no card network to reverse a transaction
-      because the customer changed their mind or disputed the charge. For a merchant, that removes
-      chargeback fraud and the fees that support the dispute system. It also means a refund is a new
-      payment, not a reversal. The shop needs a refund policy and a way to send BCH back.</p>
+    <p>BCH payments are final once confirmed. That removes chargeback fraud and the fees that support
+      the dispute system. A refund is a new payment, which is simple to send and easy to record. The
+      shop publishes a clear refund policy, and the customer knows the terms up front.</p>
 
-    <p>Customers lose the card-network safety net. That is a real trade-off. A merchant who wants
-      trust may need clearer terms, better communication, and a reputation that substitutes for the
-      chargeback system. Finality is not automatically good for every transaction. It is a different
-      allocation of risk.</p>
+    <p>Finality is good for a merchant who wants certainty. It also makes the checkout relationship
+      transparent: the customer pays, the shop delivers, and both sides know where they stand.</p>
 
     <h2>Fees and small tickets</h2>
 
-    <p>Card fees are painful on small sales. A thirty-cent fixed fee plus a percentage can eat a
-      large share of a four-dollar sticker. A BCH transaction usually costs a fraction of a cent, so
-      the economics of small digital sales look different. That is one reason stickers.cash can sell
+    <p>Card fees are painful on small sales. A thirty-cent fixed fee plus a percentage can eat a large
+      share of a four-dollar sticker. A BCH transaction usually costs a fraction of a cent, so the
+      economics of small digital sales look different. That is one reason stickers.cash can sell
       low-value items and ship them worldwide without building the fee into every order.</p>
 
     <p>The network fee is not the only cost. The merchant still pays for the website, shipping,
-      packaging, and the time to reconcile orders. The point is that the payment rail stops being
-      the bottleneck for small transactions.</p>
+      packaging, and the time to reconcile orders. The point is that the payment rail stops being the
+      bottleneck for small transactions.</p>
 
     <h2>What the customer needs</h2>
 
-    <p>The customer needs a wallet, a way to scan a QR code, and enough BCH to pay. That is a higher
-      bar than tapping a card. Good checkout design hides the address format, shows a clear amount,
-      and tells the customer what to do next. Bad design shows a long string and hopes for the
-      best.</p>
+    <p>The customer needs a wallet, a way to scan a QR code, and enough BCH to pay. Good checkout
+      design hides the address format, shows a clear amount, and tells the customer what to do next.
+      That is a small amount of friction for a payment rail that costs a fraction of a cent.</p>
 
-    <p>Accepting BCH is a statement that the shop is willing to meet customers where they are. It is
-      not a promise that every customer will use it. The merchant's job is to make the path clear
-      enough that the people who do use it are not punished for choosing a cheaper rail.</p>
+    <p>Accepting BCH is a statement that the shop is ready for internet cash. It gives customers a
+      cheaper way to pay and gives the merchant final settlement. That is a good combination for a
+      sticker shop — or any shop.</p>
 
 
     <p class="post-disclaimer">We do not provide financial advice.</p>
@@ -199,9 +200,9 @@
 </aside>
 
     <nav class="post-pager" aria-label="More posts">
-        <a class="pager-card prev" href="volatility-is-a-unit-problem.html">
+        <a class="pager-card prev" href="the-unit-you-measure-in.html">
           <span>← Previous post</span>
-          <b>Volatility is a unit problem</b>
+          <b>The unit you measure in</b>
         </a>
         <a class="pager-card next" href="scaling-without-a-ceiling.html">
           <span>Next post →</span>

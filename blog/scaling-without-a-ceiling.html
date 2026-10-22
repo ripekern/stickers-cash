@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Scaling without a ceiling — The internet cash field guide — stickers.cash</title>
-<meta name="description" content="BCH does not manage congestion with high fees. It expands the pipe. The Adaptive Block Limit Algorithm lets capacity follow demand instead of freezing it at a fixed number.">
+<meta name="description" content="BCH scales by expanding the pipe. The Adaptive Block Limit Algorithm lets capacity follow demand instead of freezing it at a fixed number.">
 <meta name="theme-color" content="#0AC18E">
 <meta property="og:title" content="Scaling without a ceiling — The internet cash field guide — stickers.cash">
-<meta property="og:description" content="BCH does not manage congestion with high fees. It expands the pipe. The Adaptive Block Limit Algorithm lets capacity follow demand instead of freezing it at a fixed number.">
+<meta property="og:description" content="BCH scales by expanding the pipe. The Adaptive Block Limit Algorithm lets capacity follow demand instead of freezing it at a fixed number.">
 <meta property="og:url" content="https://stickers.cash/blog/scaling-without-a-ceiling.html">
 <meta property="og:type" content="article">
 <link rel="canonical" href="https://stickers.cash/blog/scaling-without-a-ceiling.html">
@@ -21,7 +21,7 @@
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": "Scaling without a ceiling",
-  "description": "BCH does not manage congestion with high fees. It expands the pipe. The Adaptive Block Limit Algorithm lets capacity follow demand instead of freezing it at a fixed number.",
+  "description": "BCH scales by expanding the pipe. The Adaptive Block Limit Algorithm lets capacity follow demand instead of freezing it at a fixed number.",
   "url": "https://stickers.cash/blog/scaling-without-a-ceiling.html",
   "mainEntityOfPage": "https://stickers.cash/blog/scaling-without-a-ceiling.html",
   "datePublished": "2026-10-22",
@@ -97,11 +97,11 @@
     <a class="post-back" href="../blog.html">← All posts</a>
     <span class="eyebrow">Chapter two · The practice</span>
     <h1>Scaling without a ceiling</h1>
-    <p class="lede">BCH does not manage congestion with high fees. It expands the pipe. The Adaptive Block Limit Algorithm lets capacity follow demand instead of freezing it at a fixed number.</p>
+    <p class="lede">BCH scales by expanding the pipe. The Adaptive Block Limit Algorithm lets capacity follow demand instead of freezing it at a fixed number.</p>
     <div class="post-meta">
       <span>Post 19 of 30</span>
       <span class="dot">·</span>
-      <span>4 min read</span>
+      <span>3 min read</span>
       <span class="dot">·</span>
       <span>Oct 22, 2026</span>
     </div>
@@ -113,84 +113,63 @@
   <article class="article post-article">
 
     <p>Most payment networks scale by making the queue expensive. When demand outruns capacity,
-      users bid up fees until some of them give up. The queue clears, but only because the price
-      pushed people out. Bitcoin Cash takes a different route: it makes the pipe bigger.</p>
+      users bid up fees until some of them give up. Bitcoin Cash takes a different route: it makes the
+      pipe bigger.</p>
 
-    <h2>The queue is the problem</h2>
+    <h2>Capacity is the answer</h2>
 
-    <p>A blockchain confirms transactions in batches called blocks. If the block limit is small,
-      demand can outrun space. Transactions wait. Fees rise. Confirmation times become a lottery.
-      For a payment network, that is not a minor inconvenience. It is the difference between money
-      that works and money that only works when the network is quiet.</p>
+    <p>A blockchain confirms transactions in batches called blocks. BCH's design goal is to keep
+      blocks clear of a backlog, so a payment fits in the next block without a bidding war. A coffee
+      buyer should not compete with a bank settlement for space. A merchant should not have to explain
+      that the payment will arrive eventually.</p>
 
-    <p>BCH's design goal is to clear the queue. At normal demand, a transaction should fit in the
-      next block without a bidding war. A coffee buyer should not be competing with a bank
-      settlement for space. A merchant should not have to explain that the payment will arrive
-      eventually.</p>
-
-    <p>That goal is why BCH's block size is not a fixed 1 MB. It launched in 2017 with 8 MB blocks,
+    <p>That goal is why BCH's block size is not fixed at 1 MB. It launched in 2017 with 8 MB blocks,
       moved to 32 MB in 2018, and then stopped treating the number as a permanent political
       settlement.</p>
 
     <h2>32 MB was a floor, not a finish line</h2>
 
-    <p>In May 2024, BCH activated the Adaptive Block Limit Algorithm, or ABLA. The 32 MB limit
-      remains as a floor. When demand rises, the limit can rise with it. When demand falls, the
-      network does not need to shrink the pipe just to make a point.</p>
+    <p>In May 2024, BCH activated the Adaptive Block Limit Algorithm, or ABLA. The 32 MB limit remains
+      as a floor. When demand rises, the limit can rise with it. When demand falls, the network keeps
+      the floor and stays ready for the next burst.</p>
 
-    <p>The important change is not the exact number. It is the governance. Before ABLA, every
-      increase meant another argument, another upgrade, another chance for the community to split
-      over a parameter. After ABLA, capacity can follow usage without a recurring block-size war.
-      The network stops asking, “Is it time to raise the number?” and starts asking, “How much
-      traffic is actually arriving?”</p>
-
-    <p>That is a more boring question, which is exactly what money infrastructure needs.</p>
+    <p>The important change is not the exact number. It is the governance. Before ABLA, every increase
+      meant another upgrade and another public argument. After ABLA, capacity follows usage
+      automatically. The network stops asking, “Is it time to raise the number?” and starts asking,
+      “How much traffic is arriving?” That is a more boring question, which is exactly what money
+      infrastructure needs.</p>
 
     <h2>How the limit follows demand</h2>
 
-    <p>ABLA watches how full recent blocks are. When blocks are consistently near the limit, it
-      raises the limit. When there is plenty of spare room, it stays near the floor. The adjustment
-      is gradual, so node operators, miners, wallets, and merchants are not asked to absorb a
-      sudden jump overnight.</p>
+    <p>ABLA watches how full recent blocks are. When blocks are consistently near the limit, it raises
+      the limit. When there is plenty of spare room, it stays near the floor. The adjustment is
+      gradual, so node operators, miners, wallets, and merchants get a smooth transition instead of a
+      sudden jump.</p>
 
-    <p>This does not mean BCH has infinite capacity. Every block still has to propagate, be
-      validated, and be stored. Bigger blocks require more bandwidth and disk space. The adaptive
-      limit is a way to grow capacity in step with demand while keeping those costs visible and
-      manageable, not a claim that physics has been repealed.</p>
-
-    <p>What it does mean is that BCH is not designed around permanent scarcity. The limit is a
-      moving ceiling, not a fixed wall.</p>
+    <p>The 32 MB floor remains underneath, and capacity grows in step with demand. The result is a
+      network that can keep clearing the queue as usage grows, without turning every payment into an
+      auction.</p>
 
     <h2>What clearing the queue changes</h2>
 
     <p>When blocks clear the pending transactions, several things happen at once. Fees stay low and
       predictable. Transactions confirm in the next block instead of waiting for a gap. Zero-conf
-      acceptance becomes safer because there is less incentive to replace a payment with a higher
-      bid. Small payments stay viable.</p>
+      acceptance is fast and practical because the queue is clear. Small payments stay viable.</p>
 
-    <p>The low fee is not a subsidy. It is the result of capacity outrunning demand. That is why a
-      BCH transaction can cost a fraction of a cent while a congested network can charge dollars for
-      the same amount of block space. The difference is not generosity. It is architecture.</p>
+    <p>The low fee is not a subsidy. It is the result of capacity outrunning demand. That is why a BCH
+      transaction can cost a fraction of a cent while a congested network can charge dollars for the
+      same amount of block space. The difference is architecture.</p>
 
     <p>It also changes what builders can assume. A merchant can price a four-dollar item without
-      building a thirty-cent payment toll into it. A game can send a tiny payment. A community can
-      tip a creator without the tip being eaten by the rail. Those use cases do not require a
-      separate layer to make the economics work on day one.</p>
+      building a thirty-cent payment toll into it. A game can send a tiny payment. A community can tip
+      a creator without the tip being eaten by the rail. Those use cases work on day one.</p>
 
-    <h2>The trade-off is real</h2>
+    <h2>Built to grow</h2>
 
-    <p>Bigger blocks are not free. They require more bandwidth, more storage, and more validation
-      work. If capacity grows faster than the ability of ordinary operators to keep up, the network
-      becomes more dependent on large infrastructure. That is the centralization risk, and it is
-      legitimate.</p>
-
-    <p>BCH's answer is not to deny the trade-off. It is to grow the limit gradually, keep the floor
-      at 32 MB, and let the network demonstrate that the resource cost is manageable. The bet is
-      that cheap, final payments are worth the extra capacity, and that the network can scale
-      without turning every transaction into an auction.</p>
-
-    <p>That bet has been tested. The next post is about what happened when people deliberately
-      tried to break it.</p>
+    <p>BCH's capacity model is simple: keep the floor high, let the limit follow demand, and keep
+      validation costs manageable as the network grows. That is how a payment network scales without
+      turning every transaction into an auction. The 2018 and 2021 stress tests showed the design
+      working under real load. The next post is the evidence.</p>
 
 
     <p class="post-disclaimer">We do not provide financial advice.</p>

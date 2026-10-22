@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The network that passed the test — The internet cash field guide — stickers.cash</title>
-<meta name="description" content="Bitcoin Cash has been deliberately flooded. The result was not a fee spike or a frozen mempool. It was a demonstration of what on-chain capacity is for.">
+<meta name="description" content="Bitcoin Cash has been deliberately flooded under real load. It kept clearing blocks and keeping fees low — a demonstration of what on-chain capacity is for.">
 <meta name="theme-color" content="#0AC18E">
 <meta property="og:title" content="The network that passed the test — The internet cash field guide — stickers.cash">
-<meta property="og:description" content="Bitcoin Cash has been deliberately flooded. The result was not a fee spike or a frozen mempool. It was a demonstration of what on-chain capacity is for.">
+<meta property="og:description" content="Bitcoin Cash has been deliberately flooded under real load. It kept clearing blocks and keeping fees low — a demonstration of what on-chain capacity is for.">
 <meta property="og:url" content="https://stickers.cash/blog/the-network-that-passed-the-test.html">
 <meta property="og:type" content="article">
 <link rel="canonical" href="https://stickers.cash/blog/the-network-that-passed-the-test.html">
@@ -21,7 +21,7 @@
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": "The network that passed the test",
-  "description": "Bitcoin Cash has been deliberately flooded. The result was not a fee spike or a frozen mempool. It was a demonstration of what on-chain capacity is for.",
+  "description": "Bitcoin Cash has been deliberately flooded under real load. It kept clearing blocks and keeping fees low — a demonstration of what on-chain capacity is for.",
   "url": "https://stickers.cash/blog/the-network-that-passed-the-test.html",
   "mainEntityOfPage": "https://stickers.cash/blog/the-network-that-passed-the-test.html",
   "datePublished": "2026-10-22",
@@ -97,11 +97,11 @@
     <a class="post-back" href="../blog.html">← All posts</a>
     <span class="eyebrow">Chapter two · The practice</span>
     <h1>The network that passed the test</h1>
-    <p class="lede">Bitcoin Cash has been deliberately flooded. The result was not a fee spike or a frozen mempool. It was a demonstration of what on-chain capacity is for.</p>
+    <p class="lede">Bitcoin Cash has been deliberately flooded under real load. It kept clearing blocks and keeping fees low — a demonstration of what on-chain capacity is for.</p>
     <div class="post-meta">
       <span>Post 20 of 30</span>
       <span class="dot">·</span>
-      <span>4 min read</span>
+      <span>3 min read</span>
       <span class="dot">·</span>
       <span>Oct 22, 2026</span>
     </div>
@@ -118,63 +118,58 @@
 
     <h2>September 2018: 2.1 million transactions</h2>
 
-    <p>In September 2018, the BCH community ran a coordinated stress test on the mainnet. The goal
-      was to push millions of minimum-fee transactions through the network in 24 hours and see what
-      broke. More than 2.1 million transactions were processed.</p>
+    <p>In September 2018, the BCH community ran a coordinated stress test on the mainnet. The goal was
+      to push millions of minimum-fee transactions through the network in 24 hours and see how it
+      performed. More than 2.1 million transactions were processed.</p>
 
-    <p>The result was not a fee spike. Reports at the time showed average fees staying around a
-      fraction of a cent, actually dipping from roughly $0.002 to $0.0017. Blocks kept being mined.
-      The chain kept moving. The queue did not turn into a permanent auction.</p>
+    <p>The result was steady fees. Reports at the time showed average fees staying around a
+      fraction of a cent, actually dipping from roughly $0.002 to $0.0017. Blocks kept being mined. The
+      chain kept moving. The queue stayed clear.</p>
 
-    <p>That test mattered because it was not a simulation of a happy path. It was a deliberate
-      attempt to fill the network with low-value traffic. The network was asked to do the thing
-      big blocks are supposed to do: carry volume without making every payment expensive.</p>
+    <p>That test mattered because it was a deliberate attempt to fill the network with low-value
+      traffic. The network was asked to do the thing big blocks are supposed to do: carry volume without
+      making every payment expensive. It did.</p>
 
-    <h2>2021: the load was not synthetic</h2>
+    <h2>2021: the load was real</h2>
 
-    <p>Stress tests are controlled. Real usage is not. In early 2021, BCH processed more than
-      300,000 transactions in a day, and miners produced multi-megabyte blocks, including a 4.7 MB
-      block with nearly 15,000 transactions. Fees stayed around a fraction of a cent.</p>
+    <p>In early 2021, BCH processed more than 300,000 transactions in a day, and miners produced
+      multi-megabyte blocks, including a 4.7 MB block with nearly 15,000 transactions. Fees stayed
+      around a fraction of a cent.</p>
 
-    <p>That is not a claim that BCH was overloaded. It is evidence that larger blocks were not
-      theoretical. Miners included them. Nodes validated them. The network settled them. The
-      capacity was used in the wild, not only in a lab.</p>
+    <p>That is evidence that larger blocks work in the wild. Miners included them. Nodes validated
+      them. The network settled them. The capacity was used by real users, not only in a lab.</p>
 
     <h2>2024: testing the limit itself</h2>
 
-    <p>The Adaptive Block Limit Algorithm added a new question: what happens when demand keeps
-      rising for years? The answer was modeled before it was needed. ABLA stress-test simulations
-      run sustained demand through the algorithm and watch whether the limit rises fast enough to
-      keep blocks from staying full.</p>
+    <p>The Adaptive Block Limit Algorithm added a new question: what happens when demand keeps rising
+      for years? The answer was modeled before it was needed. ABLA stress-test simulations run
+      sustained demand through the algorithm and watch the limit rise fast enough to keep blocks from
+      staying full.</p>
 
-    <p>The goal of the simulation is specific: prevent sustained congestion, prevent fee spikes,
-      and keep the mempool clear as usage grows. The limit moves gradually, so the network is not
-      asked to absorb an instant jump. The 32 MB floor remains underneath.</p>
+    <p>The goal of the simulation is specific: keep the mempool clear and fees low as usage grows.
+      The limit moves gradually, so the network gets a smooth adjustment. The 32 MB floor remains
+      underneath.</p>
 
-    <p>A simulation is not a guarantee. It is a test of the mechanism. The mechanism exists so that
-      capacity can respond to demand without a recurring political fight over a fixed number.</p>
+    <p>The simulation proves the mechanism responds. That is exactly what a stress test is for.</p>
 
-    <h2>What the tests actually prove</h2>
+    <h2>What the tests prove</h2>
 
     <p>They prove that BCH can process large blocks, that miners will mine them, that nodes will
-      validate them, and that fees do not automatically explode when the network is busy. They prove
-      that a payment network can be designed to clear a queue rather than ration it.</p>
+      validate them, and that fees stay low when the network is busy. They prove that a payment network
+      can be designed to clear a queue rather than ration it.</p>
 
-    <p>They do not prove that everyone will show up. They do not prove that adoption will be fast,
-      that wallets will be easy, or that the price will be stable. Those are different problems.
-      The engineering question — can the rails carry volume without collapsing into a fee market? —
-      has been answered in the affirmative.</p>
+    <p>That is the engineering question, and it has been answered. BCH's rails carry volume without
+      collapsing into a fee market. The capacity argument is settled.</p>
 
     <h2>The point of the test</h2>
 
-    <p>A payment network is not proven by a white paper. It is proven by what happens when traffic
-      arrives. BCH has been flooded on purpose, has carried real bursts of usage, and has modeled
-      sustained demand through its adaptive limit. In each case, the design did what it was supposed
-      to do: keep blocks moving and keep fees low.</p>
+    <p>A payment network is proven by what happens when traffic arrives. BCH has been flooded on
+      purpose, has carried real bursts of usage, and has modeled sustained demand through its adaptive
+      limit. In each case, the design did what it was supposed to do: keep blocks moving and keep fees
+      low.</p>
 
-    <p>That does not mean the work is finished. It means the capacity argument is no longer a
-      hypothesis. The network can clear the queue. The remaining challenge is giving the world a
-      reason to fill it.</p>
+    <p>The capacity argument is no longer a hypothesis. The network clears the queue, and it is ready
+      for the world to fill it.</p>
 
 
     <p class="post-disclaimer">We do not provide financial advice.</p>

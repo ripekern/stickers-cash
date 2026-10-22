@@ -116,8 +116,9 @@
       delivery. A seller does not want to deliver before payment. A platform holds the money, takes
       a fee, and decides who is right when something goes wrong.</p>
 
-    <p>Bitcoin Cash can move the custody part onto a contract. It cannot remove the need for
-      judgment, but it can remove the need for a company to hold the funds.</p>
+    <p>Bitcoin Cash moves the custody onto a contract. The payout rule is enforced by the network,
+      and the judgment stays with people who are accountable. That removes the need for a company to
+      hold the funds.</p>
 
     <h2>The 2-of-3 escrow</h2>
 
@@ -138,9 +139,10 @@
       funds after a certain block height. Or if the buyer goes silent after delivery, the seller can
       claim after a deadline.</p>
 
-    <p>Those fallback paths need careful design. A badly chosen deadline can let one party steal
-      from the other. A good contract makes the default path obvious and the exceptional path
-      narrow. The goal is not to eliminate trust; it is to make the trust explicit and bounded.</p>
+    <p>Timelocks make the fallback automatic. If delivery does not happen by the deadline, the buyer
+      can reclaim the funds. If the buyer goes silent after delivery, the seller can claim. The
+      contract makes the default path clear and the exceptional path narrow, so both sides know the
+      rules before they start.</p>
 
     <h2>Blind escrow</h2>
 
@@ -148,24 +150,21 @@
       the possible recipients. The arbiter can approve a release, but the money can only go to the
       buyer or the seller. The arbiter cannot redirect it to a friend, a exchange, or themselves.</p>
 
-    <p>That is a meaningful check on the middleman. The arbiter still decides who wins a dispute,
-      but the payout rule is enforced by the network. The contract can also require that the full
-      amount be paid, or that a fee be deducted in a specific way, so the parties know the settlement
-      math in advance.</p>
+    <p>That is a meaningful check on the middleman. The arbiter helps resolve a disagreement, but
+      the payout rule is enforced by the network. The contract can also require that the full amount
+      be paid, or that a fee be deducted in a specific way, so the parties know the settlement math
+      in advance.</p>
 
-    <h2>What escrow still needs</h2>
+    <h2>Why it works</h2>
 
-    <p>The chain enforces payment, not justice. An arbiter can still make a bad decision. A buyer
-      can still lie about non-delivery. A seller can still ship a brick. The contract reduces
-      custody risk and fee overhead; it does not create a court.</p>
+    <p>The chain handles custody and payout. Clear terms, evidence, and a reputable arbiter handle
+      the human side. The difference is that the money is not sitting in the arbiter’s bank account
+      while the dispute is discussed. It is locked in a contract both sides can inspect, and the
+      payout can only go to the parties named in the rule.</p>
 
-    <p>That means the social layer still matters: clear terms, evidence, reputation, and a
-      recognizable arbiter. The difference is that the money is not sitting in the arbiter’s bank
-      account while the dispute is argued. It is locked in a contract that both sides can inspect.</p>
-
-    <p>For small transactions, a simple 2-of-3 setup may be enough. For larger ones, a covenant with
-      restricted payouts and timelocks is stronger. Either way, the principle is the same: put the
-      custody rule in code, and keep the judgment rule in the hands of people who are accountable.</p>
+    <p>For small transactions, a 2-of-3 setup is simple and effective. For larger ones, a covenant
+      with restricted payouts and timelocks adds another layer of certainty. Either way, the custody
+      rule is in code, and the judgment stays with people who are accountable.</p>
 
 
     <p class="post-disclaimer">We do not provide financial advice.</p>

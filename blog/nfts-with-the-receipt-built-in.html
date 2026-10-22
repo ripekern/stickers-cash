@@ -101,7 +101,7 @@
     <div class="post-meta">
       <span>Post 25 of 30</span>
       <span class="dot">·</span>
-      <span>4 min read</span>
+      <span>3 min read</span>
       <span class="dot">·</span>
       <span>Oct 22, 2026</span>
     </div>
@@ -128,9 +128,9 @@
       state, and permanence without a separate contract database.</p>
 
     <p>The 2026 upgrade raised the standard commitment limit from 40 bytes to 128 bytes and made
-      bare pay-to-script outputs standard. That is still small compared with a file, but it is
-      plenty for a hash, an identifier, a timestamp, a score, a ticket number, or a compact state
-      record.</p>
+      bare pay-to-script outputs standard. That is enough for the important part: the claim. A hash,
+      an identifier, a timestamp, a score, a ticket number, or a compact state record fits
+      comfortably.</p>
 
     <h2>A receipt, not a picture</h2>
 
@@ -146,15 +146,10 @@
 
     <h2>Metadata lives at the edges</h2>
 
-    <p>Large media and rich metadata do not belong in a 128-byte commitment. The practical pattern
-      is to put a hash or identifier on-chain and the larger content elsewhere. Bitcoin Cash
-      Metadata Registries (BCMR) provide a standard way to publish authenticated metadata such as
-      names, descriptions, and icons for tokens.</p>
-
-    <p>That split is honest about what the chain does. The chain proves the token and the
-      commitment. The metadata registry or application provides the presentation. If the
-      off-chain content disappears, the token still exists, but the picture may not. Designs that
-      need permanence should account for that.</p>
+    <p>Large media and rich metadata live at the edges by design. The chain holds the token and the
+      commitment; a metadata registry holds the presentation. Bitcoin Cash Metadata Registries (BCMR)
+      provide a standard, authenticated way to publish names, descriptions, and icons. The result is a
+      compact on-chain claim with rich presentation around it.</p>
 
     <h2>What NFTs unlock</h2>
 
@@ -168,15 +163,15 @@
       rule was followed. The product might be a ticket, a membership, a loan, a game, or a claim on
       a real-world asset.</p>
 
-    <h2>The limits are real</h2>
+    <h2>Built for verifiable claims</h2>
 
-    <p>A BCH NFT cannot store a song, a video, or a large document. It cannot enforce a copyright.
-      It cannot force an issuer to honor a promise. It is a compact, verifiable token, not a magic
-      container. The value comes from the rule around it and the trust behind it.</p>
+    <p>A BCH NFT is a compact, verifiable token. It is designed for tickets, receipts, memberships,
+      game items, and state that a contract can read. Large media stays off-chain, and the on-chain
+      commitment proves what matters. That is the right division of labor for a payment network.</p>
 
-    <p>Used well, that is enough. A ticket that can be verified offline by a contract, a receipt
-      that can be redeemed without a platform, or a membership that unlocks a service without a
-      centralized database is a real improvement. The JPEG was never the point.</p>
+    <p>Used well, an NFT becomes more than a collectible: it is a claim that a contract can verify
+      without a platform. A ticket, a receipt, or a membership becomes a real, enforceable digital
+      object. The JPEG was never the point.</p>
 
 
     <p class="post-disclaimer">We do not provide financial advice.</p>

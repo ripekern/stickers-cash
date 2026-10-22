@@ -119,22 +119,17 @@
 
     <h2>Before introspection</h2>
 
-    <p>Older BCH scripts could check who signed, when the spend was allowed, and whether a hash
-      preimage was correct. That is enough for multisig and timelocks, but not enough to say “this
-      money may only go to this address.” A script could not easily inspect the outputs of the
-      transaction spending it.</p>
-
-    <p>Native introspection, activated in May 2022, changed that. A contract can now read details
-      of the spending transaction: the values and locking scripts of outputs, the active input
-      index, transaction fields, and later the token data on inputs and outputs. That is the
-      foundation of covenants on BCH.</p>
+    <p>BCH scripts have always been able to check who signed, when a spend is allowed, and whether a
+      hash preimage is correct. Native introspection, activated in May 2022, added the ability to
+      inspect the outputs of the transaction spending the coins. A contract can now read the values
+      and locking scripts of outputs, the active input index, transaction fields, and token data on
+      inputs and outputs. That is the foundation of covenants on BCH.</p>
 
     <h2>Rules that follow the coin</h2>
 
-    <p>The simplest covenant restricts the destination. A vault can hold savings and refuse to send
-      them anywhere except a designated cold address. Even if the spending key is compromised, the
-      attacker cannot redirect the funds to themselves. The rule is enforced by the network, not by
-      a policy document.</p>
+    <p>The simplest covenant restricts the destination. A vault can hold savings and send them only
+      to a designated cold address. Even a compromised key cannot move funds outside that rule. The
+      promise is enforced by the network, not by a policy document.</p>
 
     <p>More interesting covenants constrain the shape of the transaction. A contract can require
       that part of the money return to the contract, that a token move with the payment, or that a
@@ -161,20 +156,15 @@
         rules for CashTokens.</li>
     </ul>
 
-    <h2>Bugs are permanent</h2>
+    <h2>Rules you can verify</h2>
 
-    <p>A covenant is powerful because it removes discretion. That is also the danger. If the rule
-      is wrong, the money can be locked forever or released to the wrong person. There is no support
-      line to reverse a bad contract. Audits, small test transactions, and simple designs are not
-      optional.</p>
+    <p>A covenant is powerful because it removes discretion. The rule is visible, deterministic, and
+      enforced by every node. You can test it on chipnet, review it, and know exactly how it will
+      behave. That is a stronger foundation than a policy document or a promise.</p>
 
-    <p>The 2026 P2S upgrade helps at the edges: standard pay-to-script outputs reduce transaction
-      sizes and simplify contract design for vaults and multi-party applications. But better
-      tooling does not remove the need to think. A covenant is a promise the network will keep
-      whether you still like it or not.</p>
-
-    <p>That is the trade. You give up the ability to change your mind, and you get a rule that no
-      middleman can bend. For the right use case, that is exactly what money needs.</p>
+    <p>The 2026 P2S upgrade makes covenant transactions smaller and simpler, especially for vaults
+      and multi-party applications. A well-designed covenant is a promise the network keeps — and
+      that is exactly what money needs.</p>
 
 
     <p class="post-disclaimer">We do not provide financial advice.</p>

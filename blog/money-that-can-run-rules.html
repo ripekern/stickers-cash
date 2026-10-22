@@ -138,7 +138,7 @@
       lock on a set of coins. Its “state” lives in the outputs it controls, in the tokens attached
       to them, or in data committed inside an NFT. Spending the coins is how you update the state.</p>
 
-    <h2>Local state, not global state</h2>
+    <h2>Local rules, global reach</h2>
 
     <p>That difference is not a detail. It changes how applications are designed. A BCH contract
       does not need every node to execute a shared application state for every user. It validates a
@@ -150,9 +150,9 @@
       based on transaction size, not on how many computational steps a global virtual machine
       performed.</p>
 
-    <p>The trade-off is that you cannot build arbitrary web applications with a single shared
-      database directly on layer one. BCH is designed for rules about money, assets, and
-      settlement. That is a narrower target than a general-purpose computer, and it is deliberate.</p>
+    <p>BCH is focused on money, assets, and settlement. That focus is the advantage: contracts are
+      small, validation is local, and fees stay predictable. You get the rules you need for payments
+      without the overhead of a global general-purpose computer.</p>
 
     <h2>The toolbox has been growing</h2>
 
@@ -170,9 +170,9 @@
         standard pay-to-script outputs — more expressive contracts without a separate VM.</li>
     </ul>
 
-    <p>None of this turns BCH into Ethereum. It turns BCH into a better version of itself: money
-      that can enforce useful rules, with the same cheap settlement and self-custody that made it
-      interesting in the first place.</p>
+    <p>BCH does not need to be Ethereum. It is becoming a better version of itself: money that can
+      enforce useful rules, with the same cheap settlement and self-custody that made it interesting
+      in the first place.</p>
 
     <p>The rest of this chapter is about what those rules can actually do. We start with the
       script that sits under every wallet, then move up to the languages and primitives built on

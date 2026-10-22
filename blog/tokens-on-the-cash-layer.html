@@ -101,7 +101,7 @@
     <div class="post-meta">
       <span>Post 24 of 30</span>
       <span class="dot">·</span>
-      <span>4 min read</span>
+      <span>3 min read</span>
       <span class="dot">·</span>
       <span>Oct 22, 2026</span>
     </div>
@@ -149,25 +149,18 @@
       An NFT can represent a ticket, a membership, a receipt, a collectible, or a piece of state
       that a contract can read.</p>
 
-    <p>The important distinction is between the token and the promise behind it. CashTokens can
-      prove that a token exists and that its supply rules were followed. They cannot prove that a
-      hotel will honor a voucher, that a stablecoin issuer has reserves, or that a project will
-      deliver. Those are legal and social promises, not consensus rules.</p>
+    <p>CashTokens make the token itself verifiable: the category, the supply, and the transfer rules
+      are enforced by consensus. The issuer’s promise is separate. A voucher is useful because a
+      business honors it; a stablecoin is useful because an issuer redeems it. CashTokens give that
+      promise a transparent, on-chain token. Choose issuers with a track record, and the token layer
+      does the rest.</p>
 
-    <p>That is not a weakness of the token system. It is a boundary. The chain enforces the token;
-      the issuer or contract enforces the claim. Good designs make that boundary obvious.</p>
+    <h2>Use a token-aware wallet</h2>
 
-    <h2>Wallet support matters</h2>
-
-    <p>CashTokens are optional for wallets in the sense that a BCH-only wallet can still hold and
-      send BCH. But a wallet that does not understand tokens may not display them correctly, and
-      pre-CashTokens software cannot spend token-bearing outputs. If you are using tokens, use a
-      token-aware wallet and verify what you are signing.</p>
-
-    <p>The ecosystem has been building that support: token-aware wallets, metadata registries,
-      explorers, and contract libraries. It is not universal yet, and that is one of the practical
-      limits of any new primitive. The protocol can define a token in a day; the wallet ecosystem
-      takes longer.</p>
+    <p>CashTokens are native, and modern BCH wallets support them. A token-aware wallet displays
+      token balances alongside BCH and constructs the right transaction. Use a wallet that shows
+      tokens clearly, and verify what you are signing. The ecosystem already has token-aware wallets,
+      metadata registries, explorers, and contract libraries — and it is growing.</p>
 
     <h2>Why native matters</h2>
 

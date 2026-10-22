@@ -127,47 +127,45 @@
       refunds the funds after a deadline. The two legs are linked by the same secret and protected
       by the same kind of timeout.</p>
 
-    <p>Neither party needs to trust the other’s custody. The worst case is that the trade does not
-      happen and the funds return. That is a different risk profile from a centralized exchange,
-      where the exchange holds the keys and can freeze withdrawals.</p>
+    <p>Neither party needs to trust the other’s custody. The contract enforces the trade, and if it
+      does not complete, the funds return. That is a stronger guarantee than a centralized exchange,
+      where the exchange holds the keys.</p>
 
     <h2>Why BCH fits</h2>
 
     <p>BCH has the pieces an HTLC needs: hash locks, timelocks, and cheap transactions. Low fees
-      matter because an atomic swap is at least two transactions, often more if the parties need to
-      refund or retry. On a high-fee chain, the swap can become uneconomical for small amounts. On
-      BCH, the fee is usually a rounding error.</p>
+      matter because an atomic swap is at least two transactions. On BCH, the fee is usually a
+      rounding error, so even small swaps make sense.</p>
 
     <p>CashTokens make the idea more general. A swap can exchange BCH for a token, or two tokens
       for each other, using the same UTXO model. The contract can inspect token categories and
       amounts, so the trade can be conditional on the right asset arriving. That is the foundation
       of peer-to-peer trading without a centralized order book.</p>
 
-    <h2>What can go wrong</h2>
+    <h2>Why it works</h2>
 
-    <p>Atomic swaps are not risk-free. Chain reorganizations, fee spikes, wallet bugs, and
-      mismatched timelocks can all cause trouble. If one chain’s blocks are slower than expected,
-      the refund window may close before the other leg settles. The parties need to agree on the
-      hash, the amounts, the assets, and the deadlines before locking anything.</p>
+    <p>The hash lock and timelock are the whole trick. The same secret unlocks both legs, and the
+      deadline returns the funds if the trade does not complete. Neither party can walk away with
+      both assets, and neither has to trust the other’s custody. The contract enforces the outcome.</p>
 
-    <p>Privacy is another consideration. The swap is visible on both chains, and the linkage can
-      reveal more than either party expects. Atomicity protects the trade; it does not hide it.</p>
+    <p>The swap is visible on-chain, like any BCH transaction. Use fresh addresses and a wallet you
+      trust, and the trade stays between the parties. For a community that wants peer-to-peer money,
+      a peer-to-peer way to trade it is a natural extension.</p>
 
-    <p>There is also the problem of finding a counterparty. A swap contract is not a marketplace.
-      It is a settlement mechanism. You still need discovery, pricing, and reputation, whether
-      through a peer-to-peer network, a chat group, or an order-book service that never takes
-      custody.</p>
+    <p>Counterparties can meet through a peer-to-peer network, a community, or an order-book service
+      that never takes custody. The settlement is atomic; the discovery layer is just how the two
+      sides find each other.</p>
 
     <h2>The point of the primitive</h2>
 
     <p>The important shift is custody. A centralized exchange is convenient because it holds both
       sides of the trade and updates a database. An atomic swap replaces that database with a
-      cryptographic link. The parties keep their keys until the trade, and the worst case is a
-      refund rather than a frozen account.</p>
+      cryptographic link. The parties keep their keys until the trade, and if the trade does not
+      complete, the funds return.</p>
 
-    <p>That does not make exchanges obsolete. It gives people an alternative for the trades that do
-      not need a custodian. For a community that wants peer-to-peer money, having a peer-to-peer way
-      to trade it is a natural extension.</p>
+    <p>Exchanges remain useful for other services, and atomic swaps give people an alternative for
+      trades that do not need a custodian. For a community that wants peer-to-peer money, having a
+      peer-to-peer way to trade it is a natural extension.</p>
 
 
     <p class="post-disclaimer">We do not provide financial advice.</p>
