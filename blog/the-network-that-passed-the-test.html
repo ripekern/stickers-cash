@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>What internet cash still can't do — The internet cash field guide — stickers.cash</title>
-<meta name="description" content="BCH fixes the middleman problem. It does not fix every money problem. An honest map of what is still missing — and what has to be built next.">
+<title>The network that passed the test — The internet cash field guide — stickers.cash</title>
+<meta name="description" content="Bitcoin Cash has been deliberately flooded. The result was not a fee spike or a frozen mempool. It was a demonstration of what on-chain capacity is for.">
 <meta name="theme-color" content="#0AC18E">
-<meta property="og:title" content="What internet cash still can't do — The internet cash field guide — stickers.cash">
-<meta property="og:description" content="BCH fixes the middleman problem. It does not fix every money problem. An honest map of what is still missing — and what has to be built next.">
-<meta property="og:url" content="https://stickers.cash/blog/what-internet-cash-still-cant-do.html">
+<meta property="og:title" content="The network that passed the test — The internet cash field guide — stickers.cash">
+<meta property="og:description" content="Bitcoin Cash has been deliberately flooded. The result was not a fee spike or a frozen mempool. It was a demonstration of what on-chain capacity is for.">
+<meta property="og:url" content="https://stickers.cash/blog/the-network-that-passed-the-test.html">
 <meta property="og:type" content="article">
-<link rel="canonical" href="https://stickers.cash/blog/what-internet-cash-still-cant-do.html">
+<link rel="canonical" href="https://stickers.cash/blog/the-network-that-passed-the-test.html">
 <link rel="icon" href="../media/bch/bch-circle.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,10 +20,10 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "What internet cash still can't do",
-  "description": "BCH fixes the middleman problem. It does not fix every money problem. An honest map of what is still missing — and what has to be built next.",
-  "url": "https://stickers.cash/blog/what-internet-cash-still-cant-do.html",
-  "mainEntityOfPage": "https://stickers.cash/blog/what-internet-cash-still-cant-do.html",
+  "headline": "The network that passed the test",
+  "description": "Bitcoin Cash has been deliberately flooded. The result was not a fee spike or a frozen mempool. It was a demonstration of what on-chain capacity is for.",
+  "url": "https://stickers.cash/blog/the-network-that-passed-the-test.html",
+  "mainEntityOfPage": "https://stickers.cash/blog/the-network-that-passed-the-test.html",
   "datePublished": "2026-10-22",
   "dateModified": "2026-10-22",
   "author": {
@@ -96,8 +96,8 @@
   <div class="container post-head-inner">
     <a class="post-back" href="../blog.html">← All posts</a>
     <span class="eyebrow">Chapter two · The practice</span>
-    <h1>What internet cash still can't do</h1>
-    <p class="lede">BCH fixes the middleman problem. It does not fix every money problem. An honest map of what is still missing — and what has to be built next.</p>
+    <h1>The network that passed the test</h1>
+    <p class="lede">Bitcoin Cash has been deliberately flooded. The result was not a fee spike or a frozen mempool. It was a demonstration of what on-chain capacity is for.</p>
     <div class="post-meta">
       <span>Post 20 of 20</span>
       <span class="dot">·</span>
@@ -112,84 +112,69 @@
 <div class="post-body">
   <article class="article post-article">
 
-    <p>The case for internet cash is strong, but it is not a claim that BCH solves every problem.
-      A useful guide has to include the limits. Here is what Bitcoin Cash still cannot do well, and
-      what has to be built next.</p>
+    <p>Scaling claims are easy to make. Anyone can say their network will handle the world's
+      payments. A stress test is harder to fake: you flood the network, watch the blocks, watch the
+      fees, and see whether the thing actually clears.</p>
 
-    <h2>It is not yet normal money</h2>
+    <h2>September 2018: 2.1 million transactions</h2>
 
-    <p>Most people do not have a BCH wallet. Most merchants do not accept it. Most employers do not
-      pay in it. A currency becomes useful when it is widely accepted, and BCH is still building
-      that network. A sticker shop can accept it. A local cafe might. A landlord probably will not.</p>
+    <p>In September 2018, the BCH community ran a coordinated stress test on the mainnet. The goal
+      was to push millions of minimum-fee transactions through the network in 24 hours and see what
+      broke. More than 2.1 million transactions were processed.</p>
 
-    <p>This is the classic chicken-and-egg problem. Merchants want customers. Customers want places
-      to spend. Communities can bootstrap both, but bootstrapping is slower than a protocol upgrade.
-      No amount of technical elegance replaces the boring work of adoption.</p>
+    <p>The result was not a fee spike. Reports at the time showed average fees staying around a
+      fraction of a cent, actually dipping from roughly $0.002 to $0.0017. Blocks kept being mined.
+      The chain kept moving. The queue did not turn into a permanent auction.</p>
 
-    <h2>It is not a stable unit of account</h2>
+    <p>That test mattered because it was not a simulation of a happy path. It was a deliberate
+      attempt to fill the network with low-value traffic. The network was asked to do the thing
+      big blocks are supposed to do: carry volume without making every payment expensive.</p>
 
-    <p>Prices are still set in local currency. BCH swings against those currencies, so a wallet
-      balance can change in purchasing-power terms while the number of coins stays fixed. That makes
-      BCH hard to use for long-term budgeting, payroll, or any contract that needs a stable unit.</p>
+    <h2>2021: the load was not synthetic</h2>
 
-    <p>Stablecoins and layered systems try to solve this, but they introduce their own trust
-      assumptions. BCH itself does not promise a stable price. It promises a fixed supply and a
-      payment rail. Those are different things.</p>
+    <p>Stress tests are controlled. Real usage is not. In early 2021, BCH processed more than
+      300,000 transactions in a day, and miners produced multi-megabyte blocks, including a 4.7 MB
+      block with nearly 15,000 transactions. Fees stayed around a fraction of a cent.</p>
 
-    <h2>The user experience is still too sharp</h2>
+    <p>That is not a claim that BCH was overloaded. It is evidence that larger blocks were not
+      theoretical. Miners included them. Nodes validated them. The network settled them. The
+      capacity was used in the wild, not only in a lab.</p>
 
-    <p>Seed phrases, address formats, confirmations, backups, and wallet recovery are not normal
-      consumer experiences. A person who has never used a bank app can learn them, but most people
-      should not have to. A good wallet should make the safe path the easy path.</p>
+    <h2>2024: testing the limit itself</h2>
 
-    <p>That means better recovery, clearer warnings, safer address handling, and fewer places where
-      a small mistake loses money forever. It also means better support. “Read the documentation” is
-      not a support strategy for a payment network that wants ordinary users.</p>
+    <p>The Adaptive Block Limit Algorithm added a new question: what happens when demand keeps
+      rising for years? The answer was modeled before it was needed. ABLA stress-test simulations
+      run sustained demand through the algorithm and watch whether the limit rises fast enough to
+      keep blocks from staying full.</p>
 
-    <aside class="callout warn">
-      <p class="callout-title">No safety net by default</p>
-      <p>There is no FDIC insurance, no chargeback department, and no password reset. That is a
-        feature for censorship resistance and a bug for consumer protection. The ecosystem has to
-        build trustworthy services and clear expectations without recreating the middlemen it
-        replaced.</p>
-    </aside>
+    <p>The goal of the simulation is specific: prevent sustained congestion, prevent fee spikes,
+      and keep the mempool clear as usage grows. The limit moves gradually, so the network is not
+      asked to absorb an instant jump. The 32 MB floor remains underneath.</p>
 
-    <h2>Regulation and privacy live at the edges</h2>
+    <p>A simulation is not a guarantee. It is a test of the mechanism. The mechanism exists so that
+      capacity can respond to demand without a recurring political fight over a fixed number.</p>
 
-    <p>BCH itself is a protocol, but the places where people buy, sell, and spend it are regulated
-      businesses. Identity checks, reporting requirements, and tax rules vary by country. A
-      self-custodial wallet can avoid a bank, but it cannot avoid the law or the records created by
-      an exchange.</p>
+    <h2>What the tests actually prove</h2>
 
-    <p>The public ledger is also not private by default. Address hygiene helps, but chain analysis,
-      network surveillance, and identity-linked on-ramps can still connect transactions to people.
-      Privacy is a practice and an ongoing area of development, not a solved feature.</p>
+    <p>They prove that BCH can process large blocks, that miners will mine them, that nodes will
+      validate them, and that fees do not automatically explode when the network is busy. They prove
+      that a payment network can be designed to clear a queue rather than ration it.</p>
 
-    <h2>Security has to be paid for</h2>
+    <p>They do not prove that everyone will show up. They do not prove that adoption will be fast,
+      that wallets will be easy, or that the price will be stable. Those are different problems.
+      The engineering question — can the rails carry volume without collapsing into a fee market? —
+      has been answered in the affirmative.</p>
 
-    <p>Proof-of-work security depends on miner revenue. The block subsidy shrinks over time. If fees
-      stay tiny forever, the long-term security budget becomes a serious question. Low fees are good
-      for payments, but they are not automatically good for security. The network needs enough
-      usage and value to keep miners honest.</p>
+    <h2>The point of the test</h2>
 
-    <p>This is not a BCH-only problem. Every capped-supply proof-of-work chain faces a version of it.
-      The answer will be some mix of usage, fee revenue, and whatever the market decides the chain is
-      worth securing.</p>
+    <p>A payment network is not proven by a white paper. It is proven by what happens when traffic
+      arrives. BCH has been flooded on purpose, has carried real bursts of usage, and has modeled
+      sustained demand through its adaptive limit. In each case, the design did what it was supposed
+      to do: keep blocks moving and keep fees low.</p>
 
-    <h2>What is left to build</h2>
-
-    <p>The list is long, and none of it is glamorous: wallets that ordinary people can recover,
-      merchant tools that reconcile automatically, better privacy, clearer tax guidance, and more
-      places to spend. The protocol is the easy part compared with changing habits.</p>
-
-    <p>That is not a reason to wait. It is a reason to be precise about what you are using. BCH is
-      already useful for people who hold their own keys, accept the volatility, and have somewhere
-      to spend it. It is not yet useful for everyone, and pretending otherwise makes the guide less
-      trustworthy.</p>
-
-    <p>The first chapter explained why the ice is thin. This chapter explained how the new ground
-      works. The rest is about making it normal — one wallet, one merchant, and one payment at a
-      time.</p>
+    <p>That does not mean the work is finished. It means the capacity argument is no longer a
+      hypothesis. The network can clear the queue. The remaining challenge is giving the world a
+      reason to fill it.</p>
 
 
     <p class="post-disclaimer">We do not provide financial advice.</p>
@@ -207,9 +192,9 @@
 </aside>
 
     <nav class="post-pager" aria-label="More posts">
-        <a class="pager-card prev" href="scaling-is-a-choice.html">
+        <a class="pager-card prev" href="scaling-without-a-ceiling.html">
           <span>← Previous post</span>
-          <b>Scaling is a choice</b>
+          <b>Scaling without a ceiling</b>
         </a>
 
     </nav>
