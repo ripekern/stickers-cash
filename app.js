@@ -4,11 +4,13 @@
 'use strict';
 
 /* ---------------- config ---------------- */
-const BCH_ADDRESS = 'bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh';
+const BCH_ADDRESS = '';
+const PAY_API = '';                    // per-order addresses: e.g. 'https://stickers-cash-pay.you.workers.dev'
 const FALLBACK_RATE = 277.76;          // USD per BCH, used if the rate API is unreachable
 const QUOTE_SECONDS = 15 * 60;         // rate lock
 const STORE_EMAIL = 'orders@stickers.cash';
 const STORE_KEY = 'stickers_cash_cart_v1';
+const ORDER_KEY = 'stickers_cash_order_v1';
 
 const SHIP = {
   us:    { label: 'USPS First Class',      days: '3–7 business days',  price: 2, freeOver: 25 },
@@ -103,18 +105,43 @@ const PRODUCTS = [
     arts: ['stickers/p2p-badge.svg','stickers/under-1-cent.svg','stickers/money-over-ip.svg','stickers/paid-peep.svg'],
     blurb: 'Every design plus two bonus peeks. The best value per sticker in the shop.',
   },
+  {
+    id: 'donation', name: 'Blog / Project Donation', cat: 'donation', catLabel: 'Donation',
+    price: 5, custom: true,
+    art: 'media/bch/bch-circle.svg',
+    blurb: 'Support stickers.cash and the Bitcoin Cash blog. Send any amount.',
+  },
 ];
 const byId = id => PRODUCTS.find(p => p.id === id);
+
+function isDonation(p) {
+  return p && p.custom;
+}
 
 /* ---------------- state ---------------- */
 let cart = loadCart();
 let dest = 'us';                 // cart drawer estimate
 let rate = FALLBACK_RATE;
 let rateLive = false;
-let orderId = null;
+let orderId = loadOrderId();
+let payAddress = BCH_ADDRESS;          // this order's address (falls back to cart/worker)
+let payIndex = null;                   // HD index from the payment API, for support/receipts
+let payFor = null;                     // order id the address was allocated for
 let quoteLeft = QUOTE_SECONDS;
 let quoteInterval = null;
 let currentStep = 'details';
+
+// Keep the order id across reloads so a customer who refreshes the pay screen
+// still sees the same address (the payment API is idempotent per order id).
+function loadOrderId() {
+  try { return sessionStorage.getItem(ORDER_KEY); } catch { return null; }
+}
+function saveOrderId(id) {
+  try { sessionStorage.setItem(ORDER_KEY, id); } catch {}
+}
+function clearOrderId() {
+  try { sessionStorage.removeItem(ORDER_KEY); } catch {}
+}
 
 function loadCart() {
   try {
@@ -174,20 +201,34 @@ function flashCopyBtn(btn) {
 function stickerCount(list = cart) {
   return list.reduce((n, l) => {
     const p = byId(l.id);
-    return n + (p && p.bundle ? p.packSize * l.qty : l.qty);
+    if (!p) return n;
+    if (p.custom) return n; // donations don't count as stickers
+    return n + (p.bundle ? p.packSize * l.qty : l.qty);
   }, 0);
 }
 
 function unitPrice(p, size, finish) {
   if (p.bundle) return p.price;
+  if (p.custom) return p.price || 5;
   const s = SIZES.find(x => x.v === size) || SIZES[0];
   const f = FINISHES.find(x => x.v === finish) || FINISHES[0];
   return p.price + s.add + f.add;
 }
 
+function hasPhysicalItems(list) {
+  return list.some(l => {
+    const p = byId(l.id);
+    if (!p) return false;
+    if (p.custom) return false;
+    return true; // bundles and stickers count as physical
+  });
+}
+
 function totalsFor(list, where) {
   const subtotal = list.reduce((sum, l) => {
     const p = byId(l.id);
+    if (!p) return sum;
+    if (p.custom) return sum + ((l.customAmount || p.price || 5) * (l.qty || 1));
     return sum + unitPrice(p, l.size, l.finish) * l.qty;
   }, 0);
   const count = stickerCount(list);
@@ -195,7 +236,7 @@ function totalsFor(list, where) {
   const savings = Math.round(subtotal * pct * 100) / 100;
   const after = subtotal - savings;
   const s = SHIP[where];
-  const shipping = list.length === 0 ? 0 : (after >= s.freeOver ? 0 : s.price);
+  const shipping = list.length === 0 || !hasPhysicalItems(list) ? 0 : (after >= s.freeOver ? 0 : s.price);
   return {
     count, subtotal, savings, shipping,
     freeGap: Math.max(0, s.freeOver - after),
@@ -219,11 +260,13 @@ function cardHTML(p) {
     ? `<div class="collage">${p.arts.map(a => `<img src="${a}" alt="" loading="lazy">`).join('')}</div>`
     : `<img src="${isBundle ? p.art : p.art}" alt="${p.name} sticker" loading="lazy">`;
 
-  const opts = isBundle
-    ? `<label class="opt wide"><span>Packs</span>${optionRow('qty', qtyOpts(1, 6), '1')}</label>`
-    : `<label class="opt"><span>Size</span>${optionRow('size', SIZES.map(s => ({ v: s.v, label: s.label + (s.add ? ` (+$${s.add})` : '') })), '3')}</label>
-       <label class="opt"><span>Finish</span>${optionRow('finish', FINISHES.map(f => ({ v: f.v, label: f.label + (f.add ? ` (+$${f.add})` : '') })), 'matte')}</label>
-       <label class="opt wide"><span>Qty</span>${optionRow('qty', qtyOpts(1, 10), '1')}</label>`;
+  const opts = p.custom
+    ? `<label class="opt wide"><span>Amount</span><input type="number" class="opt-amount" min="1" max="1000" step="1" value="5" style="width:80px;padding:4px 8px;"></label>`
+    : (isBundle
+        ? `<label class="opt wide"><span>Packs</span>${optionRow('qty', qtyOpts(1, 6), '1')}</label>`
+        : `<label class="opt"><span>Size</span>${optionRow('size', SIZES.map(s => ({ v: s.v, label: s.label + (s.add ? ` (+$${s.add})` : '') })), '3')}</label>
+           <label class="opt"><span>Finish</span>${optionRow('finish', FINISHES.map(f => ({ v: f.v, label: f.label + (f.add ? ` (+$${f.add})` : '') })), 'matte')}</label>
+           <label class="opt wide"><span>Qty</span>${optionRow('qty', qtyOpts(1, 10), '1')}</label>`);
 
   return `
   <article class="card" data-cat="${p.cat}" data-id="${p.id}">
@@ -269,9 +312,29 @@ function bindGrid() {
     if (!add) return;
     const card = add.closest('.card');
     const p = byId(card.dataset.id);
-    const size = card.querySelector('.opt-size')?.value || '3';
-    const finish = card.querySelector('.opt-finish')?.value || 'matte';
-    const qty = parseInt(card.querySelector('.opt-qty').value, 10) || 1;
+    if (!p) return;
+
+    if (p.custom) {
+      const amtInput = card.querySelector('.opt-amount');
+      const amt = Math.max(1, Math.min(1000, parseInt(amtInput?.value, 10) || 5));
+      const key = `${p.id}|donation`;
+      const line = cart.find(l => l.key === key);
+      if (line) { line.qty = 1; line.customAmount = amt; }
+      else cart.push({ key, id: p.id, size: null, finish: null, qty: 1, customAmount: amt });
+      p.price = amt;
+      saveCart();
+      renderCart();
+      bumpCart();
+      add.textContent = 'Added ✓';
+      add.classList.add('added');
+      setTimeout(() => { add.textContent = 'Add to cart'; add.classList.remove('added'); }, 1200);
+      return;
+    }
+
+    const size = p.bundle ? null : (card.querySelector('.opt-size')?.value || '3');
+    const finish = p.bundle ? null : (card.querySelector('.opt-finish')?.value || 'matte');
+    const qtySel = card.querySelector('.opt-qty');
+    const qty = qtySel ? parseInt(qtySel.value, 10) || 1 : 1;
     addToCart(p, size, finish, qty);
 
     add.textContent = 'Added ✓';
@@ -280,9 +343,16 @@ function bindGrid() {
   });
 
   $('#grid').addEventListener('change', e => {
-    if (!e.target.matches('.opt-size, .opt-finish')) return;
+    if (!e.target.matches('.opt-size, .opt-finish, .opt-amount')) return;
     const card = e.target.closest('.card');
     const p = byId(card.dataset.id);
+    if (!p) return;
+    if (p.custom) {
+      const amt = Math.max(1, Math.min(1000, parseInt(e.target.value, 10) || 5));
+      p.price = amt;
+      card.querySelector('.price').textContent = '$' + amt.toFixed(2);
+      return;
+    }
     const size = card.querySelector('.opt-size')?.value || '3';
     const finish = card.querySelector('.opt-finish')?.value || 'matte';
     card.querySelector('.price').textContent = '$' + unitPrice(p, size, finish).toFixed(2);
@@ -301,10 +371,15 @@ function bindGrid() {
    CART
    ============================================================ */
 function addToCart(p, size, finish, qty) {
-  const key = p.bundle ? `${p.id}|pack` : `${p.id}|${size}|${finish}`;
+  const key = p.bundle ? `${p.id}|pack` : (p.custom ? `${p.id}|donation` : `${p.id}|${size}|${finish}`);
   const line = cart.find(l => l.key === key);
-  if (line) line.qty = Math.min(99, line.qty + qty);
-  else cart.push({ key, id: p.id, size: p.bundle ? null : size, finish: p.bundle ? null : finish, qty });
+  if (line) {
+    if (p.custom) {
+      line.qty = Math.min(99, line.qty + qty);
+    } else {
+      line.qty = Math.min(99, line.qty + qty);
+    }
+  } else cart.push({ key, id: p.id, size: p.bundle ? null : (p.custom ? null : size), finish: p.bundle ? null : (p.custom ? null : finish), qty });
   saveCart();
   renderCart();
   bumpCart();
@@ -321,6 +396,7 @@ function bumpCart() {
 function lineOptions(l) {
   const p = byId(l.id);
   if (p.bundle) return p.spec;
+  if (p.custom) return 'Donation amount';
   const s = SIZES.find(x => x.v === l.size);
   const f = FINISHES.find(x => x.v === l.finish);
   return `${s ? s.label : ''} · ${f ? f.label : ''}`;
@@ -340,8 +416,9 @@ function renderCart() {
 
   lines.innerHTML = cart.map(l => {
     const p = byId(l.id);
-    const unit = unitPrice(p, l.size, l.finish);
+    const unit = p.custom ? (l.customAmount || p.price || 5) : unitPrice(p, l.size, l.finish);
     const thumb = p.bundle ? (p.arts ? p.arts[0] : p.art) : p.art;
+    const isDon = p.custom;
     return `
     <li class="cart-line" data-key="${l.key}">
       <div class="cl-thumb"><img src="${thumb}" alt=""></div>
@@ -351,12 +428,12 @@ function renderCart() {
         <span class="cl-unit">${usd(unit)} each</span>
       </div>
       <div class="cl-right">
-        <div class="cl-stepper">
+        ${isDon ? `<div class="cl-stepper" style="opacity:0.5;pointer-events:none;"><span class="cl-qty">1</span></div>` : `<div class="cl-stepper">
           <button class="cl-step" data-act="dec" aria-label="Decrease">−</button>
           <span class="cl-qty">${l.qty}</span>
           <button class="cl-step" data-act="inc" aria-label="Increase">+</button>
-        </div>
-        <span class="cl-total">${usd(unit * l.qty)}</span>
+        </div>`}
+        <span class="cl-total">${usd(unit * (isDon ? 1 : l.qty))}</span>
         <button class="cl-remove" data-act="rm">remove</button>
       </div>
     </li>`;
@@ -473,7 +550,13 @@ function openCheckout() {
 function closeCheckout() {
   $('#checkoutModal').hidden = true;
   stopQuote();
-  if (currentStep === 'done') orderId = null;   // completed order — next order gets a fresh ID
+  if (currentStep === 'done') {
+    orderId = null;
+    clearOrderId();
+    payFor = null;
+    payAddress = BCH_ADDRESS;
+    payIndex = null;
+  }   // completed order — next order gets a fresh ID
   document.body.classList.remove('no-scroll');
 }
 
@@ -538,7 +621,7 @@ function bindCheckout() {
     if (await copyText($('#payBchAmount').textContent.trim())) flashCopyBtn(e.currentTarget);
   });
   $('#copyAddr').addEventListener('click', async e => {
-    if (await copyText(BCH_ADDRESS)) flashCopyBtn(e.currentTarget);
+    if (await copyText(payAddress)) flashCopyBtn(e.currentTarget);
   });
   $('#copyOrderId').addEventListener('click', async e => {
     if (await copyText(orderId || '')) flashCopyBtn(e.currentTarget);
@@ -572,15 +655,60 @@ async function fetchRate() {
 function makeOrderId() {
   const abc = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
   let s = '';
-  for (let i = 0; i < 6; i++) s += abc[Math.floor(Math.random() * abc.length)];
+  for (let i = 0; i < 8; i++) s += abc[Math.floor(Math.random() * abc.length)];
   return 'STK-' + s;
 }
 
+// Ask the payment worker for this order's fresh address. Returns null if the
+// API is unreachable.
+async function allocateAddress(id) {
+  if (!PAY_API) return null;
+  const ctl = new AbortController();
+  const to = setTimeout(() => ctl.abort(), 4000);
+  try {
+    const r = await fetch(PAY_API.replace(/\/+$/, '') + '/address', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ orderId: id }),
+      signal: ctl.signal,
+    });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const j = await r.json();
+    if (!j || typeof j.address !== 'string' || !/^bitcoincash:q[0-9a-z]{41}$/.test(j.address)) {
+      throw new Error('unexpected address');
+    }
+    return { address: j.address, index: Number.isInteger(j.index) ? j.index : null };
+  } catch (e) {
+    console.warn('Payment API unavailable.', e);
+    return null;
+  } finally {
+    clearTimeout(to);
+  }
+}
+
 async function startPay() {
-  if (!orderId) orderId = makeOrderId();
+  if (!orderId) { orderId = makeOrderId(); saveOrderId(orderId); }
   $('#payOrderId').textContent = orderId;
   $('#doneOrderId').textContent = orderId;
-  $('#payAddr').textContent = BCH_ADDRESS;
+
+  // Reuse the address already assigned to this order, even if the API is
+  // temporarily down on a later visit to this step.
+  if (payFor !== orderId) {
+    const alloc = await allocateAddress(orderId);
+    if (alloc && alloc.address) {
+      payAddress = alloc.address;
+      payIndex = alloc.index;
+    } else {
+      payAddress = '';
+      payIndex = null;
+    }
+    payFor = orderId;
+  }
+  if (payAddress) {
+    $('#payAddr').textContent = payAddress;
+  } else {
+    $('#payAddr').textContent = 'Payment via cart checkout only';
+  }
 
   const where = currentWhere();
   const t = totalsFor(cart, where);
@@ -613,17 +741,20 @@ async function refreshQuote(firstTime) {
     ? `Rate: ${usd(rate)} / BCH · live (CoinGecko)`
     : `Rate: ${usd(rate)} / BCH · offline fallback — pay this exact amount`;
 
-  const uri = `bitcoincash:${BCH_ADDRESS.replace('bitcoincash:', '')}?amount=${amount}`;
   const img = $('#payQr');
-  img.onerror = () => {
-    if (img.dataset.fallback) return;
-    img.dataset.fallback = '1';
-    img.src = 'media/bch/pay-qr.svg';
-    $('#qrHint').textContent =
-      'QR could not include the amount — paste the address and enter the exact amount shown above.';
-  };
-  delete img.dataset.fallback;
-  img.src = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&margin=10&ecc=M&data=${encodeURIComponent(uri)}`;
+  if (payAddress) {
+    const uri = `bitcoincash:${payAddress.replace('bitcoincash:', '')}?amount=${amount}`;
+    img.onerror = () => {
+      img.hidden = true;
+      $('#qrHint').textContent =
+        'QR unavailable — copy the address and send the exact amount shown above.';
+    };
+    img.hidden = false;
+    img.src = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&margin=10&ecc=M&data=${encodeURIComponent(uri)}`;
+  } else {
+    img.hidden = true;
+    $('#qrHint').textContent = 'Use the cart checkout to pay. No direct address is shown.';
+  }
 
   if (!firstTime) toast('Rate refreshed — pay the new amount above');
 }
@@ -659,7 +790,8 @@ function mailtoLink(t) {
   const body = [
     `Order: ${orderId}`,
     `Amount sent: ${amount} BCH (${usd(t.total)} USD)`,
-    `To address: ${BCH_ADDRESS}`,
+    `To address: ${payAddress}`,
+    ...(payIndex === null ? [] : [`Address index: ${payIndex}`]),
     '',
     `Items (${t.count} sticker${t.count === 1 ? '' : 's'}):`,
     ...items,

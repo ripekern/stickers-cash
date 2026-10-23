@@ -16,6 +16,7 @@ A static storefront for selling vinyl stickers worldwide, paid **only in Bitcoin
 - `styles.css` — all styling (brand: BCH green `#0AC18E`, dark `#0F1820`, Ubuntu font;
   blog cards and post layout live in the long-form section)
 - `app.js` — catalog, cart (localStorage), checkout, BCH quotes, QR, order flow
+- `worker/` — optional Cloudflare Worker: per-order BCH addresses from an xpub
 - `stickers/` — the 9 sticker designs as die-cut SVGs (the product art)
 - `media/` — official BCH graphics, character art, payment QR (see `media/README.md`)
 - `trifold.html` — the original print trifold (kept as-is)
@@ -33,27 +34,40 @@ Automatic bundle savings: 3–4 stickers −5%, 5–9 −10%, 10+ −15%.
 
 ### Payment (BCH only)
 
-- Address: `bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh`
+- Payments: via cart checkout (per-order addresses from worker when configured)
 - Checkout converts the USD total to an exact BCH amount, rate locked 15 minutes.
 - Rate source: CoinGecko (`app.js` → `fetchRate()`), with baked-in fallback
   `FALLBACK_RATE` if the API is unreachable — update that constant occasionally.
-- QR: dynamic (embeds `?amount=`) via qrserver, falls back to the static
-  `media/bch/pay-qr.svg` if offline. Regenerate the static QR with:
+- QR: generated per order via qrserver, embedding the order's address and
+  `?amount=`. If qrserver is down the QR is hidden (no static fallback, since a
+  static code would point at a different address).
 
-```sh
-qrencode -t SVG -o media/bch/pay-qr.svg 'bitcoincash:qzfa0g4gqwz5srx3vgjjmk40gta54nzwtvkrdkt5zh'
-```
+### Per-order addresses (optional)
 
-### Order flow (no backend)
+With `PAY_API` set in `app.js`, checkout asks the `worker/` API for a fresh
+address derived from an account xpub (`m/44'/145'/0'/0/<index>`). Every order
+gets its own address, and the receipt email includes the address index. Details
+and deployment steps: `worker/README.md`.
+
+If the API is empty or unreachable, checkout silently falls back to the single
+static address above, so the store keeps working.
+
+Never commit the xpub. It lives in `wrangler secret` (production) or
+`worker/.dev.vars` (local, gitignored). An xpub is watch-only — it can derive
+addresses but cannot move funds. Still, treat it as private: it reveals every
+address and balance in that account.
+
+### Order flow (no backend required)
 
 1. Customer checks out client-side and is shown the exact BCH amount + QR.
-2. They click "I've sent the payment" → order ID (`STK-XXXXXX`) + prefilled
+2. They click "I've sent the payment" → order ID (`STK-XXXXXXXX`) + prefilled
    receipt email to `orders@stickers.cash`, including every cart line (product,
    size, finish, qty, line total) plus the subtotal/discount/shipping breakdown.
 3. You match the payment against your wallet and ship.
 
-Change `STORE_EMAIL` in `app.js` if the inbox differs. For automated payment
-detection you'd add a server watching the address — nothing here requires one.
+Change `STORE_EMAIL` in `app.js` if the inbox differs. The Worker only issues
+addresses; it does not detect payments. Payment status is still matched in your
+wallet (or by address, which is now unambiguous).
 
 ## Editing
 
