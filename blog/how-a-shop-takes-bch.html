@@ -257,6 +257,104 @@
         number, not a password.</p>
     </aside>
 
+    <h3>Build it with an AI agent</h3>
+
+    <p>You do not have to write this from scratch. Copy the prompt below into any AI coding agent
+      — Claude, Cursor, Codex, Copilot — and it will have enough context to scaffold the entire
+      shop. Adapt the product list, the wallet address, and the branding to your own business.</p>
+
+    <pre><code>Build a BCH-only e-commerce storefront. It is a static website (HTML/CSS/JS) with
+a Cloudflare Worker backend for per-order Bitcoin Cash address derivation. No payment
+processor, no database for orders, no user accounts.
+
+## Architecture
+
+### Static storefront (hosted on GitHub Pages, Cloudflare Pages, or similar)
+
+1. **Product catalog** — a JavaScript array of objects, each with: id, name,
+   category, price (in USD), product image path, short description.
+2. **Cart** — stored in localStorage. Customers choose product variants (size,
+   finish), add to cart, adjust quantities. Show subtotal, bundle discounts
+   (e.g. 5+ items saves 10%), shipping, and total.
+3. **Shipping** — flat rates: $2 domestic (free over $25), $6 international
+   (free over $50). A &lt;select&gt; in the cart drawer lets the customer choose.
+4. **Checkout (3-step modal)**:
+   - Step 1 — Shipping details form (name, email, address, country select,
+     shipping method). Validate client-side. Show an order summary sidebar.
+   - Step 2 — Payment. Fetch the current BCH/USD rate from a public API
+     (e.g. CoinGecko /api/v3/simple/price?ids=bitcoin-cash&amp;vs_currencies=usd).
+     Lock the rate for 15 minutes with a countdown timer. Call the Worker
+     (POST /address with { orderId }) to get a fresh BCH address. Show a QR
+     code encoding a bitcoincash: URI (bitcoincash:&lt;address&gt;?amount=&lt;bch&gt;).
+     Include copy buttons for the address and amount.
+   - Step 3 — Confirmation. Show order ID. Ask the customer to email their
+     wallet receipt/txid to the shop email. Provide a mailto: link with the
+     order ID in the subject.
+5. **QR codes** — generate client-side using a library like qrcode (or a
+   simple QR endpoint). The URI format is: bitcoincash:&lt;address&gt;?amount=&lt;bch&gt;
+6. **Design** — mobile-first, responsive. Light and dark theme via
+   prefers-color-scheme. Clean card-based layout. Sticky header with cart
+   button.
+
+### Cloudflare Worker (per-order address derivation)
+
+A small Worker with a D1 database that stores an address counter:
+
+- Table: counter(id INTEGER PRIMARY KEY, next_index INTEGER DEFAULT 1)
+- Table: orders(order_id TEXT, address_index INTEGER, created_at TEXT)
+
+Endpoints:
+- POST /address — body: { orderId }. Idempotent per orderId. Derives the next
+  BCH address from a watch-only xpub (stored as a Worker secret, never
+  committed). Uses BIP44 path m/44'/145'/0'/0/&lt;index&gt;. Increments the
+  counter atomically. Returns { address, index }.
+- GET /health — returns { ok: true, xpubConfigured: true/false }.
+
+Address derivation uses @scure/bip32 (or similar) to derive from the xpub.
+The xpub must be at account depth (m/44'/145'/0'). Validate and reject xprv,
+tpub, ypub, zpub, and xpubs at wrong depths.
+
+The Worker has CORS headers allowing the storefront origin. If the Worker is
+unreachable, the storefront falls back to a single hardcoded BCH address.
+
+### Exchange rate
+
+Fetch BCH/USD from a public API at checkout time. Cache for ~60 seconds to
+avoid hammering the endpoint. Show the locked rate and a countdown. Refresh
+the quote when the timer expires. The fallback rate is hardcoded as a last
+resort.
+
+### Key constraints
+
+- BCH only. No credit cards, no PayPal, no other payment methods.
+- No payment detection automation. The shop owner checks their wallet
+  manually and matches payments to orders.
+- The xpub is watch-only. The Worker can derive addresses but cannot spend.
+- All customer data stays in the browser (localStorage). Nothing is sent to
+  a server except the address request (orderId only — no name, no address,
+  no email).
+- The entire site must work without JavaScript for basic browsing
+  (progressive enhancement for the cart/checkout).
+
+### Deployment
+
+- Storefront: GitHub Pages or Cloudflare Pages. Custom domain.
+- Worker: npx wrangler deploy. The workers.dev URL is set in the storefront
+  config.
+- Secrets: the xpub is stored as a Cloudflare Worker secret (wrangler secret
+  put XPUB). Never in source control.
+- Database: Cloudflare D1. Run schema.sql once to create the tables.
+
+### Reference
+
+The stickers.cash site (https://stickers.cash) is a working example of this
+exact architecture. Its Cloudflare Worker is open source and documented at
+https://github.com/ripekern/stickers-cash/tree/main/worker</code></pre>
+
+    <p>That prompt covers the architecture, the checkout flow, the address derivation, and the
+      deployment. An AI agent with access to a code editor can scaffold the whole thing in a sitting.
+      From there, swap in your own products, your own wallet, and your own branding.</p>
+
     <p class="post-disclaimer">We do not provide financial advice.</p>
 
     <aside class="blog-donate" aria-label="Blog donation">

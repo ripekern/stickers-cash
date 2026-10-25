@@ -702,6 +702,8 @@ select, input, .ship-methods{
 .article a{color:var(--green-ink);text-decoration-thickness:1.5px;text-underline-offset:2px}
 .article a:hover{text-decoration-thickness:2px}
 .article code{font-size:.9em;background:var(--mint);border:1px solid #CBEFE1;border-radius:5px;padding:1px 5px}
+.article pre{background:var(--dark);color:var(--ink);border-radius:12px;padding:20px;margin:26px 0;overflow-x:auto;font-size:14px;line-height:1.6}
+.article pre code{background:none;border:none;padding:0;color:inherit;font-size:inherit}
 
 .article .source-note{font-size:12.5px;line-height:1.5;color:var(--muted);margin:0 0 26px}
 
