@@ -106,18 +106,8 @@ const PRODUCTS = [
     arts: ['stickers/p2p-badge.svg','stickers/under-1-cent.svg','stickers/money-over-ip.svg','stickers/paid-peep.svg'],
     blurb: 'Every design plus two bonus peeks. The best value per sticker in the shop.',
   },
-  {
-    id: 'donation', name: 'Blog / Project Donation', cat: 'donation', catLabel: 'Donation',
-    price: 5, custom: true,
-    art: 'media/bch/bch-circle.svg',
-    blurb: 'Support stickers.cash and the Bitcoin Cash blog. Send any amount.',
-  },
 ];
 const byId = id => PRODUCTS.find(p => p.id === id);
-
-function isDonation(p) {
-  return p && p.custom;
-}
 
 /* ---------------- state ---------------- */
 let cart = loadCart();
@@ -203,49 +193,29 @@ function stickerCount(list = cart) {
   return list.reduce((n, l) => {
     const p = byId(l.id);
     if (!p) return n;
-    if (p.custom) return n; // donations don't count as stickers
     return n + (p.bundle ? p.packSize * l.qty : l.qty);
   }, 0);
 }
 
 function unitPrice(p, size, finish) {
   if (p.bundle) return p.price;
-  if (p.custom) return p.price || 5;
   const s = SIZES.find(x => x.v === size) || SIZES[0];
   const f = FINISHES.find(x => x.v === finish) || FINISHES[0];
   return p.price + s.add + f.add;
-}
-
-// Price for a cart line. Donations store their amount on the line, so changing
-// the amount on the product card can never rewrite an item already in the cart.
-function lineUnitPrice(l) {
-  const p = byId(l.id);
-  if (!p) return 0;
-  if (p.custom) return l.customAmount || p.price || 5;
-  return unitPrice(p, l.size, l.finish);
-}
-
-function hasPhysicalItems(list) {
-  return list.some(l => {
-    const p = byId(l.id);
-    if (!p) return false;
-    if (p.custom) return false;
-    return true; // bundles and stickers count as physical
-  });
 }
 
 function totalsFor(list, where) {
   const subtotal = list.reduce((sum, l) => {
     const p = byId(l.id);
     if (!p) return sum;
-    return sum + lineUnitPrice(l) * (l.qty || 1);
+    return sum + unitPrice(p, l.size, l.finish) * (l.qty || 1);
   }, 0);
   const count = stickerCount(list);
   const pct = count >= 10 ? 0.15 : count >= 5 ? 0.10 : count >= 3 ? 0.05 : 0;
   const savings = Math.round(subtotal * pct * 100) / 100;
   const after = subtotal - savings;
   const s = SHIP[where];
-  const shipping = list.length === 0 || !hasPhysicalItems(list) ? 0 : (after >= s.freeOver ? 0 : s.price);
+  const shipping = list.length === 0 ? 0 : (after >= s.freeOver ? 0 : s.price);
   return {
     count, subtotal, savings, shipping,
     freeGap: Math.max(0, s.freeOver - after),
@@ -269,13 +239,11 @@ function cardHTML(p) {
     ? `<div class="collage">${p.arts.map(a => `<img src="${a}" alt="" loading="lazy">`).join('')}</div>`
     : `<img src="${isBundle ? p.art : p.art}" alt="${p.name} sticker" loading="lazy">`;
 
-  const opts = p.custom
-    ? `<label class="opt wide"><span>Amount (USD)</span><input type="number" class="opt-amount" min="1" max="1000" step="1" value="5" style="width:80px;padding:4px 8px;"></label>`
-    : (isBundle
-        ? `<label class="opt wide"><span>Packs</span>${optionRow('qty', qtyOpts(1, 6), '1')}</label>`
-        : `<label class="opt"><span>Size</span>${optionRow('size', SIZES.map(s => ({ v: s.v, label: s.label + (s.add ? ` (+$${s.add})` : '') })), '3')}</label>
-           <label class="opt"><span>Finish</span>${optionRow('finish', FINISHES.map(f => ({ v: f.v, label: f.label + (f.add ? ` (+$${f.add})` : '') })), 'matte')}</label>
-           <label class="opt wide"><span>Qty</span>${optionRow('qty', qtyOpts(1, 10), '1')}</label>`);
+  const opts = isBundle
+    ? `<label class="opt wide"><span>Packs</span>${optionRow('qty', qtyOpts(1, 6), '1')}</label>`
+    : `<label class="opt"><span>Size</span>${optionRow('size', SIZES.map(s => ({ v: s.v, label: s.label + (s.add ? ` (+$${s.add})` : '') })), '3')}</label>
+       <label class="opt"><span>Finish</span>${optionRow('finish', FINISHES.map(f => ({ v: f.v, label: f.label + (f.add ? ` (+$${f.add})` : '') })), 'matte')}</label>
+       <label class="opt wide"><span>Qty</span>${optionRow('qty', qtyOpts(1, 10), '1')}</label>`;
 
   return `
   <article class="card" data-cat="${p.cat}" data-id="${p.id}">
@@ -288,10 +256,8 @@ function cardHTML(p) {
       <p class="card-blurb">${p.blurb}</p>
       ${p.spec ? `<p class="spec">${p.spec}</p>` : ''}
       <div class="price-row">
-        ${p.custom
-          ? `<span class="price">$1+</span><span class="unit">you choose</span>`
-          : `<span class="price">$${p.price.toFixed(2)}</span>
-             <span class="unit">${isBundle ? 'per pack' : 'each'}</span>`}
+        <span class="price">$${p.price.toFixed(2)}</span>
+        <span class="unit">${isBundle ? 'per pack' : 'each'}</span>
       </div>
       <div class="opts">${opts}</div>
       <button class="btn btn-primary btn-add">Add to cart</button>
@@ -325,22 +291,6 @@ function bindGrid() {
     const p = byId(card.dataset.id);
     if (!p) return;
 
-    if (p.custom) {
-      const amtInput = card.querySelector('.opt-amount');
-      const amt = Math.max(1, Math.min(1000, parseInt(amtInput?.value, 10) || 5));
-      const key = `${p.id}|donation`;
-      const line = cart.find(l => l.key === key);
-      if (line) { line.qty = 1; line.customAmount = amt; }
-      else cart.push({ key, id: p.id, size: null, finish: null, qty: 1, customAmount: amt });
-      saveCart();
-      renderCart();
-      bumpCart();
-      add.textContent = 'Added ✓';
-      add.classList.add('added');
-      setTimeout(() => { add.textContent = 'Add to cart'; add.classList.remove('added'); }, 1200);
-      return;
-    }
-
     const size = p.bundle ? null : (card.querySelector('.opt-size')?.value || '3');
     const finish = p.bundle ? null : (card.querySelector('.opt-finish')?.value || 'matte');
     const qtySel = card.querySelector('.opt-qty');
@@ -353,15 +303,10 @@ function bindGrid() {
   });
 
   $('#grid').addEventListener('change', e => {
-    if (!e.target.matches('.opt-size, .opt-finish, .opt-amount')) return;
+    if (!e.target.matches('.opt-size, .opt-finish')) return;
     const card = e.target.closest('.card');
     const p = byId(card.dataset.id);
     if (!p) return;
-    if (p.custom) {
-      const amt = Math.max(1, Math.min(1000, parseInt(e.target.value, 10) || 5));
-      e.target.value = String(amt);
-      return;
-    }
     const size = card.querySelector('.opt-size')?.value || '3';
     const finish = card.querySelector('.opt-finish')?.value || 'matte';
     card.querySelector('.price').textContent = '$' + unitPrice(p, size, finish).toFixed(2);
@@ -380,15 +325,11 @@ function bindGrid() {
    CART
    ============================================================ */
 function addToCart(p, size, finish, qty) {
-  const key = p.bundle ? `${p.id}|pack` : (p.custom ? `${p.id}|donation` : `${p.id}|${size}|${finish}`);
+  const key = p.bundle ? `${p.id}|pack` : `${p.id}|${size}|${finish}`;
   const line = cart.find(l => l.key === key);
   if (line) {
-    if (p.custom) {
-      line.qty = Math.min(99, line.qty + qty);
-    } else {
-      line.qty = Math.min(99, line.qty + qty);
-    }
-  } else cart.push({ key, id: p.id, size: p.bundle ? null : (p.custom ? null : size), finish: p.bundle ? null : (p.custom ? null : finish), qty });
+    line.qty = Math.min(99, line.qty + qty);
+  } else cart.push({ key, id: p.id, size: p.bundle ? null : size, finish: p.bundle ? null : finish, qty });
   saveCart();
   renderCart();
   bumpCart();
@@ -405,7 +346,6 @@ function bumpCart() {
 function lineOptions(l) {
   const p = byId(l.id);
   if (p.bundle) return p.spec;
-  if (p.custom) return 'Donation amount';
   const s = SIZES.find(x => x.v === l.size);
   const f = FINISHES.find(x => x.v === l.finish);
   return `${s ? s.label : ''} · ${f ? f.label : ''}`;
@@ -425,24 +365,23 @@ function renderCart() {
 
   lines.innerHTML = cart.map(l => {
     const p = byId(l.id);
-    const unit = lineUnitPrice(l);
+    const unit = unitPrice(p, l.size, l.finish);
     const thumb = p.bundle ? (p.arts ? p.arts[0] : p.art) : p.art;
-    const isDon = p.custom;
     return `
     <li class="cart-line" data-key="${l.key}">
       <div class="cl-thumb"><img src="${thumb}" alt=""></div>
       <div class="cl-info">
         <span class="cl-name">${p.name}</span>
         <span class="cl-opts">${lineOptions(l)}</span>
-        <span class="cl-unit">${usd(unit)} ${isDon ? 'donation' : 'each'}</span>
+        <span class="cl-unit">${usd(unit)} each</span>
       </div>
       <div class="cl-right">
-        ${isDon ? `<div class="cl-stepper" style="opacity:0.5;pointer-events:none;"><span class="cl-qty">1</span></div>` : `<div class="cl-stepper">
+        <div class="cl-stepper">
           <button class="cl-step" data-act="dec" aria-label="Decrease">−</button>
           <span class="cl-qty">${l.qty}</span>
           <button class="cl-step" data-act="inc" aria-label="Increase">+</button>
-        </div>`}
-        <span class="cl-total">${usd(unit * (isDon ? 1 : l.qty))}</span>
+        </div>
+        <span class="cl-total">${usd(unit * l.qty)}</span>
         <button class="cl-remove" data-act="rm">remove</button>
       </div>
     </li>`;
@@ -522,7 +461,7 @@ function renderSummary() {
   const t = totalsFor(cart, where);
   const rows = cart.map(l => {
     const p = byId(l.id);
-    const unit = lineUnitPrice(l);
+    const unit = unitPrice(p, l.size, l.finish);
     return `<li class="mini-line">
       <span class="ml-info"><span class="ml-name">${p.name} × ${l.qty}</span>
       <span class="ml-meta">${lineOptions(l)}</span></span>
@@ -796,7 +735,7 @@ function mailtoLink(t) {
   const amount = bchAmount(t);
   const items = cart.map(l => {
     const p = byId(l.id);
-    const unit = lineUnitPrice(l);
+    const unit = unitPrice(p, l.size, l.finish);
     const opts = lineOptions(l);
     return `  ${l.qty} × ${p.name}${opts ? ` (${opts})` : ''} — ${usd(unit * l.qty)}`;
   });

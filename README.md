@@ -7,12 +7,13 @@ A static storefront for selling vinyl stickers worldwide, paid **only in Bitcoin
 ## The site
 
 - `index.html` — storefront (hero, product grid, how-it-works, shipping, FAQ, footer)
+- `donate.html` — anonymous donation page: one static BCH address + QR, no cart or account
 - `blog.html` — blog index: hero plus card grid for the thirty-part internet cash guide.
   Chapter one (posts 1–10) is built from `why-bitcoin-is-like-cash.md` +
   `teachBitcoinCash.md`; chapter two (posts 11–20) is the practical BCH handbook;
   chapter three (posts 21–30) covers BCH programmability, CashTokens, covenants, and apps.
 - `blog/` — one static page per post, with previous/next navigation
-- `blog.js` — mobile nav + copy-address toast for the blog pages
+- `blog.js` — mobile nav + copy-address toast for the blog and donation pages
 - `styles.css` — all styling (brand: BCH green `#0AC18E`, dark `#0F1820`, Ubuntu font;
   blog cards and post layout live in the long-form section)
 - `app.js` — catalog, cart (localStorage), checkout, BCH quotes, QR, order flow
@@ -26,6 +27,7 @@ A static storefront for selling vinyl stickers worldwide, paid **only in Bitcoin
 9 single designs + 3 bundles. Singles offer size (**3″ / 4″ / 6″**, +$1 / +$3),
 finish (**matte / glossy**) and quantity.
 Automatic bundle savings: 3–4 stickers −5%, 5–9 −10%, 10+ −15%.
+Donations are separate: see `donate.html`, not a cart product.
 
 | Shipping | Rate | Free over | Time |
 |---|---|---|---|
@@ -38,6 +40,9 @@ Automatic bundle savings: 3–4 stickers −5%, 5–9 −10%, 10+ −15%.
   if the Worker is unreachable, checkout falls back to the published address
   `bitcoincash:qqmgqc33anq340gsy6mfrf5c0c9rhf7805xwns52am` (index 0 of the same
   xpub, so both paths land in the same wallet).
+- Donations: `donate.html` uses that same published address as a single static
+  donation address. No Worker, no cart, no personal details. Its QR is
+  `media/bch/donate-qr.svg`; regenerate it with `qrencode` if the address changes.
 - Checkout converts the USD total to an exact BCH amount, rate locked 15 minutes.
 - Rate source: CoinGecko (`app.js` → `fetchRate()`), with baked-in fallback
   `FALLBACK_RATE` if the API is unreachable — update that constant occasionally.
