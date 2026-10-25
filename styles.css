@@ -918,12 +918,14 @@ select, input, .ship-methods{
   
   /* Override text colors that use --dark (which is now dark background) */
   .hero h1,
+  .hero h1 em,
+  .post-hero h1,
+  .post-hero h1 em,
+  .post-head h1,
   .card-title,
   .step-card h3,
   .section-head h2,
   .series-head h2,
-  .post-hero h1,
-  .post-head h1,
   .post-card h3,
   .drawer-head h3,
   .trust-item b,
@@ -933,16 +935,13 @@ select, input, .ship-methods{
   .cl-name,
   .cl-total,
   .t-row.grand,
-  .mSub,
-  .mTotal,
-  .payTotalUsd,
   .price,
   .step-title,
   .field label,
   .ship-method b,
   .done-wrap h3,
-  .post-card-kicker,
   .series-kicker,
+  .post-card-kicker,
   .post-card-more,
   .wallet-link,
   .bch-amount,
@@ -954,9 +953,12 @@ select, input, .ship-methods{
   .spec,
   .btn-copy,
   .snav.active,
-  .post-disclaimer,
-  .hero h1 em,
-  .post-hero h1 em,
+  .donate h2,
+  .donate-note b,
+  .donate-steps b,
+  .blog-donate-title,
+  .article h2,
+  .article h3,
   .article strong,
   .callout strong,
   .pullquote,
@@ -965,11 +967,16 @@ select, input, .ship-methods{
   .post-table th,
   .post-table td:first-child,
   .post-table td b,
-  .pager-card b,
-  .donate h2,
-  .donate-note b,
-  .donate-steps b,
-  .blog-donate-title{
+  .pager-card b{
+    color:var(--ink);
+  }
+  /* Article links stay green */
+  .article a,
+  .article a:hover{
+    color:var(--green-ink);
+  }
+  /* Article text is hardcoded to #2C3B46 — override for dark mode */
+  .article{
     color:var(--ink);
   }
   
@@ -1105,11 +1112,6 @@ select, input, .ship-methods{
   
   .nav a:hover{
     color:var(--green-ink);
-  }
-  
-  /* Article text */
-  .article{
-    color:var(--ink);
   }
   
   /* Footer text */
