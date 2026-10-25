@@ -216,6 +216,15 @@ function unitPrice(p, size, finish) {
   return p.price + s.add + f.add;
 }
 
+// Price for a cart line. Donations store their amount on the line, so changing
+// the amount on the product card can never rewrite an item already in the cart.
+function lineUnitPrice(l) {
+  const p = byId(l.id);
+  if (!p) return 0;
+  if (p.custom) return l.customAmount || p.price || 5;
+  return unitPrice(p, l.size, l.finish);
+}
+
 function hasPhysicalItems(list) {
   return list.some(l => {
     const p = byId(l.id);
@@ -229,8 +238,7 @@ function totalsFor(list, where) {
   const subtotal = list.reduce((sum, l) => {
     const p = byId(l.id);
     if (!p) return sum;
-    if (p.custom) return sum + ((l.customAmount || p.price || 5) * (l.qty || 1));
-    return sum + unitPrice(p, l.size, l.finish) * l.qty;
+    return sum + lineUnitPrice(l) * (l.qty || 1);
   }, 0);
   const count = stickerCount(list);
   const pct = count >= 10 ? 0.15 : count >= 5 ? 0.10 : count >= 3 ? 0.05 : 0;
@@ -262,7 +270,7 @@ function cardHTML(p) {
     : `<img src="${isBundle ? p.art : p.art}" alt="${p.name} sticker" loading="lazy">`;
 
   const opts = p.custom
-    ? `<label class="opt wide"><span>Amount</span><input type="number" class="opt-amount" min="1" max="1000" step="1" value="5" style="width:80px;padding:4px 8px;"></label>`
+    ? `<label class="opt wide"><span>Amount (USD)</span><input type="number" class="opt-amount" min="1" max="1000" step="1" value="5" style="width:80px;padding:4px 8px;"></label>`
     : (isBundle
         ? `<label class="opt wide"><span>Packs</span>${optionRow('qty', qtyOpts(1, 6), '1')}</label>`
         : `<label class="opt"><span>Size</span>${optionRow('size', SIZES.map(s => ({ v: s.v, label: s.label + (s.add ? ` (+$${s.add})` : '') })), '3')}</label>
@@ -280,8 +288,10 @@ function cardHTML(p) {
       <p class="card-blurb">${p.blurb}</p>
       ${p.spec ? `<p class="spec">${p.spec}</p>` : ''}
       <div class="price-row">
-        <span class="price">$${p.price.toFixed(2)}</span>
-        <span class="unit">${isBundle ? 'per pack' : 'each'}</span>
+        ${p.custom
+          ? `<span class="price">$1+</span><span class="unit">you choose</span>`
+          : `<span class="price">$${p.price.toFixed(2)}</span>
+             <span class="unit">${isBundle ? 'per pack' : 'each'}</span>`}
       </div>
       <div class="opts">${opts}</div>
       <button class="btn btn-primary btn-add">Add to cart</button>
@@ -322,7 +332,6 @@ function bindGrid() {
       const line = cart.find(l => l.key === key);
       if (line) { line.qty = 1; line.customAmount = amt; }
       else cart.push({ key, id: p.id, size: null, finish: null, qty: 1, customAmount: amt });
-      p.price = amt;
       saveCart();
       renderCart();
       bumpCart();
@@ -350,8 +359,7 @@ function bindGrid() {
     if (!p) return;
     if (p.custom) {
       const amt = Math.max(1, Math.min(1000, parseInt(e.target.value, 10) || 5));
-      p.price = amt;
-      card.querySelector('.price').textContent = '$' + amt.toFixed(2);
+      e.target.value = String(amt);
       return;
     }
     const size = card.querySelector('.opt-size')?.value || '3';
@@ -417,7 +425,7 @@ function renderCart() {
 
   lines.innerHTML = cart.map(l => {
     const p = byId(l.id);
-    const unit = p.custom ? (l.customAmount || p.price || 5) : unitPrice(p, l.size, l.finish);
+    const unit = lineUnitPrice(l);
     const thumb = p.bundle ? (p.arts ? p.arts[0] : p.art) : p.art;
     const isDon = p.custom;
     return `
@@ -426,7 +434,7 @@ function renderCart() {
       <div class="cl-info">
         <span class="cl-name">${p.name}</span>
         <span class="cl-opts">${lineOptions(l)}</span>
-        <span class="cl-unit">${usd(unit)} each</span>
+        <span class="cl-unit">${usd(unit)} ${isDon ? 'donation' : 'each'}</span>
       </div>
       <div class="cl-right">
         ${isDon ? `<div class="cl-stepper" style="opacity:0.5;pointer-events:none;"><span class="cl-qty">1</span></div>` : `<div class="cl-stepper">
@@ -514,7 +522,7 @@ function renderSummary() {
   const t = totalsFor(cart, where);
   const rows = cart.map(l => {
     const p = byId(l.id);
-    const unit = unitPrice(p, l.size, l.finish);
+    const unit = lineUnitPrice(l);
     return `<li class="mini-line">
       <span class="ml-info"><span class="ml-name">${p.name} × ${l.qty}</span>
       <span class="ml-meta">${lineOptions(l)}</span></span>
@@ -788,7 +796,7 @@ function mailtoLink(t) {
   const amount = bchAmount(t);
   const items = cart.map(l => {
     const p = byId(l.id);
-    const unit = unitPrice(p, l.size, l.finish);
+    const unit = lineUnitPrice(l);
     const opts = lineOptions(l);
     return `  ${l.qty} × ${p.name}${opts ? ` (${opts})` : ''} — ${usd(unit * l.qty)}`;
   });
