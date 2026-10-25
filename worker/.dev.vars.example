@@ -1,0 +1,4 @@
+# Copy to .dev.vars (gitignored) and paste your account-level xpub.
+# Selene: Settings -> wallet -> Additional wallet info -> xPub
+# Must be at m/44'/145'/0' (depth 3). Never commit the real value.
+XPUB=xpub6...

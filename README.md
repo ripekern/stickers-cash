@@ -34,7 +34,10 @@ Automatic bundle savings: 3–4 stickers −5%, 5–9 −10%, 10+ −15%.
 
 ### Payment (BCH only)
 
-- Payments: via cart checkout (per-order addresses from worker when configured)
+- Payments: via cart checkout. Each order gets its own address from the Worker;
+  if the Worker is unreachable, checkout falls back to the published address
+  `bitcoincash:qqmgqc33anq340gsy6mfrf5c0c9rhf7805xwns52am` (index 0 of the same
+  xpub, so both paths land in the same wallet).
 - Checkout converts the USD total to an exact BCH amount, rate locked 15 minutes.
 - Rate source: CoinGecko (`app.js` → `fetchRate()`), with baked-in fallback
   `FALLBACK_RATE` if the API is unreachable — update that constant occasionally.
@@ -44,13 +47,15 @@ Automatic bundle savings: 3–4 stickers −5%, 5–9 −10%, 10+ −15%.
 
 ### Per-order addresses (optional)
 
-With `PAY_API` set in `app.js`, checkout asks the `worker/` API for a fresh
-address derived from an account xpub (`m/44'/145'/0'/0/<index>`). Every order
-gets its own address, and the receipt email includes the address index. Details
-and deployment steps: `worker/README.md`.
+With `PAY_API` set in `app.js` (currently
+`https://stickers-cash-pay.stickers-cash-pay.workers.dev`), checkout asks the
+`worker/` API for a fresh address derived from an account xpub
+(`m/44'/145'/0'/0/<index>`). Every order gets its own address, and the receipt
+email includes the address index. Details and deployment steps:
+`worker/README.md`.
 
-If the API is empty or unreachable, checkout silently falls back to the single
-static address above, so the store keeps working.
+If the API is unreachable, checkout silently falls back to `BCH_ADDRESS`
+(index 0), so the store keeps working.
 
 Never commit the xpub. It lives in `wrangler secret` (production) or
 `worker/.dev.vars` (local, gitignored). An xpub is watch-only — it can derive

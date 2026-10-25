@@ -1,0 +1,21 @@
+name = "stickers-cash-pay"
+main = "src/index.js"
+compatibility_date = "2025-09-01"
+
+# The storefront is hosted on GitHub Pages, so this Worker is reached through
+# its workers.dev URL. (A custom route would require the stickers.cash zone to
+# be proxied by Cloudflare, which it is not.)
+workers_dev = true
+
+[[d1_databases]]
+binding = "DB"
+database_name = "stickers-cash-pay"
+database_id = "d30a7da6-e72c-40b4-a96c-547fe418c498"
+
+[vars]
+# Origins allowed to call /address. The production site plus the local dev server.
+ALLOWED_ORIGINS = "https://stickers.cash,https://www.stickers.cash,http://localhost:8765,http://127.0.0.1:8765"
+
+# Never put XPUB here. Set it as a secret:
+#   npx wrangler secret put XPUB          (production)
+#   echo 'XPUB=xpub...' > .dev.vars       (local dev)

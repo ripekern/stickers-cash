@@ -4,8 +4,9 @@
 'use strict';
 
 /* ---------------- config ---------------- */
-const BCH_ADDRESS = '';
-const PAY_API = '';                    // per-order addresses: e.g. 'https://stickers-cash-pay.you.workers.dev'
+// Watch-only address at m/44'/145'/0'/0/0. Used if the per-order API is down.
+const BCH_ADDRESS = 'bitcoincash:qqmgqc33anq340gsy6mfrf5c0c9rhf7805xwns52am';
+const PAY_API = 'https://stickers-cash-pay.stickers-cash-pay.workers.dev'; // per-order addresses
 const FALLBACK_RATE = 277.76;          // USD per BCH, used if the rate API is unreachable
 const QUOTE_SECONDS = 15 * 60;         // rate lock
 const STORE_EMAIL = 'orders@stickers.cash';
@@ -692,23 +693,26 @@ async function startPay() {
   $('#doneOrderId').textContent = orderId;
 
   // Reuse the address already assigned to this order, even if the API is
-  // temporarily down on a later visit to this step.
+  // temporarily down on a later visit to this step. If allocation fails, keep
+  // the published fallback address so the customer can still pay.
   if (payFor !== orderId) {
     const alloc = await allocateAddress(orderId);
     if (alloc && alloc.address) {
       payAddress = alloc.address;
       payIndex = alloc.index;
+      payFor = orderId;
     } else {
-      payAddress = '';
+      payAddress = BCH_ADDRESS;
       payIndex = null;
+      payFor = null;
     }
-    payFor = orderId;
   }
   if (payAddress) {
     $('#payAddr').textContent = payAddress;
   } else {
-    $('#payAddr').textContent = 'Payment via cart checkout only';
+    $('#payAddr').textContent = 'Payment address unavailable — email orders@stickers.cash';
   }
+  $('#copyAddr').disabled = !payAddress;
 
   const where = currentWhere();
   const t = totalsFor(cart, where);
@@ -753,7 +757,8 @@ async function refreshQuote(firstTime) {
     img.src = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&margin=10&ecc=M&data=${encodeURIComponent(uri)}`;
   } else {
     img.hidden = true;
-    $('#qrHint').textContent = 'Use the cart checkout to pay. No direct address is shown.';
+    $('#qrHint').textContent =
+      'Payment address unavailable — email orders@stickers.cash and we will send one.';
   }
 
   if (!firstTime) toast('Rate refreshed — pay the new amount above');
