@@ -895,3 +895,584 @@ select, input, .ship-methods{
   html{scroll-behavior:auto}
   .reveal{opacity:1;transform:none}
 }
+
+/* ---------- dark mode ---------- */
+@media (prefers-color-scheme: dark){
+  :root{
+    --green:#0AC18E;
+    --green-dk:#08b586;
+    --green-ink:#3FE5B5;
+    --mint:#1A2A24;
+    --mint-2:#15201C;
+    --dark:#0A0F14;
+    --ink:#E0E6E9;
+    --muted:#8A96A0;
+    --line:#2A3640;
+    --paper:#1A2530;
+    --bg:#0F1820;
+    --danger:#E86868;
+    --shadow-sm:0 2px 8px rgba(0,0,0,.3);
+    --shadow-md:0 10px 30px rgba(0,0,0,.4);
+    --shadow-lg:0 24px 60px rgba(0,0,0,.5);
+  }
+  
+  /* Override text colors that use --dark (which is now dark background) */
+  .hero h1,
+  .card-title,
+  .step-card h3,
+  .section-head h2,
+  .series-head h2,
+  .post-hero h1,
+  .post-head h1,
+  .post-card h3,
+  .drawer-head h3,
+  .trust-item b,
+  .ship-card h3,
+  .note b,
+  .faq-item summary,
+  .cl-name,
+  .cl-total,
+  .t-row.grand,
+  .mSub,
+  .mTotal,
+  .payTotalUsd,
+  .price,
+  .step-title,
+  .field label,
+  .ship-method b,
+  .done-wrap h3,
+  .post-card-kicker,
+  .series-kicker,
+  .post-card-more,
+  .wallet-link,
+  .bch-amount,
+  .ml-name,
+  .ml-price,
+  .qr-title,
+  .eyebrow,
+  .tag,
+  .spec,
+  .btn-copy,
+  .snav.active,
+  .post-disclaimer,
+  .hero h1 em,
+  .post-hero h1 em,
+  .article strong,
+  .callout strong,
+  .pullquote,
+  .stat b,
+  .problem b,
+  .post-table th,
+  .post-table td:first-child,
+  .post-table td b,
+  .pager-card b,
+  .donate h2,
+  .donate-note b,
+  .donate-steps b,
+  .blog-donate-title{
+    color:var(--ink);
+  }
+  
+  /* Override backgrounds that use var(--dark) to keep them dark */
+  .bch-band,
+  .post-cta-band,
+  .site-footer,
+  .toast,
+  .announce{
+    background:var(--dark);
+  }
+  
+  .chip.active,
+  .step-num,
+  .quote{
+    background:var(--dark);
+    color:var(--ink);
+  }
+  
+  /* Replace hardcoded #fff backgrounds with var(--paper) */
+  .btn-ghost,
+  .chip,
+  .trust,
+  .card,
+  .step-card,
+  .ship-card,
+  .note,
+  .faq-item,
+  .drawer,
+  .cart-line,
+  .cl-thumb,
+  .cl-stepper,
+  .drawer-foot,
+  .modal-card,
+  .modal-head,
+  .ship-method,
+  .qr-img,
+  .addr-box,
+  .post-card,
+  .post-card-emoji,
+  .callout,
+  .stat,
+  .problem,
+  .table-wrap,
+  .pager-card,
+  .donate-hero-card,
+  .donate-note,
+  .accepted-badge,
+  .snav.active,
+  .snav i,
+  .blog-donate .bch-addr-chip{
+    background:var(--paper);
+  }
+  
+  /* Hero and section backgrounds */
+  .hero{
+    background:
+      radial-gradient(1000px 420px at 85% -10%, rgba(10,193,142,.12), transparent 60%),
+      radial-gradient(700px 380px at -10% 110%, rgba(10,193,142,.08), transparent 60%),
+      linear-gradient(180deg,var(--bg) 0%, var(--mint-2) 100%);
+    border-bottom:1px solid var(--line);
+  }
+  
+  .card-art{
+    background:
+      radial-gradient(340px 160px at 50% 0%, rgba(10,193,142,.08), transparent 70%),
+      var(--mint-2);
+    border-bottom:1px solid var(--line);
+  }
+  
+  .post-hero{
+    background:
+      radial-gradient(900px 380px at 88% -20%, rgba(10,193,142,.12), transparent 60%),
+      radial-gradient(700px 340px at -5% 115%, rgba(10,193,142,.08), transparent 60%),
+      linear-gradient(180deg,var(--bg) 0%, var(--mint-2) 100%);
+    border-bottom:1px solid var(--line);
+  }
+  
+  .post-head{
+    background:
+      radial-gradient(760px 300px at 90% -30%, rgba(10,193,142,.10), transparent 65%),
+      linear-gradient(180deg,var(--bg) 0%, var(--mint-2) 100%);
+    border-bottom:1px solid var(--line);
+  }
+  
+  .post-card-top{
+    background:
+      radial-gradient(240px 120px at 90% -10%, rgba(10,193,142,.12), transparent 70%),
+      linear-gradient(135deg,var(--mint) 0%, var(--paper) 100%);
+    border-bottom:1px solid var(--line);
+  }
+  
+  /* Form inputs */
+  .opts select,
+  .ship-to select,
+  .field select,
+  .field input{
+    background:var(--paper);
+    border:1.5px solid var(--line);
+    color:var(--ink);
+  }
+  
+  /* Mint-colored elements */
+  .btn-copy,
+  .cart-btn,
+  .wallet-link,
+  .order-box,
+  .donate-steps li::before{
+    background:var(--mint);
+    color:var(--green-ink);
+  }
+  
+  .bch-addr-chip{
+    background:rgba(10,193,142,.08);
+    border:1px solid rgba(10,193,142,.2);
+  }
+  
+  .bch-addr-chip code{
+    color:var(--green-ink);
+  }
+  
+  /* Site header */
+  .site-header{
+    background:rgba(15,24,32,.95);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  
+  /* Navigation */
+  .nav a{
+    color:var(--ink);
+  }
+  
+  .nav a:hover{
+    color:var(--green-ink);
+  }
+  
+  /* Article text */
+  .article{
+    color:var(--ink);
+  }
+  
+  /* Footer text */
+  .footer-brand .brand,
+  .footer-col h4{
+    color:var(--ink);
+  }
+  
+  .site-footer{
+    color:var(--muted);
+  }
+  
+  /* Links */
+  a{
+    color:var(--green-ink);
+  }
+  
+  /* Announcement */
+  .announce{
+    color:var(--muted);
+  }
+  
+  /* BCH band */
+  .bch-band p{
+    color:var(--muted);
+  }
+  
+  /* Post CTA band */
+  .post-cta-band p{
+    color:var(--muted);
+  }
+  
+  /* Mobile nav */
+  @media (max-width: 780px){
+    .nav{
+      background:var(--paper);
+      border-bottom:1px solid var(--line);
+    }
+  }
+  
+  /* Menu button */
+  .menu-btn span{
+    background:var(--ink);
+  }
+  
+  /* Icon button */
+  .icon-btn{
+    color:var(--muted);
+  }
+  
+  .icon-btn:hover{
+    background:var(--mint);
+    color:var(--ink);
+  }
+  
+  /* Cart count */
+  .cart-count{
+    background:var(--green);
+    color:#fff;
+  }
+  
+  /* Brand */
+  .brand{
+    color:var(--ink);
+  }
+  
+  /* Trust strip */
+  .trust-item small{
+    color:var(--muted);
+  }
+  
+  /* Section subtitle */
+  .section-sub{
+    color:var(--muted);
+  }
+  
+  /* Muted text */
+  .muted{
+    color:var(--muted);
+  }
+  
+  /* Callout */
+  .callout{
+    border:1px solid var(--line);
+    border-left:4px solid var(--green);
+    color:var(--muted);
+  }
+  
+  .callout.warn{
+    background:#2A2518;
+    border-color:#5A4A20;
+    border-left-color:#D99B00;
+  }
+  
+  .callout.warn > .callout-title{
+    color:#FFB84D;
+  }
+  
+  /* Ship card */
+  .ship-card.featured{
+    border-color:var(--green);
+    box-shadow:0 12px 34px rgba(10,193,142,.14);
+  }
+  
+  .ship-card li{
+    border-top:1px dashed var(--line);
+  }
+  
+  .ship-card li b{
+    color:var(--ink);
+  }
+  
+  /* FAQ */
+  .faq-item summary{
+    color:var(--ink);
+  }
+  
+  .faq-item p{
+    color:var(--muted);
+  }
+  
+  /* Cart */
+  .cart-empty p{
+    color:var(--muted);
+  }
+  
+  .cl-opts,
+  .cl-unit{
+    color:var(--muted);
+  }
+  
+  .cl-step{
+    color:var(--green-ink);
+  }
+  
+  .cl-step:hover{
+    background:var(--mint);
+  }
+  
+  .cl-remove{
+    color:var(--muted);
+  }
+  
+  .cl-remove:hover{
+    color:var(--danger);
+  }
+  
+  /* Modal */
+  .modal-backdrop{
+    background:rgba(0,0,0,.7);
+  }
+  
+  .field label em{
+    color:var(--muted);
+  }
+  
+  .err{
+    color:var(--danger);
+  }
+  
+  .ship-method small{
+    color:var(--muted);
+  }
+  
+  .ship-method .sm-price{
+    color:var(--green-ink);
+  }
+  
+  .order-box h4{
+    color:var(--muted);
+  }
+  
+  .ml-meta{
+    color:var(--muted);
+  }
+  
+  .rate-line{
+    color:var(--muted);
+  }
+  
+  .pay-note{
+    color:var(--muted);
+  }
+  
+  .pay-note b{
+    color:var(--green-ink);
+  }
+  
+  /* QR */
+  .qr-hint{
+    color:var(--muted);
+  }
+  
+  .addr-box code{
+    color:var(--ink);
+  }
+  
+  .pay-steps{
+    color:var(--muted);
+  }
+  
+  .pay-steps b{
+    color:var(--ink);
+  }
+  
+  .pay-fineprint{
+    color:var(--muted);
+  }
+  
+  /* Done step */
+  .done-sub{
+    color:var(--muted);
+  }
+  
+  .done-box{
+    background:var(--mint-2);
+    border:1px solid var(--line);
+    color:var(--muted);
+  }
+  
+  .done-box b{
+    color:var(--green-ink);
+  }
+  
+  /* Blog */
+  .series-sub{
+    color:var(--muted);
+  }
+  
+  .series-count{
+    color:var(--muted);
+  }
+  
+  .post-card p{
+    color:var(--muted);
+  }
+  
+  .blog-caveat-wrap .callout{
+    color:var(--muted);
+  }
+  
+  .blog-donate p{
+    color:var(--muted);
+  }
+  
+  .blog-donate-note{
+    background:var(--paper);
+    border:1px solid var(--line);
+    color:var(--green-ink);
+  }
+  
+  .post-meta{
+    color:var(--muted);
+  }
+  
+  .post-back{
+    color:var(--muted);
+  }
+  
+  .post-back:hover{
+    color:var(--green-ink);
+  }
+  
+  .article a{
+    color:var(--green-ink);
+  }
+  
+  .article li::marker{
+    color:var(--green);
+  }
+  
+  .article code{
+    background:var(--mint);
+    border:1px solid var(--line);
+  }
+  
+  .source-note{
+    color:var(--muted);
+  }
+  
+  .post-table td{
+    color:var(--muted);
+  }
+  
+  .post-table td b{
+    color:var(--ink);
+  }
+  
+  .post-disclaimer{
+    color:var(--muted);
+  }
+  
+  .post-cta-wallets{
+    color:var(--muted);
+  }
+  
+  .post-cta-wallets a{
+    color:var(--green-ink);
+  }
+  
+  /* Donate */
+  .donate-lede{
+    color:var(--muted);
+  }
+  
+  .donate-steps li{
+    color:var(--muted);
+  }
+  
+  .donate-fineprint{
+    color:var(--muted);
+  }
+  
+  .donate-side p{
+    color:var(--muted);
+  }
+  
+  .donate-points li{
+    color:var(--muted);
+  }
+  
+  .donate-points li::before{
+    color:var(--green-ink);
+  }
+  
+  .donate-wallets{
+    color:var(--muted);
+  }
+  
+  .donate-wallets a{
+    color:var(--green-ink);
+  }
+  
+  .donate-hero-note{
+    color:var(--muted);
+  }
+  
+  /* Footer */
+  .footer-brand p{
+    color:var(--muted);
+  }
+  
+  .footer-col a,
+  .footer-col .linklike{
+    color:var(--muted);
+  }
+  
+  .footer-col a:hover,
+  .footer-col .linklike:hover{
+    color:var(--green);
+  }
+  
+  .footer-bottom{
+    border-top:1px solid rgba(255,255,255,.1);
+    color:var(--muted);
+  }
+  
+  .footer-bottom code{
+    color:var(--muted);
+  }
+  
+  /* Backdrop */
+  .backdrop{
+    background:rgba(0,0,0,.6);
+  }
+}
