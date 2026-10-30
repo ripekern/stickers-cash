@@ -358,6 +358,75 @@ select, input, .ship-methods{
   text-decoration:underline;
 }
 
+/* ---------- rabbit hole link ---------- */
+.rabbit-hole-link{
+  margin:32px 0;
+  padding:18px 22px;
+  background:linear-gradient(135deg,#f3e8ff 0%,#faf5ff 100%);
+  border:2px solid #9333ea;
+  border-left:6px solid #9333ea;
+  border-radius:var(--r-md);
+  position:relative;
+}
+
+.rabbit-hole-link::before{
+  content:"🕳️";
+  position:absolute;
+  top:-12px;
+  left:20px;
+  background:var(--bg);
+  padding:0 8px;
+  font-size:20px;
+}
+
+.rabbit-hole-link-label{
+  font-size:12px;
+  font-weight:700;
+  color:#9333ea;
+  text-transform:uppercase;
+  letter-spacing:0.05em;
+  margin-bottom:8px;
+}
+
+.rabbit-hole-link a{
+  font-size:15px;
+  font-weight:600;
+  color:#7e22ce;
+  text-decoration:none;
+  display:inline-block;
+}
+
+.rabbit-hole-link a:hover{
+  text-decoration:underline;
+  color:#6b21a8;
+}
+
+.rabbit-hole-link p{
+  margin:8px 0 0;
+  font-size:14px;
+  color:var(--muted);
+}
+
+.rabbit-hole-return{
+  margin:48px 0 24px;
+  padding:20px 24px;
+  background:linear-gradient(135deg,#f3e8ff 0%,#faf5ff 100%);
+  border:2px solid #9333ea;
+  border-radius:var(--r-md);
+  text-align:center;
+}
+
+.rabbit-hole-return a{
+  font-size:16px;
+  font-weight:600;
+  color:#9333ea;
+  text-decoration:none;
+}
+
+.rabbit-hole-return a:hover{
+  text-decoration:underline;
+}
+
 @media (prefers-color-scheme:dark){
   .deep-dive-return{
     background:linear-gradient(135deg,rgba(10,193,142,.15) 0%,rgba(10,193,142,.1) 100%);
@@ -371,6 +440,37 @@ select, input, .ship-methods{
   
   .deep-dive-return a{
     color:var(--green);
+  }
+  
+  .rabbit-hole-link{
+    background:linear-gradient(135deg,rgba(147,51,234,.15) 0%,rgba(147,51,234,.08) 100%);
+    border-color:#a855f7;
+    border-left-color:#a855f7;
+  }
+  
+  .rabbit-hole-link::before{
+    background:var(--bg);
+  }
+  
+  .rabbit-hole-link-label{
+    color:#a855f7;
+  }
+  
+  .rabbit-hole-link a{
+    color:#c084fc;
+  }
+  
+  .rabbit-hole-link a:hover{
+    color:#d8b4fe;
+  }
+  
+  .rabbit-hole-return{
+    background:linear-gradient(135deg,rgba(147,51,234,.15) 0%,rgba(147,51,234,.08) 100%);
+    border-color:#a855f7;
+  }
+  
+  .rabbit-hole-return a{
+    color:#a855f7;
   }
 }
 

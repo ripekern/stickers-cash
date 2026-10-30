@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How Bitcoin Cash Transactions Actually Work — Rabbit Hole — stickers.cash</title>
+  <meta name="description" content="Dive deep into the technical details of Bitcoin Cash transactions: inputs, outputs, signatures, and how the network validates everything.">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<!-- ======================= ANNOUNCEMENT ======================= -->
+<div class="announce">
+  <div class="container announce-inner">
+    <span>🧊 The internet cash guide — now in 37 posts</span>
+    <span class="sep">·</span>
+    <span>⚡ Paid in Bitcoin Cash only</span>
+    <span class="sep">·</span>
+    <span>🚀 Ships worldwide from the USA</span>
+  </div>
+</div>
+
+<!-- ======================= HEADER ======================= -->
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="../index.html" aria-label="stickers.cash home">
+      <img class="brand-mark" src="../media/bch/bch-circle.svg" alt="">
+      <span class="brand-name">stickers<span class="dot">.</span>cash</span>
+    </a>
+
+    <nav class="nav" id="mainNav" aria-label="Main">
+      <a href="../index.html">Shop</a>
+      <a href="../index.html#how">How it works</a>
+      <a href="../index.html#shipping">Shipping</a>
+      <a href="../index.html#faq">FAQ</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../donate.html">Donate</a>
+    </nav>
+
+    <div class="header-actions">
+      <a class="btn btn-primary" href="../index.html#shop"><span class="shop-long">Shop stickers</span><span class="shop-short">Shop</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- ======================= POST HEAD ======================= -->
+  <section class="post-head">
+    <div class="container post-head-inner">
+      <a class="post-back" href="../blog/one-transaction-end-to-end.html">← Back to: One transaction, end to end</a>
+      <span class="eyebrow">🕳️ Rabbit Hole</span>
+      <h1>How Bitcoin Cash Transactions Actually Work</h1>
+      <p class="lede">Let's get technical. This is the deep technical details of how BCH transactions work under the hood.</p>
+    </div>
+  </section>
+
+  <!-- ======================= POST BODY ======================= -->
+  <div class="post-body">
+    <article class="article post-article">
+
+      <p>You've read the overview. Now let's pop the hood and look at the engine. This rabbit hole goes deep into the technical architecture of Bitcoin Cash transactions.</p>
+
+      <h2>Transaction Structure</h2>
+
+      <p>Every Bitcoin Cash transaction has three components:</p>
+
+      <ul>
+        <li><strong>Inputs:</strong> References to previous transaction outputs (UTXOs) you're spending</li>
+        <li><strong>Outputs:</strong> New UTXOs being created, specifying amounts and locking conditions</li>
+        <li><strong>Unlocking scripts:</strong> Cryptographic proofs that you have the right to spend the inputs</li>
+      </ul>
+
+      <p>Unlike a bank account where you have a balance, BCH uses the <strong>UTXO model</strong> (Unspent Transaction Outputs). Think of it like cash: you don't have a "balance" in your wallet, you have specific bills and coins. When you spend, you hand over specific bills and get change back.</p>
+
+      <h2>The UTXO Model Explained</h2>
+
+      <p>When Alice sends Bob 1 BCH, she's not debiting her account. She's creating a transaction that:</p>
+
+      <ol>
+        <li>Takes one or more of her previous unspent outputs (say, a 2 BCH output she received earlier)</li>
+        <li>Creates a new 1 BCH output locked to Bob's public key hash</li>
+        <li>Creates a 0.9999 BCH output locked to her own key (change)</li>
+        <li>Pays 0.0001 BCH in transaction fees to miners</li>
+      </ol>
+
+      <p>Each UTXO can only be spent once. The network tracks all unspent outputs in a database called the <strong>UTXO set</strong>. When a transaction is confirmed, its inputs are removed from the UTXO set and its outputs are added.</p>
+
+      <h2>Cryptographic Signatures</h2>
+
+      <p>To spend a UTXO, you must provide:</p>
+
+      <ul>
+        <li><strong>The public key</strong> that matches the hash in the locking script</li>
+        <li><strong>A digital signature</strong> created with the corresponding private key</li>
+      </ul>
+
+      <p>The signature proves you control the private key without revealing it. BCH uses <strong>Elliptic Curve Digital Signature Algorithm (ECDSA)</strong> with the secp256k1 curve.</p>
+
+      <p>The signature covers:</p>
+      <ul>
+        <li>The transaction hash (all inputs and outputs)</li>
+        <li>The input index being signed</li>
+        <li>The UTXO being spent</li>
+      </ul>
+
+      <p>This ensures the signature is bound to the specific transaction. If anyone modifies the transaction (changing amounts, outputs, etc.), the signature becomes invalid.</p>
+
+      <h2>Script System</h2>
+
+      <p>BCH uses a stack-based scripting language. Each UTXO has a <strong>locking script</strong> (scriptPubKey) that specifies the conditions to spend it. To spend it, you provide an <strong>unlocking script</strong> (scriptSig).</p>
+
+      <p>The most common locking script is <strong>Pay-to-Public-Key-Hash (P2PKH)</strong>:</p>
+
+      <pre><code>OP_DUP OP_HASH160 &lt;pubKeyHash&gt; OP_EQUALVERIFY OP_CHECKSIG</code></pre>
+
+      <p>The unlocking script provides:</p>
+
+      <pre><code>&lt;signature&gt; &lt;pubKey&gt;</code></pre>
+
+      <p>When combined and executed:</p>
+      <ol>
+        <li>Signature and pubKey are pushed to the stack</li>
+        <li>OP_DUP duplicates the pubKey</li>
+        <li>OP_HASH160 hashes it</li>
+        <li>The expected pubKeyHash is pushed</li>
+        <li>OP_EQUALVERIFY checks they match (fails if not)</li>
+        <li>OP_CHECKSIG verifies the signature against the transaction</li>
+      </ol>
+
+      <p>If all operations succeed and the stack has a TRUE value, the spend is valid.</p>
+
+      <h2>Transaction Validation</h2>
+
+      <p>When a node receives a transaction, it checks:</p>
+
+      <ul>
+        <li><strong>Syntactic validity:</strong> Proper format, no duplicate inputs, outputs &gt; 0</li>
+        <li><strong>Input existence:</strong> All referenced UTXOs exist and are unspent</li>
+        <li><strong>Script execution:</strong> Unlocking and locking scripts execute successfully</li>
+        <li><strong>No double-spends:</strong> Inputs haven't been spent in another confirmed transaction</li>
+        <li><strong>Fee adequacy:</strong> Transaction fee is reasonable (inputs - outputs)</li>
+      </ul>
+
+      <p>If all checks pass, the transaction enters the mempool and waits for miners to include it in a block.</p>
+
+      <h2>Mining and Consensus</h2>
+
+      <p>Miners select transactions from their mempool and assemble them into a block. They must solve a proof-of-work puzzle: find a nonce such that the block hash is below the target difficulty.</p>
+
+      <p>When a miner finds a valid block:</p>
+      <ol>
+        <li>They broadcast it to the network</li>
+        <li>Other nodes validate the block (proof-of-work, transactions, etc.)</li>
+        <li>If valid, nodes add it to their blockchain</li>
+        <li>The UTXO set is updated (inputs removed, outputs added)</li>
+      </ol>
+
+      <p>Each additional block built on top increases the transaction's "confirmations." More confirmations = more security against reorganization.</p>
+
+      <h2>Why This Matters</h2>
+
+      <p>Understanding the technical details helps you appreciate:</p>
+
+      <ul>
+        <li><strong>Why BCH is trustless:</strong> Cryptography replaces trusted third parties</li>
+        <li><strong>Why fees exist:</strong> Miners need incentive to include your transaction</li>
+        <li><strong>Why confirmations matter:</strong> Each block makes reversal exponentially harder</li>
+        <li><strong>Why self-custody is powerful:</strong> You control the keys, you control the funds</li>
+      </ul>
+
+      <p>The beauty of Bitcoin Cash is that all of this happens without any central authority. The protocol, cryptography, and economic incentives work together to create a system that's secure, censorship-resistant, and open to everyone.</p>
+
+      <!-- Return link -->
+      <div class="rabbit-hole-return">
+        <p>🕳️ <strong>Coming back up?</strong> <a href="../blog/one-transaction-end-to-end.html">Return to the main post</a></p>
+      </div>
+
+    </article>
+  </div>
+
+  <!-- ======================= POST CTA ======================= -->
+  <section class="post-cta-band">
+    <div class="container post-cta-inner">
+      <div class="post-cta-text">
+        <h2>Go deeper.</h2>
+        <p>Explore more about Bitcoin Cash and internet money in our 37-part field guide.</p>
+      </div>
+      <div class="post-cta-actions">
+        <a class="btn btn-primary" href="../blog.html">Read the guide</a>
+        <a class="btn btn-secondary" href="../index.html#shop">Shop stickers</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ======================= FOOTER ======================= -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img class="brand-mark" src="../media/bch/bch-circle.svg" alt="">
+      <span class="brand-name">stickers<span class="dot">.</span>cash</span>
+    </div>
+    <p class="footer-tagline">The Bitcoin Cash sticker shop. Ships from the USA, worldwide.</p>
+    <div class="footer-links">
+      <a href="../index.html">Shop</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../donate.html">Donate</a>
+      <a href="../index.html#faq">FAQ</a>
+    </div>
+    <p class="footer-copy">© 2026 stickers.cash — Paid in Bitcoin Cash only</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../blog.js"></script>
+
+</body>
+</html>
