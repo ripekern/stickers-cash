@@ -846,6 +846,10 @@ select, input, .ship-methods{
 .article strong{color:var(--dark)}
 .article a{color:var(--green-ink);text-decoration-thickness:1.5px;text-underline-offset:2px}
 .article a:hover{text-decoration-thickness:2px}
+.article a[href*="/deep-dives/"],
+.article a[href*="/rabbit-holes/"]{color:inherit;text-decoration:underline;font-weight:inherit}
+.article a[href*="/deep-dives/"]:hover,
+.article a[href*="/rabbit-holes/"]:hover{opacity:.75}
 .article code{font-size:.9em;background:var(--mint);border:1px solid #CBEFE1;border-radius:5px;padding:1px 5px}
 .article pre{background:var(--dark);color:var(--ink);border-radius:12px;padding:20px;margin:26px 0;overflow-x:auto;font-size:14px;line-height:1.6}
 .article pre code{background:none;border:none;padding:0;color:inherit;font-size:inherit}
