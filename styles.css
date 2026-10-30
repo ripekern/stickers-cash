@@ -329,6 +329,51 @@ select, input, .ship-methods{
 .faq-item[open] summary::after{transform:rotate(45deg)}
 .faq-item p{margin:0 0 18px;font-size:14.5px;color:var(--muted)}
 
+/* ---------- deep dive return link ---------- */
+.deep-dive-return{
+  margin:48px 0 24px;
+  padding:20px 24px;
+  background:linear-gradient(135deg,#e9fae9 0%,#f0f9f0 100%);
+  border:2px solid var(--green);
+  border-radius:var(--r-md);
+  text-align:center;
+  box-shadow:0 4px 12px rgba(10,193,142,.15);
+  transition:all .2s ease;
+}
+
+.deep-dive-return:hover{
+  transform:translateY(-2px);
+  box-shadow:0 6px 16px rgba(10,193,142,.25);
+}
+
+.deep-dive-return a{
+  font-size:16px;
+  font-weight:600;
+  color:var(--green);
+  text-decoration:none;
+  display:inline-block;
+}
+
+.deep-dive-return a:hover{
+  text-decoration:underline;
+}
+
+@media (prefers-color-scheme:dark){
+  .deep-dive-return{
+    background:linear-gradient(135deg,rgba(10,193,142,.15) 0%,rgba(10,193,142,.1) 100%);
+    border-color:var(--green);
+    box-shadow:0 4px 12px rgba(10,193,142,.2);
+  }
+  
+  .deep-dive-return:hover{
+    box-shadow:0 6px 16px rgba(10,193,142,.3);
+  }
+  
+  .deep-dive-return a{
+    color:var(--green);
+  }
+}
+
 /* ---------- footer ---------- */
 .site-footer{background:var(--dark);color:#9FB3BD;padding:48px 0 26px;font-size:14px}
 .footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:30px}
