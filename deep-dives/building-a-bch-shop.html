@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deep Dive: Building a BCH-only shop — stickers.cash</title>
+<meta name="description" content="The complete technical guide to building a Bitcoin Cash e-commerce site with Cloudflare Workers, address derivation, and manual payment detection.">
+<meta name="theme-color" content="#0AC18E">
+<meta property="og:title" content="Deep Dive: Building a BCH-only shop — stickers.cash">
+<meta property="og:description" content="The complete technical guide to building a Bitcoin Cash e-commerce site with Cloudflare Workers, address derivation, and manual payment detection.">
+<meta property="og:url" content="https://stickers.cash/deep-dives/building-a-bch-shop.html">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://stickers.cash/deep-dives/building-a-bch-shop.html">
+<link rel="icon" href="../media/bch/bch-circle.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<!-- ======================= ANNOUNCEMENT ======================= -->
+<div class="announce">
+  <div class="container announce-inner">
+    <span>🧊 The internet cash guide — now in 37 posts</span>
+    <span class="sep">·</span>
+    <span>⚡ Paid in Bitcoin Cash only</span>
+    <span class="sep">·</span>
+    <span>🚀 Ships worldwide from the USA</span>
+  </div>
+</div>
+
+<!-- ======================= HEADER ======================= -->
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="../index.html" aria-label="stickers.cash home">
+      <img class="brand-mark" src="../media/bch/bch-circle.svg" alt="">
+      <span class="brand-name">stickers<span class="dot">.</span>cash</span>
+    </a>
+
+    <nav class="nav" id="mainNav" aria-label="Main">
+      <a href="../index.html">Shop</a>
+      <a href="../index.html#how">How it works</a>
+      <a href="../index.html#shipping">Shipping</a>
+      <a href="../index.html#faq">FAQ</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../donate.html">Donate</a>
+    </nav>
+
+    <div class="header-actions">
+      <a class="btn btn-primary" href="../index.html#shop"><span class="shop-long">Shop stickers</span><span class="shop-short">Shop</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ======================= DEEP DIVE HEAD ======================= -->
+<section class="post-head">
+  <div class="container post-head-inner">
+    <a class="post-back" href="../blog/how-a-shop-takes-bch.html#building-a-bch-only-shop">← Back to: How a shop takes BCH</a>
+    <span class="eyebrow">Deep dive</span>
+    <h1>Building a BCH-only shop</h1>
+    <p class="lede">The complete technical guide to building a Bitcoin Cash e-commerce site with Cloudflare Workers, address derivation, and manual payment detection.</p>
+  </div>
+</section>
+
+<!-- ======================= DEEP DIVE BODY ======================= -->
+<div class="post-body">
+  <article class="article post-article">
+
+    <p>The stickers.cash site is a working example of a BCH-only shop. The whole thing is a static HTML, CSS, and JavaScript site hosted on GitHub Pages, with a small Cloudflare Worker that derives a fresh BCH address for each order. There is no database, no payment processor, and no monthly subscription to an e-commerce platform. The total infrastructure cost is a domain name and a few dollars a month for the worker.</p>
+
+    <h2>What you need</h2>
+
+    <p>A BCH wallet that supports xpub (extended public keys) — Selene, Electron Cash, or similar. The xpub lets the website derive new addresses without being able to spend funds. It is watch-only. You keep the private keys offline where they belong.</p>
+
+    <p>A Cloudflare Worker (or similar edge function) that takes an order ID, increments a counter, and derives the next address from your xpub using the standard BIP44 path. The worker stores only the counter in a small database — no payment amounts, no customer data, no secrets beyond the xpub itself.</p>
+
+    <p>A static website that displays products, calculates totals, fetches the current BCH/USD rate from a public API, locks that rate for a fixed window (stickers.cash uses 15 minutes), and shows the customer a QR code with the exact amount and address. When the timer expires, the quote refreshes.</p>
+
+    <h2>The checkout flow</h2>
+
+    <p>The customer adds items to the cart, enters shipping details, and clicks checkout. The site calls the worker to get a fresh address for that order. It shows a QR code encoding a <code>bitcoincash:</code> URI with the address and amount, plus a countdown timer. The customer scans the QR with their wallet, sends the payment, and the site displays a confirmation screen asking them to email a screenshot or transaction ID.</p>
+
+    <p>Payment detection is manual. You check your wallet, match the amount and address to the order, and ship. For a small shop, that is honest and simple. The customer gets a clear confirmation, and you get a direct settlement with no middleman taking a cut.</p>
+
+    <h2>Address reuse and privacy</h2>
+
+    <p>Using a fresh address per order improves privacy and makes reconciliation unambiguous. Each order has its own address, so when a payment arrives, you know exactly which order it is for. There is no guessing.</p>
+
+    <p>The worker derives addresses sequentially from your xpub. Wallets like Selene scan ahead (typically 20 addresses) to find your funds. If abandoned checkouts create gaps, you may need to trigger a rescan in your wallet to see the newer addresses. The worker README documents this and how to set the starting index.</p>
+
+    <h2>Cost and complexity</h2>
+
+    <p>The stickers.cash worker is open source. You can read the code, fork it, and adapt it to your own products. The main moving parts are:</p>
+
+    <ul>
+      <li>A static site (GitHub Pages, Cloudflare Pages, Netlify, or any host)</li>
+      <li>A Cloudflare Worker with D1 for the address counter (free tier is plenty)</li>
+      <li>A BCH wallet with xpub support</li>
+      <li>A public BCH/USD price API (there are several)</li>
+    </ul>
+
+    <p>There is no payment gateway, no merchant account, no chargeback risk, and no monthly fee. The only cost is your time to build the site and the few dollars a month for hosting. For a shop selling physical goods at low prices, that is a meaningful difference compared to card fees that eat 3% of every sale.</p>
+
+    <aside class="callout">
+      <p class="callout-title">A note on security</p>
+      <p>The xpub is sensitive. Anyone who has it can see every address and balance in your wallet, though they cannot spend funds. Never commit it to a public repository, and never paste it into a chat. Use environment variables or a secrets manager. Treat it like an account number, not a password.</p>
+    </aside>
+
+    <h2>Build it with an AI agent</h2>
+
+    <p>You do not have to write this from scratch. Copy the prompt below into any AI coding agent — Claude, Cursor, Codex, Copilot — and it will have enough context to scaffold the entire shop. Adapt the product list, the wallet address, and the branding to your own business.</p>
+
+    <pre><code>Build a BCH-only e-commerce storefront. It is a static website (HTML/CSS/JS) with
+a Cloudflare Worker backend for per-order Bitcoin Cash address derivation. No payment
+processor, no database for orders, no user accounts.
+
+## Architecture
+
+### Static storefront (hosted on GitHub Pages, Cloudflare Pages, or similar)
+
+1. **Product catalog** — a JavaScript array of objects, each with: id, name,
+   category, price (in USD), product image path, short description.
+2. **Cart** — stored in localStorage. Customers choose product variants (size,
+   finish), add to cart, adjust quantities. Show subtotal, bundle discounts
+   (e.g. 5+ items saves 10%), shipping, and total.
+3. **Shipping** — flat rates: $2 domestic (free over $25), $6 international
+   (free over $50). A &lt;select&gt; in the cart drawer lets the customer choose.
+4. **Checkout (3-step modal)**:
+   - Step 1 — Shipping details form (name, email, address, country select,
+     shipping method). Validate client-side. Show an order summary sidebar.
+   - Step 2 — Payment. Fetch the current BCH/USD rate from a public API
+     (e.g. CoinGecko /api/v3/simple/price?ids=bitcoin-cash&amp;vs_currencies=usd).
+     Lock the rate for 15 minutes with a countdown timer. Call the Worker
+     (POST /address with { orderId }) to get a fresh BCH address. Show a QR
+     code encoding a bitcoincash: URI (bitcoincash:&lt;address&gt;?amount=&lt;bch&gt;).
+     Include copy buttons for the address and amount.
+   - Step 3 — Confirmation. Show order ID. Ask the customer to email their
+     wallet receipt/txid to the shop email. Provide a mailto: link with the
+     order ID in the subject.
+5. **QR codes** — generate client-side using a library like qrcode (or a
+   simple QR endpoint). The URI format is: bitcoincash:&lt;address&gt;?amount=&lt;bch&gt;
+6. **Design** — mobile-first, responsive. Light and dark theme via
+   prefers-color-scheme. Clean card-based layout. Sticky header with cart
+   button.
+
+### Cloudflare Worker (per-order address derivation)
+
+A small Worker with a D1 database that stores an address counter:
+
+- Table: counter(id INTEGER PRIMARY KEY, next_index INTEGER DEFAULT 1)
+- Table: orders(order_id TEXT, address_index INTEGER, created_at TEXT)
+
+Endpoints:
+- POST /address — body: { orderId }. Idempotent per orderId. Derives the next
+  BCH address from a watch-only xpub (stored as a Worker secret, never
+  committed). Uses BIP44 path m/44'/145'/0'/0/&lt;index&gt;. Increments the
+  counter atomically. Returns { address, index }.
+- GET /health — returns { ok: true, xpubConfigured: true/false }.
+
+Address derivation uses @scure/bip32 (or similar) to derive from the xpub.
+The xpub must be at account depth (m/44'/145'/0'). Validate and reject xprv,
+tpub, ypub, zpub, and xpubs at wrong depths.
+
+The Worker has CORS headers allowing the storefront origin. If the Worker is
+unreachable, the storefront falls back to a single hardcoded BCH address.
+
+### Exchange rate
+
+Fetch BCH/USD from a public API at checkout time. Cache for ~60 seconds to
+avoid hammering the endpoint. Show the locked rate and a countdown. Refresh
+the quote when the timer expires. The fallback rate is hardcoded as a last
+resort.
+
+### Key constraints
+
+- BCH only. No credit cards, no PayPal, no other payment methods.
+- No payment detection automation. The shop owner checks their wallet
+  manually and matches payments to orders.
+- The xpub is watch-only. The Worker can derive addresses but cannot spend.
+- All customer data stays in the browser (localStorage). Nothing is sent to
+  a server except the address request (orderId only — no name, no address,
+  no email).
+- The entire site must work without JavaScript for basic browsing
+  (progressive enhancement for the cart/checkout).
+
+### Deployment
+
+- Storefront: GitHub Pages or Cloudflare Pages. Custom domain.
+- Worker: npx wrangler deploy. The workers.dev URL is set in the storefront
+  config.
+- Secrets: the xpub is stored as a Cloudflare Worker secret (wrangler secret
+  put XPUB). Never in source control.
+- Database: Cloudflare D1. Run schema.sql once to create the tables.
+
+### Reference
+
+The stickers.cash site (https://stickers.cash) is a working example of this
+exact architecture. Its Cloudflare Worker is open source and documented at
+https://github.com/ripekern/stickers-cash/tree/main/worker</code></pre>
+
+    <p>That prompt covers the architecture, the checkout flow, the address derivation, and the deployment. An AI agent with access to a code editor can scaffold the whole thing in a sitting. From there, swap in your own products, your own wallet, and your own branding.</p>
+
+    <p class="deep-dive-return"><a href="../blog/how-a-shop-takes-bch.html#building-a-bch-only-shop">← Continue reading "How a shop takes BCH"</a></p>
+
+  </article>
+</div>
+
+<!-- ======================= POST CTA ======================= -->
+<section class="post-cta-band">
+  <div class="container post-cta-inner">
+    <img class="post-cta-mark" src="../media/bch/bch-circle.svg" alt="Bitcoin Cash">
+    <div>
+      <h2>Internet cash needs places to spend it.</h2>
+      <p>Every order at stickers.cash is paid in BCH — a cheap, real-world way to move your first
+        coins, practice self-custody, and put a sticker on something you own.</p>
+    </div>
+    <div class="post-cta-actions">
+      <a class="btn btn-primary btn-lg" href="../index.html#shop">Shop stickers</a>
+      <div class="bch-addr-chip"><a class="btn" href="../donate.html">Donate BCH</a></div>
+      <small class="post-cta-wallets">No wallet yet?
+        <a href="https://selene.cash" target="_blank" rel="noopener">Selene</a> ·
+        <a href="https://paytaca.com" target="_blank" rel="noopener">Paytaca</a> ·
+        <a href="https://badger.bitcoin.com" target="_blank" rel="noopener">Badger</a>
+      </small>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ======================= FOOTER ======================= -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="../index.html">
+        <img class="brand-mark" src="../media/bch/bch-circle.svg" alt="">
+        <span class="brand-name">stickers<span class="dot">.</span>cash</span>
+      </a>
+      <p>The Bitcoin Cash sticker shop. Ships from the USA, worldwide.</p>
+      <img class="accepted-badge" src="../media/bch/bch-accepted-here-frame.svg" alt="Bitcoin Cash accepted here">
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <a href="../index.html#shop">All stickers</a>
+      <a href="../index.html#how">How to pay</a>
+      <a href="../index.html#shipping">Shipping rates</a>
+    </div>
+    <div class="footer-col">
+      <h4>Read</h4>
+      <a href="../blog.html">Internet cash guide</a>
+      <a href="../donate.html">Donate BCH</a>
+      <a href="https://whybitcoincash.com" target="_blank" rel="noopener">Why Bitcoin Cash</a>
+      <a href="https://bitcoincash.org" target="_blank" rel="noopener">bitcoincash.org</a>
+    </div>
+    <div class="footer-col">
+      <h4>Help</h4>
+      <a href="../index.html#faq">FAQ</a>
+      <a href="mailto:orders@stickers.cash">orders@stickers.cash</a>
+      <a href="mailto:orders@stickers.cash?subject=Wholesale%20%2F%20custom%20stickers">Wholesale</a>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 stickers.cash — paid exclusively in Bitcoin Cash (BCH)</span>
+    <code></code>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../blog.js"></script>
+</body>
+</html>
