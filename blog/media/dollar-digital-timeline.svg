@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 180" style="max-width:100%;height:auto;font-family:system-ui,-apple-system,sans-serif;">
+  <!-- Background -->
+  <rect width="800" height="180" fill="#f8f9fa"/>
+  
+  <!-- Main timeline line -->
+  <line x1="40" y1="90" x2="760" y2="90" stroke="#0AC18E" stroke-width="3"/>
+  
+  <!-- 1913 - Federal Reserve -->
+  <circle cx="80" cy="90" r="8" fill="#0AC18E"/>
+  <text x="80" y="70" text-anchor="middle" font-size="13" fill="#333" font-weight="600">1913</text>
+  <text x="80" y="115" text-anchor="middle" font-size="11" fill="#666">Federal</text>
+  <text x="80" y="128" text-anchor="middle" font-size="11" fill="#666">Reserve</text>
+  
+  <!-- 1933 - Gold link broken -->
+  <circle cx="200" cy="90" r="8" fill="#0AC18E"/>
+  <text x="200" y="70" text-anchor="middle" font-size="13" fill="#333" font-weight="600">1933</text>
+  <text x="200" y="115" text-anchor="middle" font-size="11" fill="#666">Gold link</text>
+  <text x="200" y="128" text-anchor="middle" font-size="11" fill="#666">broken</text>
+  
+  <!-- 1944 - Bretton Woods -->
+  <circle cx="320" cy="90" r="8" fill="#0AC18E"/>
+  <text x="320" y="70" text-anchor="middle" font-size="13" fill="#333" font-weight="600">1944</text>
+  <text x="320" y="115" text-anchor="middle" font-size="11" fill="#666">Bretton</text>
+  <text x="320" y="128" text-anchor="middle" font-size="11" fill="#666">Woods</text>
+  
+  <!-- 1971 - Gold window closed -->
+  <circle cx="440" cy="90" r="8" fill="#0AC18E"/>
+  <text x="440" y="70" text-anchor="middle" font-size="13" fill="#333" font-weight="600">1971</text>
+  <text x="440" y="115" text-anchor="middle" font-size="11" fill="#666">Gold window</text>
+  <text x="440" y="128" text-anchor="middle" font-size="11" fill="#666">closed</text>
+  
+  <!-- 2008 - Quantitative easing -->
+  <circle cx="600" cy="90" r="8" fill="#0AC18E"/>
+  <text x="600" y="70" text-anchor="middle" font-size="13" fill="#333" font-weight="600">2008</text>
+  <text x="600" y="115" text-anchor="middle" font-size="11" fill="#666">Quantitative</text>
+  <text x="600" y="128" text-anchor="middle" font-size="11" fill="#666">easing</text>
+  
+  <!-- 2023 - FedNow -->
+  <circle cx="720" cy="90" r="8" fill="#0AC18E"/>
+  <text x="720" y="70" text-anchor="middle" font-size="13" fill="#333" font-weight="600">2023</text>
+  <text x="720" y="115" text-anchor="middle" font-size="11" fill="#666">FedNow</text>
+  <text x="720" y="128" text-anchor="middle" font-size="11" fill="#666">launched</text>
+  
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" font-size="14" fill="#333" font-weight="600">The Dollar Became Digital One Layer at a Time</text>
+  
+  <!-- Arrow at end -->
+  <polygon points="760,90 750,85 750,95" fill="#0AC18E"/>
+</svg>

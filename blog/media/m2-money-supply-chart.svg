@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" style="max-width:100%;height:auto;font-family:system-ui,-apple-system,sans-serif;">
+  <!-- Background -->
+  <rect width="600" height="300" fill="#f8f9fa"/>
+  
+  <!-- Grid lines -->
+  <line x1="60" y1="40" x2="60" y2="260" stroke="#e0e0e0" stroke-width="1"/>
+  <line x1="60" y1="260" x2="560" y2="260" stroke="#e0e0e0" stroke-width="1"/>
+  
+  <!-- Horizontal grid lines -->
+  <line x1="60" y1="220" x2="560" y2="220" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="60" y1="180" x2="560" y2="180" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="60" y1="140" x2="560" y2="140" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="60" y1="100" x2="560" y2="100" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="60" y1="60" x2="560" y2="60" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="4,4"/>
+  
+  <!-- Y-axis labels -->
+  <text x="50" y="263" text-anchor="end" font-size="11" fill="#666">$10T</text>
+  <text x="50" y="223" text-anchor="end" font-size="11" fill="#666">$13T</text>
+  <text x="50" y="183" text-anchor="end" font-size="11" fill="#666">$16T</text>
+  <text x="50" y="143" text-anchor="end" font-size="11" fill="#666">$19T</text>
+  <text x="50" y="103" text-anchor="end" font-size="11" fill="#666">$22T</text>
+  <text x="50" y="63" text-anchor="end" font-size="11" fill="#666">$25T</text>
+  
+  <!-- X-axis labels -->
+  <text x="60" y="280" text-anchor="middle" font-size="11" fill="#666">2020</text>
+  <text x="160" y="280" text-anchor="middle" font-size="11" fill="#666">2021</text>
+  <text x="260" y="280" text-anchor="middle" font-size="11" fill="#666">2022</text>
+  <text x="360" y="280" text-anchor="middle" font-size="11" fill="#666">2023</text>
+  <text x="460" y="280" text-anchor="middle" font-size="11" fill="#666">2024</text>
+  <text x="560" y="280" text-anchor="middle" font-size="11" fill="#666">2025</text>
+  
+  <!-- M2 line (data points: 2020: $16T, 2021: $21T, 2022: $21.7T, 2023: $20.7T, 2024: $21.5T, 2025: $23.3T) -->
+  <!-- Scaled: $10T = 260, $25T = 60, so scale is (260-60)/15 = 13.33 per $1T -->
+  <!-- $16T = 260 - (16-10)*13.33 = 180, $21T = 260 - (21-10)*13.33 = 113.3, $21.7T = 260 - 11.7*13.33 = 104, $20.7T = 260 - 10.7*13.33 = 117.3, $21.5T = 260 - 11.5*13.33 = 106.7, $23.3T = 260 - 13.3*13.33 = 82.9 -->
+  
+  <!-- Area fill -->
+  <path d="M 60,180 L 160,113.3 L 260,104 L 360,117.3 L 460,106.7 L 560,82.9 L 560,260 L 60,260 Z" 
+        fill="#0AC18E" opacity="0.1"/>
+  
+  <!-- Main line -->
+  <path d="M 60,180 L 160,113.3 L 260,104 L 360,117.3 L 460,106.7 L 560,82.9" 
+        stroke="#0AC18E" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Data points -->
+  <circle cx="60" cy="180" r="5" fill="#0AC18E"/>
+  <circle cx="160" cy="113.3" r="5" fill="#0AC18E"/>
+  <circle cx="260" cy="104" r="5" fill="#0AC18E"/>
+  <circle cx="360" cy="117.3" r="5" fill="#0AC18E"/>
+  <circle cx="460" cy="106.7" r="5" fill="#0AC18E"/>
+  <circle cx="560" cy="82.9" r="5" fill="#0AC18E"/>
+  
+  <!-- Annotations -->
+  <text x="160" y="100" text-anchor="middle" font-size="10" fill="#0AC18E" font-weight="600">Pandemic stimulus</text>
+  <text x="360" y="132" text-anchor="middle" font-size="10" fill="#0AC18E" font-weight="600">2022-23 contraction</text>
+  <text x="560" y="70" text-anchor="middle" font-size="10" fill="#0AC18E" font-weight="600">$23.3T (Aug 2026)</text>
+  
+  <!-- Title -->
+  <text x="300" y="25" text-anchor="middle" font-size="14" fill="#333" font-weight="600">M2 Money Supply: The Expansion Never Stopped</text>
+</svg>

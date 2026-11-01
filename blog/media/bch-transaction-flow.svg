@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 280" style="max-width:100%;height:auto;font-family:system-ui,-apple-system,sans-serif;">
+  <!-- Background -->
+  <rect width="900" height="280" fill="#f8f9fa"/>
+  
+  <!-- Title -->
+  <text x="450" y="30" text-anchor="middle" font-size="16" fill="#333" font-weight="600">BCH Transaction Flow: From Broadcast to Confirmation</text>
+  
+  <!-- Step 1: Sender -->
+  <rect x="40" y="80" width="120" height="100" fill="#e8f5e9" stroke="#0AC18E" stroke-width="2" rx="8"/>
+  <text x="100" y="110" text-anchor="middle" font-size="14" fill="#333" font-weight="600">Sender</text>
+  <text x="100" y="130" text-anchor="middle" font-size="11" fill="#666">Creates &amp; signs</text>
+  <text x="100" y="145" text-anchor="middle" font-size="11" fill="#666">transaction</text>
+  <text x="100" y="170" text-anchor="middle" font-size="11" fill="#0AC18E">👤 🔑</text>
+  
+  <!-- Arrow 1 -->
+  <line x1="160" y1="130" x2="210" y2="130" stroke="#0AC18E" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="185" y="120" text-anchor="middle" font-size="10" fill="#666">1. Broadcast</text>
+  
+  <!-- Step 2: Mempool -->
+  <rect x="220" y="80" width="120" height="100" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="8"/>
+  <text x="280" y="110" text-anchor="middle" font-size="14" fill="#333" font-weight="600">Mempool</text>
+  <text x="280" y="130" text-anchor="middle" font-size="11" fill="#666">Waiting area for</text>
+  <text x="280" y="145" text-anchor="middle" font-size="11" fill="#666">unconfirmed txns</text>
+  <text x="280" y="170" text-anchor="middle" font-size="11" fill="#ff9800">📋</text>
+  
+  <!-- Arrow 2 -->
+  <line x1="340" y1="130" x2="390" y2="130" stroke="#0AC18E" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="365" y="120" text-anchor="middle" font-size="10" fill="#666">2. Selected</text>
+  
+  <!-- Step 3: Miner -->
+  <rect x="400" y="80" width="120" height="100" fill="#e3f2fd" stroke="#2196f3" stroke-width="2" rx="8"/>
+  <text x="460" y="110" text-anchor="middle" font-size="14" fill="#333" font-weight="600">Miner</text>
+  <text x="460" y="130" text-anchor="middle" font-size="11" fill="#666">Includes in</text>
+  <text x="460" y="145" text-anchor="middle" font-size="11" fill="#666">new block</text>
+  <text x="460" y="170" text-anchor="middle" font-size="11" fill="#2196f3">⛏️</text>
+  
+  <!-- Arrow 3 -->
+  <line x1="520" y1="130" x2="570" y2="130" stroke="#0AC18E" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="545" y="120" text-anchor="middle" font-size="10" fill="#666">3. Block found</text>
+  
+  <!-- Step 4: Blockchain -->
+  <rect x="580" y="80" width="120" height="100" fill="#e8f5e9" stroke="#0AC18E" stroke-width="2" rx="8"/>
+  <text x="640" y="110" text-anchor="middle" font-size="14" fill="#333" font-weight="600">Blockchain</text>
+  <text x="640" y="130" text-anchor="middle" font-size="11" fill="#666">Transaction</text>
+  <text x="640" y="145" text-anchor="middle" font-size="11" fill="#666">confirmed</text>
+  <text x="640" y="170" text-anchor="middle" font-size="11" fill="#0AC18E">⛓️</text>
+  
+  <!-- Arrow 4 -->
+  <line x1="700" y1="130" x2="750" y2="130" stroke="#0AC18E" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="725" y="120" text-anchor="middle" font-size="10" fill="#666">4. Verified</text>
+  
+  <!-- Step 5: Receiver -->
+  <rect x="760" y="80" width="100" height="100" fill="#e8f5e9" stroke="#0AC18E" stroke-width="2" rx="8"/>
+  <text x="810" y="110" text-anchor="middle" font-size="14" fill="#333" font-weight="600">Receiver</text>
+  <text x="810" y="130" text-anchor="middle" font-size="11" fill="#666">Can spend</text>
+  <text x="810" y="145" text-anchor="middle" font-size="11" fill="#666">the BCH</text>
+  <text x="810" y="170" text-anchor="middle" font-size="11" fill="#0AC18E">👤 ✓</text>
+  
+  <!-- Timeline bar -->
+  <line x1="100" y1="210" x2="810" y2="210" stroke="#e0e0e0" stroke-width="2"/>
+  
+  <!-- Timeline markers -->
+  <circle cx="100" cy="210" r="5" fill="#0AC18E"/>
+  <text x="100" y="235" text-anchor="middle" font-size="11" fill="#666">Instant</text>
+  
+  <circle cx="280" cy="210" r="5" fill="#ff9800"/>
+  <text x="280" y="235" text-anchor="middle" font-size="11" fill="#666">Seconds</text>
+  
+  <circle cx="460" cy="210" r="5" fill="#2196f3"/>
+  <text x="460" y="235" text-anchor="middle" font-size="11" fill="#666">~10 min</text>
+  
+  <circle cx="640" cy="210" r="5" fill="#0AC18E"/>
+  <text x="640" y="235" text-anchor="middle" font-size="11" fill="#666">~10 min</text>
+  
+  <circle cx="810" cy="210" r="5" fill="#0AC18E"/>
+  <text x="810" y="235" text-anchor="middle" font-size="11" fill="#666">~10 min</text>
+  
+  <!-- Timeline label -->
+  <text x="450" y="265" text-anchor="middle" font-size="11" fill="#999">Time →</text>
+  
+  <!-- Arrow definition -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#0AC18E"/>
+    </marker>
+  </defs>
+</svg>
