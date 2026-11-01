@@ -1,68 +1,52 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" style="max-width:100%;height:auto;font-family:system-ui,-apple-system,sans-serif;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" style="max-width:100%;height:auto;font-family:system-ui,-apple-system,sans-serif;">
   <!-- Background -->
-  <rect width="1200" height="600" fill="#0a0a0a"/>
+  <rect width="1000" height="300" fill="#0a0a0a"/>
   
   <!-- Title -->
-  <text x="600" y="50" text-anchor="middle" font-size="28" font-weight="700" fill="#ffffff">Military Script Through History</text>
-  <text x="600" y="80" text-anchor="middle" font-size="16" fill="#888888">Currency issued by occupying forces for administrative control</text>
+  <text x="500" y="40" text-anchor="middle" font-size="32" font-weight="700" fill="#ffffff">Military Script Through History</text>
   
   <!-- Timeline base -->
-  <line x1="100" y1="300" x2="1100" y2="300" stroke="#333333" stroke-width="3"/>
+  <line x1="100" y1="150" x2="900" y2="150" stroke="#333333" stroke-width="3"/>
   
   <!-- Timeline events -->
   
   <!-- 1930s-1945: Japanese Invasion Money -->
-  <circle cx="200" cy="300" r="8" fill="#f59e0b"/>
-  <text x="200" y="280" text-anchor="middle" font-size="14" font-weight="700" fill="#f59e0b">1930s-1945</text>
-  <text x="200" y="330" text-anchor="middle" font-size="13" fill="#ffffff">Japanese Invasion</text>
-  <text x="200" y="348" text-anchor="middle" font-size="13" fill="#ffffff">Money</text>
-  <text x="200" y="370" text-anchor="middle" font-size="11" fill="#888888">Philippines, Malaya,</text>
-  <text x="200" y="386" text-anchor="middle" font-size="11" fill="#888888">Burma, Indonesia</text>
+  <circle cx="180" cy="150" r="10" fill="#f59e0b"/>
+  <text x="180" y="120" text-anchor="middle" font-size="18" font-weight="700" fill="#f59e0b">1930s-1945</text>
+  <text x="180" y="185" text-anchor="middle" font-size="16" fill="#ffffff">Japanese Invasion</text>
+  <text x="180" y="205" text-anchor="middle" font-size="16" fill="#ffffff">Money</text>
+  <text x="180" y="235" text-anchor="middle" font-size="13" fill="#888888">Philippines, Malaya,</text>
+  <text x="180" y="253" text-anchor="middle" font-size="13" fill="#888888">Burma, Indonesia</text>
   
   <!-- 1940s: British Military Authority -->
-  <circle cx="380" cy="300" r="8" fill="#3b82f6"/>
-  <text x="380" y="280" text-anchor="middle" font-size="14" font-weight="700" fill="#3b82f6">1940s</text>
-  <text x="380" y="330" text-anchor="middle" font-size="13" fill="#ffffff">British Military</text>
-  <text x="380" y="348" text-anchor="middle" font-size="13" fill="#ffffff">Authority Notes</text>
-  <text x="380" y="370" text-anchor="middle" font-size="11" fill="#888888">Occupied Italy</text>
-  <text x="380" y="386" text-anchor="middle" font-size="11" fill="#888888">and territories</text>
+  <circle cx="340" cy="150" r="10" fill="#3b82f6"/>
+  <text x="340" y="120" text-anchor="middle" font-size="18" font-weight="700" fill="#3b82f6">1940s</text>
+  <text x="340" y="185" text-anchor="middle" font-size="16" fill="#ffffff">British Military</text>
+  <text x="340" y="205" text-anchor="middle" font-size="16" fill="#ffffff">Authority Notes</text>
+  <text x="340" y="235" text-anchor="middle" font-size="13" fill="#888888">Occupied Italy</text>
+  <text x="340" y="253" text-anchor="middle" font-size="13" fill="#888888">and territories</text>
   
   <!-- 1944-1948: Allied Military Marks -->
-  <circle cx="540" cy="300" r="8" fill="#10b981"/>
-  <text x="540" y="280" text-anchor="middle" font-size="14" font-weight="700" fill="#10b981">1944-1948</text>
-  <text x="540" y="330" text-anchor="middle" font-size="13" fill="#ffffff">Allied Military</text>
-  <text x="540" y="348" text-anchor="middle" font-size="13" fill="#ffffff">Marks</text>
-  <text x="540" y="370" text-anchor="middle" font-size="11" fill="#888888">Occupied Germany</text>
-  <text x="540" y="386" text-anchor="middle" font-size="11" fill="#888888">post-WWII</text>
+  <circle cx="500" cy="150" r="10" fill="#10b981"/>
+  <text x="500" y="120" text-anchor="middle" font-size="18" font-weight="700" fill="#10b981">1944-1948</text>
+  <text x="500" y="185" text-anchor="middle" font-size="16" fill="#ffffff">Allied Military</text>
+  <text x="500" y="205" text-anchor="middle" font-size="16" fill="#ffffff">Marks</text>
+  <text x="500" y="235" text-anchor="middle" font-size="13" fill="#888888">Occupied Germany</text>
+  <text x="500" y="253" text-anchor="middle" font-size="13" fill="#888888">post-WWII</text>
   
   <!-- 1940s: Soviet Occupation Marks -->
-  <circle cx="680" cy="300" r="8" fill="#ef4444"/>
-  <text x="680" y="280" text-anchor="middle" font-size="14" font-weight="700" fill="#ef4444">1940s</text>
-  <text x="680" y="330" text-anchor="middle" font-size="13" fill="#ffffff">Soviet Occupation</text>
-  <text x="680" y="348" text-anchor="middle" font-size="13" fill="#ffffff">Marks</text>
-  <text x="680" y="370" text-anchor="middle" font-size="11" fill="#888888">Eastern Europe</text>
-  <text x="680" y="386" text-anchor="middle" font-size="11" fill="#888888">and East Germany</text>
+  <circle cx="660" cy="150" r="10" fill="#ef4444"/>
+  <text x="660" y="120" text-anchor="middle" font-size="18" font-weight="700" fill="#ef4444">1940s</text>
+  <text x="660" y="185" text-anchor="middle" font-size="16" fill="#ffffff">Soviet Occupation</text>
+  <text x="660" y="205" text-anchor="middle" font-size="16" fill="#ffffff">Marks</text>
+  <text x="660" y="235" text-anchor="middle" font-size="13" fill="#888888">Eastern Europe</text>
+  <text x="660" y="253" text-anchor="middle" font-size="13" fill="#888888">and East Germany</text>
   
   <!-- 1940s-1970s: US Military Payment Certificates -->
-  <circle cx="860" cy="300" r="8" fill="#8b5cf6"/>
-  <text x="860" y="280" text-anchor="middle" font-size="14" font-weight="700" fill="#8b5cf6">1940s-1970s</text>
-  <text x="860" y="330" text-anchor="middle" font-size="13" fill="#ffffff">U.S. Military Payment</text>
-  <text x="860" y="348" text-anchor="middle" font-size="13" fill="#ffffff">Certificates</text>
-  <text x="860" y="370" text-anchor="middle" font-size="11" fill="#888888">Germany, Vietnam,</text>
-  <text x="860" y="386" text-anchor="middle" font-size="11" fill="#888888">overseas bases</text>
-  
-  <!-- 1913+: Federal Reserve Notes (highlighted as the main point) -->
-  <rect x="40" y="440" width="1120" height="120" fill="#1a1a1a" stroke="#f59e0b" stroke-width="2" rx="8"/>
-  <text x="600" y="470" text-anchor="middle" font-size="18" font-weight="700" fill="#f59e0b">The Question</text>
-  <text x="600" y="500" text-anchor="middle" font-size="15" fill="#ffffff">Federal Reserve Notes (1913-present) share the same structure:</text>
-  <text x="600" y="525" text-anchor="middle" font-size="14" fill="#cccccc">Currency issued by a central authority, for use within its jurisdiction,</text>
-  <text x="600" y="545" text-anchor="middle" font-size="14" fill="#cccccc">with the civilian population compelled to accept it.</text>
-  
-  <!-- Key insight box -->
-  <rect x="100" y="100" width="1000" height="150" fill="#1a1a1a" rx="8"/>
-  <text x="120" y="130" font-size="16" font-weight="700" fill="#ffffff">Common Pattern:</text>
-  <text x="120" y="155" font-size="14" fill="#cccccc">• Issued by military or administrative authority</text>
-  <text x="120" y="178" font-size="14" fill="#cccccc">• Not intended for civilian use (but civilians forced to accept it)</text>
-  <text x="120" y="201" font-size="14" fill="#cccccc">• Operates within a closed system of control</text>
-  <text x="120" y="224" font-size="14" fill="#cccccc">• Users operate within the issuer's jurisdiction by definition</text>
+  <circle cx="820" cy="150" r="10" fill="#8b5cf6"/>
+  <text x="820" y="120" text-anchor="middle" font-size="18" font-weight="700" fill="#8b5cf6">1940s-1970s</text>
+  <text x="820" y="185" text-anchor="middle" font-size="16" fill="#ffffff">U.S. Military Payment</text>
+  <text x="820" y="205" text-anchor="middle" font-size="16" fill="#ffffff">Certificates</text>
+  <text x="820" y="235" text-anchor="middle" font-size="13" fill="#888888">Germany, Vietnam,</text>
+  <text x="820" y="253" text-anchor="middle" font-size="13" fill="#888888">overseas bases</text>
 </svg>
