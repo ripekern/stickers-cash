@@ -1,86 +1,62 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" style="max-width:100%;height:auto;font-family:system-ui,-apple-system,sans-serif;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 450" style="max-width:100%;height:auto;font-family:system-ui,-apple-system,sans-serif;">
   <!-- Background -->
-  <rect width="1200" height="700" fill="#0a0a0a"/>
+  <rect width="1000" height="450" fill="#0a0a0a"/>
   
   <!-- Title -->
-  <text x="600" y="40" text-anchor="middle" font-size="26" font-weight="700" fill="#ffffff">The Closed Loop: How Military Script Works</text>
-  <text x="600" y="65" text-anchor="middle" font-size="15" fill="#888888">A system designed to keep users inside the issuer's jurisdiction</text>
+  <text x="500" y="45" text-anchor="middle" font-size="36" font-weight="700" fill="#ffffff">The Closed Loop</text>
+  <text x="500" y="75" text-anchor="middle" font-size="20" fill="#888888">Military Script vs Federal Reserve Notes</text>
   
-  <!-- Left side: Military Script (Occupied Territory) -->
-  <rect x="50" y="100" width="520" height="550" fill="#1a1a1a" stroke="#ef4444" stroke-width="2" rx="8"/>
-  <text x="310" y="135" text-anchor="middle" font-size="20" font-weight="700" fill="#ef4444">Military Script (Occupied Territory)</text>
+  <!-- Left side: Military Script -->
+  <rect x="80" y="110" width="380" height="280" fill="#1a1a1a" stroke="#ef4444" stroke-width="3" rx="8"/>
+  <text x="270" y="145" text-anchor="middle" font-size="26" font-weight="700" fill="#ef4444">Military Script</text>
   
   <!-- Authority -->
-  <rect x="100" y="170" width="420" height="60" fill="#ef4444" fill-opacity="0.2" stroke="#ef4444" stroke-width="2" rx="6"/>
-  <text x="310" y="205" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">Military Authority</text>
+  <rect x="120" y="170" width="300" height="50" fill="#ef4444" fill-opacity="0.2" stroke="#ef4444" stroke-width="2" rx="6"/>
+  <text x="270" y="200" text-anchor="middle" font-size="20" font-weight="600" fill="#ffffff">Military Authority</text>
   
   <!-- Arrow down -->
-  <path d="M 310 230 L 310 270 M 300 260 L 310 270 L 320 260" stroke="#ef4444" stroke-width="2" fill="none"/>
+  <path d="M 270 220 L 270 240 M 260 230 L 270 240 L 280 230" stroke="#ef4444" stroke-width="3" fill="none"/>
   
   <!-- Issues Currency -->
-  <rect x="100" y="270" width="420" height="50" fill="#ef4444" fill-opacity="0.1" stroke="#ef4444" stroke-width="2" rx="6"/>
-  <text x="310" y="300" text-anchor="middle" font-size="15" fill="#ffffff">Issues Currency</text>
+  <rect x="120" y="245" width="300" height="50" fill="#ef4444" fill-opacity="0.1" stroke="#ef4444" stroke-width="2" rx="6"/>
+  <text x="270" y="275" text-anchor="middle" font-size="20" font-weight="600" fill="#ffffff">Issues Currency</text>
   
   <!-- Arrow down -->
-  <path d="M 310 320 L 310 360 M 300 350 L 310 360 L 320 350" stroke="#ef4444" stroke-width="2" fill="none"/>
+  <path d="M 270 295 L 270 315 M 260 305 L 270 315 L 280 305" stroke="#ef4444" stroke-width="3" fill="none"/>
   
-  <!-- For Personnel -->
-  <rect x="100" y="360" width="420" height="50" fill="#ef4444" fill-opacity="0.1" stroke="#ef4444" stroke-width="2" rx="6"/>
-  <text x="310" y="390" text-anchor="middle" font-size="15" fill="#ffffff">For Military Personnel &amp; Administration</text>
-  
-  <!-- Arrow down -->
-  <path d="M 310 410 L 310 450 M 300 440 L 310 450 L 320 440" stroke="#ef4444" stroke-width="2" fill="none"/>
-  
-  <!-- Civilians forced to accept -->
-  <rect x="100" y="450" width="420" height="50" fill="#ef4444" fill-opacity="0.1" stroke="#ef4444" stroke-width="2" rx="6"/>
-  <text x="310" y="480" text-anchor="middle" font-size="15" fill="#ffffff">Civilians Compelled to Accept</text>
+  <!-- Civilians -->
+  <rect x="120" y="320" width="300" height="50" fill="#ef4444" fill-opacity="0.1" stroke="#ef4444" stroke-width="2" rx="6"/>
+  <text x="270" y="350" text-anchor="middle" font-size="20" font-weight="600" fill="#ffffff">Civilians Compelled</text>
   
   <!-- Arrow looping back up -->
-  <path d="M 520 475 Q 540 475 540 300 Q 540 120 310 120 Q 80 120 80 300 Q 80 475 100 475" 
-        stroke="#ef4444" stroke-width="2" fill="none" stroke-dasharray="5,5" opacity="0.6"/>
-  <text x="310" y="600" text-anchor="middle" font-size="14" fill="#ef4444" font-weight="700">Users trapped inside jurisdiction</text>
+  <path d="M 460 345 Q 490 345 490 250 Q 490 145 270 145 Q 50 145 50 250 Q 50 345 80 345" 
+        stroke="#ef4444" stroke-width="3" fill="none" stroke-dasharray="8,4" opacity="0.7"/>
+  <text x="270" y="425" text-anchor="middle" font-size="18" fill="#ef4444" font-weight="700">Trapped Inside</text>
   
-  <!-- Result -->
-  <text x="310" y="630" text-anchor="middle" font-size="13" fill="#888888">Using the currency = operating under military authority</text>
-  
-  <!-- Right side: Federal Reserve Notes (United States) -->
-  <rect x="630" y="100" width="520" height="550" fill="#1a1a1a" stroke="#f59e0b" stroke-width="2" rx="8"/>
-  <text x="890" y="135" text-anchor="middle" font-size="20" font-weight="700" fill="#f59e0b">Federal Reserve Notes (United States)</text>
+  <!-- Right side: Federal Reserve Notes -->
+  <rect x="540" y="110" width="380" height="280" fill="#1a1a1a" stroke="#f59e0b" stroke-width="3" rx="8"/>
+  <text x="730" y="145" text-anchor="middle" font-size="26" font-weight="700" fill="#f59e0b">Federal Reserve Notes</text>
   
   <!-- Federal Reserve -->
-  <rect x="680" y="170" width="420" height="60" fill="#f59e0b" fill-opacity="0.2" stroke="#f59e0b" stroke-width="2" rx="6"/>
-  <text x="890" y="205" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">Federal Reserve (Private Corporation)</text>
+  <rect x="580" y="170" width="300" height="50" fill="#f59e0b" fill-opacity="0.2" stroke="#f59e0b" stroke-width="2" rx="6"/>
+  <text x="730" y="200" text-anchor="middle" font-size="20" font-weight="600" fill="#ffffff">Federal Reserve</text>
   
   <!-- Arrow down -->
-  <path d="M 890 230 L 890 270 M 880 260 L 890 270 L 900 260" stroke="#f59e0b" stroke-width="2" fill="none"/>
+  <path d="M 730 220 L 730 240 M 720 230 L 730 240 L 740 230" stroke="#f59e0b" stroke-width="3" fill="none"/>
   
   <!-- Issues Currency -->
-  <rect x="680" y="270" width="420" height="50" fill="#f59e0b" fill-opacity="0.1" stroke="#f59e0b" stroke-width="2" rx="6"/>
-  <text x="890" y="300" text-anchor="middle" font-size="15" fill="#ffffff">Issues Currency (Liabilities of the Fed)</text>
+  <rect x="580" y="245" width="300" height="50" fill="#f59e0b" fill-opacity="0.1" stroke="#f59e0b" stroke-width="2" rx="6"/>
+  <text x="730" y="275" text-anchor="middle" font-size="20" font-weight="600" fill="#ffffff">Issues Currency</text>
   
   <!-- Arrow down -->
-  <path d="M 890 320 L 890 360 M 880 350 L 890 360 L 900 350" stroke="#f59e0b" stroke-width="2" fill="none"/>
+  <path d="M 730 295 L 730 315 M 720 305 L 730 315 L 740 305" stroke="#f59e0b" stroke-width="3" fill="none"/>
   
-  <!-- For Government -->
-  <rect x="680" y="360" width="420" height="50" fill="#f59e0b" fill-opacity="0.1" stroke="#f59e0b" stroke-width="2" rx="6"/>
-  <text x="890" y="390" text-anchor="middle" font-size="15" fill="#ffffff">For Government Transactions &amp; Personnel</text>
-  
-  <!-- Arrow down -->
-  <path d="M 890 410 L 890 450 M 880 440 L 890 450 L 900 440" stroke="#f59e0b" stroke-width="2" fill="none"/>
-  
-  <!-- Civilians forced to accept -->
-  <rect x="680" y="450" width="420" height="50" fill="#f59e0b" fill-opacity="0.1" stroke="#f59e0b" stroke-width="2" rx="6"/>
-  <text x="890" y="480" text-anchor="middle" font-size="15" fill="#ffffff">Civilians Compelled to Accept (Taxes, Debts)</text>
+  <!-- Civilians -->
+  <rect x="580" y="320" width="300" height="50" fill="#f59e0b" fill-opacity="0.1" stroke="#f59e0b" stroke-width="2" rx="6"/>
+  <text x="730" y="350" text-anchor="middle" font-size="20" font-weight="600" fill="#ffffff">Civilians Compelled</text>
   
   <!-- Arrow looping back up -->
-  <path d="M 1100 475 Q 1120 475 1120 300 Q 1120 120 890 120 Q 660 120 660 300 Q 660 475 680 475" 
-        stroke="#f59e0b" stroke-width="2" fill="none" stroke-dasharray="5,5" opacity="0.6"/>
-  <text x="890" y="600" text-anchor="middle" font-size="14" fill="#f59e0b" font-weight="700">Users trapped inside jurisdiction</text>
-  
-  <!-- Result -->
-  <text x="890" y="630" text-anchor="middle" font-size="13" fill="#888888">Using the currency = operating under federal authority</text>
-  
-  <!-- Bottom insight -->
-  <rect x="100" y="660" width="1000" height="30" fill="#1a1a1a" rx="4"/>
-  <text x="600" y="680" text-anchor="middle" font-size="14" fill="#ffffff" font-weight="700">Same structure. Same closed loop. Same implication: if you're using it, you're inside it.</text>
+  <path d="M 920 345 Q 950 345 950 250 Q 950 145 730 145 Q 510 145 510 250 Q 510 345 540 345" 
+        stroke="#f59e0b" stroke-width="3" fill="none" stroke-dasharray="8,4" opacity="0.7"/>
+  <text x="730" y="425" text-anchor="middle" font-size="18" fill="#f59e0b" font-weight="700">Trapped Inside</text>
 </svg>
