@@ -142,8 +142,7 @@
 
     <h2>The BCH way</h2>
 
-    <p>Linh sends her customer a Bitcoin Cash address and the amount in BCH (calculated from the
-      current exchange rate). The customer opens their wallet, scans a QR code, and sends the
+    <p>Linh sends her customer a Bitcoin Cash address and the amount in satoshis. The customer opens their wallet, scans a QR code, and sends the
       payment. The transaction broadcasts to the network and confirms within minutes.</p>
 
     <p>The fee is a fraction of a cent. There's no intermediary, no wire transfer fee, no exchange
@@ -168,10 +167,10 @@
     <p>Here's how Linh structures her invoices:</p>
 
     <ul>
-      <li><strong>Quote:</strong> Linh quotes $10,000 USD for a shipment of coffee, with a note
-        that payment is accepted in BCH at the exchange rate on the day of payment.</li>
+      <li><strong>Quote:</strong> Linh quotes a price and includes a note
+        that payment is accepted in satoshis at the exchange rate on the day of payment.</li>
       <li><strong>Invoice:</strong> When the customer is ready to pay, Linh sends a Bitcoin Cash
-        address and the exact BCH amount (calculated from a public price API). She includes a
+        address and the exact satoshi amount (calculated from a public price API). She includes a
         15-minute window for the rate to stay valid.</li>
       <li><strong>Payment:</strong> The customer scans a QR code or copies the address, sends the
         BCH, and emails a screenshot or transaction ID.</li>
