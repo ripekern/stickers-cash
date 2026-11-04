@@ -148,7 +148,7 @@
 
     <figure class="post-figure">
       <img src="media/bch-transaction-flow.svg" alt="BCH transaction flow from broadcast to confirmation" />
-      <figcaption>From broadcast to confirmation: the journey of a BCH transaction takes about 10 minutes on average.</figcaption>
+      <figcaption>From broadcast to spendable: the receiver can spend the BCH instantly via zero-conf, or wait ~10 minutes for full block confirmation.</figcaption>
     </figure>
 
     <p>A broadcast transaction lands in the <strong>mempool</strong>, the holding area where nodes
@@ -156,9 +156,10 @@
       mempool, usually prioritizing by <a href="the-fee-that-is-almost-nothing.html">fee per byte</a>, and assemble them into a block.</p>
 
     <p>When a miner finds a valid block, the transaction becomes part of the chain. That is one
-      <strong>confirmation</strong>. Each later block adds another. The shop can see the payment
-      before it is confirmed, which is why small purchases often feel instant. For larger amounts,
-      waiting for at least one confirmation is the normal safety step.</p>
+      <strong>confirmation</strong>. Each later block adds another. But the shop can see and spend the payment
+      <strong>before it is confirmed</strong> — this is called zero-conf (zero confirmations). For small purchases,
+      zero-conf is instant and safe. For larger amounts, waiting for at least one confirmation (~10 minutes)
+      is the normal safety step.</p>
 
     <h2>What the public sees</h2>
 
@@ -174,7 +175,7 @@
       <p class="callout-title">The short version</p>
       <p>A BCH payment is a signed transfer of control over specific coins. The wallet selects
         inputs, creates outputs, signs, and broadcasts. Nodes verify. Miners include. The receiver
-        can verify the result without a bank.</p>
+        can verify the payment and re-spend it via zero-conf — no bank, no waiting.</p>
     </aside>
 
     <p>The first time you send BCH, send a small amount to your own second wallet. Watch it move.
