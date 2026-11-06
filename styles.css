@@ -706,6 +706,29 @@ select, input, .ship-methods{
 .series-sub{margin:5px 0 0;font-size:14.5px;color:var(--muted);max-width:620px}
 .series-count{font-size:12.5px;font-weight:700;color:var(--muted);white-space:nowrap;margin-bottom:4px}
 
+.chapter-deep-dives{
+  margin-top:20px;padding:16px 20px;
+  background:var(--mint-2);border:1px solid #CBEFE1;border-radius:12px;
+  font-size:14px;
+}
+.chapter-deep-dives strong{
+  display:block;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--green-ink);margin-bottom:10px;
+}
+.chapter-deep-dives ul{
+  list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;
+}
+.chapter-deep-dives li{
+  margin:0;font-size:13.5px;line-height:1.5;
+}
+.chapter-deep-dives a{
+  color:var(--green-ink);text-decoration:none;font-weight:600;
+  transition:color .15s ease;
+}
+.chapter-deep-dives a:hover{
+  color:var(--green);text-decoration:underline;
+}
+
 .part-divider{
   margin:64px 0 40px;padding:28px 32px;
   background:linear-gradient(135deg,var(--green-ink) 0%,#089E74 100%);
