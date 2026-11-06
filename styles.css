@@ -899,6 +899,21 @@ select, input, .ship-methods{
 .pager-card.next{text-align:right}
 .pager-card.only-next{grid-column:2}
 
+.next-post-button{
+  display:block;width:100%;background:var(--green);color:#fff;
+  padding:20px 24px;border-radius:12px;text-decoration:none;
+  margin:40px 0 28px;transition:background .15s, transform .1s, box-shadow .15s;
+  text-align:center;
+}
+.next-post-button:hover{background:var(--green-dk);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.next-post-label{
+  display:block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  opacity:.9;margin-bottom:6px;
+}
+.next-post-button strong{
+  display:block;font-size:18px;line-height:1.4;font-weight:700;
+}
+
 .article{max-width:700px;min-width:0;font-size:17px;line-height:1.72;color:#2C3B46}
 .article p{margin:0 0 20px}
 .article h2{
