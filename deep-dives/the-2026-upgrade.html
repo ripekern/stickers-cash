@@ -3,54 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The 2026 upgrade — The internet cash guide — stickers.cash</title>
-<meta name="description" content="BCH's programmability did not arrive all at once. It has been built upgrade by upgrade — and 2026 added some of the biggest pieces yet.">
+<title>Deep Dive: The 2026 Upgrade — stickers.cash</title>
+<meta name="description" content="What activated in BCH's May 2026 upgrade: P2S, bounded loops, functions, and bitwise operations. How each change expands the contract layer.">
 <meta name="theme-color" content="#0AC18E">
-<meta property="og:title" content="The 2026 upgrade — The internet cash guide — stickers.cash">
-<meta property="og:description" content="BCH's programmability did not arrive all at once. It has been built upgrade by upgrade — and 2026 added some of the biggest pieces yet.">
-<meta property="og:url" content="https://stickers.cash/blog/the-2026-upgrade.html">
+<meta property="og:title" content="Deep Dive: The 2026 Upgrade — stickers.cash">
+<meta property="og:description" content="What activated in BCH's May 2026 upgrade: P2S, bounded loops, functions, and bitwise operations. How each change expands the contract layer.">
+<meta property="og:url" content="https://stickers.cash/deep-dives/the-2026-upgrade.html">
 <meta property="og:type" content="article">
-<link rel="canonical" href="https://stickers.cash/blog/the-2026-upgrade.html">
+<link rel="canonical" href="https://stickers.cash/deep-dives/the-2026-upgrade.html">
 <link rel="icon" href="../media/bch/bch-circle.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles.css">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "The 2026 upgrade",
-  "description": "BCH's programmability did not arrive all at once. It has been built upgrade by upgrade — and 2026 added some of the biggest pieces yet.",
-  "url": "https://stickers.cash/blog/the-2026-upgrade.html",
-  "mainEntityOfPage": "https://stickers.cash/blog/the-2026-upgrade.html",
-  "datePublished": "2026-10-22",
-  "dateModified": "2026-10-22",
-  "author": {
-    "@type": "Organization",
-    "name": "stickers.cash",
-    "url": "https://stickers.cash/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "stickers.cash",
-    "url": "https://stickers.cash/"
-  },
-  "articleSection": "Part three · The revolution · Chapter ten · Money that moves on its own",
-  "position": 30,
-  "about": [
-    "Bitcoin Cash",
-    "money",
-    "inflation",
-    "self-custody"
-  ],
-  "isPartOf": {
-    "@type": "Blog",
-    "name": "The internet cash field guide",
-    "url": "https://stickers.cash/blog.html"
-  }
-}
-</script>
 </head>
 <body>
 
@@ -74,7 +39,7 @@
     </a>
 
     <nav class="nav" id="mainNav" aria-label="Main">
-      <a href="../blog.html" aria-current="true">Guide</a>
+      <a href="../blog.html">Guide</a>
       <a href="../index.html">Shop</a>
       <a href="../index.html#how">How it works</a>
       <a href="../index.html#shipping">Shipping</a>
@@ -92,26 +57,21 @@
 </header>
 
 <main>
-<!-- ======================= POST HEAD ======================= -->
+<!-- ======================= DEEP DIVE HEAD ======================= -->
 <section class="post-head">
   <div class="container post-head-inner">
-    <a class="post-back" href="../blog.html">← All posts</a>
-    <span class="eyebrow">Part three · Chapter ten</span>
-    <h1>The 2026 upgrade</h1>
+    <a class="post-back" href="../blog/money-that-can-run-rules.html">← Back to: Money that can run rules</a>
+    <span class="eyebrow">Deep dive</span>
+    <h1>The 2026 Upgrade</h1>
     <p class="lede">BCH's programmability did not arrive all at once. It has been built upgrade by upgrade — and 2026 added some of the biggest pieces yet.</p>
-    <div class="post-meta">
-      <span>Post 30 of 37</span>
-      <span class="dot">·</span>
-      <span>3 min read</span>
-      <span class="dot">·</span>
-      <span>Oct 22, 2026</span>
-    </div>
   </div>
 </section>
 
-<!-- ======================= POST BODY ======================= -->
+<!-- ======================= DEEP DIVE BODY ======================= -->
 <div class="post-body">
   <article class="article post-article">
+
+    <p>This deep dive expands on the upgrade history mentioned throughout <a href="../blog/money-that-can-run-rules.html">"Money that can run rules."</a> It covers the specific consensus changes that activated in May 2026 and how they expand what BCH contracts can do. This is technical content for developers and the deeply curious.</p>
 
     <p>Bitcoin Cash did not become programmable in a single upgrade. It became programmable through
       a series of narrow, auditable changes: introspection, tokens, larger integers, better VM
@@ -129,7 +89,7 @@
         1,650 to 10,000 bytes. The result is simpler, smaller transactions for vaults, multi-party
         contracts, and token applications.</li>
       <li><strong>Bounded loops:</strong> adds <code>OP_BEGIN</code> and <code>OP_UNTIL</code>,
-        allowing loops that are checked against the VM’s resource limits. This makes repetitive
+        allowing loops that are checked against the VM's resource limits. This makes repetitive
         logic possible without unbounded execution.</li>
       <li><strong>Functions:</strong> adds <code>OP_DEFINE</code> and <code>OP_INVOKE</code>, so
         bytecode can be organized into reusable functions instead of duplicated blocks.</li>
@@ -142,7 +102,7 @@
     <p>Loops make it possible to process a list or repeat a calculation. Functions make that logic
       modular and easier to audit. Bitwise operations make low-level cryptography and compact state
       practical. P2S gives contracts more room and a cleaner output format. Together they move BCH
-      from “simple scripts” to a complete contract toolkit for money.</p>
+      from "simple scripts" to a complete contract toolkit for money.</p>
 
     <p>The earlier upgrades set the stage. Native introspection in 2022 made covenants possible.
       CashTokens in 2023 made assets native. VM limits and BigInt in 2025 removed arbitrary
@@ -168,7 +128,7 @@
       The ecosystem has wallets, SDKs, testing tools, and metadata standards. The path from idea to
       working contract is shorter than it has ever been.</p>
 
-    <p>That is the advantage of BCH’s approach: the base layer stays cheap and simple while the
+    <p>That is the advantage of BCH's approach: the base layer stays cheap and simple while the
       contract layer grows. Developers can build on the same chain that settles the payment, without a
       new gas token or a new network.</p>
 
@@ -182,31 +142,18 @@
       tools are here, the primitives are live, and the best applications are still being written.
       That is the opportunity.</p>
 
-    <p>And people are already building with them. <a href="a-freelancer-paid-in-bch.html">A freelancer paid in BCH</a> shows how Maria, a developer in Argentina, invoices a US client and gets paid in minutes — with no bank and no middleman.</p>
-
-
-    <a href="a-freelancer-paid-in-bch.html" class="next-post-button">
-      <span class="next-post-label">Next post →</span>
-      <strong>A freelancer paid in BCH</strong>
-    </a>
+    <p>For the technical foundation, see <a href="the-script-under-every-wallet.html">The script under every wallet</a>, <a href="cashscript-without-the-ceremony.html">CashScript without the ceremony</a>, and <a href="covenants-rules-that-follow-the-coin.html">Covenants: rules that follow the coin</a>.</p>
 
 <p class="post-disclaimer">We do not provide financial advice.</p>
 
     <aside class="blog-donate" aria-label="Guide donation">
   <div class="blog-donate-head">
     <span class="blog-donate-title">Tip the guide</span>
-    <span class="blog-donate-note">Guide donation</span>
+    <span class="blog-donate-note">Deep dive</span>
   </div>
-  <p>If this guide was useful, you can <a href="../donate.html">send a private BCH tip</a> — one address, any amount, no cart or account.</p>
+  <p>If this deep dive was useful, you can <a href="../donate.html">send a private BCH tip</a> — one address, any amount, no cart or account.</p>
 </aside>
 
-    <nav class="post-pager" aria-label="More posts">
-        <a class="pager-card prev" href="money-that-streams.html">
-          <span>← Previous post</span>
-          <b>Money that streams</b>
-        </a>
-        
-    </nav>
   </article>
 </div>
 

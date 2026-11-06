@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Covenants: rules that follow the coin — The internet cash guide — stickers.cash</title>
-<meta name="description" content="A covenant is a restriction on how money can be spent. BCH's introspection opcodes let a contract inspect the transaction that is spending it.">
+<title>How to buy your first BCH — The internet cash guide — stickers.cash</title>
+<meta name="description" content="The fastest path from dollars to Bitcoin Cash in your own wallet. No trading, no jargon — just the practical steps to get started today.">
 <meta name="theme-color" content="#0AC18E">
-<meta property="og:title" content="Covenants: rules that follow the coin — The internet cash guide — stickers.cash">
-<meta property="og:description" content="A covenant is a restriction on how money can be spent. BCH's introspection opcodes let a contract inspect the transaction that is spending it.">
-<meta property="og:url" content="https://stickers.cash/blog/covenants-rules-that-follow-the-coin.html">
+<meta property="og:title" content="How to buy your first BCH — The internet cash guide — stickers.cash">
+<meta property="og:description" content="The fastest path from dollars to Bitcoin Cash in your own wallet. No trading, no jargon — just the practical steps to get started today.">
+<meta property="og:url" content="https://stickers.cash/blog/how-to-buy-your-first-bch.html">
 <meta property="og:type" content="article">
-<link rel="canonical" href="https://stickers.cash/blog/covenants-rules-that-follow-the-coin.html">
+<link rel="canonical" href="https://stickers.cash/blog/how-to-buy-your-first-bch.html">
 <link rel="icon" href="../media/bch/bch-circle.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,12 +20,12 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Covenants: rules that follow the coin",
-  "description": "A covenant is a restriction on how money can be spent. BCH's introspection opcodes let a contract inspect the transaction that is spending it.",
-  "url": "https://stickers.cash/blog/covenants-rules-that-follow-the-coin.html",
-  "mainEntityOfPage": "https://stickers.cash/blog/covenants-rules-that-follow-the-coin.html",
-  "datePublished": "2026-10-22",
-  "dateModified": "2026-10-22",
+  "headline": "How to buy your first BCH",
+  "description": "The fastest path from dollars to Bitcoin Cash in your own wallet. No trading, no jargon — just the practical steps to get started today.",
+  "url": "https://stickers.cash/blog/how-to-buy-your-first-bch.html",
+  "mainEntityOfPage": "https://stickers.cash/blog/how-to-buy-your-first-bch.html",
+  "datePublished": "2026-11-06",
+  "dateModified": "2026-11-06",
   "author": {
     "@type": "Organization",
     "name": "stickers.cash",
@@ -36,13 +36,13 @@
     "name": "stickers.cash",
     "url": "https://stickers.cash/"
   },
-  "articleSection": "Part three · The revolution · Chapter nine · Money with rules",
-  "position": 26,
+  "articleSection": "Part three · The revolution · Chapter seven · Getting started",
+  "position": 22,
   "about": [
     "Bitcoin Cash",
-    "money",
-    "inflation",
-    "self-custody"
+    "wallets",
+    "self-custody",
+    "getting started"
   ],
   "isPartOf": {
     "@type": "Blog",
@@ -96,15 +96,15 @@
 <section class="post-head">
   <div class="container post-head-inner">
     <a class="post-back" href="../blog.html">← All posts</a>
-    <span class="eyebrow">Part three · Chapter nine</span>
-    <h1>Covenants: rules that follow the coin</h1>
-    <p class="lede">A covenant is a restriction on how money can be spent. BCH's introspection opcodes let a contract inspect the transaction that is spending it.</p>
+    <span class="eyebrow">Part three · Chapter seven</span>
+    <h1>How to buy your first BCH</h1>
+    <p class="lede">The fastest path from dollars to Bitcoin Cash in your own wallet. No trading, no jargon — just the practical steps to get started today.</p>
     <div class="post-meta">
-      <span>Post 26 of 37</span>
+      <span>Post 22 of 37</span>
       <span class="dot">·</span>
       <span>3 min read</span>
       <span class="dot">·</span>
-      <span>Oct 22, 2026</span>
+      <span>Nov 6, 2026</span>
     </div>
   </div>
 </section>
@@ -113,66 +113,103 @@
 <div class="post-body">
   <article class="article post-article">
 
-    <p>A covenant is a restriction on how money can be spent. The word comes from property law:
-      a covenant constrains the use of an object even after it changes hands. In Bitcoin Cash, the
-      idea is literal. A contract can require that a coin be spent in a particular way, not just by
-      a particular person.</p>
+    <p>You do not need to understand charts, candlesticks, or market cycles. You just need three
+      things: a wallet, a way to pay, and five minutes. Here is the whole process.</p>
 
-    <h2>Before introspection</h2>
+    <h2>Step 1: Get a wallet</h2>
 
-    <p>BCH scripts have always been able to check who signed, when a spend is allowed, and whether a
-      hash preimage is correct. Native introspection, activated in May 2022, added the ability to
-      inspect the outputs of the transaction spending the coins. A contract can now read the values
-      and locking scripts of outputs, the active input index, transaction fields, and token data on
-      inputs and outputs. That is the foundation of covenants on BCH.</p>
+    <p>A wallet is an app that holds your BCH. It does not hold the coins themselves — those live on
+      the blockchain. The wallet holds the <em>keys</em> that let you spend them. Think of it like a
+      physical wallet: the cash is inside, and only you have the zipper.</p>
 
-    <h2>Rules that follow the coin</h2>
-
-    <p>The simplest covenant restricts the destination. A vault can hold savings and send them only
-      to a designated cold address. Even a compromised key cannot move funds outside that rule. The
-      promise is enforced by the network, not by a policy document.</p>
-
-    <p>More interesting covenants constrain the shape of the transaction. A contract can require
-      that part of the money return to the contract, that a token move with the payment, or that a
-      specific output carry a particular commitment. That is how you build a recurring payment, a
-      token pool, or a contract that carries state forward from one spend to the next.</p>
-
-    <p>The pattern is always the same: the contract inspects the transaction, checks the conditions,
-      and either allows the spend or rejects it. The “state” is the set of coins and tokens the
-      contract controls. Updating the state means spending them into a new output with the same
-      contract lock.</p>
-
-    <h2>What covenants make possible</h2>
+    <p>Three good options, all free:</p>
 
     <ul>
-      <li><strong>Vaults:</strong> savings that can only be withdrawn to a known address, with an
-        optional delay.</li>
-      <li><strong>Inheritance:</strong> funds that a family key can claim after a long inactivity
-        period.</li>
-      <li><strong>Recurring payments:</strong> an allowance that releases on a schedule and returns
-        the remainder to the contract.</li>
-      <li><strong>Escrow:</strong> funds that can only pay the buyer or the seller, with an arbiter
-        who cannot redirect them.</li>
-      <li><strong>Token protocols:</strong> contracts that enforce supply, minting, or redemption
-        rules for CashTokens.</li>
+      <li><strong><a href="https://selene.cash" target="_blank" rel="noopener">Selene</a></strong> —
+        mobile, clean interface, built for BCH. Best for beginners.</li>
+      <li><strong><a href="https://paytaca.com" target="_blank" rel="noopener">Paytaca</a></strong> —
+        mobile, supports CashTokens and smart contracts. Best if you want to explore more.</li>
+      <li><strong><a href="https://bitbox.swiss" target="_blank" rel="noopener">BitBox02</a></strong> —
+        hardware wallet. Best for larger amounts. You hold a physical device; no one else can touch
+        your coins.</li>
     </ul>
 
-    <h2>Rules you can verify</h2>
+    <p>Download the app, create a wallet, and <strong>write down your recovery phrase</strong>. This
+      is a list of 12 or 24 words. It is the only way to recover your wallet if you lose your
+      phone. Store it somewhere safe — not in a screenshot, not in a cloud note. Paper is fine.</p>
 
-    <p>A covenant is powerful because it removes discretion. The rule is visible, deterministic, and
-      enforced by every node. You can test it on chipnet, review it, and know exactly how it will
-      behave. That is a stronger foundation than a policy document or a promise.</p>
+    <h2>Step 2: Get some BCH</h2>
 
-    <p>The 2026 P2S upgrade makes covenant transactions smaller and simpler, especially for vaults
-      and multi-party applications. A well-designed covenant is a promise the network keeps — and
-      that is exactly what money needs.</p>
+    <p>Now you need coins. The easiest path depends on where you live:</p>
 
-    <p>And one of the most powerful things you can build with that promise is trustless escrow. <a href="escrow-without-a-company.html">Escrow without a company</a> shows how a 2-of-3 multisig or a small covenant holds funds until the conditions are met.</p>
+    <div class="table-wrap">
+      <table class="post-table">
+        <thead>
+          <tr><th>Method</th><th>Best for</th><th>How</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>On-ramp app</strong></td>
+            <td>Most people</td>
+            <td>Apps like <a href="https://moonpay.com" target="_blank" rel="noopener">MoonPay</a> or
+              <a href="https://ramp.network" target="_blank" rel="noopener">Ramp</a> let you buy BCH
+              with a debit card or bank transfer. Send it to your wallet address.</td>
+          </tr>
+          <tr>
+            <td><strong>Exchange</strong></td>
+            <td>Comfortable with crypto</td>
+            <td>Coinbase, Kraken, or Binance all support BCH. Buy, then withdraw to your wallet
+              address.</td>
+          </tr>
+          <tr>
+            <td><strong>Peer-to-peer</strong></td>
+            <td>Privacy-focused</td>
+            <td>Meet someone locally or use a P2P platform. Cash in hand, BCH in wallet.</td>
+          </tr>
+          <tr>
+            <td><strong>Bitcoin ATM</strong></td>
+            <td>Cash-friendly</td>
+            <td>Find a BCH-supporting ATM near you. Insert cash, scan your wallet QR, done.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>You do not need much. $10–$20 is enough to practice with. You are not investing — you are
+      learning. The goal is to have BCH in a wallet you control.</p>
+
+    <h2>Step 3: Send it to yourself</h2>
+
+    <p>Whatever method you use, the coins need to end up in your wallet, not on an exchange. Find
+      your receive address in the app (it is a long string starting with <code>bitcoincash:</code>
+      or a QR code), and send the BCH there.</p>
+
+    <p>That is it. You now have Bitcoin Cash. Self-custodied. No one can freeze it, reverse it, or
+      take a cut when you spend it.</p>
+
+    <h2>What to watch out for</h2>
+
+    <p><strong>Make sure you are sending BCH, not BTC.</strong> They have different addresses. If
+      you send BTC to a BCH address (or vice versa), the coins are not lost, but recovering them is
+      annoying. Double-check the network before you confirm.</p>
+
+    <p><strong>Start small.</strong> Send $10 first. Once it arrives, you know the path works. Then
+      you can send more.</p>
+
+    <p><strong>Never share your recovery phrase.</strong> Not with a support agent, not with a
+      website, not with anyone. The phrase is your wallet. Anyone who has it has your money.</p>
+
+    <h2>That is the whole thing</h2>
+
+    <p>Wallet. Buy. Receive. Done. You just did what most of the world cannot do yet: hold your own
+      internet cash.</p>
+
+    <p>Now what? <a href="what-to-do-with-your-first-bch.html">What to do with your first BCH</a> shows you how to put it to work — starting with the easiest, cheapest first spend you can make.</p>
 
 
-    <a href="escrow-without-a-company.html" class="next-post-button">
+    <a href="what-to-do-with-your-first-bch.html" class="next-post-button">
       <span class="next-post-label">Next post →</span>
-      <strong>Escrow without a company</strong>
+      <strong>What to do with your first BCH</strong>
     </a>
 
 <p class="post-disclaimer">We do not provide financial advice.</p>
@@ -186,9 +223,9 @@
 </aside>
 
     <nav class="post-pager" aria-label="More posts">
-        <a class="pager-card prev" href="nfts-with-the-receipt-built-in.html">
+        <a class="pager-card prev" href="the-story-of-bitcoin-cash.html">
           <span>← Previous post</span>
-          <b>NFTs with the receipt built in</b>
+          <b>The story of Bitcoin Cash</b>
         </a>
         
     </nav>

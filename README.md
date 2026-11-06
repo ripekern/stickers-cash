@@ -8,10 +8,12 @@ A static storefront for selling vinyl stickers worldwide, paid **only in Bitcoin
 
 - `index.html` — storefront (hero, product grid, how-it-works, shipping, FAQ, footer)
 - `donate.html` — anonymous donation page: one static BCH address + QR, no cart or account
-- `blog.html` — blog index: hero plus card grid for the thirty-part internet cash guide.
-  Chapter one (posts 1–10) is built from `why-bitcoin-is-like-cash.md` +
-  `teachBitcoinCash.md`; chapter two (posts 11–20) is the practical BCH handbook;
-  chapter three (posts 21–30) covers BCH programmability, CashTokens, covenants, and apps.
+- `blog.html` — blog index: hero plus card grid for the thirty-seven-post internet cash guide.
+  Part one (posts 1–6) is the problem — why the dollar is thin ice. Part two (posts 7–20) is the
+  solution — how BCH works and why it is different. Part three (posts 21–37) is the revolution —
+  getting started, real people using it, and the programmable future. Six technical posts moved to
+  `deep-dives/` (script, CashScript, covenants, atomic swaps, streaming, 2026 upgrade) for readers
+  who want to go deeper after converting.
 - `blog/` — one static page per post, with previous/next navigation
 - `blog.js` — mobile nav + copy-address toast for the blog and donation pages
 - `styles.css` — all styling (brand: BCH green `#0AC18E`, dark `#0F1820`, Ubuntu font;

@@ -3,54 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Atomic swaps without an exchange — The internet cash guide — stickers.cash</title>
-<meta name="description" content="Two parties can trade coins on different chains without trusting each other, using a hash lock and a time lock. Either both legs settle, or neither does.">
+<title>Deep Dive: Atomic Swaps Without an Exchange — stickers.cash</title>
+<meta name="description" content="How hash time-locked contracts (HTLCs) enable trustless cross-chain trading on BCH. No exchange, no custody, no counterparty risk.">
 <meta name="theme-color" content="#0AC18E">
-<meta property="og:title" content="Atomic swaps without an exchange — The internet cash guide — stickers.cash">
-<meta property="og:description" content="Two parties can trade coins on different chains without trusting each other, using a hash lock and a time lock. Either both legs settle, or neither does.">
-<meta property="og:url" content="https://stickers.cash/blog/atomic-swaps-without-an-exchange.html">
+<meta property="og:title" content="Deep Dive: Atomic Swaps Without an Exchange — stickers.cash">
+<meta property="og:description" content="How hash time-locked contracts (HTLCs) enable trustless cross-chain trading on BCH. No exchange, no custody, no counterparty risk.">
+<meta property="og:url" content="https://stickers.cash/deep-dives/atomic-swaps-without-an-exchange.html">
 <meta property="og:type" content="article">
-<link rel="canonical" href="https://stickers.cash/blog/atomic-swaps-without-an-exchange.html">
+<link rel="canonical" href="https://stickers.cash/deep-dives/atomic-swaps-without-an-exchange.html">
 <link rel="icon" href="../media/bch/bch-circle.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles.css">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Atomic swaps without an exchange",
-  "description": "Two parties can trade coins on different chains without trusting each other, using a hash lock and a time lock. Either both legs settle, or neither does.",
-  "url": "https://stickers.cash/blog/atomic-swaps-without-an-exchange.html",
-  "mainEntityOfPage": "https://stickers.cash/blog/atomic-swaps-without-an-exchange.html",
-  "datePublished": "2026-10-22",
-  "dateModified": "2026-10-22",
-  "author": {
-    "@type": "Organization",
-    "name": "stickers.cash",
-    "url": "https://stickers.cash/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "stickers.cash",
-    "url": "https://stickers.cash/"
-  },
-  "articleSection": "Part three · The revolution · Chapter nine · Money with rules",
-  "position": 28,
-  "about": [
-    "Bitcoin Cash",
-    "money",
-    "inflation",
-    "self-custody"
-  ],
-  "isPartOf": {
-    "@type": "Blog",
-    "name": "The internet cash field guide",
-    "url": "https://stickers.cash/blog.html"
-  }
-}
-</script>
 </head>
 <body>
 
@@ -74,7 +39,7 @@
     </a>
 
     <nav class="nav" id="mainNav" aria-label="Main">
-      <a href="../blog.html" aria-current="true">Guide</a>
+      <a href="../blog.html">Guide</a>
       <a href="../index.html">Shop</a>
       <a href="../index.html#how">How it works</a>
       <a href="../index.html#shipping">Shipping</a>
@@ -92,29 +57,24 @@
 </header>
 
 <main>
-<!-- ======================= POST HEAD ======================= -->
+<!-- ======================= DEEP DIVE HEAD ======================= -->
 <section class="post-head">
   <div class="container post-head-inner">
-    <a class="post-back" href="../blog.html">← All posts</a>
-    <span class="eyebrow">Part three · Chapter nine</span>
-    <h1>Atomic swaps without an exchange</h1>
+    <a class="post-back" href="../blog/escrow-without-a-company.html">← Back to: Escrow without a company</a>
+    <span class="eyebrow">Deep dive</span>
+    <h1>Atomic Swaps Without an Exchange</h1>
     <p class="lede">Two parties can trade coins on different chains without trusting each other, using a hash lock and a time lock. Either both legs settle, or neither does.</p>
-    <div class="post-meta">
-      <span>Post 28 of 37</span>
-      <span class="dot">·</span>
-      <span>3 min read</span>
-      <span class="dot">·</span>
-      <span>Oct 22, 2026</span>
-    </div>
   </div>
 </section>
 
-<!-- ======================= POST BODY ======================= -->
+<!-- ======================= DEEP DIVE BODY ======================= -->
 <div class="post-body">
   <article class="article post-article">
 
+    <p>This deep dive expands on the trustless transaction concepts from <a href="../blog/escrow-without-a-company.html">"Escrow without a company."</a> It covers how atomic swaps work using hash time-locked contracts (HTLCs) — the primitive that makes cross-chain trading possible without an exchange. This is technical content for developers and the deeply curious.</p>
+
     <p>An atomic swap lets two parties trade coins on different chains without handing their funds
-      to an exchange. The “atomic” part means the trade either completes in full or does not happen
+      to an exchange. The "atomic" part means the trade either completes in full or does not happen
       at all. There is no moment where one side has paid and the other can walk away.</p>
 
     <h2>The hash lock</h2>
@@ -128,7 +88,7 @@
       refunds the funds after a deadline. The two legs are linked by the same secret and protected
       by the same kind of timeout.</p>
 
-    <p>Neither party needs to trust the other’s custody. The contract enforces the trade, and if it
+    <p>Neither party needs to trust the other's custody. The contract enforces the trade, and if it
       does not complete, the funds return. That is a stronger guarantee than a centralized exchange,
       where the exchange holds the keys.</p>
 
@@ -147,7 +107,7 @@
 
     <p>The hash lock and timelock are the whole trick. The same secret unlocks both legs, and the
       deadline returns the funds if the trade does not complete. Neither party can walk away with
-      both assets, and neither has to trust the other’s custody. The contract enforces the outcome.</p>
+      both assets, and neither has to trust the other's custody. The contract enforces the outcome.</p>
 
     <p>The swap is visible on-chain, like any BCH transaction. Use fresh addresses and a wallet you
       trust, and the trade stays between the parties. For a community that wants peer-to-peer money,
@@ -168,33 +128,18 @@
       trades that do not need a custodian. For a community that wants peer-to-peer money, having a
       peer-to-peer way to trade it is a natural extension.</p>
 
-    <p>Atomic swaps are one form of trustless transaction. CashScript enables others. <a href="escrow-without-a-company.html">Escrow without a company</a> shows how the same principles apply when you need a third-party guarantee — without actually having a third party.</p>
-
-    <p><strong>Chapter nine showed money that enforces its own rules.</strong> The next chapter puts those rules to work in real time: streaming payments, the 2026 upgrade, and a freelancer getting paid across borders. If you're sold on the idea of money with rules, put your support behind the guide — grab a sticker or send a BCH tip. Every order funds the next post.</p>
-
-
-    <a href="money-that-streams.html" class="next-post-button">
-      <span class="next-post-label">Next post →</span>
-      <strong>Money that streams</strong>
-    </a>
+    <p>For more on the primitives atomic swaps build on, see <a href="the-script-under-every-wallet.html">The script under every wallet</a> and <a href="covenants-rules-that-follow-the-coin.html">Covenants: rules that follow the coin</a>.</p>
 
 <p class="post-disclaimer">We do not provide financial advice.</p>
 
     <aside class="blog-donate" aria-label="Guide donation">
   <div class="blog-donate-head">
     <span class="blog-donate-title">Tip the guide</span>
-    <span class="blog-donate-note">Guide donation</span>
+    <span class="blog-donate-note">Deep dive</span>
   </div>
-  <p>If this guide was useful, you can <a href="../donate.html">send a private BCH tip</a> — one address, any amount, no cart or account.</p>
+  <p>If this deep dive was useful, you can <a href="../donate.html">send a private BCH tip</a> — one address, any amount, no cart or account.</p>
 </aside>
 
-    <nav class="post-pager" aria-label="More posts">
-        <a class="pager-card prev" href="escrow-without-a-company.html">
-          <span>← Previous post</span>
-          <b>Escrow without a company</b>
-        </a>
-        
-    </nav>
   </article>
 </div>
 

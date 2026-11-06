@@ -1,117 +1,35 @@
-# Blog Reorganization Summary
+# Blog Reorganization History
 
-## Structure Changes
+This file documents the blog reorganization history. For the current structure, see `REORGANIZATION-SUMMARY.md`.
 
-**Old structure:** 4 chapters with uneven post distribution
-**New structure:** 1 preamble + 12 chapters × 3 posts each = 37 posts total
+## Previous Reorganization (30 → 37 posts, 12 chapters)
 
-## New Chapter Organization
+The blog was previously reorganized from a 30-post structure into 12 chapters × ~3 posts each. That structure was documented here.
 
-### Preamble
-- **Post 1:** The ground under your feet
+## Current Reorganization (37 posts, Problem → Solution → Revolution arc)
 
-### Chapter 1: What they don't tell you about your dollar
-- Post 2: Four leaks in every digital dollar
-- Post 3: Cash, rebuilt for the internet
-- Post 4: The money supply never stopped **[CTA]**
+The guide was reorganized to properly deliver on the three-part arc (Problem → Solution → Revolution) that the part titles promised:
 
-### Chapter 2: The silent tax
-- Post 5: The price level is the tell
-- Post 6: The roof you didn't fix
-- Post 7: The real-return trap **[CTA]**
+### What changed
+- **Part 1: The Problem** went from 13 posts → 6 posts (removed solution content that was mixed in)
+- **Part 2: The Solution** went from 12 posts → 14 posts (absorbed solution content from Part 1)
+- **Part 3: The Revolution** went from 12 posts → 17 posts (6 new conversion-focused posts + absorbed deep tech from Part 2)
 
-### Chapter 3: The way out
-- Post 8: What BCH actually changes
-- Post 9: Think in coins, not dollars
-- Post 10: Start before the ice cracks **[CTA]**
+### 6 posts moved to deep-dives/
+Technical posts that don't serve the conversion funnel were moved to `deep-dives/` for post-conversion engagement:
+- The script under every wallet
+- CashScript without the ceremony
+- Covenants: rules that follow the coin
+- Atomic swaps without an exchange
+- Money that streams
+- The 2026 upgrade
 
-### Chapter 4: How it actually works
-- Post 11: A wallet is not an account
-- Post 12: One transaction, end to end
-- Post 13: Fast payments, final settlement **[CTA]**
+### 6 new conversion-focused posts in blog/
+- Why BCH is different from Bitcoin (clarify the fork)
+- How to buy your first BCH (remove friction)
+- What to do with your first BCH (first spend)
+- A day in the life with BCH (show it's usable today)
+- Why merchants are accepting BCH (business case)
+- The future of internet cash (visionary closer)
 
-### Chapter 5: Cheap, private, yours
-- Post 14: The fee that is almost nothing
-- Post 15: Your address is not your identity
-- Post 16: Self-custody with confidence **[CTA]**
-
-### Chapter 6: Built to scale
-- Post 17: The unit you measure in
-- Post 18: How a shop takes BCH
-- Post 19: Scaling without a ceiling **[CTA]**
-
-### Chapter 7: Battle-tested
-- Post 20: The network that passed the test
-- Post 21: Money that can run rules
-- Post 22: The script under every wallet **[CTA]**
-
-### Chapter 8: Build on cash
-- Post 23: CashScript without the ceremony
-- Post 24: Tokens on the cash layer
-- Post 25: NFTs with the receipt built in **[CTA]**
-
-### Chapter 9: Money with rules
-- Post 26: Covenants: rules that follow the coin
-- Post 27: Escrow without a company
-- Post 28: Atomic swaps without an exchange **[CTA]**
-
-### Chapter 10: Money that moves on its own
-- Post 29: Money that streams
-- Post 30: The 2026 upgrade
-- Post 31: A freelancer paid in BCH **[CTA]**
-
-### Chapter 11: The world is already on board
-- Post 32: A nonprofit accepting BCH
-- Post 33: Cross-border remittances with BCH
-- Post 34: A small business using BCH for international trade **[CTA]**
-
-### Chapter 12: Join the movement
-- Post 35: Online creators monetizing with BCH
-- Post 36: A local community building BCH commerce
-- Post 37: Bitcoin Cash is everywhere **[CTA + Conclusion]**
-
-## Files Modified
-
-### Main index
-- `blog.html` - Restructured all chapter blocks, updated meta descriptions, hero text, and navigation
-
-### All 37 blog posts
-- Updated `articleSection` in JSON-LD metadata
-- Updated chapter eyebrow labels
-- Updated cross-references where needed
-
-### Major content changes
-- **Post 37** (`emergency-aid-and-humanitarian-use-cases.html`) - Completely rewritten as conclusion/summary
-  - New title: "Bitcoin Cash is everywhere"
-  - Summarizes the entire guide
-  - Lists all real-world use cases from previous chapters
-  - Strong call to action for stickers.cash and donations
-  - Clear next steps for readers
-
-### CTA additions
-Added call-to-action paragraphs to the 3rd post of each chapter (12 posts total):
-- Each CTA references the chapter theme
-- Encourages buying stickers from stickers.cash
-- Mentions BCH donations
-- Notes that every order funds the next post
-
-### Navigation updates
-- Updated hero navigation buttons to reference new chapter structure
-- Updated anchor IDs (chapter-1 through chapter-12)
-- Fixed cross-chapter references in post content
-
-## Key Features
-
-1. **Sales pitch structure:** Each 3-post chapter builds a case for Bitcoin Cash
-2. **CTA on every 3rd post:** Encourages stickers.cash purchases and BCH donations
-3. **Strong conclusion:** Post 37 serves as both the final chapter post and a comprehensive summary
-4. **Consistent branding:** All chapters reinforce the stickers.cash mission
-5. **Clear progression:** From problem (chapters 1-2) to solution (chapters 3-6) to implementation (chapters 7-12)
-
-## Notes
-
-- All post URLs remain unchanged (no broken links)
-- Post numbering remains 1-37 (no renumbering)
-- All existing content preserved except post 37 (which was rewritten per your request)
-- CTA content is contextual to each chapter's theme
-- Structure supports the stickers.cash business model throughout
+Full details: `REORGANIZATION-SUMMARY.md`

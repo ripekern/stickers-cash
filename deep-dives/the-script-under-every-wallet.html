@@ -3,54 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The script under every wallet — The internet cash guide — stickers.cash</title>
-<meta name="description" content="Before CashScript, before tokens, there was a stack, a few opcodes, and a rule: the transaction either validates or it does not.">
+<title>Deep Dive: The Script Under Every Wallet — stickers.cash</title>
+<meta name="description" content="How BCH scripts work: P2PKH, P2SH, multisig, timelocks, and introspection. The stack-based language that makes programmable money possible.">
 <meta name="theme-color" content="#0AC18E">
-<meta property="og:title" content="The script under every wallet — The internet cash guide — stickers.cash">
-<meta property="og:description" content="Before CashScript, before tokens, there was a stack, a few opcodes, and a rule: the transaction either validates or it does not.">
-<meta property="og:url" content="https://stickers.cash/blog/the-script-under-every-wallet.html">
+<meta property="og:title" content="Deep Dive: The Script Under Every Wallet — stickers.cash">
+<meta property="og:description" content="How BCH scripts work: P2PKH, P2SH, multisig, timelocks, and introspection. The stack-based language that makes programmable money possible.">
+<meta property="og:url" content="https://stickers.cash/deep-dives/the-script-under-every-wallet.html">
 <meta property="og:type" content="article">
-<link rel="canonical" href="https://stickers.cash/blog/the-script-under-every-wallet.html">
+<link rel="canonical" href="https://stickers.cash/deep-dives/the-script-under-every-wallet.html">
 <link rel="icon" href="../media/bch/bch-circle.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles.css">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "The script under every wallet",
-  "description": "Before CashScript, before tokens, there was a stack, a few opcodes, and a rule: the transaction either validates or it does not.",
-  "url": "https://stickers.cash/blog/the-script-under-every-wallet.html",
-  "mainEntityOfPage": "https://stickers.cash/blog/the-script-under-every-wallet.html",
-  "datePublished": "2026-10-22",
-  "dateModified": "2026-10-22",
-  "author": {
-    "@type": "Organization",
-    "name": "stickers.cash",
-    "url": "https://stickers.cash/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "stickers.cash",
-    "url": "https://stickers.cash/"
-  },
-  "articleSection": "Part two · The solution · Chapter seven · Battle-tested",
-  "position": 22,
-  "about": [
-    "Bitcoin Cash",
-    "money",
-    "inflation",
-    "self-custody"
-  ],
-  "isPartOf": {
-    "@type": "Blog",
-    "name": "The internet cash field guide",
-    "url": "https://stickers.cash/blog.html"
-  }
-}
-</script>
 </head>
 <body>
 
@@ -74,7 +39,7 @@
     </a>
 
     <nav class="nav" id="mainNav" aria-label="Main">
-      <a href="../blog.html" aria-current="true">Guide</a>
+      <a href="../blog.html">Guide</a>
       <a href="../index.html">Shop</a>
       <a href="../index.html#how">How it works</a>
       <a href="../index.html#shipping">Shipping</a>
@@ -92,26 +57,21 @@
 </header>
 
 <main>
-<!-- ======================= POST HEAD ======================= -->
+<!-- ======================= DEEP DIVE HEAD ======================= -->
 <section class="post-head">
   <div class="container post-head-inner">
-    <a class="post-back" href="../blog.html">← All posts</a>
-    <span class="eyebrow">Part two · Chapter seven</span>
-    <h1>The script under every wallet</h1>
+    <a class="post-back" href="../blog/money-that-can-run-rules.html">← Back to: Money that can run rules</a>
+    <span class="eyebrow">Deep dive</span>
+    <h1>The Script Under Every Wallet</h1>
     <p class="lede">Before CashScript, before tokens, there was a stack, a few opcodes, and a rule: the transaction either validates or it does not.</p>
-    <div class="post-meta">
-      <span>Post 22 of 37</span>
-      <span class="dot">·</span>
-      <span>4 min read</span>
-      <span class="dot">·</span>
-      <span>Oct 22, 2026</span>
-    </div>
   </div>
 </section>
 
-<!-- ======================= POST BODY ======================= -->
+<!-- ======================= DEEP DIVE BODY ======================= -->
 <div class="post-body">
   <article class="article post-article">
+
+    <p>This deep dive expands on the scripting foundation mentioned in <a href="../blog/money-that-can-run-rules.html">"Money that can run rules."</a> It covers how BCH scripts actually work — the stack-based execution model, the standard payment patterns, and how introspection opened the door to covenants. This is technical content for developers and the deeply curious.</p>
 
     <p>A Bitcoin Cash wallet looks simple: an address, a balance, a send button. Underneath, every
       payment is a script execution. The script is small, stack-based, and deliberately boring.
@@ -166,8 +126,8 @@
 
     <p>That is what makes covenants possible. A vault can refuse to send funds anywhere except a
       designated cold address. A contract can require that part of the money returns to itself, or
-      that a token moves with the payment. The script is no longer only asking “who signed?” It can
-      ask “what does this transaction actually do?”</p>
+      that a token moves with the payment. The script is no longer only asking "who signed?" It can
+      ask "what does this transaction actually do?"</p>
 
     <h2>Focused by design</h2>
 
@@ -179,31 +139,18 @@
       network. It is making money behave predictably. A small, deterministic language with explicit
       rules is exactly the right tool for that job.</p>
 
-    <p><strong>Chapter seven proved the foundation is solid.</strong> The next chapter builds on it: CashScript, tokens, and NFTs — what you can actually create on top of BCH. If you're a developer or just curious what programmable money looks like, the next chapter is worth the read. And if this guide has been useful, consider grabbing a sticker or sending a tip. We're a small operation, and every order keeps the posts coming.</p>
-
-
-    <a href="cashscript-without-the-ceremony.html" class="next-post-button">
-      <span class="next-post-label">Next post →</span>
-      <strong>CashScript without the ceremony</strong>
-    </a>
+    <p>If you want to go deeper, <a href="cashscript-without-the-ceremony.html">CashScript without the ceremony</a> shows how the high-level language makes these scripts readable and auditable.</p>
 
 <p class="post-disclaimer">We do not provide financial advice.</p>
 
     <aside class="blog-donate" aria-label="Guide donation">
   <div class="blog-donate-head">
     <span class="blog-donate-title">Tip the guide</span>
-    <span class="blog-donate-note">Guide donation</span>
+    <span class="blog-donate-note">Deep dive</span>
   </div>
-  <p>If this guide was useful, you can <a href="../donate.html">send a private BCH tip</a> — one address, any amount, no cart or account.</p>
+  <p>If this deep dive was useful, you can <a href="../donate.html">send a private BCH tip</a> — one address, any amount, no cart or account.</p>
 </aside>
 
-    <nav class="post-pager" aria-label="More posts">
-        <a class="pager-card prev" href="money-that-can-run-rules.html">
-          <span>← Previous post</span>
-          <b>Money that can run rules</b>
-        </a>
-        
-    </nav>
   </article>
 </div>
 

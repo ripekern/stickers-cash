@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CashScript without the ceremony — The internet cash guide — stickers.cash</title>
-<meta name="description" content="CashScript lets you write BCH contracts in a readable, Solidity-inspired language and compile them to bytecode. The model is simple: rules on coins, verified by the network.">
+<title>What to do with your first BCH — The internet cash guide — stickers.cash</title>
+<meta name="description" content="You have BCH in your wallet. Now what? The simplest first spend, how to think about your stack, and why buying a sticker might be the best move you make today.">
 <meta name="theme-color" content="#0AC18E">
-<meta property="og:title" content="CashScript without the ceremony — The internet cash guide — stickers.cash">
-<meta property="og:description" content="CashScript lets you write BCH contracts in a readable, Solidity-inspired language and compile them to bytecode. The model is simple: rules on coins, verified by the network.">
-<meta property="og:url" content="https://stickers.cash/blog/cashscript-without-the-ceremony.html">
+<meta property="og:title" content="What to do with your first BCH — The internet cash guide — stickers.cash">
+<meta property="og:description" content="You have BCH in your wallet. Now what? The simplest first spend, how to think about your stack, and why buying a sticker might be the best move you make today.">
+<meta property="og:url" content="https://stickers.cash/blog/what-to-do-with-your-first-bch.html">
 <meta property="og:type" content="article">
-<link rel="canonical" href="https://stickers.cash/blog/cashscript-without-the-ceremony.html">
+<link rel="canonical" href="https://stickers.cash/blog/what-to-do-with-your-first-bch.html">
 <link rel="icon" href="../media/bch/bch-circle.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,12 +20,12 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "CashScript without the ceremony",
-  "description": "CashScript lets you write BCH contracts in a readable, Solidity-inspired language and compile them to bytecode. The model is simple: rules on coins, verified by the network.",
-  "url": "https://stickers.cash/blog/cashscript-without-the-ceremony.html",
-  "mainEntityOfPage": "https://stickers.cash/blog/cashscript-without-the-ceremony.html",
-  "datePublished": "2026-10-22",
-  "dateModified": "2026-10-22",
+  "headline": "What to do with your first BCH",
+  "description": "You have BCH in your wallet. Now what? The simplest first spend, how to think about your stack, and why buying a sticker might be the best move you make today.",
+  "url": "https://stickers.cash/blog/what-to-do-with-your-first-bch.html",
+  "mainEntityOfPage": "https://stickers.cash/blog/what-to-do-with-your-first-bch.html",
+  "datePublished": "2026-11-06",
+  "dateModified": "2026-11-06",
   "author": {
     "@type": "Organization",
     "name": "stickers.cash",
@@ -36,13 +36,13 @@
     "name": "stickers.cash",
     "url": "https://stickers.cash/"
   },
-  "articleSection": "Part two · The solution · Chapter eight · Build on cash",
+  "articleSection": "Part three · The revolution · Chapter seven · Getting started",
   "position": 23,
   "about": [
     "Bitcoin Cash",
-    "money",
-    "inflation",
-    "self-custody"
+    "wallets",
+    "self-custody",
+    "getting started"
   ],
   "isPartOf": {
     "@type": "Blog",
@@ -96,15 +96,15 @@
 <section class="post-head">
   <div class="container post-head-inner">
     <a class="post-back" href="../blog.html">← All posts</a>
-    <span class="eyebrow">Part two · Chapter eight</span>
-    <h1>CashScript without the ceremony</h1>
-    <p class="lede">CashScript lets you write BCH contracts in a readable, Solidity-inspired language and compile them to bytecode. The model is simple: rules on coins, verified by the network.</p>
+    <span class="eyebrow">Part three · Chapter seven</span>
+    <h1>What to do with your first BCH</h1>
+    <p class="lede">You have BCH in your wallet. Now what? The simplest first spend, how to think about your stack, and why buying a sticker might be the best move you make today.</p>
     <div class="post-meta">
       <span>Post 23 of 37</span>
       <span class="dot">·</span>
       <span>3 min read</span>
       <span class="dot">·</span>
-      <span>Oct 22, 2026</span>
+      <span>Nov 6, 2026</span>
     </div>
   </div>
 </section>
@@ -113,76 +113,64 @@
 <div class="post-body">
   <article class="article post-article">
 
-    <p>Writing raw BCH Script is possible, but CashScript makes it readable. Instead of managing
-      stack manipulation and opcode ordering by hand, you write the rule in a clear, Solidity-inspired
-      language. The compiler turns it into auditable bytecode.</p>
+    <p>You have coins in your wallet. The hardest part is over. Now the question is: do you hold,
+      trade, or spend? The answer is: <strong>spend a little, hold the rest.</strong></p>
 
-    <h2>A familiar shape</h2>
+    <h2>Why your first spend matters</h2>
 
-    <p>CashScript is a high-level language for BCH contracts. Its syntax is inspired by Solidity,
-      but its execution model is different. A contract is instantiated with parameters, and its
-      functions decide whether money can leave. There is no mutable contract storage. The state
-      lives in the UTXOs the contract controls and in the tokens attached to them.</p>
+    <p>Holding is easy. Spending is the real test. When you send BCH to someone — a friend, a
+      merchant, a donation — you are doing something that most BCH holders have never done. You are
+      using it as money.</p>
 
-    <p>The compiler, <code>cashc</code>, turns a <code>.cash</code> file into an artifact. The
-      CashScript SDK uses that artifact to create a contract instance, build a funding transaction,
-      and construct the transaction that spends it. The developer writes the rule; the SDK handles
-      the wallet plumbing.</p>
+    <p>That first spend teaches you more than reading ten posts. You learn how fees work (they are
+      almost nothing). You learn how fast it is (seconds). You learn that it is final (no
+      chargebacks, no reversals). And you learn that you can do it without permission.</p>
 
-    <p>A simple contract might require a signature and a timelock. A more interesting one can read
-      the spending transaction through introspection: check the recipient’s locking bytecode, the
-      output value, or the token category on an input or output. That is how escrows, vaults, and
-      token-aware contracts are built.</p>
+    <h2>The simplest first spend</h2>
 
-    <h2>The stack is hidden, the model is not</h2>
+    <p>Here is the easiest way to make your first transaction:</p>
 
-    <p>CashScript removes the stack work, but it keeps the model visible. You still decide which
-      coins the contract controls, which transaction spends them, and what the outputs must look like.
-      That clarity is what makes a contract easy to review and easy to trust.</p>
+    <ol>
+      <li><strong>Buy a sticker.</strong> Go to <a href="../index.html#shop">stickers.cash</a>. Pick
+        a design. Check out with BCH. The whole process takes about two minutes, and you get
+        something physical in the mail. You just used internet cash.</li>
+      <li><strong>Tip the guide.</strong> If this guide was useful, <a href="../donate.html">send a
+        small tip</a> to the BCH address on the donate page. Even $0.50 teaches you how donations
+        work.</li>
+      <li><strong>Send to a friend.</strong> If someone you know has a wallet, send them $1. They
+        will either be confused or impressed. Either way, you just moved money peer-to-peer.</li>
+    </ol>
 
-    <p>That is why CashScript code tends to be short and explicit. A function is not a method on a
-      persistent object. It is a check that runs when a specific set of coins is spent. If the check
-      passes, the transaction is valid. If it fails, the transaction is rejected and the coins remain
-      safely in the contract.</p>
+    <p>Any of these works. The point is not the amount. The point is the <em>action</em>. You moved
+      from "I have BCH" to "I used BCH." That is a real shift.</p>
 
-    <p>The language also makes review easier. A reviewer can read the conditions in source form
-      instead of disassembling bytecode. For contracts that hold real money, readability is part of
-      the design.</p>
+    <h2>How to think about your stack</h2>
 
-    <h2>Tooling around the language</h2>
+    <p>Once you have spent a little, the rest is yours to hold. Here is a useful mindset:</p>
 
-    <p>CashScript sits in an ecosystem of BCH developer tools. The compiler produces artifacts that
-      the TypeScript SDK can consume. Bitauth IDE is useful for inspecting and debugging Script
-      execution. Libauth provides low-level primitives for building transactions and verifying
-      scripts. Wallets and applications can integrate the SDK without writing their own contract
-      engine.</p>
+    <ul>
+      <li><strong>Do not think in dollars.</strong> The dollar price of BCH moves. Your coin count
+        does not. If you own 0.1 BCH today, you will own 0.1 BCH next year (minus whatever you
+        spend). That number is what stays yours.</li>
+      <li><strong>Start small, add slowly.</strong> You do not need to buy a lot. $20 a month,
+        dollar-cost averaged, builds a stack without timing the market.</li>
+      <li><strong>Self-custody matters.</strong> If your coins are on an exchange, you do not
+        really own them. Move them to your wallet. Practice the backup. Know that you can recover
+        your phrase.</li>
+    </ul>
 
-    <p>The 2025 and 2026 upgrades matter here. Bigger integers and reworked VM limits make more
-      complex math practical. Bounded loops and reusable functions reduce bytecode duplication.
-      Standard pay-to-script outputs reduce transaction sizes for vaults and multi-party contracts.
-      The language can express more while staying focused on money.</p>
+    <h2>What to do next</h2>
 
-    <h2>What CashScript is good for</h2>
+    <p>Once you have made your first spend and your coins are in your wallet, you are in the same
+      position as every other BCH holder. You have internet cash. You control it. You can spend it
+      anywhere it is accepted, and more places accept it every day.</p>
 
-    <p>The sweet spot is money with conditions: escrow, inheritance, savings vaults, token sales,
-      subscriptions, atomic swaps, and multi-party settlement. These are not hypothetical demos.
-      They are the kind of rules that a business or a community actually needs, and they benefit
-      from being enforced by the same chain that holds the money.</p>
-
-    <p>CashScript is built for money with conditions. If you need a payment to obey a rule without a
-      middleman, it is exactly the right tool. The UTXO model keeps the contract small, verifiable,
-      and cheap to settle.</p>
-
-    <p>The best way to learn it is to write a small contract, fund it on chipnet, and spend it. The
-      first successful spend teaches more than a page of documentation. The second shows you how
-      clean a well-written contract can be.</p>
-
-    <p>And once you can write rules on coins, you can also issue tokens. <a href="tokens-on-the-cash-layer.html">Tokens on the cash layer</a> explains how CashTokens add fungible tokens and NFTs directly to BCH — not to a sidechain.</p>
+    <p>The next posts show you what that looks like in practice. <a href="a-day-in-the-life-with-bch.html">A day in the life with BCH</a> walks through a regular day — coffee, rent, sending money to family — and shows how BCH fits into each one.</p>
 
 
-    <a href="tokens-on-the-cash-layer.html" class="next-post-button">
+    <a href="a-day-in-the-life-with-bch.html" class="next-post-button">
       <span class="next-post-label">Next post →</span>
-      <strong>Tokens on the cash layer</strong>
+      <strong>A day in the life with BCH</strong>
     </a>
 
 <p class="post-disclaimer">We do not provide financial advice.</p>
@@ -196,9 +184,9 @@
 </aside>
 
     <nav class="post-pager" aria-label="More posts">
-        <a class="pager-card prev" href="the-script-under-every-wallet.html">
+        <a class="pager-card prev" href="how-to-buy-your-first-bch.html">
           <span>← Previous post</span>
-          <b>The script under every wallet</b>
+          <b>How to buy your first BCH</b>
         </a>
         
     </nav>
@@ -210,7 +198,7 @@
   <div class="container post-cta-inner">
     <img class="post-cta-mark" src="../media/bch/bch-circle.svg" alt="Bitcoin Cash">
     <div>
-      <h2>Internet cash needs places to spend it.</h2>
+      <h2>Your first BCH spend starts here.</h2>
       <p>Every order at stickers.cash is paid in BCH — a cheap, real-world way to move your first
         coins, practice self-custody, and put a sticker on something you own.</p>
     </div>
