@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <style>
+      .bg { fill: #0F1820; }
+      .text { fill: #ffffff; font-family: 'Ubuntu', sans-serif; }
+      .text-small { fill: #ffffff; font-family: 'Ubuntu', sans-serif; font-size: 11px; }
+      .text-tiny { fill: #ffffff; font-family: 'Ubuntu', sans-serif; font-size: 10px; }
+      .text-label { fill: #0AC18E; font-family: 'Ubuntu', sans-serif; font-size: 14px; font-weight: 500; }
+      .coin { fill: #0AC18E; stroke: #ffffff; stroke-width: 2; }
+      .rule-box { fill: #1a232b; stroke: #0AC18E; stroke-width: 2; }
+      .arrow { fill: #0AC18E; stroke: none; }
+      .check { fill: #0AC18E; }
+      .x { fill: #ff4444; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" class="arrow"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="600" class="bg"/>
+  
+  <!-- Title -->
+  <text x="400" y="30" class="text" style="font-size: 22px; font-weight: 700;" text-anchor="middle">Covenants: Rules That Follow the Coin</text>
+  <text x="400" y="50" class="text-small" text-anchor="middle">Introspection opcodes let contracts inspect their spending transaction</text>
+  
+  <!-- Coin with rules -->
+  <circle cx="100" cy="150" r="50" class="coin"/>
+  <text x="100" y="145" class="text" style="font-size: 16px; font-weight: 700;" text-anchor="middle">1 BCH</text>
+  <text x="100" y="165" class="text" style="font-size: 12px;" text-anchor="middle">with rules</text>
+  
+  <!-- Rules attached to coin -->
+  <rect x="170" y="100" width="200" height="100" class="rule-box" rx="6"/>
+  <text x="270" y="125" class="text-label" text-anchor="middle">Embedded Rules</text>
+  <text x="190" y="145" class="text-small">• Can only send to address X</text>
+  <text x="190" y="160" class="text-small">• Must wait 30 days</text>
+  <text x="190" y="175" class="text-small">• 10% must go to savings</text>
+  <text x="190" y="190" class="text-small">• Token Y must move with it</text>
+  
+  <!-- Arrow to spending transaction -->
+  <line x1="150" y1="150" x2="170" y2="150" class="line" stroke="#0AC18E" stroke-width="2"/>
+  
+  <!-- Spending Transaction -->
+  <rect x="420" y="100" width="280" height="200" class="rule-box" rx="8"/>
+  <text x="560" y="125" class="text-label" text-anchor="middle">Spending Transaction</text>
+  
+  <!-- Transaction details -->
+  <text x="440" y="150" class="text-small">Inputs:</text>
+  <text x="450" y="165" class="text-tiny">• Coin with covenant (1 BCH)</text>
+  
+  <text x="440" y="185" class="text-small">Outputs:</text>
+  <text x="450" y="200" class="text-tiny">• 0.9 BCH → address X ✓</text>
+  <text x="450" y="215" class="text-tiny">• 0.1 BCH → savings ✓</text>
+  <text x="450" y="230" class="text-tiny">• Token Y → address X ✓</text>
+  
+  <text x="440" y="250" class="text-small">Time lock:</text>
+  <text x="450" y="265" class="text-tiny">• 30 days elapsed ✓</text>
+  
+  <!-- Introspection opcodes -->
+  <rect x="150" y="330" width="500" height="120" class="rule-box" rx="8"/>
+  <text x="400" y="355" class="text" style="font-size: 16px; font-weight: 700;" text-anchor="middle">Introspection Opcodes</text>
+  <text x="400" y="375" class="text-small" text-anchor="middle">Contract can inspect the transaction that spends it</text>
+  
+  <text x="170" y="400" class="text-small">• tx.outputs[n].value</text>
+  <text x="170" y="415" class="text-small">• tx.outputs[n].lockingBytecode</text>
+  <text x="400" y="400" class="text-small">• tx.inputs[n].value</text>
+  <text x="400" y="415" class="text-small">• tx.inputs[n].tokenCategory</text>
+  <text x="600" y="400" class="text-small">• tx.locktime</text>
+  <text x="600" y="415" class="text-small">• tx.activeInputIndex</text>
+  
+  <!-- Validation flow -->
+  <line x1="400" y1="300" x2="400" y2="330" class="line" stroke="#0AC18E" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="420" y="320" class="text-small">contract checks</text>
+  
+  <!-- Validation result -->
+  <line x1="400" y1="450" x2="400" y2="480" class="line" stroke="#0AC18E" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Result boxes -->
+  <rect x="250" y="480" width="120" height="80" fill="#1a232b" stroke="#0AC18E" stroke-width="2" rx="6"/>
+  <circle cx="310" cy="505" r="20" class="check"/>
+  <text x="310" y="512" class="text" style="font-size: 18px; font-weight: 700;" text-anchor="middle">✓</text>
+  <text x="310" y="535" class="text-small" text-anchor="middle">Rules met</text>
+  <text x="310" y="550" class="text-small" text-anchor="middle">Spend allowed</text>
+  
+  <rect x="430" y="480" width="120" height="80" fill="#1a232b" stroke="#ff4444" stroke-width="2" rx="6"/>
+  <circle cx="490" cy="505" r="20" class="x"/>
+  <text x="490" y="512" class="text" style="font-size: 18px; font-weight: 700;" text-anchor="middle">✗</text>
+  <text x="490" y="535" class="text-small" text-anchor="middle">Rules broken</text>
+  <text x="490" y="550" class="text-small" text-anchor="middle">Spend rejected</text>
+  
+  <!-- Examples box -->
+  <rect x="50" y="570" width="700" height="20" fill="#1a232b" stroke="#0AC18E" stroke-width="1" rx="4"/>
+  <text x="400" y="585" class="text-small" text-anchor="middle">Use cases: Vaults • Inheritance • Streaming payments • Token protocols • DAOs</text>
+</svg>

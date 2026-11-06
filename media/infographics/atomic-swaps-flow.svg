@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <style>
+      .bg { fill: #0F1820; }
+      .text { fill: #ffffff; font-family: 'Ubuntu', sans-serif; }
+      .text-small { fill: #ffffff; font-family: 'Ubuntu', sans-serif; font-size: 12px; }
+      .text-label { fill: #0AC18E; font-family: 'Ubuntu', sans-serif; font-size: 14px; font-weight: 500; }
+      .line { stroke: #0AC18E; stroke-width: 2; fill: none; }
+      .box { fill: #1a232b; stroke: #0AC18E; stroke-width: 2; }
+      .arrow { fill: #0AC18E; stroke: none; }
+      .highlight { fill: #0AC18E; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" class="arrow"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="500" class="bg"/>
+  
+  <!-- Title -->
+  <text x="400" y="35" class="text" style="font-size: 24px; font-weight: 700;" text-anchor="middle">Atomic Swap: HTLC Flow</text>
+  <text x="400" y="55" class="text-small" text-anchor="middle">Hash Time-Locked Contract - Trustless Cross-Chain Exchange</text>
+  
+  <!-- Alice Side -->
+  <rect x="50" y="100" width="200" height="350" class="box" rx="8"/>
+  <text x="150" y="125" class="text-label" text-anchor="middle">Alice (BTC)</text>
+  
+  <!-- Bob Side -->
+  <rect x="550" y="100" width="200" height="350" class="box" rx="8"/>
+  <text x="650" y="125" class="text-label" text-anchor="middle">Bob (BCH)</text>
+  
+  <!-- Secret Hash in middle -->
+  <rect x="300" y="80" width="200" height="60" class="box" rx="8"/>
+  <text x="400" y="105" class="text" style="font-size: 16px; font-weight: 700;" text-anchor="middle">Secret Hash</text>
+  <text x="400" y="125" class="text-small" text-anchor="middle">SHA256(secret)</text>
+  
+  <!-- Step 1: Alice generates secret -->
+  <circle cx="150" cy="160" r="20" class="highlight"/>
+  <text x="150" y="167" class="text" style="font-size: 18px; font-weight: 700;" text-anchor="middle">1</text>
+  <text x="150" y="200" class="text-small" text-anchor="middle">Alice generates</text>
+  <text x="150" y="215" class="text-small" text-anchor="middle">secret value</text>
+  
+  <!-- Step 2: Alice locks BTC -->
+  <circle cx="150" cy="260" r="20" class="highlight"/>
+  <text x="150" y="267" class="text" style="font-size: 18px; font-weight: 700;" text-anchor="middle">2</text>
+  <text x="150" y="300" class="text-small" text-anchor="middle">Alice locks BTC</text>
+  <text x="150" y="315" class="text-small" text-anchor="middle">with hash lock</text>
+  <text x="150" y="330" class="text-small" text-anchor="middle">(24h timeout)</text>
+  
+  <!-- Arrow from Alice to hash -->
+  <line x1="170" y1="160" x2="300" y2="110" class="line" marker-end="url(#arrowhead)"/>
+  
+  <!-- Step 3: Bob locks BCH -->
+  <circle cx="650" cy="260" r="20" class="highlight"/>
+  <text x="650" y="267" class="text" style="font-size: 18px; font-weight: 700;" text-anchor="middle">3</text>
+  <text x="650" y="300" class="text-small" text-anchor="middle">Bob locks BCH</text>
+  <text x="650" y="315" class="text-small" text-anchor="middle">with same hash</text>
+  <text x="650" y="330" class="text-small" text-anchor="middle">(12h timeout)</text>
+  
+  <!-- Arrow from hash to Bob -->
+  <line x1="500" y1="110" x2="630" y2="260" class="line" marker-end="url(#arrowhead)"/>
+  
+  <!-- Step 4: Alice reveals secret -->
+  <circle cx="150" cy="380" r="20" class="highlight"/>
+  <text x="150" y="387" class="text" style="font-size: 18px; font-weight: 700;" text-anchor="middle">4</text>
+  <text x="150" y="420" class="text-small" text-anchor="middle">Alice reveals</text>
+  <text x="150" y="435" class="text-small" text-anchor="middle">secret to claim BCH</text>
+  
+  <!-- Arrow showing secret reveal -->
+  <line x1="170" y1="380" x2="630" y2="380" class="line" marker-end="url(#arrowhead)" stroke-dasharray="5,5"/>
+  <text x="400" y="405" class="text-small" text-anchor="middle">Secret revealed on-chain</text>
+  
+  <!-- Step 5: Bob claims BTC -->
+  <circle cx="650" cy="380" r="20" class="highlight"/>
+  <text x="650" y="387" class="text" style="font-size: 18px; font-weight: 700;" text-anchor="middle">5</text>
+  <text x="650" y="420" class="text-small" text-anchor="middle">Bob uses secret</text>
+  <text x="650" y="435" class="text-small" text-anchor="middle">to claim BTC</text>
+  
+  <!-- Atomic guarantee box -->
+  <rect x="250" y="460" width="300" height="30" class="box" rx="4"/>
+  <text x="400" y="480" class="text" style="font-size: 13px; font-weight: 700;" text-anchor="middle">✓ ATOMIC: Both complete or neither does</text>
+</svg>

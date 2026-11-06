@@ -77,6 +77,11 @@
       to an exchange. The "atomic" part means the trade either completes in full or does not happen
       at all. There is no moment where one side has paid and the other can walk away.</p>
 
+    <figure class="post-figure">
+      <img src="../media/infographics/atomic-swaps-flow.svg" alt="Atomic Swap HTLC Flow Diagram">
+      <figcaption>How an atomic swap works: Alice and Bob each lock funds with the same hash lock, then reveal the secret to claim the other's funds. If either side stalls, the timelock refunds the funds.</figcaption>
+    </figure>
+
     <h2>The hash lock</h2>
 
     <p>The core primitive is a hash time-locked contract, or HTLC. One party locks funds with a

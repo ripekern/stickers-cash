@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <style>
+      .bg { fill: #0F1820; }
+      .text { fill: #ffffff; font-family: 'Ubuntu', sans-serif; }
+      .text-small { fill: #ffffff; font-family: 'Ubuntu', sans-serif; font-size: 11px; }
+      .text-tiny { fill: #ffffff; font-family: 'Ubuntu', sans-serif; font-size: 10px; }
+      .text-label { fill: #0AC18E; font-family: 'Ubuntu', sans-serif; font-size: 14px; font-weight: 500; }
+      .stack-item { fill: #1a232b; stroke: #0AC18E; stroke-width: 2; }
+      .opcode { fill: #2a1a1a; stroke: #ff6b6b; stroke-width: 2; }
+      .arrow { fill: #0AC18E; stroke: none; }
+      .check { fill: #0AC18E; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" class="arrow"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="600" class="bg"/>
+  
+  <!-- Title -->
+  <text x="400" y="30" class="text" style="font-size: 22px; font-weight: 700;" text-anchor="middle">Bitcoin Script: Stack-Based Execution</text>
+  <text x="400" y="50" class="text-small" text-anchor="middle">P2PKH (Pay-to-Public-Key-Hash) - The Standard Payment Script</text>
+  
+  <!-- Setup section -->
+  <rect x="50" y="70" width="700" height="60" fill="#1a232b" stroke="#0AC18E" stroke-width="2" rx="6"/>
+  <text x="70" y="95" class="text-label">Setup: Spending a UTXO</text>
+  <text x="70" y="115" class="text-small">UTXO locked with: OP_DUP OP_HASH160 &lt;pubkeyHash&gt; OP_EQUALVERIFY OP_CHECKSIG</text>
+  
+  <!-- Execution flow -->
+  <text x="400" y="155" class="text" style="font-size: 16px; font-weight: 700;" text-anchor="middle">Script Execution (Left → Right)</text>
+  
+  <!-- Step 1: Unlocking script provides data -->
+  <rect x="50" y="170" width="150" height="200" class="stack-item" rx="6"/>
+  <text x="125" y="195" class="text-label" text-anchor="middle">Unlocking Script</text>
+  <text x="125" y="215" class="text-small" text-anchor="middle">(Provided by</text>
+  <text x="125" y="230" class="text-small" text-anchor="middle">spender)</text>
+  
+  <rect x="70" y="245" width="110" height="30" fill="#0AC18E" rx="4"/>
+  <text x="125" y="265" class="text" style="font-size: 11px; font-weight: 500;" text-anchor="middle">&lt;signature&gt;</text>
+  
+  <rect x="70" y="285" width="110" height="30" fill="#0AC18E" rx="4"/>
+  <text x="125" y="305" class="text" style="font-size: 11px; font-weight: 500;" text-anchor="middle">&lt;pubkey&gt;</text>
+  
+  <!-- Arrow to locking script -->
+  <line x1="200" y1="270" x2="240" y2="270" class="line" stroke="#0AC18E" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="220" y="260" class="text-tiny" text-anchor="middle">concat</text>
+  
+  <!-- Step 2: Locking script executes -->
+  <rect x="240" y="170" width="180" height="200" class="stack-item" rx="6"/>
+  <text x="330" y="195" class="text-label" text-anchor="middle">Locking Script</text>
+  <text x="330" y="215" class="text-small" text-anchor="middle">(From UTXO)</text>
+  
+  <rect x="260" y="230" width="140" height="25" class="opcode" rx="3"/>
+  <text x="330" y="247" class="text-tiny" text-anchor="middle">OP_DUP</text>
+  
+  <rect x="260" y="260" width="140" height="25" class="opcode" rx="3"/>
+  <text x="330" y="277" class="text-tiny" text-anchor="middle">OP_HASH160</text>
+  
+  <rect x="260" y="290" width="140" height="25" class="opcode" rx="3"/>
+  <text x="330" y="307" class="text-tiny" text-anchor="middle">&lt;pubkeyHash&gt;</text>
+  
+  <rect x="260" y="320" width="140" height="25" class="opcode" rx="3"/>
+  <text x="330" y="337" class="text-tiny" text-anchor="middle">OP_EQUALVERIFY</text>
+  
+  <rect x="260" y="350" width="140" height="15" class="opcode" rx="3"/>
+  <text x="330" y="362" class="text-tiny" text-anchor="middle">OP_CHECKSIG</text>
+  
+  <!-- Arrow to stack -->
+  <line x1="420" y1="270" x2="460" y2="270" class="line" stroke="#0AC18E" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="440" y="260" class="text-tiny" text-anchor="middle">execute</text>
+  
+  <!-- Step 3: Stack operations -->
+  <rect x="460" y="170" width="290" height="200" class="stack-item" rx="6"/>
+  <text x="605" y="195" class="text-label" text-anchor="middle">Stack State</text>
+  
+  <!-- Stack visualization -->
+  <rect x="480" y="210" width="120" height="25" fill="#0AC18E" rx="3"/>
+  <text x="540" y="227" class="text-tiny" text-anchor="middle">pubkey (copy)</text>
+  
+  <rect x="480" y="240" width="120" height="25" fill="#0AC18E" rx="3"/>
+  <text x="540" y="257" class="text-tiny" text-anchor="middle">pubkey</text>
+  
+  <rect x="480" y="270" width="120" height="25" fill="#0AC18E" rx="3"/>
+  <text x="540" y="287" class="text-tiny" text-anchor="middle">pubkeyHash</text>
+  
+  <rect x="480" y="300" width="120" height="25" fill="#ff6b6b" rx="3"/>
+  <text x="540" y="317" class="text-tiny" text-anchor="middle">FALSE → abort</text>
+  <text x="540" y="332" class="text-tiny" text-anchor="middle">TRUE → continue</text>
+  
+  <rect x="480" y="345" width="120" height="25" fill="#0AC18E" rx="3"/>
+  <text x="540" y="362" class="text-tiny" text-anchor="middle">TRUE</text>
+  
+  <!-- Stack operations explanation -->
+  <text x="620" y="225" class="text-tiny">← OP_DUP duplicates</text>
+  <text x="620" y="255" class="text-tiny">← OP_HASH160 hashes</text>
+  <text x="620" y="285" class="text-tiny">← Compare to stored hash</text>
+  <text x="620" y="315" class="text-tiny">← OP_EQUALVERIFY</text>
+  <text x="620" y="360" class="text-tiny">← OP_CHECKSIG</text>
+  
+  <!-- Result -->
+  <rect x="50" y="390" width="700" height="80" fill="#1a232b" stroke="#0AC18E" stroke-width="2" rx="8"/>
+  <circle cx="100" cy="430" r="25" class="check"/>
+  <text x="100" y="438" class="text" style="font-size: 20px; font-weight: 700;" text-anchor="middle">✓</text>
+  
+  <text x="150" y="420" class="text-label">Result: TRUE</text>
+  <text x="150" y="440" class="text-small">Signature is valid, pubkey matches stored hash</text>
+  <text x="150" y="460" class="text-small">Transaction is authorized, UTXO can be spent</text>
+  
+  <!-- Key principles -->
+  <rect x="50" y="490" width="700" height="90" fill="#1a232b" stroke="#0AC18E" stroke-width="2" rx="8"/>
+  <text x="400" y="515" class="text" style="font-size: 14px; font-weight: 700;" text-anchor="middle">Key Principles</text>
+  
+  <text x="100" y="540" class="text-small">✓ Stack-based</text>
+  <text x="100" y="555" class="text-tiny">LIFO operations</text>
+  
+  <text x="250" y="540" class="text-small">✓ Deterministic</text>
+  <text x="250" y="555" class="text-tiny">Same input = same output</text>
+  
+  <text x="400" y="540" class="text-small">✓ Stateless</text>
+  <text x="400" y="555" class="text-tiny">No memory between txs</text>
+  
+  <text x="550" y="540" class="text-small">✓ Efficient</text>
+  <text x="550" y="555" class="text-tiny">Cheap to validate</text>
+</svg>

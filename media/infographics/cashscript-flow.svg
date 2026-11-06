@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <style>
+      .bg { fill: #0F1820; }
+      .text { fill: #ffffff; font-family: 'Ubuntu', sans-serif; }
+      .text-small { fill: #ffffff; font-family: 'Ubuntu', sans-serif; font-size: 11px; }
+      .text-tiny { fill: #ffffff; font-family: 'Ubuntu', sans-serif; font-size: 10px; }
+      .text-label { fill: #0AC18E; font-family: 'Ubuntu', sans-serif; font-size: 14px; font-weight: 500; }
+      .code-box { fill: #1a232b; stroke: #0AC18E; stroke-width: 2; }
+      .code-text { fill: #0AC18E; font-family: 'Courier New', monospace; font-size: 12px; }
+      .arrow { fill: #0AC18E; stroke: none; }
+      .utxo { fill: #0AC18E; stroke: #ffffff; stroke-width: 1; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" class="arrow"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="600" class="bg"/>
+  
+  <!-- Title -->
+  <text x="400" y="30" class="text" style="font-size: 22px; font-weight: 700;" text-anchor="middle">CashScript: Code → Contract → Execution</text>
+  
+  <!-- CashScript Code Box -->
+  <rect x="50" y="60" width="320" height="180" class="code-box" rx="8"/>
+  <text x="70" y="85" class="text-label">CashScript Contract</text>
+  <text x="70" y="110" class="code-text">contract Escrow(</text>
+  <text x="85" y="125" class="code-text">  bytes20 buyerHash,</text>
+  <text x="85" y="140" class="code-text">  bytes20 sellerHash,</text>
+  <text x="85" y="155" class="code-text">  int timeout</text>
+  <text x="70" y="170" class="code-text">) {</text>
+  <text x="85" y="185" class="code-text">  function spend(</text>
+  <text x="100" y="200" class="code-text">    pubkey caller, sig s</text>
+  <text x="85" y="215" class="code-text">  ) { ... }</text>
+  <text x="70" y="230" class="code-text">}</text>
+  
+  <!-- Arrow to compiled bytecode -->
+  <line x1="370" y1="150" x2="430" y2="150" class="line" stroke="#0AC18E" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <text x="400" y="140" class="text-small" text-anchor="middle">compile</text>
+  
+  <!-- Bytecode Box -->
+  <rect x="430" y="80" width="320" height="140" class="code-box" rx="8"/>
+  <text x="450" y="105" class="text-label">Compiled Bytecode</text>
+  <text x="450" y="130" class="code-text" style="font-size: 10px;">OP_IF</text>
+  <text x="465" y="145" class="code-text" style="font-size: 10px;">OP_DUP OP_HASH160</text>
+  <text x="465" y="160" class="code-text" style="font-size: 10px;">&lt;buyerHash&gt; OP_EQUALVERIFY</text>
+  <text x="465" y="175" class="code-text" style="font-size: 10px;">OP_CHECKSIG</text>
+  <text x="450" y="190" class="code-text" style="font-size: 10px;">OP_ELSE</text>
+  <text x="465" y="205" class="code-text" style="font-size: 10px;">&lt;timeout&gt; OP_CHECKLOCKTIMEVERIFY</text>
+  
+  <!-- UTXO Model Section -->
+  <text x="400" y="280" class="text" style="font-size: 18px; font-weight: 700;" text-anchor="middle">UTXO Model: Contracts Control Coins</text>
+  
+  <!-- UTXO 1 -->
+  <circle cx="150" cy="350" r="35" class="utxo"/>
+  <text x="150" y="355" class="text" style="font-size: 14px; font-weight: 700;" text-anchor="middle">1 BCH</text>
+  <text x="150" y="400" class="text-small" text-anchor="middle">Locked by</text>
+  <text x="150" y="415" class="text-small" text-anchor="middle">contract</text>
+  
+  <!-- Arrow to spending transaction -->
+  <line x1="185" y1="350" x2="320" y2="350" class="line" stroke="#0AC18E" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="250" y="340" class="text-small" text-anchor="middle">spending</text>
+  <text x="250" y="365" class="text-small" text-anchor="middle">transaction</text>
+  
+  <!-- Spending Transaction -->
+  <rect x="320" y="320" width="160" height="60" fill="#1a232b" stroke="#ffffff" stroke-width="2" rx="6"/>
+  <text x="400" y="345" class="text" style="font-size: 12px; font-weight: 500;" text-anchor="middle">Transaction</text>
+  <text x="400" y="365" class="text-small" text-anchor="middle">inputs + outputs</text>
+  
+  <!-- Arrow to validation -->
+  <line x1="480" y1="350" x2="560" y2="350" class="line" stroke="#0AC18E" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="520" y="340" class="text-small" text-anchor="middle">validate</text>
+  
+  <!-- Validation Box -->
+  <rect x="560" y="310" width="190" height="80" fill="#1a232b" stroke="#0AC18E" stroke-width="2" rx="6"/>
+  <text x="655" y="335" class="text-label" text-anchor="middle">Script Execution</text>
+  <text x="655" y="355" class="text-small" text-anchor="middle">Stack-based VM</text>
+  <text x="655" y="375" class="text-small" text-anchor="middle">Returns TRUE/FALSE</text>
+  
+  <!-- Result indicators -->
+  <circle cx="605" cy="410" r="15" fill="#0AC18E"/>
+  <text x="605" y="416" class="text" style="font-size: 14px; font-weight: 700;" text-anchor="middle">✓</text>
+  <text x="605" y="440" class="text-small" text-anchor="middle">Valid</text>
+  <text x="605" y="455" class="text-small" text-anchor="middle">spend</text>
+  
+  <circle cx="705" cy="410" r="15" fill="#ff4444"/>
+  <text x="705" y="416" class="text" style="font-size: 14px; font-weight: 700;" text-anchor="middle">✗</text>
+  <text x="705" y="440" class="text-small" text-anchor="middle">Rejected</text>
+  <text x="705" y="455" class="text-small" text-anchor="middle">transaction</text>
+  
+  <!-- Key Features Box -->
+  <rect x="50" y="480" width="700" height="100" fill="#1a232b" stroke="#0AC18E" stroke-width="2" rx="8"/>
+  <text x="400" y="505" class="text-label" text-anchor="middle" style="font-size: 16px;">Key Features</text>
+  <text x="150" y="535" class="text-small" text-anchor="middle">✓ Deterministic</text>
+  <text x="150" y="555" class="text-small" text-anchor="middle">Same inputs = same outputs</text>
+  
+  <text x="400" y="535" class="text-small" text-anchor="middle">✓ Stateless</text>
+  <text x="400" y="555" class="text-small" text-anchor="middle">No persistent storage</text>
+  
+  <text x="650" y="535" class="text-small" text-anchor="middle">✓ Efficient</text>
+  <text x="650" y="555" class="text-small" text-anchor="middle">Cheap to validate</text>
+</svg>

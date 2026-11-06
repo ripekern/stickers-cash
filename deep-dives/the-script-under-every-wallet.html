@@ -92,6 +92,11 @@
       The wallet hides this, but the model explains why a transaction can have multiple inputs,
       why change is a real output, and why the fee depends on bytes rather than the dollar amount.</p>
 
+    <figure class="post-figure">
+      <img src="../media/infographics/bitcoin-script-execution.svg" alt="Bitcoin Script stack-based execution">
+      <figcaption>Bitcoin Script execution: stack-based VM. The unlocking script provides data (signature, pubkey), the locking script executes opcodes (OP_DUP, OP_HASH160, etc.), and the stack state determines if the transaction is valid. Result: TRUE means the spend is authorized.</figcaption>
+    </figure>
+
     <h2>Pay to script hash</h2>
 
     <p>P2PKH is only the default. A more flexible lock is pay-to-script-hash, or P2SH. Instead of

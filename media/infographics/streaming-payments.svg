@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <style>
+      .bg { fill: #0F1820; }
+      .text { fill: #ffffff; font-family: 'Ubuntu', sans-serif; }
+      .text-small { fill: #ffffff; font-family: 'Ubuntu', sans-serif; font-size: 11px; }
+      .text-tiny { fill: #ffffff; font-family: 'Ubuntu', sans-serif; font-size: 10px; }
+      .text-label { fill: #0AC18E; font-family: 'Ubuntu', sans-serif; font-size: 14px; font-weight: 500; }
+      .line { stroke: #0AC18E; stroke-width: 2; fill: none; }
+      .dashed { stroke: #0AC18E; stroke-width: 2; fill: none; stroke-dasharray: 5,5; }
+      .arrow { fill: #0AC18E; stroke: none; }
+      .stream { fill: #0AC18E; opacity: 0.6; }
+      .lock { fill: #1a232b; stroke: #ffffff; stroke-width: 2; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" class="arrow"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="500" class="bg"/>
+  
+  <!-- Title -->
+  <text x="400" y="30" class="text" style="font-size: 22px; font-weight: 700;" text-anchor="middle">Streaming Payments: Money That Flows</text>
+  <text x="400" y="50" class="text-small" text-anchor="middle">Continuous payment vs discrete payments</text>
+  
+  <!-- Traditional: Discrete payments -->
+  <text x="400" y="90" class="text-label" text-anchor="middle">Traditional: Discrete Payments</text>
+  
+  <!-- Timeline 1 -->
+  <line x1="100" y1="120" x2="700" y2="120" stroke="#ffffff" stroke-width="2"/>
+  
+  <!-- Payment events -->
+  <circle cx="150" cy="120" r="8" fill="#ff6b6b"/>
+  <text x="150" y="145" class="text-small" text-anchor="middle">Jan 1</text>
+  <text x="150" y="160" class="text-tiny" text-anchor="middle">Pay $1000</text>
+  
+  <circle cx="300" cy="120" r="8" fill="#ff6b6b"/>
+  <text x="300" y="145" class="text-small" text-anchor="middle">Feb 1</text>
+  <text x="300" y="160" class="text-tiny" text-anchor="middle">Pay $1000</text>
+  
+  <circle cx="450" cy="120" r="8" fill="#ff6b6b"/>
+  <text x="450" y="145" class="text-small" text-anchor="middle">Mar 1</text>
+  <text x="450" y="160" class="text-tiny" text-anchor="middle">Pay $1000</text>
+  
+  <circle cx="600" cy="120" r="8" fill="#ff6b6b"/>
+  <text x="600" y="145" class="text-small" text-anchor="middle">Apr 1</text>
+  <text x="600" y="160" class="text-tiny" text-anchor="middle">Pay $1000</text>
+  
+  <!-- Problem indicator -->
+  <rect x="200" y="180" width="400" height="30" fill="#1a232b" stroke="#ff6b6b" stroke-width="1" rx="4"/>
+  <text x="400" y="200" class="text-small" text-anchor="middle" style="fill: #ff6b6b;">⚠ Manual action required every period</text>
+  
+  <!-- Streaming: Continuous flow -->
+  <text x="400" y="240" class="text-label" text-anchor="middle">BCH Streaming: Continuous Flow</text>
+  
+  <!-- Timeline 2 -->
+  <line x1="100" y1="270" x2="700" y2="270" stroke="#ffffff" stroke-width="2"/>
+  
+  <!-- Locked amount -->
+  <rect x="100" y="260" width="600" height="20" class="stream" rx="4"/>
+  <text x="400" y="255" class="text-small" text-anchor="middle">Locked: 4 BCH (1 BCH/month for 4 months)</text>
+  
+  <!-- Flow arrows showing continuous accrual -->
+  <text x="150" y="310" class="text-tiny" text-anchor="middle">0.01 BCH</text>
+  <text x="150" y="325" class="text-tiny" text-anchor="middle">accrued</text>
+  
+  <text x="300" y="310" class="text-tiny" text-anchor="middle">0.5 BCH</text>
+  <text x="300" y="325" class="text-tiny" text-anchor="middle">accrued</text>
+  
+  <text x="450" y="310" class="text-tiny" text-anchor="middle">1.5 BCH</text>
+  <text x="450" y="325" class="text-tiny" text-anchor="middle">accrued</text>
+  
+  <text x="600" y="310" class="text-tiny" text-anchor="middle">2.5 BCH</text>
+  <text x="600" y="325" class="text-tiny" text-anchor="middle">accrued</text>
+  
+  <!-- Withdrawal points -->
+  <circle cx="200" cy="270" r="6" fill="#0AC18E" stroke="#ffffff" stroke-width="1"/>
+  <line x1="200" y1="276" x2="200" y2="340" class="dashed"/>
+  <text x="200" y="355" class="text-tiny" text-anchor="middle">Withdraw</text>
+  
+  <circle cx="350" cy="270" r="6" fill="#0AC18E" stroke="#ffffff" stroke-width="1"/>
+  <line x1="350" y1="276" x2="350" y2="340" class="dashed"/>
+  <text x="350" y="355" class="text-tiny" text-anchor="middle">Withdraw</text>
+  
+  <circle cx="500" cy="270" r="6" fill="#0AC18E" stroke="#ffffff" stroke-width="1"/>
+  <line x1="500" y1="276" x2="500" y2="340" class="dashed"/>
+  <text x="500" y="355" class="text-tiny" text-anchor="middle">Withdraw</text>
+  
+  <!-- Advantage indicator -->
+  <rect x="200" y="370" width="400" height="30" fill="#1a232b" stroke="#0AC18E" stroke-width="1" rx="4"/>
+  <text x="400" y="390" class="text-small" text-anchor="middle" style="fill: #0AC18E;">✓ Continuous accrual, withdraw anytime</text>
+  
+  <!-- Use cases -->
+  <rect x="50" y="420" width="700" height="70" fill="#1a232b" stroke="#0AC18E" stroke-width="2" rx="8"/>
+  <text x="400" y="445" class="text-label" text-anchor="middle">Use Cases</text>
+  <text x="150" y="465" class="text-small" text-anchor="middle">💼 Salaries</text>
+  <text x="150" y="480" class="text-tiny" text-anchor="middle">Per-second accrual</text>
+  
+  <text x="300" y="465" class="text-small" text-anchor="middle">🎬 Subscriptions</text>
+  <text x="300" y="480" class="text-tiny" text-anchor="middle">Pay as you consume</text>
+  
+  <text x="450" y="465" class="text-small" text-anchor="middle">🏦 Vesting</text>
+  <text x="450" y="480" class="text-tiny" text-anchor="middle">Time-locked release</text>
+  
+  <text x="600" y="465" class="text-small" text-anchor="middle">🏠 Rent</text>
+  <text x="600" y="480" class="text-tiny" text-anchor="middle">Continuous payment</text>
+</svg>
