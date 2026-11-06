@@ -706,6 +706,31 @@ select, input, .ship-methods{
 .series-sub{margin:5px 0 0;font-size:14.5px;color:var(--muted);max-width:620px}
 .series-count{font-size:12.5px;font-weight:700;color:var(--muted);white-space:nowrap;margin-bottom:4px}
 
+.part-divider{
+  margin:64px 0 40px;padding:28px 32px;
+  background:linear-gradient(135deg,var(--green-ink) 0%,#089E74 100%);
+  border-radius:20px;color:#fff;scroll-margin-top:88px;
+  position:relative;overflow:hidden;
+}
+.part-divider::after{
+  content:"";position:absolute;top:-30%;right:-10%;width:260px;height:260px;
+  background:radial-gradient(circle,rgba(255,255,255,.12) 0%,transparent 70%);
+  border-radius:50%;pointer-events:none;
+}
+.part-divider .part-kicker{
+  display:block;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  opacity:.8;margin-bottom:8px;position:relative;z-index:1;
+}
+.part-divider h2{
+  margin:0;font-size:clamp(28px,3.5vw,40px);line-height:1.1;letter-spacing:-.015em;
+  color:#fff;position:relative;z-index:1;
+}
+.part-divider .part-sub{
+  margin:10px 0 0;font-size:15px;color:rgba(255,255,255,.85);max-width:620px;
+  position:relative;z-index:1;line-height:1.5;
+}
+.part-divider + .series-block{margin-top:32px}
+
 .post-card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
 .post-card{
   background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;
@@ -1082,6 +1107,8 @@ select, input, .ship-methods{
   .pullquote{font-size:19px;padding-left:18px}
   .article{font-size:16.5px}
   .article h2{margin-top:42px}
+  .part-divider{margin:40px 0 28px;padding:22px 24px}
+  .part-divider::after{display:none}
   .post-cta-band{padding:34px 0}
   .post-cta-band h2{font-size:22px}
 }
