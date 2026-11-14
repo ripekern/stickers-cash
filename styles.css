@@ -1704,7 +1704,7 @@ select, input, .ship-methods{
   }
   
   .article a{
-    color:var(--green-ink);
+    color:inherit;
   }
   
   .article li::marker{
