@@ -249,7 +249,7 @@ The Variable Fiat Mindset (USD)	The Fixed Hard-Asset Mindset (BCH)
 🛠️ How to Teach This Without Triggering Fear
 
 If you want to solidify this concept for someone who is currently stressed about money, you can guide them through three simple mental steps:
-1. Focus on Accumulation, Not Price: Tell them, "Don't look at the daily dollar chart. Look at your wallet balance. Your goal is simply to secure a fixed number of coins—whether that is 0.1, 1, or 10 BCH—and let them sit."
+1. Focus on Accumulation, Not Price: Tell them, "Don't look at the daily dollar chart. Look at your wallet balance. Your goal is simply to secure a fixed number of coins—whether that is 0.1, 1, or 10 BCH—and put them to work between locals. Accumulation only matters when the coins are actually useful: spent at a neighbor's shop, passed hand to hand, kept in local circulation."
 2. Accept Short-Term Noise for Long-Term Peace: Explain that the dollar price shifts wildly because the dollar itself is highly volatile and unstable. The fluctuation isn't BCH changing value; it's the paper dollar rapidly losing its footing.
 3. The Freedom to Spend Fractions: Remind them that if an absolute emergency happens and they need $200 for a plumbing repair, they don't have to sell all 10 coins. They can seamlessly spend a tiny fraction (like 0.4 BCH) directly from their wallet, leaving the rest of their fixed stack completely untouched.
 By framing it this way, you turn savings from an anxious, defensive race against inflation into an offensive game of collecting permanent, un-duplicable digital property.
