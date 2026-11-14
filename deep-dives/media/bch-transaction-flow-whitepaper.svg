@@ -1,0 +1,215 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" style="max-width:100%;height:auto;font-family:system-ui,-apple-system,sans-serif;">
+  <!-- Background -->
+  <rect width="1200" height="700" fill="#ffffff"/>
+  
+  <!-- Title -->
+  <text x="600" y="35" text-anchor="middle" font-size="20" fill="#2c3e50" font-weight="600">BCH Transaction Flow: From Broadcast to Confirmation</text>
+  
+  <!-- ===== SECTION 1: Transaction Creation ===== -->
+  <g id="tx-creation">
+    <text x="100" y="80" font-size="14" fill="#7f8c8d" font-weight="500">1. Transaction Created</text>
+    
+    <!-- Previous UTXOs being spent (Inputs) -->
+    <rect x="50" y="110" width="140" height="60" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="6"/>
+    <text x="120" y="135" text-anchor="middle" font-size="12" fill="#666">Previous UTXO</text>
+    <text x="120" y="155" text-anchor="middle" font-size="14" fill="#ff9800" font-weight="600">$10.00</text>
+    
+    <!-- Transaction box -->
+    <rect x="240" y="100" width="180" height="80" fill="#e3f2fd" stroke="#2196f3" stroke-width="3" rx="8"/>
+    <text x="330" y="125" text-anchor="middle" font-size="14" fill="#2c3e50" font-weight="600">Transaction</text>
+    <text x="330" y="145" text-anchor="middle" font-size="11" fill="#666">Inputs: $10.00</text>
+    <text x="330" y="160" text-anchor="middle" font-size="11" fill="#666">Outputs: $4.00 + $5.99</text>
+    <text x="330" y="175" text-anchor="middle" font-size="11" fill="#666">Fee: $0.01</text>
+    
+    <!-- Arrow from input to transaction -->
+    <line x1="190" y1="140" x2="235" y2="140" stroke="#0AC18E" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="213" y="132" text-anchor="middle" font-size="10" fill="#0AC18E">Spends</text>
+    
+    <!-- Signature/Unlock -->
+    <circle cx="213" cy="140" r="12" fill="#9c27b0" opacity="0.2"/>
+    <text x="213" y="145" text-anchor="middle" font-size="14" fill="#9c27b0">🔑</text>
+    
+    <!-- New UTXOs (Outputs) -->
+    <!-- Output 1: To recipient -->
+    <rect x="470" y="95" width="140" height="50" fill="#e8f5e9" stroke="#0AC18E" stroke-width="2" rx="6"/>
+    <text x="540" y="115" text-anchor="middle" font-size="11" fill="#666">Recipient UTXO</text>
+    <text x="540" y="135" text-anchor="middle" font-size="13" fill="#0AC18E" font-weight="600">$4.00</text>
+    
+    <!-- Output 2: Change back to sender -->
+    <rect x="470" y="160" width="140" height="50" fill="#fce4ec" stroke="#e91e63" stroke-width="2" rx="6"/>
+    <text x="540" y="180" text-anchor="middle" font-size="11" fill="#666">Change UTXO</text>
+    <text x="540" y="200" text-anchor="middle" font-size="13" fill="#e91e63" font-weight="600">$5.99</text>
+    
+    <!-- Arrows from transaction to outputs -->
+    <line x1="420" y1="130" x2="465" y2="120" stroke="#0AC18E" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="420" y1="150" x2="465" y2="185" stroke="#0AC18E" stroke-width="2" marker-end="url(#arrow)"/>
+  </g>
+  
+  <!-- ===== SECTION 2: Broadcast to Network (Waiting Area) ===== -->
+  <g id="broadcast">
+    <text x="100" y="260" font-size="14" fill="#7f8c8d" font-weight="500">2. Broadcast to Network</text>
+    
+    <!-- Node network visualization -->
+    <circle cx="150" cy="320" r="25" fill="#e3f2fd" stroke="#2196f3" stroke-width="2"/>
+    <text x="150" y="327" text-anchor="middle" font-size="12" fill="#2c3e50">Node 1</text>
+    
+    <circle cx="250" cy="300" r="25" fill="#e3f2fd" stroke="#2196f3" stroke-width="2"/>
+    <text x="250" y="307" text-anchor="middle" font-size="12" fill="#2c3e50">Node 2</text>
+    
+    <circle cx="250" cy="360" r="25" fill="#e3f2fd" stroke="#2196f3" stroke-width="2"/>
+    <text x="250" y="367" text-anchor="middle" font-size="12" fill="#2c3e50">Node 3</text>
+    
+    <circle cx="350" cy="330" r="25" fill="#e3f2fd" stroke="#2196f3" stroke-width="2"/>
+    <text x="350" y="337" text-anchor="middle" font-size="12" fill="#2c3e50">Node 4</text>
+    
+    <!-- Connections between nodes -->
+    <line x1="175" y1="315" x2="225" y2="305" stroke="#b0bec5" stroke-width="1"/>
+    <line x1="175" y1="325" x2="225" y2="355" stroke="#b0bec5" stroke-width="1"/>
+    <line x1="275" y1="310" x2="325" y2="325" stroke="#b0bec5" stroke-width="1"/>
+    <line x1="275" y1="350" x2="325" y2="335" stroke="#b0bec5" stroke-width="1"/>
+    
+    <!-- Transaction in nodes -->
+    <rect x="220" y="320" width="60" height="20" fill="#fff3e0" stroke="#ff9800" stroke-width="1" rx="3"/>
+    <text x="250" y="334" text-anchor="middle" font-size="9" fill="#ff9800">TX</text>
+    
+    <text x="150" y="400" font-size="11" fill="#666">Transaction propagated to all nodes</text>
+    <text x="150" y="415" font-size="11" fill="#666">Waiting in mempool (~seconds)</text>
+    
+    <!-- Timing indicator -->
+    <rect x="400" y="300" width="80" height="60" fill="#ffebee" stroke="#f44336" stroke-width="2" rx="6"/>
+    <text x="440" y="325" text-anchor="middle" font-size="11" fill="#666">Time:</text>
+    <text x="440" y="345" text-anchor="middle" font-size="16" fill="#f44336" font-weight="600">~1s</text>
+  </g>
+  
+  <!-- ===== SECTION 3: Mining and Block Creation ===== -->
+  <g id="mining">
+    <text x="550" y="260" font-size="14" fill="#7f8c8d" font-weight="500">3. Mining</text>
+    
+    <!-- Miner -->
+    <rect x="550" y="300" width="120" height="80" fill="#fff9c4" stroke="#ffc107" stroke-width="3" rx="8"/>
+    <text x="610" y="325" text-anchor="middle" font-size="13" fill="#2c3e50" font-weight="600">Miner</text>
+    <text x="610" y="345" text-anchor="middle" font-size="11" fill="#666">Selects TXs from</text>
+    <text x="610" y="360" text-anchor="middle" font-size="11" fill="#666">mempool</text>
+    <text x="610" y="375" text-anchor="middle" font-size="20" fill="#ffc107">⛏️</text>
+    
+    <!-- Arrow from nodes to miner -->
+    <line x1="480" y1="330" x2="545" y2="330" stroke="#0AC18E" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="5,3"/>
+    
+    <!-- Block being formed -->
+    <rect x="720" y="295" width="100" height="90" fill="#e8f5e9" stroke="#0AC18E" stroke-width="3" rx="8"/>
+    <text x="770" y="320" text-anchor="middle" font-size="12" fill="#2c3e50" font-weight="600">Block</text>
+    <text x="770" y="340" text-anchor="middle" font-size="10" fill="#666">Contains:</text>
+    <text x="770" y="355" text-anchor="middle" font-size="10" fill="#0AC18E">• Your TX</text>
+    <text x="770" y="370" text-anchor="middle" font-size="10" fill="#666">• Other TXs</text>
+    
+    <!-- Arrow from miner to block -->
+    <line x1="670" y1="340" x2="715" y2="340" stroke="#0AC18E" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="693" y="332" text-anchor="middle" font-size="10" fill="#666">Creates</text>
+    
+    <!-- Timing indicator -->
+    <rect x="850" y="300" width="100" height="60" fill="#ffebee" stroke="#f44336" stroke-width="2" rx="6"/>
+    <text x="900" y="325" text-anchor="middle" font-size="11" fill="#666">Time:</text>
+    <text x="900" y="345" text-anchor="middle" font-size="16" fill="#f44336" font-weight="600">~10min</text>
+    <text x="900" y="355" text-anchor="middle" font-size="9" fill="#666">(avg block time)</text>
+  </g>
+  
+  <!-- ===== SECTION 4: Block Added to Chain ===== -->
+  <g id="blockchain">
+    <text x="100" y="480" font-size="14" fill="#7f8c8d" font-weight="500">4. Block Added to Chain</text>
+    
+    <!-- Blockchain visualization -->
+    <!-- Block 100 -->
+    <rect x="100" y="520" width="100" height="80" fill="#f5f5f5" stroke="#9e9e9e" stroke-width="2" rx="6"/>
+    <text x="150" y="545" text-anchor="middle" font-size="11" fill="#666">Block #100</text>
+    <text x="150" y="565" text-anchor="middle" font-size="10" fill="#9e9e9e">Previous</text>
+    <text x="150" y="580" text-anchor="middle" font-size="10" fill="#9e9e9e">transactions</text>
+    
+    <!-- Arrow connecting blocks -->
+    <line x1="200" y1="560" x2="230" y2="560" stroke="#0AC18E" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <!-- Block 101 (new block with our transaction) -->
+    <rect x="235" y="520" width="100" height="80" fill="#e8f5e9" stroke="#0AC18E" stroke-width="3" rx="6"/>
+    <text x="285" y="545" text-anchor="middle" font-size="11" fill="#2c3e50" font-weight="600">Block #101</text>
+    <text x="285" y="565" text-anchor="middle" font-size="10" fill="#0AC18E" font-weight="600">✓ Your TX</text>
+    <text x="285" y="580" text-anchor="middle" font-size="10" fill="#666">confirmed</text>
+    
+    <!-- Highlight the confirmed transaction -->
+    <circle cx="285" cy="565" r="35" fill="none" stroke="#0AC18E" stroke-width="2" stroke-dasharray="3,2" opacity="0.5"/>
+    
+    <!-- Arrow connecting to next block -->
+    <line x1="335" y1="560" x2="365" y2="560" stroke="#9e9e9e" stroke-width="2" marker-end="url(#arrow-gray)"/>
+    
+    <!-- Block 102 -->
+    <rect x="370" y="520" width="100" height="80" fill="#f5f5f5" stroke="#9e9e9e" stroke-width="2" rx="6"/>
+    <text x="420" y="545" text-anchor="middle" font-size="11" fill="#666">Block #102</text>
+    <text x="420" y="565" text-anchor="middle" font-size="10" fill="#9e9e9e">Future</text>
+    <text x="420" y="580" text-anchor="middle" font-size="10" fill="#9e9e9e">transactions</text>
+    
+    <!-- Confirmation status -->
+    <rect x="520" y="530" width="140" height="60" fill="#e8f5e9" stroke="#0AC18E" stroke-width="2" rx="6"/>
+    <text x="590" y="555" text-anchor="middle" font-size="12" fill="#2c3e50" font-weight="600">Confirmations:</text>
+    <text x="590" y="575" text-anchor="middle" font-size="18" fill="#0AC18E" font-weight="600">1 of 6</text>
+    <text x="590" y="585" text-anchor="middle" font-size="9" fill="#666">(more = more secure)</text>
+  </g>
+  
+  <!-- ===== SECTION 5: Receiver Can Spend ===== -->
+  <g id="receiver">
+    <text x="750" y="480" font-size="14" fill="#7f8c8d" font-weight="500">5. Receiver Status</text>
+    
+    <!-- Receiver wallet -->
+    <rect x="750" y="520" width="140" height="80" fill="#e8f5e9" stroke="#0AC18E" stroke-width="2" rx="8"/>
+    <text x="820" y="545" text-anchor="middle" font-size="13" fill="#2c3e50" font-weight="600">Receiver</text>
+    <text x="820" y="565" text-anchor="middle" font-size="11" fill="#666">Balance:</text>
+    <text x="820" y="585" text-anchor="middle" font-size="16" fill="#0AC18E" font-weight="600">$4.00</text>
+    <text x="820" y="595" text-anchor="middle" font-size="10" fill="#0AC18E">✓ Spendable</text>
+    
+    <!-- Status indicators -->
+    <rect x="920" y="510" width="150" height="100" fill="#ffffff" stroke="#e0e0e0" stroke-width="1" rx="6"/>
+    <text x="995" y="530" text-anchor="middle" font-size="11" fill="#666" font-weight="500">Can spend:</text>
+    
+    <text x="935" y="555" font-size="10" fill="#0AC18E">✓ Immediately (0-conf)</text>
+    <text x="935" y="570" font-size="9" fill="#666">  for small amounts</text>
+    
+    <text x="935" y="590" font-size="10" fill="#0AC18E">✓ After 1 conf (~10min)</text>
+    <text x="935" y="605" font-size="9" fill="#666">  for larger amounts</text>
+  </g>
+  
+  <!-- ===== TIMELINE ===== -->
+  <g id="timeline">
+    <text x="600" y="650" text-anchor="middle" font-size="13" fill="#2c3e50" font-weight="500">Transaction Timeline</text>
+    
+    <!-- Timeline line -->
+    <line x1="150" y1="670" x2="1050" y2="670" stroke="#b0bec5" stroke-width="3"/>
+    
+    <!-- Timeline markers -->
+    <!-- T+0s: Transaction created -->
+    <circle cx="200" cy="670" r="8" fill="#2196f3"/>
+    <text x="200" y="690" text-anchor="middle" font-size="10" fill="#2c3e50" font-weight="500">Created</text>
+    <text x="200" y="703" text-anchor="middle" font-size="9" fill="#666">T+0s</text>
+    
+    <!-- T+1s: Broadcast -->
+    <circle cx="350" cy="670" r="8" fill="#ff9800"/>
+    <text x="350" y="690" text-anchor="middle" font-size="10" fill="#2c3e50" font-weight="500">Broadcast</text>
+    <text x="350" y="703" text-anchor="middle" font-size="9" fill="#666">T+1s</text>
+    
+    <!-- T+10min: Confirmed -->
+    <circle cx="650" cy="670" r="8" fill="#0AC18E"/>
+    <text x="650" y="690" text-anchor="middle" font-size="10" fill="#2c3e50" font-weight="500">Confirmed</text>
+    <text x="650" y="703" text-anchor="middle" font-size="9" fill="#666">T+10min</text>
+    
+    <!-- T+60min: Well confirmed -->
+    <circle cx="900" cy="670" r="8" fill="#4caf50"/>
+    <text x="900" y="690" text-anchor="middle" font-size="10" fill="#2c3e50" font-weight="500">Final</text>
+    <text x="900" y="703" text-anchor="middle" font-size="9" fill="#666">T+60min</text>
+  </g>
+  
+  <!-- Arrow definitions -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#0AC18E"/>
+    </marker>
+    <marker id="arrow-gray" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#9e9e9e"/>
+    </marker>
+  </defs>
+</svg>

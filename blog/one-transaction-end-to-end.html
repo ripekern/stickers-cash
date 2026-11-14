@@ -117,13 +117,9 @@
 <h2>The signature is the approval</h2>
 <p>Each input has a lock that only your key can open. Your wallet builds the transaction, signs it with your private key, and sends it out to the network. Computers across the network check the signature and the rules. If the signature is wrong, the transaction is rejected. If it is right, it gets passed along.</p>
 <p>No bank approves it. No card network authorizes it. The signature is the approval. That is the whole point of peer-to-peer cash: the person receiving the money can verify the payment without asking a middleman for permission.</p>
-<h2>The waiting area and the block</h2>
-<figure class="post-figure">
-<img alt="BCH transaction flow showing UTXOs, mining, and confirmation timeline" src="media/bch-transaction-flow-whitepaper.svg"/>
-<figcaption>The complete journey: transaction creation with UTXOs (inputs/outputs), broadcast to the network, mining into a block, and confirmation on the blockchain. The receiver can spend instantly for small amounts, or wait ~10 minutes for full block confirmation.</figcaption>
-</figure>
-<p>A transaction that has just been sent lands in a waiting area where network computers keep valid transactions that have not yet been added to the chain. Miners choose transactions from the waiting area, usually prioritizing by <a href="the-fee-that-is-almost-nothing.html">fee per byte</a>, and put them into a block.</p>
-<p>When a miner finds a valid block, the transaction becomes part of the chain. That is one <strong>confirmation</strong>. Each later block adds another. But the shop can see and spend the payment <strong>before it is confirmed</strong> — for small purchases, this is instant and safe. For larger amounts, waiting for at least one confirmation (~10 minutes) is the normal safety step.</p>
+
+<p>After the signature is verified, the transaction enters <a href="../deep-dives/the-waiting-area-and-the-block.html">the waiting area and then gets added to a block</a> — the final step that makes it permanent.</p>
+
 <h2>What the public sees</h2>
 <p>Anyone can look up the transaction on a block explorer. They can see the inputs, the outputs, the amount, the fee, and the block it landed in. They do not automatically see your name. The ledger is public, but it shows addresses rather than identities.</p>
 <p>That transparency is useful. It lets the receiver verify that the payment exists and that the

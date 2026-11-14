@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Waiting Area and the Block — stickers.cash</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="../index.html" class="logo">stickers.cash</a>
+      <nav class="main-nav">
+        <a href="../index.html#shop">Shop</a>
+        <a href="../index.html#how">How it works</a>
+        <a href="../index.html#why">Why Bitcoin Cash</a>
+        <a href="../blog.html">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="post">
+      <header class="post-header">
+        <a href="../blog/one-transaction-end-to-end.html" class="back-link">← Back to One transaction, end to end</a>
+        <h1>The Waiting Area and the Block</h1>
+        <p class="post-meta">Deep dive · Chapter 4: How it actually works</p>
+      </header>
+
+      <div class="post-content">
+        <p>When you send a Bitcoin Cash transaction, it doesn't go straight into a block. First, it goes into a waiting area called the mempool, where it sits until a miner picks it up and includes it in a block. Understanding this process helps you grasp why transactions are fast but not instant.</p>
+
+        <figure class="post-figure">
+          <img src="../media/bch-transaction-flow-whitepaper.svg" alt="BCH transaction flow showing UTXOs, mining, and confirmation timeline" />
+          <figcaption>The complete journey: transaction creation with UTXOs (inputs/outputs), broadcast to the network, mining into a block, and confirmation on the blockchain. The receiver can spend instantly for small amounts, or wait ~10 minutes for full block confirmation.</figcaption>
+        </figure>
+
+        <h2>The mempool: a waiting room for transactions</h2>
+        <p>When you broadcast a transaction, it goes to nodes across the network. Each node validates it — checking the signature, making sure the inputs haven't been spent already, verifying the amounts add up. If everything checks out, the transaction goes into the node's mempool (memory pool).</p>
+
+        <p>The mempool is like a waiting room. Your transaction sits there alongside thousands of others, all waiting to be picked up by a miner. The mempool isn't permanent storage — it's just a temporary holding area in each node's memory.</p>
+
+        <h2>Miners pick transactions from the mempool</h2>
+        <p>Miners are looking to build the next block. They pull transactions from their mempool, usually prioritizing by fee per byte — transactions with higher fees get picked first because they pay the miner more.</p>
+
+        <p>This is why fees matter. If you pay a higher fee, your transaction gets priority. If you pay a low fee, you might wait longer. But with Bitcoin Cash, fees are so low that even the cheapest transactions get picked up quickly — usually within the next block.</p>
+
+        <h2>The block: bundling transactions together</h2>
+        <p>When a miner finds a valid block (by solving the proof-of-work puzzle), all the transactions in that block get confirmed at once. That's one confirmation. Your transaction is now part of the blockchain, permanently recorded.</p>
+
+        <p>Each new block that gets added after yours adds another confirmation. After six confirmations (about an hour), the transaction is considered irreversible for all practical purposes. But you don't need to wait that long for most use cases.</p>
+
+        <h2>Zero-conf: spending before confirmation</h2>
+        <p>Here's the key insight: the shop can see your transaction in their mempool almost instantly. They don't need to wait for it to be in a block. For small purchases — like a four-dollar sticker — the shop can hand over the goods as soon as they see the transaction in their mempool.</p>
+
+        <p>This is called "zero-conf" (zero confirmations). It's safe for small amounts because the transaction has already been validated by multiple nodes. The risk of double-spending is negligible for small transactions.</p>
+
+        <p>For larger amounts, waiting for one or more confirmations (~10 minutes per confirmation) is the normal safety step. But for everyday purchases, zero-conf works perfectly.</p>
+
+        <h2>Why this matters</h2>
+        <p>The mempool and block confirmation system is what makes Bitcoin Cash both fast and secure. Transactions propagate through the network in seconds. Miners bundle them into blocks every ~10 minutes. You can spend instantly for small amounts, or wait for full confirmation for larger transactions.</p>
+
+        <p>This is the technical foundation that makes Bitcoin Cash work as peer-to-peer electronic cash. No bank, no card network, no waiting for business days. Just a signed transaction, a mempool, and a block.</p>
+      </div>
+
+      <footer class="post-footer">
+        <nav class="post-nav">
+          <a href="../blog/one-transaction-end-to-end.html" class="nav-link">← Back to One transaction, end to end</a>
+          <a href="../blog/fast-payments-final-settlement.html" class="nav-link">Next: Fast payments, final settlement →</a>
+        </nav>
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 stickers.cash — paid exclusively in Bitcoin Cash (BCH)</p>
+      <p>Cart checkout · anonymous donations</p>
+    </div>
+  </footer>
+</body>
+</html>
