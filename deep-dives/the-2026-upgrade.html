@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Deep Dive: The 2026 Upgrade — stickers.cash</title>
-<meta name="description" content="What activated in BCH's May 2026 upgrade: P2S, bounded loops, functions, and bitwise operations. How each change expands the contract layer.">
+<title>Deep Dive: BCH Contract Capabilities — stickers.cash</title>
+<meta name="description" content="BCH contracts are powerful. Loops, functions, bitwise operations, and larger scripts — here's what you can build with them today.">
 <meta name="theme-color" content="#0AC18E">
-<meta property="og:title" content="Deep Dive: The 2026 Upgrade — stickers.cash">
-<meta property="og:description" content="What activated in BCH's May 2026 upgrade: P2S, bounded loops, functions, and bitwise operations. How each change expands the contract layer.">
+<meta property="og:title" content="Deep Dive: BCH Contract Capabilities — stickers.cash">
+<meta property="og:description" content="BCH contracts are powerful. Loops, functions, bitwise operations, and larger scripts — here's what you can build with them today.">
 <meta property="og:url" content="https://stickers.cash/deep-dives/the-2026-upgrade.html">
 <meta property="og:type" content="article">
 <link rel="canonical" href="https://stickers.cash/deep-dives/the-2026-upgrade.html">
@@ -62,8 +62,8 @@
   <div class="container post-head-inner">
     <a class="post-back" href="../blog/money-that-can-run-rules.html">← Back to: Money that can run rules</a>
     <span class="eyebrow">Deep dive</span>
-    <h1>The 2026 Upgrade</h1>
-    <p class="lede">BCH's programmability did not arrive all at once. It has been built upgrade by upgrade — and 2026 added some of the biggest pieces yet.</p>
+    <h1>BCH Contract Capabilities</h1>
+    <p class="lede">BCH contracts are powerful. Loops, functions, bitwise operations, and larger scripts — here's what you can build with them today.</p>
   </div>
 </section>
 
@@ -71,81 +71,54 @@
 <div class="post-body">
   <article class="article post-article">
 
-    <p>This deep dive expands on the upgrade history mentioned throughout <a href="../blog/money-that-can-run-rules.html">"Money that can run rules."</a> It covers the specific consensus changes that activated in May 2026 and how they expand what BCH contracts can do. This is technical content for developers and the deeply curious.</p>
+    <p>BCH contracts give you programmable money with real power. Four key capabilities — loops, functions, bitwise operations, and larger scripts — let you build sophisticated financial logic directly on the blockchain.</p>
 
-    <p>Bitcoin Cash did not become programmable in a single upgrade. It became programmable through
-      a series of narrow, auditable changes: introspection, tokens, larger integers, better VM
-      limits, and now loops, functions, bitwise operations, and standard pay-to-script outputs. The
-      2026 upgrade is the clearest signal yet that the contract layer is a priority.</p>
+    <h2>What you can build right now</h2>
 
-    <h2>What activated in 2026</h2>
-
-    <p>Four consensus changes went live in May 2026. Each one removes a specific friction for
-      contract developers.</p>
+    <p>BCH contracts support a complete toolkit for programmable money:</p>
 
     <ul>
-      <li><strong>Pay to Script (P2S):</strong> makes bare pay-to-script outputs standard, raises
-        NFT commitments from 40 to 128 bytes, and lifts the standard unlocking bytecode limit from
-        1,650 to 10,000 bytes. The result is simpler, smaller transactions for vaults, multi-party
-        contracts, and token applications.</li>
-      <li><strong>Bounded loops:</strong> adds <code>OP_BEGIN</code> and <code>OP_UNTIL</code>,
-        allowing loops that are checked against the VM's resource limits. This makes repetitive
-        logic possible without unbounded execution.</li>
-      <li><strong>Functions:</strong> adds <code>OP_DEFINE</code> and <code>OP_INVOKE</code>, so
-        bytecode can be organized into reusable functions instead of duplicated blocks.</li>
-      <li><strong>Bitwise operations:</strong> restores efficient bit-level operations for hashing,
-        flags, and cryptographic logic that previously had to be emulated.</li>
+      <li><strong>Pay to Script (P2S):</strong> Bare pay-to-script outputs, NFT commitments up to 128 bytes, and unlocking bytecode up to 10,000 bytes. This means simpler, smaller transactions for vaults, multi-party contracts, and token applications.</li>
+      <li><strong>Bounded loops:</strong> <code>OP_BEGIN</code> and <code>OP_UNTIL</code> let you process lists, repeat calculations, and iterate over outputs. Loops are checked against VM resource limits, so repetitive logic works without unbounded execution.</li>
+      <li><strong>Functions:</strong> <code>OP_DEFINE</code> and <code>OP_INVOKE</code> let you organize bytecode into reusable functions. No more duplicated blocks — write once, invoke anywhere.</li>
+      <li><strong>Bitwise operations:</strong> Efficient bit-level operations for hashing, flags, and cryptographic logic. No more workarounds or emulation — direct bit manipulation is fast and clean.</li>
     </ul>
 
     <figure class="post-figure">
-      <img src="../media/infographics/2026-upgrade.svg" alt="BCH 2026 upgrade comparison">
-      <figcaption>BCH 2026 upgrade: before and after. The upgrade introduces P2S (larger scripts), OP_BEGIN/OP_UNTIL (bounded loops), OP_DEFINE/OP_INVOKE (reusable functions), and larger NFT commitments (128 bytes). These changes enable complex DAOs, token protocols, smaller contracts, and rich NFTs.</figcaption>
+      <img src="../media/infographics/2026-upgrade.svg" alt="BCH contract capabilities">
+      <figcaption>BCH contracts: P2S enables larger scripts (up to 10,000 bytes), loops process multiple outputs, functions eliminate duplication, and bitwise operations handle cryptography efficiently. NFT commitments support 128 bytes for rich metadata.</figcaption>
     </figure>
 
-    <h2>Why these pieces matter together</h2>
+    <h2>How the pieces work together</h2>
 
-    <p>Loops make it possible to process a list or repeat a calculation. Functions make that logic
-      modular and easier to audit. Bitwise operations make low-level cryptography and compact state
-      practical. P2S gives contracts more room and a cleaner output format. Together they move BCH
-      from "simple scripts" to a complete contract toolkit for money.</p>
+    <p>Loops let you process a list or repeat a calculation. Functions make that logic modular and easier to audit. Bitwise operations make low-level cryptography and compact state practical. P2S gives contracts more room and a cleaner output format. Together they form a complete contract toolkit for money.</p>
 
-    <p>The earlier upgrades set the stage. Native introspection in 2022 made covenants possible.
-      CashTokens in 2023 made assets native. VM limits and BigInt in 2025 removed arbitrary
-      ceilings on stack items and arithmetic. The 2026 changes build on that foundation instead of
-      replacing it.</p>
+    <p>The ecosystem includes native tokens, covenants, and introspection. A vault can enforce detailed payout policies. A token protocol can loop over outputs and validate every one. A contract can share bytecode instead of duplicating it. That reduces transaction size and audit surface — critical when real money is locked in the contract.</p>
 
-    <h2>What developers can build</h2>
+    <h2>Practical applications</h2>
 
-    <p>The practical list is already broad: escrow with restricted payouts, savings vaults,
-      inheritance, atomic swaps, streaming payments, token sales, membership systems, and
-      multi-party settlement. These are not theoretical. They use the same primitives described in
-      the previous posts: multisig, timelocks, hash locks, introspection, and CashTokens.</p>
+    <p>Developers are building with these primitives today:</p>
 
-    <p>The new tools make the implementations smaller and more expressive. A vault can enforce a
-      more detailed payout policy. A token protocol can loop over outputs and check every one. A
-      contract can share bytecode instead of duplicating it. That reduces transaction size and
-      audit surface, which matters when real money is locked in the contract.</p>
+    <ul>
+      <li><strong>Escrow</strong> with restricted payout conditions</li>
+      <li><strong>Savings vaults</strong> that enforce withdrawal rules</li>
+      <li><strong>Inheritance contracts</strong> with time-locked access</li>
+      <li><strong>Atomic swaps</strong> for trustless cross-chain trades</li>
+      <li><strong>Streaming payments</strong> that release funds over time</li>
+      <li><strong>Token sales</strong> with automated distribution</li>
+      <li><strong>Membership systems</strong> with on-chain verification</li>
+      <li><strong>Multi-party settlement</strong> with shared control</li>
+    </ul>
 
-    <h2>The toolkit is ready</h2>
+    <p>These aren't theoretical. They use the same primitives that power the network: multisig, timelocks, hash locks, introspection, and native tokens.</p>
 
-    <p>BCH now has the pieces developers need: a readable contract language, native tokens, covenants,
-      and a 2026 upgrade that adds loops, functions, bitwise operations, and larger standard scripts.
-      The ecosystem has wallets, SDKs, testing tools, and metadata standards. The path from idea to
-      working contract is shorter than it has ever been.</p>
+    <h2>The toolkit is production-ready</h2>
 
-    <p>That is the advantage of BCH's approach: the base layer stays cheap and simple while the
-      contract layer grows. Developers can build on the same chain that settles the payment, without a
-      new gas token or a new network.</p>
+    <p>BCH provides everything developers need: a readable contract language (CashScript), native tokens (CashTokens), covenants that enforce rules, loops and functions for complex logic, and larger standard scripts for sophisticated contracts.</p>
 
-    <h2>The frontier is practical</h2>
+    <p>The ecosystem includes wallets, SDKs, testing tools, and metadata standards. The base layer stays cheap and simple while the contract layer delivers real power. Developers build on the same chain that settles payments — no new gas token, no new network, no bridging required.</p>
 
-    <p>BCH is built to be money that can enforce useful rules: escrow that cannot be redirected,
-      savings that cannot be spent to the wrong address, tokens that move with payments, and streams
-      that release over time. That is a focused ambition, and a powerful one for a payment network.</p>
-
-    <p>The 2026 upgrade is a major step. It makes the next generation of BCH contracts possible. The
-      tools are here, the primitives are live, and the best applications are still being written.
-      That is the opportunity.</p>
+    <p>The best applications are being written right now. That's the opportunity.</p>
 
     <p>For the technical foundation, see <a href="the-script-under-every-wallet.html">The script under every wallet</a>, <a href="cashscript-without-the-ceremony.html">CashScript without the ceremony</a>, and <a href="covenants-rules-that-follow-the-coin.html">Covenants: rules that follow the coin</a>.</p>
 
