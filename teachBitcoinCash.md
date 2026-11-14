@@ -243,14 +243,14 @@ Bitcoin Cash works the exact same way. If someone owns 10 BCH, they permanently 
 When a homeowner shifts their thinking from dollar balances to fixed coin balances, it completely alters how they perceive their savings:
 
 The Variable Fiat Mindset (USD)	The Fixed Hard-Asset Mindset (BCH)
-"I have $5,000 in the bank. I feel safe today, but I am terrified because I know this money will buy fewer groceries and fewer home repairs every single year."	"I own 10 BCH. I know exactly what I have. Nobody can print more to shrink my share. My wealth is locked in stone until the day I choose to spend it."
+"I have $5,000 in the bank. I feel safe today, but I am terrified because I know this money will buy fewer groceries and fewer home repairs every single year."	"I own 10 BCH. I know exactly what I have. Nobody can print more to shrink my share. My wealth is permanent, un-duplicable digital cash — ready to circulate the moment I choose to spend it."
 
 
 🛠️ How to Teach This Without Triggering Fear
 
 If you want to solidify this concept for someone who is currently stressed about money, you can guide them through three simple mental steps:
-1. Focus on Accumulation, Not Price: Tell them, "Don't look at the daily dollar chart. Look at your wallet balance. Your goal is simply to secure a fixed number of coins—whether that is 0.1, 1, or 10 BCH—and put them to work between locals. Accumulation only matters when the coins are actually useful: spent at a neighbor's shop, passed hand to hand, kept in local circulation."
+1. Focus on Circulation, Not Price: Tell them, "Don't look at the daily dollar chart. Look at how your coins move. The point isn't to hoard BCH—it's to keep it flowing: work for it, spend it at local shops, pass it to neighbors, family, friends."
 2. Accept Short-Term Noise for Long-Term Peace: Explain that the dollar price shifts wildly because the dollar itself is highly volatile and unstable. The fluctuation isn't BCH changing value; it's the paper dollar rapidly losing its footing.
-3. The Freedom to Spend Fractions: Remind them that if an absolute emergency happens and they need $200 for a plumbing repair, they don't have to sell all 10 coins. They can seamlessly spend a tiny fraction (like 0.4 BCH) directly from their wallet, leaving the rest of their fixed stack completely untouched.
-By framing it this way, you turn savings from an anxious, defensive race against inflation into an offensive game of collecting permanent, un-duplicable digital property.
+3. The Freedom to Spend Fractions: Remind them that if an absolute emergency happens and they need $200 for a plumbing repair, they don't have to sell all 10 coins. They can seamlessly spend a tiny fraction (like 0.4 BCH) directly from their wallet, leaving the rest of their fixed stack in circulation, ready for the next local transaction.
+By framing it this way, you turn savings from an anxious, defensive race against inflation into an offensive game of keeping permanent, un-duplicable digital cash flowing locally.
 Are you planning to build an educational guide or presentation to explain this to friends, family, or local business owners? I can help you draft a simple, step-by-step script or visual breakdown if you'd like.
