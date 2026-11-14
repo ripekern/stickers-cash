@@ -943,7 +943,7 @@ select, input, .ship-methods{
   font-size:16px;line-height:1.65;color:var(--text);margin:0 0 20px;padding-left:24px;
 }
 .post-body li{margin-bottom:8px}
-.post-body a{color:var(--green-ink);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px}
+.post-body a{color:var(--text);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px}
 .post-body a:hover{color:var(--green)}
 .post-body code{
   font-size:14px;background:var(--mint-2);padding:2px 6px;border-radius:4px;
