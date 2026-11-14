@@ -1005,7 +1005,7 @@ select, input, .ship-methods{
   display:block;font-size:18px;line-height:1.4;font-weight:700;
 }
 
-.article{max-width:700px;min-width:0;font-size:17px;line-height:1.72;color:#2C3B46}
+.article{max-width:700px;min-width:0;font-size:17px;line-height:1.72;color:var(--text)}
 .article p{margin:0 0 20px}
 .article h2{
   font-size:clamp(24px,2.8vw,30px);line-height:1.2;letter-spacing:-.01em;
@@ -1055,7 +1055,7 @@ select, input, .ship-methods{
 
 .post-figure{margin:32px 0;text-align:center}
 .post-figure img{max-width:100%;height:auto;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
-.post-figure figcaption{margin-top:12px;font-size:14px;color:#666;font-style:italic}
+.post-figure figcaption{margin-top:12px;font-size:14px;color:var(--muted);font-style:italic}
 .stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 16px 14px;box-shadow:var(--shadow-sm)}
 .stat b{display:block;font-size:24px;line-height:1.12;color:var(--green-ink);letter-spacing:-.01em;font-variant-numeric:tabular-nums}
 .stat span{display:block;font-size:12.5px;line-height:1.4;color:var(--muted);margin-top:5px}
@@ -1236,6 +1236,7 @@ select, input, .ship-methods{
     --mint-2:#15201C;
     --dark:#0A0F14;
     --ink:#F4F6F7;
+    --text:#F4F6F7;
     --muted:#A8B2BA;
     --line:#2A3640;
     --paper:#1A2530;
