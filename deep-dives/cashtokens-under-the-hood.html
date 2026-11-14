@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deep Dive: CashTokens Under the Hood — stickers.cash</title>
+<meta name="description" content="The technical foundation of CashTokens: category IDs, consensus rules, composability, and how tokens integrate with BCH at the protocol level.">
+<meta name="theme-color" content="#0AC18E">
+<meta property="og:title" content="Deep Dive: CashTokens Under the Hood — stickers.cash">
+<meta property="og:description" content="The technical foundation of CashTokens: category IDs, consensus rules, composability, and how tokens integrate with BCH at the protocol level.">
+<meta property="og:url" content="https://stickers.cash/deep-dives/cashtokens-under-the-hood.html">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://stickers.cash/deep-dives/cashtokens-under-the-hood.html">
+<link rel="icon" href="../media/bch/bch-circle.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<!-- ======================= ANNOUNCEMENT ======================= -->
+<div class="announce">
+  <div class="container announce-inner">
+    <span>🧊 The internet cash guide — now in 37 posts</span>
+    <span class="sep">·</span>
+    <span>⚡ Paid in Bitcoin Cash only</span>
+    <span class="sep">·</span>
+    <span>🚀 Ships worldwide from the USA</span>
+  </div>
+</div>
+
+<!-- ======================= HEADER ======================= -->
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="../index.html" aria-label="stickers.cash home">
+      <img class="brand-mark" src="../media/bch/bch-circle.svg" alt="">
+      <span class="brand-name">stickers<span class="dot">.</span>cash</span>
+    </a>
+
+    <nav class="nav" id="mainNav" aria-label="Main">
+      <a href="../blog.html">Guide</a>
+      <a href="../index.html">Shop</a>
+      <a href="../index.html#how">How it works</a>
+      <a href="../index.html#shipping">Shipping</a>
+      <a href="../index.html#faq">FAQ</a>
+      <a href="../donate.html">Donate</a>
+    </nav>
+
+    <div class="header-actions">
+      <a class="btn btn-primary" href="../index.html#shop"><span class="shop-long">Shop stickers</span><span class="shop-short">Shop</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ======================= DEEP DIVE HEAD ======================= -->
+<section class="post-head">
+  <div class="container post-head-inner">
+    <a class="post-back" href="../blog/tokens-on-the-cash-layer.html">← Back to: Tokens on the cash layer</a>
+    <span class="eyebrow">Deep dive</span>
+    <h1>CashTokens Under the Hood</h1>
+    <p class="lede">Category IDs, consensus enforcement, and how tokens integrate with BCH at the protocol level.</p>
+  </div>
+</section>
+
+<!-- ======================= DEEP DIVE BODY ======================= -->
+<div class="post-body">
+  <article class="article post-article">
+
+    <p>This deep dive expands on the token layer mentioned in <a href="../blog/tokens-on-the-cash-layer.html">"Tokens on the cash layer."</a> It covers the technical foundation of CashTokens: category IDs, consensus rules, composability, and how tokens integrate with BCH. This is technical content for developers and the deeply curious.</p>
+
+    <h2>Category IDs</h2>
+
+    <p>Every CashToken belongs to a <strong>category</strong>, identified by a unique 32-byte ID. The category ID is derived from the transaction that created the token: specifically, the <code>outpoint</code> (transaction ID + output index) of the first output in the transaction that minted the token.</p>
+
+    <p>This gives every token family a unique, verifiable identity tied to its origin. You can look up the creation transaction and see exactly when and how the token was issued. The category ID is immutable — once a token family is created, its ID is fixed forever.</p>
+
+    <h2>Two token types</h2>
+
+    <p>CashTokens adds two primitives to BCH:</p>
+
+    <ul>
+      <li><strong>Fungible tokens:</strong> Divisible and interchangeable. Each unit is identical to every other unit in the same category. Fungible tokens have an <code>amount</code> field measured in the smallest unit (like satoshis for BCH). A category can have up to 9.22 quintillion units (2^63 - 1).</li>
+      <li><strong>NFTs:</strong> Indivisible and unique. Each NFT carries a <code>commitment</code> — a short piece of data (up to 40 bytes before 2026, 128 bytes after) that the network can verify. NFTs also have a <code>capability</code> field that controls whether they can be modified or whether more NFTs can be minted in the same category.</li>
+    </ul>
+
+    <h2>Three NFT capabilities</h2>
+
+    <p>Each NFT has one of three capabilities:</p>
+
+    <ul>
+      <li><strong>Minting (0x01):</strong> Can create more NFTs in the same category. A minting NFT is like a master key for the token family. The holder can issue new NFTs with new commitments.</li>
+      <li><strong>Mutable (0x02):</strong> Can update its own commitment when spent. A mutable NFT can change its data payload, making it useful for state that needs to evolve (a score, a status, a timestamp).</li>
+      <li><strong>Immutable (0x00):</strong> Cannot change once created. An immutable NFT is permanent. Its commitment is fixed, making it suitable for certificates, receipts, or any claim that should never be altered.</li>
+    </ul>
+
+    <h2>Tokens travel in UTXOs</h2>
+
+    <p>Tokens don't exist as separate objects. They're attached to UTXOs (unspent transaction outputs), the same locks that hold BCH. A single UTXO can hold:</p>
+
+    <ul>
+      <li>BCH (the base currency)</li>
+      <li>Any amount of one fungible token category</li>
+      <li>One NFT (with its commitment and capability)</li>
+    </ul>
+
+    <p>This means a single transaction can move BCH, fungible tokens, and an NFT all at once. That's composability: a contract can require payment in BCH and a token transfer in the same step, without coordinating multiple transactions.</p>
+
+    <h2>Consensus enforcement</h2>
+
+    <p>The token rules are enforced at the consensus level. Every full node validates:</p>
+
+    <ul>
+      <li><strong>Category integrity:</strong> Tokens can only be created in a valid category (one that exists on-chain).</li>
+      <li><strong>Supply rules:</strong> Fungible token amounts must balance (inputs = outputs + fees). You can't create fungible tokens out of thin air unless you hold a minting NFT for that category.</li>
+      <li><strong>NFT rules:</strong> Only a minting NFT can create new NFTs in its category. Only a mutable NFT can change its commitment. Immutable NFTs cannot be modified.</li>
+      <li><strong>Separation:</strong> Tokens can't be mixed across categories. Each UTXO holds tokens from one category only (plus BCH).</li>
+    </ul>
+
+    <p>This is what makes CashTokens different from token layers on other chains. The rules aren't enforced by a separate network or a bridge. They're enforced by the same computers that validate BCH. Every full node checks the token rules as part of block validation.</p>
+
+    <h2>No separate gas token</h2>
+
+    <p>On many smart contract platforms, you need a second token to pay for transaction fees. On BCH, the fee is just BCH. A token transfer costs a fraction of a cent in normal conditions, paid in BCH. There's no separate "gas" token to acquire before you can use the network.</p>
+
+    <p>This is a meaningful UX difference. A community currency, a loyalty program, or a ticket system doesn't need to teach users two assets. They hold BCH for fees and the token for the application. The wallet shows both, and the transaction moves both at once.</p>
+
+    <h2>BCMR: metadata at the edges</h2>
+
+    <p>CashTokens are minimalist by design. The on-chain data is small: category ID, amount, commitment, capability. Rich metadata — names, descriptions, icons, images — lives off-chain in <strong>Bitcoin Cash Metadata Registries</strong> (BCMR).</p>
+
+    <p>BCMR is a standard for publishing authenticated metadata. A token issuer can register their token's name, symbol, description, and icon in a BCMR registry. Wallets and explorers fetch the metadata and display it alongside the on-chain data. The result is a compact on-chain primitive with rich presentation around it.</p>
+
+    <p>BCMR registries are separate from the chain, so they can be updated without modifying the blockchain. But the on-chain token data is immutable and verifiable. The metadata is presentation; the token is the truth.</p>
+
+    <h2>Composability with contracts</h2>
+
+    <p>Tokens can be used in BCH contracts (scripts). A contract can:</p>
+
+    <ul>
+      <li>Require payment in both BCH and a specific token</li>
+      <li>Check that an NFT has a specific category and commitment</li>
+      <li>Enforce token transfer rules (e.g., only to verified addresses)</li>
+      <li>Use minting NFTs to control token issuance</li>
+    </ul>
+
+    <p>This composability is what makes CashTokens powerful. Tokens aren't just assets; they're programmable. A contract can use tokens as receipts, tickets, memberships, or state. The token layer and the contract layer are the same layer.</p>
+
+    <h2>Why native matters</h2>
+
+    <p>You could build tokens on top of any blockchain using add-on layers, metadata, and indexers. CashTokens takes a different route: put the rules directly into the consensus layer. Every full node checks the token rules. There's no separate indexer you have to trust for validity.</p>
+
+    <p>Native tokens are cheaper (no extra transaction for a separate layer), safer (enforced by consensus, not by policy), and easier for contracts to use (tokens are first-class citizens in the script system). That's the BCH pattern: keep the core small, but make the core enforce the things people actually need.</p>
+
+    <p>For the technical foundation of BCH scripts, see <a href="the-script-under-every-wallet.html">The script under every wallet</a>. For NFTs specifically, see <a href="bch-nfts-in-detail.html">BCH NFTs in detail</a>.</p>
+
+<p class="post-disclaimer">We do not provide financial advice.</p>
+
+    <aside class="blog-donate" aria-label="Guide donation">
+  <div class="blog-donate-head">
+    <span class="blog-donate-title">Tip the guide</span>
+    <span class="blog-donate-note">Deep dive</span>
+  </div>
+  <p>If this deep dive was useful, you can <a href="../donate.html">send a private BCH tip</a> — one address, any amount, no cart or account.</p>
+</aside>
+
+  </article>
+</div>
+
+<!-- ======================= POST CTA ======================= -->
+<section class="post-cta-band">
+  <div class="container post-cta-inner">
+    <img class="post-cta-mark" src="../media/bch/bch-circle.svg" alt="Bitcoin Cash">
+    <div>
+      <h2>Internet cash needs places to spend it.</h2>
+      <p>Every order at stickers.cash is paid in BCH — a cheap, real-world way to move your first
+        coins, practice self-custody, and put a sticker on something you own.</p>
+    </div>
+    <div class="post-cta-actions">
+      <a class="btn btn-primary btn-lg" href="../index.html#shop">Shop stickers</a>
+      <div class="bch-addr-chip"><a class="btn" href="../donate.html">Donate BCH</a></div>
+      <small class="post-cta-wallets">No wallet yet?
+        <a href="https://selene.cash" target="_blank" rel="noopener">Selene</a> ·
+        <a href="https://paytaca.com" target="_blank" rel="noopener">Paytaca</a> ·
+        <a href="https://badger.bitcoin.com" target="_blank" rel="noopener">Badger</a>
+      </small>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ======================= FOOTER ======================= -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="../index.html">
+        <img class="brand-mark" src="../media/bch/bch-circle.svg" alt="">
+        <span class="brand-name">stickers<span class="dot">.</span>cash</span>
+      </a>
+      <p>The Bitcoin Cash sticker shop. Ships from the USA, worldwide.</p>
+      <img class="accepted-badge" src="../media/bch/bch-accepted-here-frame.svg" alt="Bitcoin Cash accepted here">
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <a href="../index.html#shop">All stickers</a>
+      <a href="../index.html#how">How to pay</a>
+      <a href="../index.html#shipping">Shipping rates</a>
+    </div>
+    <div class="footer-col">
+      <h4>Read</h4>
+      <a href="../blog.html">Internet cash guide</a>
+      <a href="../donate.html">Donate BCH</a>
+      <a href="https://whybitcoincash.com" target="_blank" rel="noopener">Why Bitcoin Cash</a>
+      <a href="https://bitcoincash.org" target="_blank" rel="noopener">bitcoincash.org</a>
+    </div>
+    <div class="footer-col">
+      <h4>Help</h4>
+      <a href="../index.html#faq">FAQ</a>
+      <a href="mailto:orders@stickers.cash">orders@stickers.cash</a>
+      <a href="mailto:orders@stickers.cash?subject=Wholesale%20%2F%20custom%20stickers">Wholesale</a>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 stickers.cash — paid exclusively in Bitcoin Cash (BCH)</span>
+    <code></code>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../blog.js"></script>
+</body>
+</html>

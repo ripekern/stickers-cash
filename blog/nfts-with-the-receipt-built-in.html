@@ -98,7 +98,7 @@
     <a class="post-back" href="../blog.html">← All posts</a>
     <span class="eyebrow">Part three · Chapter 9</span>
     <h1>NFTs with the receipt built in</h1>
-    <p class="lede">A BCH NFT is not a link to a picture. It is a token with an on-chain commitment that contracts can read — a receipt, a ticket, or a piece of state.</p>
+    <p class="lede">A BCH NFT is not a link to a picture. It is a token with a small piece of data built in — a receipt, a ticket, or a checkable claim.</p>
     <div class="post-meta">
       <span>Post 27 of 37</span>
       <span class="dot">·</span>
@@ -113,66 +113,37 @@
 <div class="post-body">
   <article class="article post-article">
 
-    <p>The phrase “NFT” usually brings to mind a JPEG and a marketplace. On Bitcoin Cash, the
-      technical object is more interesting: an indivisible token with a commitment, a short piece
-      of data that the network can attest to and contracts can inspect.</p>
+    <p>The phrase "NFT" usually brings to mind a JPEG and a marketplace. On Bitcoin Cash, the technical object is more interesting: a one-of-a-kind token with a small piece of data built in — data that the network can verify and that rules can check.</p>
 
     <h2>What is inside a BCH NFT</h2>
 
-    <p>A CashToken NFT has three properties: a category, a commitment, and a capability. The
-      category identifies the token family. The commitment is the data payload. The capability
-      controls whether the NFT can be changed or whether new NFTs can be minted.</p>
+    <p>A BCH NFT has three parts: a family (which project or issuer it belongs to), a claim (a short piece of data the network can check), and a mode (whether it can be changed or whether more can be made).</p>
 
-    <p>There are three capabilities. A <strong>minting</strong> NFT can create more NFTs in the same
-      category. A <strong>mutable</strong> NFT can update its commitment when spent. An
-      <strong>immutable</strong> NFT cannot change. That gives issuers a way to model supply,
-      state, and permanence without a separate contract database.</p>
+    <p>There are three modes. A <strong>minting</strong> NFT can create more NFTs in the same family. A <strong>changeable</strong> NFT can update its claim when it is spent. A <strong>fixed</strong> NFT cannot change once it is created. That gives creators a way to control supply, update information, or lock something in permanently — all without a separate database.</p>
 
-    <p>The 2026 upgrade raised the standard commitment limit from 40 bytes to 128 bytes and made
-      bare pay-to-script outputs standard. That is enough for the important part: the claim. A hash,
-      an identifier, a timestamp, a score, a ticket number, or a compact state record fits
-      comfortably.</p>
+    <p>The 2026 upgrade made the claim area bigger — enough for a hash, a timestamp, a score, a ticket number, or a small piece of information that matters.</p>
 
     <h2>A receipt, not a picture</h2>
 
-    <p>The useful question is not “what image is attached?” It is “what claim does this token
-      enforce?” A ticket NFT can carry the event ID and seat. A membership NFT can carry a tier and
-      expiry. A receipt NFT can carry an order hash. A game item can carry stats that a contract
-      reads when the item is used.</p>
+    <p>The useful question is not "what image is attached?" It is "what does this token prove?" A ticket NFT can carry the event name and seat. A membership NFT can carry a level and expiry date. A receipt NFT can carry an order number. A game item can carry stats that a rule reads when the item is used.</p>
 
-    <p>Because the commitment is on-chain, a contract can require it. A gate contract can check
-      that the NFT has the right category and commitment before releasing funds. A marketplace can
-      verify that a ticket is authentic without asking a platform. The token is not just a
-      collectible; it is a verifiable input to a rule.</p>
+    <p>Because the data is on the chain, a rule can check it. A gate rule can check that the NFT has the right family and data before releasing funds. A marketplace can check that a ticket is real without asking a platform. The token is not just a collectible; it is something a rule can actually check.</p>
 
-    <h2>Metadata lives at the edges</h2>
+    <h2>Details live outside the chain</h2>
 
-    <p>Large media and rich metadata live at the edges by design. The chain holds the token and the
-      commitment; a metadata registry holds the presentation. Bitcoin Cash Metadata Registries (BCMR)
-      provide a standard, authenticated way to publish names, descriptions, and icons. The result is a
-      compact on-chain claim with rich presentation around it.</p>
+    <p>Large files and rich details live outside the chain on purpose. The chain holds the token and the claim; a registry holds the presentation — names, descriptions, and icons. The result is a compact on-chain claim with rich presentation around it.</p>
 
     <h2>What NFTs unlock</h2>
 
-    <p>NFTs are most useful when they are part of a contract, not an isolated collectible. A
-      redeemable NFT can act as a receipt: return it to a contract and receive the underlying
-      asset. A role NFT can act as an admin key: the contract checks for it before allowing a
-      privileged spend. A state NFT can hold the latest commitment for a vault or a streaming
-      payment.</p>
+    <p>NFTs are most useful when they are part of a rule, not just a standalone collectible. A redeemable NFT can act as a receipt: return it to a rule and receive the underlying asset. A role NFT can act as an admin key: the rule checks for it before allowing a special action. A state NFT can hold the latest information for a vault or a payment plan.</p>
 
-    <p>That is the pattern to watch. The NFT is not the product. It is the proof that the product’s
-      rule was followed. The product might be a ticket, a membership, a loan, a game, or a claim on
-      a real-world asset.</p>
+    <p>That is the pattern to watch. The NFT is not the product. It is the proof that the product's rule was followed. The product might be a ticket, a membership, a loan, a game, or a claim on a real-world asset.</p>
 
-    <h2>Built for verifiable claims</h2>
+    <h2>Built for claims you can check</h2>
 
-    <p>A BCH NFT is a compact, verifiable token. It is designed for tickets, receipts, memberships,
-      game items, and state that a contract can read. Large media stays off-chain, and the on-chain
-      commitment proves what matters. That is the right division of labor for a payment network.</p>
+    <p>A BCH NFT is a compact, checkable token. It is designed for tickets, receipts, memberships, game items, and information that a rule can read. Large files stay off-chain, and the on-chain claim proves what matters. That is the right split for a payment network.</p>
 
-    <p>Used well, an NFT becomes more than a collectible: it is a claim that a contract can verify
-      without a platform. A ticket, a receipt, or a membership becomes a real, enforceable digital
-      object. The JPEG was never the point.</p>
+    <p>Used well, an NFT becomes more than a collectible: it is a claim that a rule can check without needing a platform. A ticket, a receipt, or a membership becomes a real, enforceable digital object. The picture was never the point.</p>
 
     <p><strong>Chapter eight opened up the contract layer.</strong> You've completed Part Two: The Solution, where we explored how Bitcoin Cash works, why it's built to scale, and what you can build on top of it. You've seen the fees, the privacy, the scaling, the battle-testing, and the programmability.</p>
 
@@ -193,6 +164,10 @@
 
     <p>If you're building something or just want to support the guide, grab a sticker from <a href="https://stickers.cash">stickers.cash</a> or send a BCH tip. Every order funds the next post.</p>
 
+    <aside class="callout">
+      <p class="callout-title">Go deeper</p>
+      <p>This post kept things simple. If you want to understand the technical details — category, commitment, capability, and how BCH NFTs work as verifiable claims — the <a href="../deep-dives/bch-nfts-in-detail.html">deep dive on BCH NFTs</a> walks through the details step by step.</p>
+    </aside>
 
     <a href="escrow-without-a-company.html" class="next-post-button">
       <span class="next-post-label">Next post →</span>

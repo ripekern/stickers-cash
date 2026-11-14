@@ -98,7 +98,7 @@
     <a class="post-back" href="../blog.html">← All posts</a>
     <span class="eyebrow">Part three · Chapter 9</span>
     <h1>Tokens on the cash layer</h1>
-    <p class="lede">CashTokens add fungible tokens and NFTs to BCH itself — not to a sidechain, not to a separate ledger. The fees are still paid in BCH.</p>
+    <p class="lede">CashTokens add divisible tokens and NFTs to BCH itself — not to a sidechain, not to a separate ledger. The fees are still paid in BCH.</p>
     <div class="post-meta">
       <span>Post 26 of 37</span>
       <span class="dot">·</span>
@@ -113,31 +113,19 @@
 <div class="post-body">
   <article class="article post-article">
 
-    <p>Bitcoin Cash has a native token system called CashTokens. It was activated in May 2023, and
-      it does not live on a sidechain or require a bridge. Tokens are validated by the same full
-      nodes that validate BCH, and transaction fees are still paid in BCH.</p>
+    <p>Bitcoin Cash has a built-in token system called CashTokens. It was added in May 2023, and it lives right on the BCH network — no sidechain, no bridge needed. The same computers that check regular BCH payments also check token transfers, and fees are still paid in BCH.</p>
 
     <h2>Two kinds of token</h2>
 
-    <p>CashTokens adds two primitives. A <strong>fungible token</strong> is divisible and
-      interchangeable, like a currency or a loyalty point. An <strong>NFT</strong> is indivisible
-      and carries a commitment, a short piece of data that can represent a receipt, a ticket, a
-      membership, or contract state.</p>
+    <p>CashTokens gives you two tools. A <strong>fungible token</strong> is divisible and interchangeable — like points in a loyalty program or a community currency. An <strong>NFT</strong> is indivisible and carries a small piece of data — like a ticket, a receipt, or a membership card.</p>
 
-    <p>Every token belongs to a category. The category ID is derived from the transaction that
-      created it, which gives the token a unique on-chain identity. The consensus rules enforce
-      supply and transfer behavior, so a wallet or contract can verify that a token is what it
-      claims to be without trusting a central issuer database.</p>
+    <p>Every token belongs to a family, identified by a unique ID tied to the transaction that created it. The network itself enforces the rules: how many tokens exist, how they move, and who controls them. You do not have to trust a company's database — the network checks everything.</p>
 
-    <p>Tokens travel alongside BCH in the same UTXO. A single transaction can move coins, fungible
-      tokens, and an NFT together. That makes the model composable: a contract can require payment
-      in BCH and the transfer of a token in the same spend.</p>
+    <p>Tokens travel alongside BCH in the same transaction. A single payment can move coins, fungible tokens, and an NFT all at once. That makes things easy: a shop can require payment in BCH and a token transfer in the same step.</p>
 
-    <h2>No separate gas token</h2>
+    <h2>No extra fee token to buy</h2>
 
-    <p>On many smart contract chains, using an application requires a second asset for gas. On BCH,
-      the fee is just the BCH network fee. A token transfer costs a fraction of a cent in normal
-      conditions, and there is no separate token to acquire before you can use the network.</p>
+    <p>On some networks, using an app requires you to buy a second kind of token just to pay for the computer time. On BCH, the fee is just the normal BCH network fee. A token transfer costs a fraction of a cent, and there is nothing extra to buy before you can use the network.</p>
 
     <p>That is a meaningful UX difference. A community currency, a loyalty program, or a ticket
       system does not need to teach users two assets. They hold BCH for fees and the token for the
@@ -145,37 +133,26 @@
 
     <h2>What tokens can represent</h2>
 
-    <p>The technical primitive is neutral. A fungible token can represent a community currency, a
-      voucher, a share in a project, a loyalty balance, or a stablecoin issued by a trusted party.
-      An NFT can represent a ticket, a membership, a receipt, a collectible, or a piece of state
-      that a contract can read.</p>
+    <p>A fungible token can stand in for a community currency, a voucher, a share in a project, a loyalty balance, or a digital dollar issued by a trusted party. An NFT can be a ticket, a membership, a receipt, a collectible, or a piece of information that a rule can check.</p>
 
-    <p>CashTokens make the token itself verifiable: the category, the supply, and the transfer rules
-      are enforced by consensus. The issuer’s promise is separate. A voucher is useful because a
-      business honors it; a stablecoin is useful because an issuer redeems it. CashTokens give that
-      promise a transparent, on-chain token. Choose issuers with a track record, and the token layer
-      does the rest.</p>
+    <p>CashTokens make the token itself verifiable: the family, the supply, and the transfer rules are all checked by the network. The issuer's promise is separate. A voucher is useful because a business honors it; a digital dollar is useful because an issuer redeems it. CashTokens give that promise a transparent, on-chain footprint. Choose issuers with a track record, and the token layer does the rest.</p>
 
-    <h2>Use a token-aware wallet</h2>
+    <h2>Pick a wallet that shows tokens</h2>
 
-    <p>CashTokens are native, and modern BCH wallets support them. A token-aware wallet displays
-      token balances alongside BCH and constructs the right transaction. Use a wallet that shows
-      tokens clearly, and verify what you are signing. The ecosystem already has token-aware wallets,
-      metadata registries, explorers, and contract libraries — and it is growing.</p>
+    <p>CashTokens are built in, and modern BCH wallets support them. A good wallet shows your token balances right next to your BCH and builds the right transaction for you. Use a wallet that shows tokens clearly, and always check what you are sending. The ecosystem already has wallets, explorers, and tools for tokens — and it is growing.</p>
 
-    <h2>Why native matters</h2>
+    <h2>Why built-in matters</h2>
 
-    <p>A token system can be built on top of a chain with metadata and indexers. CashTokens takes a
-      different route: put the primitive in consensus. Every full node checks the rules. A contract
-      can inspect token data directly. There is no separate indexer that must be trusted for
-      validity.</p>
+    <p>You could build tokens on top of any chain using add-on layers. CashTokens takes a different route: put the rules directly into the network. Every computer running BCH checks the rules. There is no extra service you have to trust.</p>
 
-    <p>That is the BCH pattern again. Keep the core small, but make the core actually enforce the
-      things people need. Tokens are useful. Making them native makes them cheaper, safer, and
-      easier for contracts to use.</p>
+    <p>That is the BCH pattern again. Keep the core small, but make the core actually enforce the things people need. Tokens are useful. Making them built-in makes them cheaper, safer, and easier for everyone to use.</p>
 
     <p>NFTs are one form of native token — and they are more interesting than a link to a JPEG. <a href="nfts-with-the-receipt-built-in.html">NFTs with the receipt built in</a> shows how a BCH NFT carries an on-chain commitment that contracts can verify.</p>
 
+    <aside class="callout">
+      <p class="callout-title">Go deeper</p>
+      <p>This post kept things simple. If you want to understand the technical details — category IDs, consensus rules, composability, and how tokens integrate with BCH at the protocol level — the <a href="../deep-dives/cashtokens-under-the-hood.html">deep dive on CashTokens</a> walks through the details step by step.</p>
+    </aside>
 
     <a href="nfts-with-the-receipt-built-in.html" class="next-post-button">
       <span class="next-post-label">Next post →</span>

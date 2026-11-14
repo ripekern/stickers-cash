@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deep Dive: How Transactions Actually Work — stickers.cash</title>
+<meta name="description" content="The UTXO model, mempool mechanics, and confirmation flow. How BCH transactions move from broadcast to spendable.">
+<meta name="theme-color" content="#0AC18E">
+<meta property="og:title" content="Deep Dive: How Transactions Actually Work — stickers.cash">
+<meta property="og:description" content="The UTXO model, mempool mechanics, and confirmation flow. How BCH transactions move from broadcast to spendable.">
+<meta property="og:url" content="https://stickers.cash/deep-dives/how-transactions-actually-work.html">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://stickers.cash/deep-dives/how-transactions-actually-work.html">
+<link rel="icon" href="../media/bch/bch-circle.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<!-- ======================= ANNOUNCEMENT ======================= -->
+<div class="announce">
+  <div class="container announce-inner">
+    <span>🧊 The internet cash guide — now in 37 posts</span>
+    <span class="sep">·</span>
+    <span>⚡ Paid in Bitcoin Cash only</span>
+    <span class="sep">·</span>
+    <span>🚀 Ships worldwide from the USA</span>
+  </div>
+</div>
+
+<!-- ======================= HEADER ======================= -->
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="../index.html" aria-label="stickers.cash home">
+      <img class="brand-mark" src="../media/bch/bch-circle.svg" alt="">
+      <span class="brand-name">stickers<span class="dot">.</span>cash</span>
+    </a>
+
+    <nav class="nav" id="mainNav" aria-label="Main">
+      <a href="../blog.html">Guide</a>
+      <a href="../index.html">Shop</a>
+      <a href="../index.html#how">How it works</a>
+      <a href="../index.html#shipping">Shipping</a>
+      <a href="../index.html#faq">FAQ</a>
+      <a href="../donate.html">Donate</a>
+    </nav>
+
+    <div class="header-actions">
+      <a class="btn btn-primary" href="../index.html#shop"><span class="shop-long">Shop stickers</span><span class="shop-short">Shop</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ======================= DEEP DIVE HEAD ======================= -->
+<section class="post-head">
+  <div class="container post-head-inner">
+    <a class="post-back" href="../blog/one-transaction-end-to-end.html">← Back to: One transaction, end to end</a>
+    <span class="eyebrow">Deep dive</span>
+    <h1>How Transactions Actually Work</h1>
+    <p class="lede">UTXOs, the mempool, and the confirmation flow. The technical model behind every BCH payment.</p>
+  </div>
+</section>
+
+<!-- ======================= DEEP DIVE BODY ======================= -->
+<div class="post-body">
+  <article class="article post-article">
+
+    <p>This deep dive expands on the transaction mechanics mentioned in <a href="../blog/one-transaction-end-to-end.html">"One transaction, end to end."</a> It covers the UTXO model, the mempool, zero-conf acceptance, and the confirmation process. This is technical content for developers and the deeply curious.</p>
+
+    <h2>The UTXO model</h2>
+
+    <p>BCH does not use account balances. It uses <strong>unspent transaction outputs</strong>, or UTXOs. Think of a UTXO as a labeled lockbox containing a specific amount of BCH. Each lockbox has a locking script that says who can open it — usually, whoever holds the matching private key.</p>
+
+    <p>When you receive BCH, the network creates a new UTXO locked to your address. When you spend BCH, your wallet selects one or more UTXOs you control, unlocks them with your private key, and creates new UTXOs for the recipient and for change.</p>
+
+    <p>For example: you want to pay $4. Your wallet finds a $10 UTXO you control. It unlocks that $10 UTXO and creates two new UTXOs: one for $4 locked to the recipient's address, and one for $6 locked back to your address as change. The difference between the total input ($10) and total output ($10) minus the fee (say, $0.001) is what the miner claims.</p>
+
+    <p>This model explains several things that confuse newcomers:</p>
+
+    <ul>
+      <li><strong>Why transactions have multiple inputs:</strong> If you don't have a single UTXO large enough, your wallet combines several smaller ones.</li>
+      <li><strong>Why change is a real output:</strong> The wallet sends the remainder back to you as a new UTXO, not as a deduction from the payment.</li>
+      <li><strong>Why fees depend on size, not amount:</strong> The network charges for the bytes the transaction takes up in a block. A $100 payment and a $10,000 payment can cost the same fee if they're the same size.</li>
+    </ul>
+
+    <h2>The mempool</h2>
+
+    <p>When your wallet broadcasts a transaction, it doesn't go straight into a block. It lands in the <strong>mempool</strong> — a waiting area where nodes keep valid transactions that haven't been mined yet. Every full node maintains its own mempool.</p>
+
+    <p>Transactions in the mempool are visible to the network. A recipient's wallet can see the incoming payment before it's confirmed. This is called <strong>zero-conf</strong> (zero confirmations). For small in-person purchases, zero-conf is instant and safe. The shop sees the payment, hands over the goods, and the transaction confirms in the next block.</p>
+
+    <p>For larger or remote payments, waiting for at least one confirmation (~10 minutes) is the normal safety step. Each confirmation makes the settlement more final.</p>
+
+    <h2>Miners and blocks</h2>
+
+    <p>Miners choose transactions from the mempool, usually prioritizing by fee per byte, and assemble them into a block. When a miner finds a valid block, the transactions in that block become part of the chain. That's one confirmation.</p>
+
+    <p>Each later block adds another confirmation. After six confirmations, the settlement is considered irreversible for practical purposes (though BCH's large blocks and fast propagation make even one confirmation very reliable for most use cases).</p>
+
+    <h2>The public ledger</h2>
+
+    <p>Every transaction is visible on a public block explorer. Anyone can see the inputs, outputs, amounts, fees, and blocks. But the ledger shows addresses, not identities. It's pseudonymous: the addresses are visible, but they're not automatically tied to real names.</p>
+
+    <p>Privacy depends on how you use addresses. Modern wallets generate a fresh address for every payment, so your transaction history isn't all linked to one visible identity. But if you reuse addresses or receive payments to publicly visible addresses, your activity becomes more traceable.</p>
+
+    <h2>Why this matters</h2>
+
+    <p>The UTXO model is what makes BCH peer-to-peer. There's no central account database. Every transaction is a transfer of control over specific coins, signed by the owner, verified by the network, and recorded on a public chain. That's the foundation of self-custody and censorship resistance.</p>
+
+    <p>Understanding UTXOs also helps you use BCH more effectively. You can choose which UTXOs to spend (coin control), manage your privacy by separating funds, and predict transaction fees based on size rather than amount.</p>
+
+    <p>For the cryptographic foundation, see <a href="the-script-under-every-wallet.html">The script under every wallet</a>.</p>
+
+<p class="post-disclaimer">We do not provide financial advice.</p>
+
+    <aside class="blog-donate" aria-label="Guide donation">
+  <div class="blog-donate-head">
+    <span class="blog-donate-title">Tip the guide</span>
+    <span class="blog-donate-note">Deep dive</span>
+  </div>
+  <p>If this deep dive was useful, you can <a href="../donate.html">send a private BCH tip</a> — one address, any amount, no cart or account.</p>
+</aside>
+
+  </article>
+</div>
+
+<!-- ======================= POST CTA ======================= -->
+<section class="post-cta-band">
+  <div class="container post-cta-inner">
+    <img class="post-cta-mark" src="../media/bch/bch-circle.svg" alt="Bitcoin Cash">
+    <div>
+      <h2>Internet cash needs places to spend it.</h2>
+      <p>Every order at stickers.cash is paid in BCH — a cheap, real-world way to move your first
+        coins, practice self-custody, and put a sticker on something you own.</p>
+    </div>
+    <div class="post-cta-actions">
+      <a class="btn btn-primary btn-lg" href="../index.html#shop">Shop stickers</a>
+      <div class="bch-addr-chip"><a class="btn" href="../donate.html">Donate BCH</a></div>
+      <small class="post-cta-wallets">No wallet yet?
+        <a href="https://selene.cash" target="_blank" rel="noopener">Selene</a> ·
+        <a href="https://paytaca.com" target="_blank" rel="noopener">Paytaca</a> ·
+        <a href="https://badger.bitcoin.com" target="_blank" rel="noopener">Badger</a>
+      </small>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ======================= FOOTER ======================= -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="../index.html">
+        <img class="brand-mark" src="../media/bch/bch-circle.svg" alt="">
+        <span class="brand-name">stickers<span class="dot">.</span>cash</span>
+      </a>
+      <p>The Bitcoin Cash sticker shop. Ships from the USA, worldwide.</p>
+      <img class="accepted-badge" src="../media/bch/bch-accepted-here-frame.svg" alt="Bitcoin Cash accepted here">
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <a href="../index.html#shop">All stickers</a>
+      <a href="../index.html#how">How to pay</a>
+      <a href="../index.html#shipping">Shipping rates</a>
+    </div>
+    <div class="footer-col">
+      <h4>Read</h4>
+      <a href="../blog.html">Internet cash guide</a>
+      <a href="../donate.html">Donate BCH</a>
+      <a href="https://whybitcoincash.com" target="_blank" rel="noopener">Why Bitcoin Cash</a>
+      <a href="https://bitcoincash.org" target="_blank" rel="noopener">bitcoincash.org</a>
+    </div>
+    <div class="footer-col">
+      <h4>Help</h4>
+      <a href="../index.html#faq">FAQ</a>
+      <a href="mailto:orders@stickers.cash">orders@stickers.cash</a>
+      <a href="mailto:orders@stickers.cash?subject=Wholesale%20%2F%20custom%20stickers">Wholesale</a>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 stickers.cash — paid exclusively in Bitcoin Cash (BCH)</span>
+    <code></code>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../blog.js"></script>
+</body>
+</html>

@@ -123,9 +123,7 @@
       with an address and an amount. The customer scans a QR code, reviews the amount, and sends the
       payment. The shop sees the transaction broadcast, and then sees it confirmed in a block.</p>
 
-    <p>A good point-of-sale tool generates a fresh address for each order, watches the mempool, and
-      marks the invoice paid when the expected amount arrives. That is a clean, auditable flow. The
-      shop knows which order was paid, and the customer gets a clear confirmation.</p>
+    <p>A good point-of-sale tool generates a fresh address for each order, watches for incoming payments, and marks the invoice paid when the expected amount arrives. That is a clean, auditable flow. The shop knows which order was paid, and the customer gets a clear confirmation.</p>
 
     <h2>Instant for small sales, confirmed for large</h2>
 
@@ -192,8 +190,10 @@
       each order. There is no database, no payment processor, and no monthly subscription to an
       e-commerce platform. The total infrastructure cost is a domain name and a few dollars a month.</p>
 
-    <p>The technical details — including the checkout flow, address derivation, privacy considerations,
-      and a complete AI prompt to build your own shop — are covered in the <a href="../deep-dives/building-a-bch-shop.html">deep dive on building a BCH-only shop</a>. If you want to build one yourself, everything you need is there.</p>
+    <aside class="callout">
+      <p class="callout-title">Go deeper</p>
+      <p>The technical details — including the checkout flow, address derivation, privacy considerations, and a complete AI prompt to build your own shop — are covered in the <a href="../deep-dives/building-a-bch-shop.html">deep dive on building a BCH-only shop</a>. If you want to build one yourself, everything you need is there.</p>
+    </aside>
 
     <p>For the business case behind accepting BCH, <a href="a-small-business-using-bch.html">a small business using BCH for international trade</a> shows how a Vietnamese coffee exporter settled payments in minutes with almost no fees.</p>
 

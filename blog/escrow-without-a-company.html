@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Escrow without a company — The internet cash guide — stickers.cash</title>
-<meta name="description" content="A 2-of-3 multisig or a small covenant can hold funds until the conditions are met. The middleman becomes a key, not a company.">
+<meta name="description" content="A shared-key setup or a small rule can hold funds until the conditions are met. The middleman becomes a key, not a company.">
 <meta name="theme-color" content="#0AC18E">
 <meta property="og:title" content="Escrow without a company — The internet cash guide — stickers.cash">
-<meta property="og:description" content="A 2-of-3 multisig or a small covenant can hold funds until the conditions are met. The middleman becomes a key, not a company.">
+<meta property="og:description" content="A shared-key setup or a small rule can hold funds until the conditions are met. The middleman becomes a key, not a company.">
 <meta property="og:url" content="https://stickers.cash/blog/escrow-without-a-company.html">
 <meta property="og:type" content="article">
 <link rel="canonical" href="https://stickers.cash/blog/escrow-without-a-company.html">
@@ -21,7 +21,7 @@
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": "Escrow without a company",
-  "description": "A 2-of-3 multisig or a small covenant can hold funds until the conditions are met. The middleman becomes a key, not a company.",
+  "description": "A shared-key setup or a small rule can hold funds until the conditions are met. The middleman becomes a key, not a company.",
   "url": "https://stickers.cash/blog/escrow-without-a-company.html",
   "mainEntityOfPage": "https://stickers.cash/blog/escrow-without-a-company.html",
   "datePublished": "2026-10-22",
@@ -98,7 +98,7 @@
     <a class="post-back" href="../blog.html">← All posts</a>
     <span class="eyebrow">Part three · Chapter 9</span>
     <h1>Escrow without a company</h1>
-    <p class="lede">A 2-of-3 multisig or a small covenant can hold funds until the conditions are met. The middleman becomes a key, not a company.</p>
+    <p class="lede">A shared-key setup or a small rule can hold funds until the conditions are met. The middleman becomes a key, not a company.</p>
     <div class="post-meta">
       <span>Post 28 of 37</span>
       <span class="dot">·</span>
@@ -121,54 +121,40 @@
       and the judgment stays with people who are accountable. That removes the need for a company to
       hold the funds.</p>
 
-    <h2>The 2-of-3 escrow</h2>
+    <h2>The shared-key setup</h2>
 
-    <p>The classic design uses three keys: buyer, seller, and arbiter. The funds are locked in a
-      2-of-3 multisignature output. Any two keys can release the money. If the buyer and seller
-      agree, they can settle without the arbiter. If they disagree, the arbiter sides with one of
-      them. The arbiter cannot unilaterally take the money, because one key is not enough.</p>
+    <p>The classic design uses three keys: buyer, seller, and arbiter. The funds are locked so that any two of the three keys can release the money. If the buyer and seller agree, they can settle without the arbiter. If they disagree, the arbiter sides with one of them. The arbiter cannot take the money alone, because one key is not enough.</p>
 
-    <p>This is a real improvement over a platform escrow. The arbiter’s power is limited by the
-      script. The funds are visible on-chain. The buyer and seller do not have to trust the
-      arbiter’s balance sheet or wait for a withdrawal queue. The fee is a normal BCH transaction
-      fee, not a percentage of the sale.</p>
+    <p>This is a real improvement over a platform escrow. The arbiter's power is limited by the rules. The funds are visible on the chain. The buyer and seller do not have to trust the arbiter's bank account or wait for a withdrawal. The fee is a normal BCH transaction fee, not a percentage of the sale.</p>
 
-    <h2>Adding time</h2>
+    <h2>Adding a deadline</h2>
 
-    <p>Multisig handles cooperation. Timelocks handle disappearance. A contract can add a deadline:
-      if the seller does not deliver and the buyer cannot get a response, the buyer can reclaim the
-      funds after a certain block height. Or if the buyer goes silent after delivery, the seller can
-      claim after a deadline.</p>
+    <p>Shared keys handle cooperation. Deadlines handle disappearance. A rule can add a time limit: if the seller does not deliver and the buyer cannot get a response, the buyer can reclaim the funds after a certain date. Or if the buyer goes silent after delivery, the seller can claim after a deadline.</p>
 
-    <p>Timelocks make the fallback automatic. If delivery does not happen by the deadline, the buyer
-      can reclaim the funds. If the buyer goes silent after delivery, the seller can claim. The
-      contract makes the default path clear and the exceptional path narrow, so both sides know the
-      rules before they start.</p>
+    <p>Deadlines make the backup plan automatic. If delivery does not happen by the deadline, the buyer can reclaim the funds. If the buyer goes silent after delivery, the seller can claim. The rules make the normal path clear and the exception path narrow, so both sides know what happens before they start.</p>
 
-    <h2>Blind escrow</h2>
+    <h2>Restricting where the money goes</h2>
 
-    <p>A covenant can go further than multisig. In a “blind escrow,” the contract itself restricts
-      the possible recipients. The arbiter can approve a release, but the money can only go to the
-      buyer or the seller. The arbiter cannot redirect it to a friend, a exchange, or themselves.</p>
+    <p>A more advanced rule can go further than shared keys. In a "restricted escrow," the rule itself limits who can receive the money. The arbiter can approve a release, but the money can only go to the buyer or the seller. The arbiter cannot redirect it to a friend, an exchange, or themselves.</p>
 
-    <p>That is a meaningful check on the middleman. The arbiter helps resolve a disagreement, but
-      the payout rule is enforced by the network. The contract can also require that the full amount
-      be paid, or that a fee be deducted in a specific way, so the parties know the settlement math
-      in advance.</p>
+    <p>That is a meaningful check on the middleman. The arbiter helps resolve a disagreement, but the payout rule is enforced by the network. The rule can also require that the full amount be paid, or that a fee be deducted in a specific way, so the parties know the math in advance.</p>
 
     <h2>Why it works</h2>
 
-    <p>The chain handles custody and payout. Clear terms, evidence, and a reputable arbiter handle
-      the human side. The difference is that the money is not sitting in the arbiter’s bank account
-      while the dispute is discussed. It is locked in a contract both sides can inspect, and the
-      payout can only go to the parties named in the rule.</p>
+    <p>The chain handles custody and payout. Clear terms, evidence, and a reputable arbiter handle the human side. The difference is that the money is not sitting in the arbiter's bank account while the dispute is discussed. It is locked by rules both sides can inspect, and the payout can only go to the parties named in the rule.</p>
 
-    <p>For small transactions, a 2-of-3 setup is simple and effective. For larger ones, a covenant
-      with restricted payouts and timelocks adds another layer of certainty. Either way, the custody
-      rule is in code, and the judgment stays with people who are accountable.</p>
+    <p>For small transactions, a shared-key setup is simple and effective. For larger ones, restricted payouts and deadlines add another layer of certainty. Either way, the custody rule is in code, and the judgment stays with people who are accountable.</p>
 
-    <p>Escrow works on a single chain. But what if you need to trade coins across different chains — without trusting the other party? <a href="../deep-dives/atomic-swaps-without-an-exchange.html">Atomic swaps without an exchange</a> shows how hash locks and time locks make that possible.</p>
+    <p>Escrow works on a single chain. But what if you need to trade coins across different chains — without trusting the other party?</p>
 
+    <aside class="callout">
+      <p class="callout-title">Go deeper</p>
+      <p>This post kept things simple. If you want to understand the technical details — 2-of-3 multisig, blind escrow with covenants, and cross-chain atomic swaps — the deep dives walk through the details step by step:</p>
+      <ul>
+        <li><a href="../deep-dives/covenants-rules-that-follow-the-coin.html">Covenants: rules that follow the coin</a> — introspection opcodes and self-inspecting contracts</li>
+        <li><a href="../deep-dives/atomic-swaps-without-an-exchange.html">Atomic swaps without an exchange</a> — cross-chain trades without trusting the other party</li>
+      </ul>
+    </aside>
 
     <a href="a-freelancer-paid-in-bch.html" class="next-post-button">
       <span class="next-post-label">Next post →</span>

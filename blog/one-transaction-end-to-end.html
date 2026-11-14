@@ -119,53 +119,32 @@
 
     <h2>Your wallet picks the bills</h2>
 
-    <p>BCH does not work like a bank balance that gets debited from the top. It works with
-      <strong>unspent transaction outputs</strong>, or UTXOs. Think of them as bills and coins in a
-      drawer. If you need to pay four dollars, the wallet may pick a ten-dollar output and create
-      two new outputs: four dollars to the shop, and six dollars back to you as change.</p>
+    <p>BCH does not work like a bank balance that gets debited from the top. It works more like a drawer of bills and coins. If you need to pay four dollars, the wallet may pick a ten-dollar bill and create two new pieces: four dollars to the shop, and six dollars back to you as change.</p>
 
-    <p>That is why a transaction has <strong>inputs</strong> and <strong>outputs</strong>. The
-      inputs are the existing outputs being spent. The outputs are the new locks being created. The
-      difference between the total input and total output is the fee, which the miner can claim.</p>
+    <p>That is why a transaction has <strong>inputs</strong> (what you are spending) and <strong>outputs</strong> (what you are creating). The difference between the total input and total output is the fee, which goes to the miner who processes the transaction.</p>
 
-    <p>The wallet does this automatically. You usually see an amount and an address, not the
-      plumbing. But the plumbing explains several things: why a transaction can have multiple
-      inputs, why “change” is a real output, and why the fee depends on the size of the transaction
-      rather than the dollar amount.</p>
+    <p>The wallet does this automatically. You usually see an amount and an address, not the plumbing. But the plumbing explains several things: why a transaction can have multiple inputs, why "change" is real, and why the fee depends on the size of the transaction rather than the dollar amount.</p>
 
-    <h2>The signature is the authorization</h2>
+    <h2>The signature is the approval</h2>
 
-    <p>Each input contains a lock that only the owner of a particular key can satisfy. Your wallet
-      builds the transaction, signs it with your private key, and broadcasts it to the network.
-      Nodes check the signature and the rules. If the signature is wrong, the transaction is
-      rejected. If it is right, the nodes pass it along.</p>
+    <p>Each input has a lock that only your key can open. Your wallet builds the transaction, signs it with your private key, and sends it out to the network. Computers across the network check the signature and the rules. If the signature is wrong, the transaction is rejected. If it is right, it gets passed along.</p>
 
-    <p>No bank approves it. No card network authorizes it. The signature is the authorization. That
-      is the whole point of peer-to-peer cash: the person receiving the money can verify the
-      payment without asking a middleman for permission.</p>
+    <p>No bank approves it. No card network authorizes it. The signature is the approval. That is the whole point of peer-to-peer cash: the person receiving the money can verify the payment without asking a middleman for permission.</p>
 
-    <h2>The mempool and the block</h2>
+    <h2>The waiting area and the block</h2>
 
     <figure class="post-figure">
       <img src="media/bch-transaction-flow.svg" alt="BCH transaction flow from broadcast to confirmation" />
-      <figcaption>From broadcast to spendable: the receiver can spend the BCH instantly via zero-conf, or wait ~10 minutes for full block confirmation.</figcaption>
+      <figcaption>From broadcast to spendable: the receiver can spend the BCH instantly, or wait ~10 minutes for full block confirmation.</figcaption>
     </figure>
 
-    <p>A broadcast transaction lands in the <strong>mempool</strong>, the holding area where nodes
-      keep valid transactions that have not yet been mined. Miners choose transactions from the
-      mempool, usually prioritizing by <a href="the-fee-that-is-almost-nothing.html">fee per byte</a>, and assemble them into a block.</p>
+    <p>A transaction that has just been sent lands in a waiting area where network computers keep valid transactions that have not yet been added to the chain. Miners choose transactions from the waiting area, usually prioritizing by <a href="the-fee-that-is-almost-nothing.html">fee per byte</a>, and put them into a block.</p>
 
-    <p>When a miner finds a valid block, the transaction becomes part of the chain. That is one
-      <strong>confirmation</strong>. Each later block adds another. But the shop can see and spend the payment
-      <strong>before it is confirmed</strong> — this is called zero-conf (zero confirmations). For small purchases,
-      zero-conf is instant and safe. For larger amounts, waiting for at least one confirmation (~10 minutes)
-      is the normal safety step.</p>
+    <p>When a miner finds a valid block, the transaction becomes part of the chain. That is one <strong>confirmation</strong>. Each later block adds another. But the shop can see and spend the payment <strong>before it is confirmed</strong> — for small purchases, this is instant and safe. For larger amounts, waiting for at least one confirmation (~10 minutes) is the normal safety step.</p>
 
     <h2>What the public sees</h2>
 
-    <p>Anyone can look up the transaction on a block explorer. They can see the inputs, the outputs,
-      the amount, the fee, and the block it landed in. They do not automatically see your name. The
-      ledger is public and pseudonymous, not a public directory of identities.</p>
+    <p>Anyone can look up the transaction on a block explorer. They can see the inputs, the outputs, the amount, the fee, and the block it landed in. They do not automatically see your name. The ledger is public, but it shows addresses rather than identities.</p>
 
     <p>That transparency is useful. It lets the receiver verify that the payment exists and that the
       rules were followed. It also means privacy depends on how you use addresses, which is a topic
@@ -173,9 +152,7 @@
 
     <aside class="callout">
       <p class="callout-title">The short version</p>
-      <p>A BCH payment is a signed transfer of control over specific coins. The wallet selects
-        inputs, creates outputs, signs, and broadcasts. Nodes verify. Miners include. The receiver
-        can verify the payment and re-spend it via zero-conf — no bank, no waiting.</p>
+      <p>A BCH payment is a signed transfer of control over specific coins. The wallet picks which coins to spend, creates new ones for the receiver and for change, signs, and sends. Network computers verify. Miners add to the chain. The receiver can verify the payment and spend it right away — no bank, no waiting.</p>
     </aside>
 
     <p>The first time you send BCH, send a small amount to your own second wallet. Watch it move.
@@ -184,6 +161,11 @@
 
     <p>And when that transaction reaches the receiver? It's already there — and settling in a block is not a delay, it's certainty. <a href="fast-payments-final-settlement.html">Fast payments, final settlement</a> explains why speed and finality are not the same thing.</p>
 
+
+    <aside class="callout">
+      <p class="callout-title">Go deeper</p>
+      <p>This post kept things simple. If you want to understand the technical model — UTXOs, the mempool, zero-conf, and the confirmation flow — the <a href="../deep-dives/how-transactions-actually-work.html">deep dive on transaction mechanics</a> walks through the details step by step.</p>
+    </aside>
 
     <a href="fast-payments-final-settlement.html" class="next-post-button">
       <span class="next-post-label">Next post →</span>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deep Dive: BCH NFTs in Detail — stickers.cash</title>
+<meta name="description" content="BCH NFTs: category, commitment, capability, and how they work as verifiable claims. The technical foundation of CashToken NFTs.">
+<meta name="theme-color" content="#0AC18E">
+<meta property="og:title" content="Deep Dive: BCH NFTs in Detail — stickers.cash">
+<meta property="og:description" content="BCH NFTs: category, commitment, capability, and how they work as verifiable claims. The technical foundation of CashToken NFTs.">
+<meta property="og:url" content="https://stickers.cash/deep-dives/bch-nfts-in-detail.html">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://stickers.cash/deep-dives/bch-nfts-in-detail.html">
+<link rel="icon" href="../media/bch/bch-circle.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<!-- ======================= ANNOUNCEMENT ======================= -->
+<div class="announce">
+  <div class="container announce-inner">
+    <span>🧊 The internet cash guide — now in 37 posts</span>
+    <span class="sep">·</span>
+    <span>⚡ Paid in Bitcoin Cash only</span>
+    <span class="sep">·</span>
+    <span>🚀 Ships worldwide from the USA</span>
+  </div>
+</div>
+
+<!-- ======================= HEADER ======================= -->
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="../index.html" aria-label="stickers.cash home">
+      <img class="brand-mark" src="../media/bch/bch-circle.svg" alt="">
+      <span class="brand-name">stickers<span class="dot">.</span>cash</span>
+    </a>
+
+    <nav class="nav" id="mainNav" aria-label="Main">
+      <a href="../blog.html">Guide</a>
+      <a href="../index.html">Shop</a>
+      <a href="../index.html#how">How it works</a>
+      <a href="../index.html#shipping">Shipping</a>
+      <a href="../index.html#faq">FAQ</a>
+      <a href="../donate.html">Donate</a>
+    </nav>
+
+    <div class="header-actions">
+      <a class="btn btn-primary" href="../index.html#shop"><span class="shop-long">Shop stickers</span><span class="shop-short">Shop</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ======================= DEEP DIVE HEAD ======================= -->
+<section class="post-head">
+  <div class="container post-head-inner">
+    <a class="post-back" href="../blog/nfts-with-the-receipt-built-in.html">← Back to: NFTs with the receipt built in</a>
+    <span class="eyebrow">Deep dive</span>
+    <h1>BCH NFTs in Detail</h1>
+    <p class="lede">Category, commitment, capability, and how BCH NFTs work as verifiable claims on the blockchain.</p>
+  </div>
+</section>
+
+<!-- ======================= DEEP DIVE BODY ======================= -->
+<div class="post-body">
+  <article class="article post-article">
+
+    <p>This deep dive expands on the NFT layer mentioned in <a href="../blog/nfts-with-the-receipt-built-in.html">"NFTs with the receipt built in."</a> It covers the technical structure of BCH NFTs, how they differ from other chains, and how they work as verifiable claims. This is technical content for developers and the deeply curious.</p>
+
+    <h2>The three properties</h2>
+
+    <p>Every BCH NFT has three properties encoded in the UTXO that holds it:</p>
+
+    <ul>
+      <li><strong>Category:</strong> A 32-byte identifier that ties the NFT to its token family. The category is derived from the transaction that created the NFT (the outpoint of the minting transaction). All NFTs in the same category share the same issuer and metadata registry.</li>
+      <li><strong>Commitment:</strong> A piece of data embedded in the NFT. Before 2026, commitments were limited to 40 bytes. After the May 2026 upgrade, the limit is 128 bytes. The commitment can hold a hash, a timestamp, an identifier, a score, a ticket number, or any compact piece of state that a contract needs to verify.</li>
+      <li><strong>Capability:</strong> A single byte that controls what can be done with the NFT. There are three capabilities: minting (0x01), mutable (0x02), and immutable (0x00).</li>
+    </ul>
+
+    <h2>Capabilities in detail</h2>
+
+    <p>The capability field is what makes BCH NFTs flexible:</p>
+
+    <ul>
+      <li><strong>Minting NFT (0x01):</strong> Can create new NFTs in the same category. A minting NFT is like a master key — its holder can issue unlimited NFTs with new commitments. This is useful for ticketing systems, membership programs, or any use case where the issuer needs to create many unique tokens over time.</li>
+      <li><strong>Mutable NFT (0x02):</strong> Can update its own commitment when spent. A mutable NFT can change its data payload, making it useful for state that evolves: a game item's stats, a membership tier, a timestamp, or a contract's current value. The NFT remains the same identity, but its claim can be updated by its owner.</li>
+      <li><strong>Immutable NFT (0x00):</strong> Cannot change once created. An immutable NFT is permanent — its commitment is fixed forever. This is ideal for certificates, receipts, credentials, or any claim that should never be altered. Once issued, the claim is set in stone (or rather, in consensus rules).</li>
+    </ul>
+
+    <h2>The 2026 upgrade</h2>
+
+    <p>The May 2026 upgrade raised the standard commitment limit from 40 bytes to 128 bytes. This tripled the amount of data an NFT can carry on-chain. The upgrade also made bare pay-to-script outputs standard, which simplifies contract construction.</p>
+
+    <p>What fits in 128 bytes?</p>
+
+    <ul>
+      <li>A SHA-256 hash (32 bytes) — enough to commit to a document, a file, or a dataset</li>
+      <li>A timestamp (8 bytes) plus an identifier (up to 120 bytes)</li>
+      <li>A ticket number, seat, section, and event ID</li>
+      <li>A compact state record: a counter, a status flag, and a reference hash</li>
+      <li>A small JSON-like structure (if encoded efficiently)</li>
+    </ul>
+
+    <p>This is enough for most real-world use cases. You don't need to store large files on-chain. You need to store a claim — a hash, an identifier, a piece of state — and the network enforces that claim.</p>
+
+    <h2>How contracts use NFTs</h2>
+
+    <p>A BCH contract (script) can inspect an NFT's category and commitment. This is what makes NFTs useful in programmable money:</p>
+
+    <ul>
+      <li><strong>Gate contracts:</strong> A contract can require that the spender present an NFT with a specific category and commitment. For example, a "members-only" vault might require an NFT with the membership category and a commitment showing the membership is active and not expired.</li>
+      <li><strong>Redemption contracts:</strong> An NFT can act as a receipt. Return the NFT to the contract, and the contract releases the underlying asset. This is useful for tickets (redeem for entry), vouchers (redeem for goods), or bonds (redeem for principal).</li>
+      <li><strong>Role-based contracts:</strong> An NFT can act as an admin key. A contract checks for the NFT before allowing a privileged action (e.g., changing parameters, withdrawing funds, or minting more tokens).</li>
+      <li><strong>State contracts:</strong> A mutable NFT can hold the latest state of a contract. When the contract is updated, the NFT's commitment is updated to reflect the new state. The NFT becomes a portable, verifiable record of the contract's current value.</li>
+    </ul>
+
+    <h2>Metadata at the edges</h2>
+
+    <p>BCH NFTs are minimalist by design. The on-chain data is small: category, commitment, capability. Rich metadata — names, descriptions, images, animations — lives off-chain in <strong>Bitcoin Cash Metadata Registries</strong> (BCMR).</p>
+
+    <p>BCMR is a standard for publishing authenticated metadata. A token issuer registers their NFT collection's name, description, icon, and other details in a BCMR registry. Wallets and explorers fetch the metadata and display it alongside the on-chain data. The result is a compact on-chain primitive with rich presentation around it.</p>
+
+    <p>Why separate the metadata from the chain?</p>
+
+    <ul>
+      <li><strong>Cost:</strong> Storing images or large text on-chain is expensive. Off-chain storage is cheap or free.</li>
+      <li><strong>Flexibility:</strong> Metadata can be updated (e.g., fixing a typo, adding a new image) without modifying the blockchain.</li>
+      <li><strong>Efficiency:</strong> The chain validates the token; the registry provides the presentation. This separation of concerns keeps the chain lean.</li>
+    </ul>
+
+    <p>The trade-off is that you need to trust the metadata registry (or run your own). But the on-chain token data — category, commitment, capability — is immutable and verifiable by every full node. The metadata is presentation; the token is the truth.</p>
+
+    <h2>Comparison with other chains</h2>
+
+    <p>BCH NFTs are fundamentally different from NFTs on Ethereum, Solana, or other chains:</p>
+
+    <ul>
+      <li><strong>Not a link to a file:</strong> Most NFTs on other chains are just tokens that point to a URL (usually an IPFS hash or an HTTP link). The token itself has no inherent meaning — it's just a pointer. BCH NFTs carry a commitment on-chain, which is verifiable by the network.</li>
+      <li><strong>Native, not an afterthought:</strong> CashTokens are part of the BCH consensus layer. They're validated by every full node, just like BCH. There's no separate token standard, no smart contract layer, no bridge.</li>
+      <li><strong>Cheap:</strong> Minting a BCH NFT costs a fraction of a cent in normal conditions. There's no separate gas token, no auction mechanism, no layer-2 scaling solution needed.</li>
+      <li><strong>Programmable:</strong> BCH NFTs can be used in contracts. They're not just collectibles — they're verifiable inputs to rules. A contract can check an NFT's category and commitment before executing logic.</li>
+    </ul>
+
+    <h2>Practical use cases</h2>
+
+    <p>What can you actually build with BCH NFTs?</p>
+
+    <ul>
+      <li><strong>Tickets:</strong> Each ticket is an NFT with a commitment containing the event ID, seat, and section. The gate contract checks the NFT before allowing entry. The ticket can't be counterfeited because the commitment is on-chain.</li>
+      <li><strong>Receipts:</strong> A purchase generates an NFT with a commitment containing the order hash. The customer can return the NFT to claim a refund, warranty, or return. The receipt is verifiable and can't be forged.</li>
+      <li><strong>Memberships:</strong> A membership program issues NFTs with a commitment containing the membership tier and expiry date. The member presents the NFT to access member-only content, discounts, or events. The membership can be updated (mutable NFT) or locked (immutable NFT).</li>
+      <li><strong>Game items:</strong> In-game items are NFTs with commitments containing stats, rarity, or ownership history. The game contract checks the NFT before allowing the item to be used. The item can be traded, upgraded (mutable), or locked (immutable).</li>
+      <li><strong>Credentials:</strong> A credential (degree, certification, license) is an immutable NFT with a commitment containing the credential hash. The holder presents the NFT to prove the credential. The credential can't be altered or forged.</li>
+      <li><strong>Loyalty points:</strong> A loyalty program issues fungible tokens (points) and NFTs (badges, achievements). The tokens are divisible and interchangeable; the NFTs are unique and verifiable.</li>
+    </ul>
+
+    <h2>Why this matters</h2>
+
+    <p>BCH NFTs are not about digital art or speculation. They're about verifiable claims. An NFT is a compact, checkable token that proves something: a ticket is valid, a receipt is authentic, a membership is active, a credential is real.</p>
+
+    <p>The NFT is not the product. It's the proof that the product's rule was followed. The product might be a ticket, a receipt, a membership, a game item, or a credential. The NFT is the verifiable, on-chain anchor that makes the product trustworthy.</p>
+
+    <p>That's the BCH pattern: keep the core small, but make the core enforce the things people actually need. NFTs are useful. Making them native makes them cheaper, safer, and easier for contracts to use.</p>
+
+    <p>For the technical foundation of CashTokens, see <a href="cashtokens-under-the-hood.html">CashTokens under the hood</a>. For the scripting layer, see <a href="the-script-under-every-wallet.html">The script under every wallet</a>.</p>
+
+<p class="post-disclaimer">We do not provide financial advice.</p>
+
+    <aside class="blog-donate" aria-label="Guide donation">
+  <div class="blog-donate-head">
+    <span class="blog-donate-title">Tip the guide</span>
+    <span class="blog-donate-note">Deep dive</span>
+  </div>
+  <p>If this deep dive was useful, you can <a href="../donate.html">send a private BCH tip</a> — one address, any amount, no cart or account.</p>
+</aside>
+
+  </article>
+</div>
+
+<!-- ======================= POST CTA ======================= -->
+<section class="post-cta-band">
+  <div class="container post-cta-inner">
+    <img class="post-cta-mark" src="../media/bch/bch-circle.svg" alt="Bitcoin Cash">
+    <div>
+      <h2>Internet cash needs places to spend it.</h2>
+      <p>Every order at stickers.cash is paid in BCH — a cheap, real-world way to move your first
+        coins, practice self-custody, and put a sticker on something you own.</p>
+    </div>
+    <div class="post-cta-actions">
+      <a class="btn btn-primary btn-lg" href="../index.html#shop">Shop stickers</a>
+      <div class="bch-addr-chip"><a class="btn" href="../donate.html">Donate BCH</a></div>
+      <small class="post-cta-wallets">No wallet yet?
+        <a href="https://selene.cash" target="_blank" rel="noopener">Selene</a> ·
+        <a href="https://paytaca.com" target="_blank" rel="noopener">Paytaca</a> ·
+        <a href="https://badger.bitcoin.com" target="_blank" rel="noopener">Badger</a>
+      </small>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ======================= FOOTER ======================= -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="../index.html">
+        <img class="brand-mark" src="../media/bch/bch-circle.svg" alt="">
+        <span class="brand-name">stickers<span class="dot">.</span>cash</span>
+      </a>
+      <p>The Bitcoin Cash sticker shop. Ships from the USA, worldwide.</p>
+      <img class="accepted-badge" src="../media/bch/bch-accepted-here-frame.svg" alt="Bitcoin Cash accepted here">
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <a href="../index.html#shop">All stickers</a>
+      <a href="../index.html#how">How to pay</a>
+      <a href="../index.html#shipping">Shipping rates</a>
+    </div>
+    <div class="footer-col">
+      <h4>Read</h4>
+      <a href="../blog.html">Internet cash guide</a>
+      <a href="../donate.html">Donate BCH</a>
+      <a href="https://whybitcoincash.com" target="_blank" rel="noopener">Why Bitcoin Cash</a>
+      <a href="https://bitcoincash.org" target="_blank" rel="noopener">bitcoincash.org</a>
+    </div>
+    <div class="footer-col">
+      <h4>Help</h4>
+      <a href="../index.html#faq">FAQ</a>
+      <a href="mailto:orders@stickers.cash">orders@stickers.cash</a>
+      <a href="mailto:orders@stickers.cash?subject=Wholesale%20%2F%20custom%20stickers">Wholesale</a>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 stickers.cash — paid exclusively in Bitcoin Cash (BCH)</span>
+    <code></code>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../blog.js"></script>
+</body>
+</html>

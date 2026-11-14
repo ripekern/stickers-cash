@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deep Dive: The Adaptive Block Limit — stickers.cash</title>
+<meta name="description" content="The Adaptive Block Limit Algorithm (ABLA): how BCH scales capacity to follow demand, the 32 MB floor, and the stress tests that prove it works.">
+<meta name="theme-color" content="#0AC18E">
+<meta property="og:title" content="Deep Dive: The Adaptive Block Limit — stickers.cash">
+<meta property="og:description" content="The Adaptive Block Limit Algorithm (ABLA): how BCH scales capacity to follow demand, the 32 MB floor, and the stress tests that prove it works.">
+<meta property="og:url" content="https://stickers.cash/deep-dives/the-adaptive-block-limit.html">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://stickers.cash/deep-dives/the-adaptive-block-limit.html">
+<link rel="icon" href="../media/bch/bch-circle.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<!-- ======================= ANNOUNCEMENT ======================= -->
+<div class="announce">
+  <div class="container announce-inner">
+    <span>🧊 The internet cash guide — now in 37 posts</span>
+    <span class="sep">·</span>
+    <span>⚡ Paid in Bitcoin Cash only</span>
+    <span class="sep">·</span>
+    <span>🚀 Ships worldwide from the USA</span>
+  </div>
+</div>
+
+<!-- ======================= HEADER ======================= -->
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="../index.html" aria-label="stickers.cash home">
+      <img class="brand-mark" src="../media/bch/bch-circle.svg" alt="">
+      <span class="brand-name">stickers<span class="dot">.</span>cash</span>
+    </a>
+
+    <nav class="nav" id="mainNav" aria-label="Main">
+      <a href="../blog.html">Guide</a>
+      <a href="../index.html">Shop</a>
+      <a href="../index.html#how">How it works</a>
+      <a href="../index.html#shipping">Shipping</a>
+      <a href="../index.html#faq">FAQ</a>
+      <a href="../donate.html">Donate</a>
+    </nav>
+
+    <div class="header-actions">
+      <a class="btn btn-primary" href="../index.html#shop"><span class="shop-long">Shop stickers</span><span class="shop-short">Shop</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ======================= DEEP DIVE HEAD ======================= -->
+<section class="post-head">
+  <div class="container post-head-inner">
+    <a class="post-back" href="../blog/scaling-without-a-ceiling.html">← Back to: Scaling without a ceiling</a>
+    <span class="eyebrow">Deep dive</span>
+    <h1>The Adaptive Block Limit</h1>
+    <p class="lede">The Adaptive Block Limit Algorithm (ABLA): how BCH scales capacity to follow demand, the 32 MB floor, and the stress tests that prove it works.</p>
+  </div>
+</section>
+
+<!-- ======================= DEEP DIVE BODY ======================= -->
+<div class="post-body">
+  <article class="article post-article">
+
+    <p>This deep dive expands on the scaling model mentioned in <a href="../blog/scaling-without-a-ceiling.html">"Scaling without a ceiling."</a> It covers the Adaptive Block Limit Algorithm (ABLA), the history of block size limits in BCH, and the stress tests that validate the design. This is technical content for developers and the deeply curious.</p>
+
+    <h2>The history of block size limits</h2>
+
+    <p>Bitcoin Cash launched in August 2017 with 8 MB blocks — eight times the capacity of Bitcoin's 1 MB limit. The goal was to keep fees low and transactions fast by ensuring there was always enough block space for the network's users.</p>
+
+    <p>In May 2018, the block size limit was raised to 32 MB. This was a political compromise: large enough to handle significant growth, but not so large that it would immediately require enterprise-grade hardware to run a node. The 32 MB limit became the floor.</p>
+
+    <p>For years, the limit was fixed. Every increase required a network upgrade, a public debate, and consensus from node operators, miners, wallets, and merchants. This was slow, contentious, and not well-suited to a payment network that needs to respond to demand.</p>
+
+    <h2>The problem with fixed limits</h2>
+
+    <p>A fixed block size limit creates a hard ceiling on capacity. When demand approaches the limit, users compete for space in the next block. Fees rise. Transactions wait longer. Small payments become uneconomical. The network behaves like a toll road during rush hour.</p>
+
+    <p>This is the model Bitcoin has followed since 2017. With a 1 MB block size (effectively ~2-3 MB with SegWit), Bitcoin's capacity is fixed at roughly 3-7 transactions per second. When demand spikes, fees can rise from pennies to tens or hundreds of dollars. A coffee buyer competes with a bank settlement for space in the same block.</p>
+
+    <p>BCH's design goal is different: keep blocks clear of backlog, so a payment fits in the next block without a bidding war. A fixed limit can't achieve that when demand grows.</p>
+
+    <h2>The Adaptive Block Limit Algorithm</h2>
+
+    <p>In May 2024, BCH activated the Adaptive Block Limit Algorithm (ABLA). ABLA replaces the fixed limit with a dynamic one that adjusts based on network usage.</p>
+
+    <p>The algorithm works like this:</p>
+
+    <ul>
+      <li><strong>Observation:</strong> ABLA watches the size of recent blocks. If blocks are consistently near the current limit, it infers that demand is high.</li>
+      <li><strong>Adjustment:</strong> When demand is high, ABLA raises the limit gradually. The adjustment is smooth, so node operators, miners, wallets, and merchants get a predictable transition instead of a sudden jump.</li>
+      <li><strong>Floor:</strong> The 32 MB limit from 2018 remains as a floor. Even if demand drops, the limit never goes below 32 MB. This ensures the network always has capacity for a burst.</li>
+      <li><strong>Governance:</strong> The adjustment formula is part of the consensus rules. It's not controlled by a company, a foundation, or a committee. It's code that every full node runs.</li>
+    </ul>
+
+    <p>The result is a network that scales automatically. Capacity follows demand. The network stops asking, "Is it time to raise the limit?" and starts asking, "How much traffic is arriving?"</p>
+
+    <h2>The 32 MB floor</h2>
+
+    <p>The 32 MB floor is important. It's not just a historical artifact — it's a guarantee that the network always has capacity for significant growth. Even if demand drops to near zero, the limit stays at 32 MB, ready for the next burst.</p>
+
+    <p>This is different from a system that scales down when demand drops. BCH's design prioritizes readiness. The network is always prepared for high traffic, even if that means some blocks are small. The cost is slightly more disk space and bandwidth for node operators; the benefit is that fees stay low and transactions confirm quickly, even during unexpected spikes.</p>
+
+    <h2>Stress tests</h2>
+
+    <p>The ABLA design was validated through stress tests before activation. Researchers modeled sustained demand scenarios — what happens if transaction volume grows 10x, 100x, or 1000x over months or years?</p>
+
+    <p>The simulations showed that ABLA responds correctly:</p>
+
+    <ul>
+      <li>The limit rises fast enough to keep blocks from staying full.</li>
+      <li>Fees remain low and predictable, even under heavy load.</li>
+      <li>Zero-conf acceptance stays practical because the queue clears.</li>
+      <li>Node operators get a smooth transition, not a sudden jump in resource requirements.</li>
+    </ul>
+
+    <p>The stress tests also validated the floor. Even in scenarios where demand dropped sharply, the 32 MB floor kept the network ready for the next burst. The network didn't over-optimize for current demand and leave itself vulnerable to future spikes.</p>
+
+    <h2>Real-world validation</h2>
+
+    <p>BCH has been deliberately flooded under real load in controlled stress tests. In 2018 and 2021, researchers sent millions of transactions through the network to test its limits. The network kept clearing blocks and keeping fees low. These tests proved that on-chain capacity works — you can expand the pipe, and the network handles it.</p>
+
+    <p>The 2024 activation of ABLA was the next step. Instead of a fixed limit, the network now has a dynamic one that responds to usage. The stress tests showed the design works in simulation; the real-world tests showed it works under load.</p>
+
+    <h2>Comparison with other chains</h2>
+
+    <p>Most other blockchains handle scaling differently:</p>
+
+    <ul>
+      <li><strong>Bitcoin:</strong> Fixed 1 MB limit (effectively ~2-3 MB with SegWit). Capacity is fixed at ~3-7 TPS. When demand spikes, fees rise. Layer-2 solutions (Lightning Network) handle scaling off-chain.</li>
+      <li><strong>Ethereum:</strong> Fixed gas limit per block (~30M gas). When demand spikes, fees (gas prices) rise. Layer-2 rollups handle scaling off-chain.</li>
+      <li><strong>Solana:</strong> Dynamic block size, but with a centralized validator set. Capacity is high, but the network has experienced outages and requires high-end hardware.</li>
+      <li><strong>BCH:</strong> Adaptive block limit with a 32 MB floor. Capacity follows demand automatically. The network stays decentralized (anyone can run a node on consumer hardware) while keeping fees low and transactions fast.</li>
+    </ul>
+
+    <p>BCH's approach is unique: scale on-chain, automatically, while keeping the network decentralized. The adaptive limit is the mechanism. The 32 MB floor is the guarantee. The stress tests are the proof.</p>
+
+    <h2>What this means for users</h2>
+
+    <p>For everyday users, ABLA means:</p>
+
+    <ul>
+      <li><strong>Predictable fees:</strong> A BCH transaction costs a fraction of a cent in normal conditions. Even during high demand, fees stay low because capacity expands.</li>
+      <li><strong>Fast confirmations:</strong> Transactions confirm in the next block (~10 minutes). For small purchases, zero-conf is instant and safe because the queue clears.</li>
+      <li><strong>Small payments work:</strong> A $1 payment is economically viable because the fee doesn't eat the transaction. Micropayments, tips, and small tickets are practical.</li>
+      <li><strong>No congestion surprises:</strong> You don't need to monitor the network and adjust your fee. The network handles it automatically.</li>
+    </ul>
+
+    <p>This is what a payment network should be: cheap, fast, and reliable. ABLA is the mechanism that makes it so.</p>
+
+    <h2>The frontier is practical</h2>
+
+    <p>BCH's scaling model is simple: keep the floor high, let the limit follow demand, and keep validation costs manageable as the network grows. That's how a payment network scales without turning every transaction into an auction.</p>
+
+    <p>The 2018 and 2021 stress tests showed the design working under real load. The 2024 activation of ABLA made the limit dynamic. The network now scales automatically, keeping fees low and transactions fast, even as usage grows.</p>
+
+    <p>That's the advantage of BCH's approach: the base layer stays cheap and simple while the contract layer grows. Developers can build on the same chain that settles the payment, without a new gas token or a new network. Users can send payments without worrying about congestion or fees. The network handles it.</p>
+
+    <p>For the technical foundation of BCH transactions, see <a href="how-transactions-actually-work.html">How transactions actually work</a>. For the fee model, see <a href="../blog/the-fee-that-is-almost-nothing.html">The fee that is almost nothing</a>.</p>
+
+<p class="post-disclaimer">We do not provide financial advice.</p>
+
+    <aside class="blog-donate" aria-label="Guide donation">
+  <div class="blog-donate-head">
+    <span class="blog-donate-title">Tip the guide</span>
+    <span class="blog-donate-note">Deep dive</span>
+  </div>
+  <p>If this deep dive was useful, you can <a href="../donate.html">send a private BCH tip</a> — one address, any amount, no cart or account.</p>
+</aside>
+
+  </article>
+</div>
+
+<!-- ======================= POST CTA ======================= -->
+<section class="post-cta-band">
+  <div class="container post-cta-inner">
+    <img class="post-cta-mark" src="../media/bch/bch-circle.svg" alt="Bitcoin Cash">
+    <div>
+      <h2>Internet cash needs places to spend it.</h2>
+      <p>Every order at stickers.cash is paid in BCH — a cheap, real-world way to move your first
+        coins, practice self-custody, and put a sticker on something you own.</p>
+    </div>
+    <div class="post-cta-actions">
+      <a class="btn btn-primary btn-lg" href="../index.html#shop">Shop stickers</a>
+      <div class="bch-addr-chip"><a class="btn" href="../donate.html">Donate BCH</a></div>
+      <small class="post-cta-wallets">No wallet yet?
+        <a href="https://selene.cash" target="_blank" rel="noopener">Selene</a> ·
+        <a href="https://paytaca.com" target="_blank" rel="noopener">Paytaca</a> ·
+        <a href="https://badger.bitcoin.com" target="_blank" rel="noopener">Badger</a>
+      </small>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ======================= FOOTER ======================= -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="../index.html">
+        <img class="brand-mark" src="../media/bch/bch-circle.svg" alt="">
+        <span class="brand-name">stickers<span class="dot">.</span>cash</span>
+      </a>
+      <p>The Bitcoin Cash sticker shop. Ships from the USA, worldwide.</p>
+      <img class="accepted-badge" src="../media/bch/bch-accepted-here-frame.svg" alt="Bitcoin Cash accepted here">
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <a href="../index.html#shop">All stickers</a>
+      <a href="../index.html#how">How to pay</a>
+      <a href="../index.html#shipping">Shipping rates</a>
+    </div>
+    <div class="footer-col">
+      <h4>Read</h4>
+      <a href="../blog.html">Internet cash guide</a>
+      <a href="../donate.html">Donate BCH</a>
+      <a href="https://whybitcoincash.com" target="_blank" rel="noopener">Why Bitcoin Cash</a>
+      <a href="https://bitcoincash.org" target="_blank" rel="noopener">bitcoincash.org</a>
+    </div>
+    <div class="footer-col">
+      <h4>Help</h4>
+      <a href="../index.html#faq">FAQ</a>
+      <a href="mailto:orders@stickers.cash">orders@stickers.cash</a>
+      <a href="mailto:orders@stickers.cash?subject=Wholesale%20%2F%20custom%20stickers">Wholesale</a>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 stickers.cash — paid exclusively in Bitcoin Cash (BCH)</span>
+    <code></code>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../blog.js"></script>
+</body>
+</html>
