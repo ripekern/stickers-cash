@@ -55,7 +55,7 @@ Successfully reorganized the internet cash guide to have exactly **12 chapters Ã
 - **Chapter 8**: Already in motion
   - A day in the life with BCH (23)
   - Why merchants are accepting BCH (24)
-  - Money that can run rules (25)
+  - Money that rules (25)
 
 - **Chapter 9**: Money with rules
   - Tokens on the cash layer (26)

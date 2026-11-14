@@ -28,7 +28,7 @@ NEW_ORDER = {
     "what-to-do-with-your-first-bch.html": 22,
     "a-day-in-the-life-with-bch.html": 23,
     "why-merchants-are-accepting-bch.html": 24,
-    "money-that-can-run-rules.html": 25,
+    "money-that-rules.html": 25,
     "tokens-on-the-cash-layer.html": 26,
     "nfts-with-the-receipt-built-in.html": 27,
     "escrow-without-a-company.html": 28,

@@ -54,7 +54,7 @@ The internet cash guide has been reorganized from a 30-post structure into a 37-
 - Chapter 8: Already in motion (24-26) **NEW**
   - A day in the life with BCH
   - Why merchants are accepting BCH
-  - Money that can run rules
+  - Money that rules
 - Chapter 9: Money with rules (27-29)
   - Tokens on the cash layer
   - NFTs with the receipt built in
@@ -114,7 +114,7 @@ These are valuable but too technical for the conversion funnel. Readers who alre
 - `blog.html` - Complete restructure with new card order and updated JSON-LD
 
 ### Updated cross-references
-- `blog/money-that-can-run-rules.html` - Link to deep dive
+- `blog/money-that-rules.html` - Link to deep dive
 - `blog/escrow-without-a-company.html` - Link to deep dive
 - `blog/the-ground-under-your-feet.html` - Structure section updated
 

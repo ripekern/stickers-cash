@@ -49,7 +49,7 @@ The blog has been reorganized from 37 posts to 36 posts with a clearer, more log
 
 **Chapter 8: Already in motion**
 23. Why merchants are accepting BCH
-24. Money that can run rules
+24. Money that rules
 25. Tokens on the cash layer
 
 **Chapter 9: Money with rules**
