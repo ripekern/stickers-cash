@@ -11,6 +11,7 @@
   --mint-2:#F3FBF8;
   --dark:#0F1820;
   --ink:#1B2733;
+  --text:#1B2733;
   --muted:#5C6B75;
   --line:#E2EBE7;
   --paper:#FFFFFF;
@@ -38,7 +39,8 @@ body{
 }
 body.no-scroll{overflow:hidden}
 img{max-width:100%}
-a{color:var(--green-ink)}
+a{color:inherit;text-decoration:underline}
+a:hover{color:var(--green-ink)}
 code{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace}
 .container{max-width:1180px;margin:0 auto;padding:0 20px}
 .muted{color:var(--muted)}
