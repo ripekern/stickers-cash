@@ -1252,6 +1252,17 @@ select, input, .ship-methods{
   .post-hero h1,
   .post-hero h1 em,
   .post-head h1,
+  .post-body h2,
+  .post-body h3,
+  .post-head .lede,
+  .post-body p,
+  .post-body ul,
+  .post-body ol,
+  .post-body li,
+  .post-body blockquote p,
+  .post-figure figcaption,
+  .post-meta,
+  .post-back,
   .card-title,
   .step-card h3,
   .section-head h2,
@@ -1302,12 +1313,81 @@ select, input, .ship-methods{
   }
   /* Article links stay green */
   .article a,
-  .article a:hover{
+  .article a:hover,
+  .post-body a,
+  .post-body a:hover{
     color:var(--green-ink);
   }
   /* Article text is hardcoded to #2C3B46 — override for dark mode */
-  .article{
+  .article,
+  .post-body{
     color:var(--ink);
+  }
+  
+  /* Deep dive specific elements */
+  .post-body table td,
+  .post-body table th{
+    color:var(--ink);
+    background:var(--paper);
+    border-color:var(--line);
+  }
+  
+  .post-body .callout{
+    background:var(--mint-2);
+    border-color:var(--line);
+  }
+  
+  .post-body .callout-title{
+    color:var(--green-ink);
+  }
+  
+  .post-body .table-wrap{
+    background:var(--paper);
+    border-color:var(--line);
+  }
+  
+  .post-body table{
+    color:var(--ink);
+  }
+  
+  .post-body table th{
+    background:var(--mint-2);
+    color:var(--ink);
+    border-color:var(--line);
+  }
+  
+  .post-body table td{
+    color:var(--muted);
+    border-color:var(--line);
+  }
+  
+  .post-body table td:first-child,
+  .post-body table td b{
+    color:var(--ink);
+  }
+  
+  .post-body code{
+    background:var(--mint-2);
+    color:var(--ink);
+  }
+  
+  .post-body pre{
+    background:var(--dark);
+    color:var(--ink);
+  }
+  
+  .post-body pre code{
+    background:none;
+    color:inherit;
+  }
+  
+  .post-figure figcaption{
+    color:var(--muted);
+  }
+  
+  .post-body blockquote{
+    background:var(--mint-2);
+    border-left-color:var(--green);
   }
   
   /* Override backgrounds that use var(--dark) to keep them dark */
