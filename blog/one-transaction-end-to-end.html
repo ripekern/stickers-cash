@@ -119,8 +119,8 @@
 <p>No bank approves it. No card network authorizes it. The signature is the approval. That is the whole point of peer-to-peer cash: the person receiving the money can verify the payment without asking a middleman for permission.</p>
 <h2>The waiting area and the block</h2>
 <figure class="post-figure">
-<img alt="BCH transaction flow from broadcast to confirmation" src="media/bch-transaction-flow.svg"/>
-<figcaption>From broadcast to spendable: the receiver can spend the BCH instantly, or wait ~10 minutes for full block confirmation.</figcaption>
+<img alt="BCH transaction flow showing UTXOs, mining, and confirmation timeline" src="media/bch-transaction-flow-whitepaper.svg"/>
+<figcaption>The complete journey: transaction creation with UTXOs (inputs/outputs), broadcast to the network, mining into a block, and confirmation on the blockchain. The receiver can spend instantly for small amounts, or wait ~10 minutes for full block confirmation.</figcaption>
 </figure>
 <p>A transaction that has just been sent lands in a waiting area where network computers keep valid transactions that have not yet been added to the chain. Miners choose transactions from the waiting area, usually prioritizing by <a href="the-fee-that-is-almost-nothing.html">fee per byte</a>, and put them into a block.</p>
 <p>When a miner finds a valid block, the transaction becomes part of the chain. That is one <strong>confirmation</strong>. Each later block adds another. But the shop can see and spend the payment <strong>before it is confirmed</strong> — for small purchases, this is instant and safe. For larger amounts, waiting for at least one confirmation (~10 minutes) is the normal safety step.</p>
