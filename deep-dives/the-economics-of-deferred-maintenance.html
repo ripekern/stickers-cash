@@ -18,13 +18,26 @@
 </head>
 <body>
 
+<!-- ======================= ANNOUNCEMENT ======================= -->
+<div class="announce">
+  <div class="container announce-inner">
+    <span>🧊 The internet cash guide — now in 37 posts</span>
+    <span class="sep">·</span>
+    <span>⚡ Paid in Bitcoin Cash only</span>
+    <span class="sep">·</span>
+    <span>🚀 Ships worldwide from the USA</span>
+  </div>
+</div>
+
+<!-- ======================= HEADER ======================= -->
 <header class="site-header">
   <div class="container nav-wrap">
-    <a class="brand" href="../index.html">
+    <a class="brand" href="../index.html" aria-label="stickers.cash home">
       <img class="brand-mark" src="../media/bch/bch-circle.svg" alt="">
       <span class="brand-name">stickers<span class="dot">.</span>cash</span>
     </a>
-    <nav class="nav">
+
+    <nav class="nav" id="mainNav" aria-label="Main">
       <a href="../blog.html">Guide</a>
       <a href="../index.html">Shop</a>
       <a href="../index.html#how">How it works</a>
@@ -32,21 +45,30 @@
       <a href="../index.html#faq">FAQ</a>
       <a href="../donate.html">Donate</a>
     </nav>
+
+    <div class="header-actions">
+      <a class="btn btn-primary" href="../index.html#shop"><span class="shop-long">Shop stickers</span><span class="shop-short">Shop</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </header>
 
-<main class="post-main">
-  <article class="post">
-    <header class="post-header">
-      <a class="post-back" href="../blog/the-roof-you-didnt-fix.html">← Back to The roof you didn't fix</a>
-      <div class="post-meta">
-        <span class="post-category">Deep Dive · Chapter 2</span>
-      </div>
-      <h1 class="post-title">The economics of deferred maintenance</h1>
-      <p class="post-excerpt">How inflation turns $1 of deferred home repairs into $4 of damage. The math of delayed maintenance, rising interest rates, and the housing maintenance crisis.</p>
-    </header>
+<main>
+<!-- ======================= POST HEAD ======================= -->
+<section class="post-head">
+  <div class="container post-head-inner">
+    <a class="post-back" href="../blog/the-roof-you-didnt-fix.html">← Back to The roof you didn't fix</a>
+    <span class="eyebrow">Deep dive</span>
+    <h1>The economics of deferred maintenance</h1>
+    <p class="lede">How inflation turns $1 of deferred home repairs into $4 of damage. The math of delayed maintenance, rising interest rates, and the housing maintenance crisis.</p>
+  </div>
+</section>
 
-    <div class="post-body">
+<!-- ======================= POST BODY ======================= -->
+<div class="post-body">
+  <article class="article post-article">
       <h2>The scale of the problem</h2>
       <p>An estimated 71% of homeowners delayed at least one critical repair over the past year. Half report needing essential repairs right now that they simply cannot afford. This isn't just procrastination — it's a rational response to an economic environment where maintenance costs have surged faster than wages.</p>
 
@@ -88,14 +110,64 @@
 
       <h2>The one silver lining</h2>
       <p>If you are saving cash, top-tier short-term CDs pay up to 5.25%. But as we explore in the next section, even that "safe" return loses to monetary expansion.</p>
-    </div>
+    <p class="deep-dive-return"><a href="../blog/the-roof-you-didnt-fix.html">← Continue reading "The roof you didn't fix"</a></p>
+
   </article>
+</div>
+
+<!-- ======================= POST CTA ======================= -->
+<section class="post-cta-band">
+  <div class="container post-cta-inner">
+    <img class="post-cta-mark" src="../media/bch/bch-circle.svg" alt="Bitcoin Cash">
+    <div>
+      <h2>Internet cash needs places to spend it.</h2>
+      <p>Every order at stickers.cash is paid in BCH — a cheap, real-world way to move your first coins, practice self-custody, and put a sticker on something you own.</p>
+    </div>
+    <div class="post-cta-actions">
+      <a class="btn btn-primary btn-lg" href="../index.html#shop">Shop stickers</a>
+      <div class="bch-addr-chip"><a class="btn" href="../donate.html">Donate BCH</a></div>
+      <small class="post-cta-wallets">No wallet yet?
+        <a href="https://selene.cash" rel="noopener" target="_blank">Selene</a> ·
+        <a href="https://paytaca.com" rel="noopener" target="_blank">Paytaca</a> ·
+        <a href="https://badger.bitcoin.com" rel="noopener" target="_blank">Badger</a>
+      </small>
+    </div>
+  </div>
+</section>
 </main>
 
 <footer class="site-footer">
-  <div class="container footer-inner">
-    <p>© 2026 stickers.cash — paid exclusively in Bitcoin Cash (BCH)</p>
-    <p>Cart checkout · anonymous donations</p>
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="../index.html">
+        <img class="brand-mark" src="../media/bch/bch-circle.svg" alt="">
+        <span class="brand-name">stickers<span class="dot">.</span>cash</span>
+      </a>
+      <p>The Bitcoin Cash sticker shop. Ships from the USA, worldwide.</p>
+      <img class="accepted-badge" src="../media/bch/bch-accepted-here-frame.svg" alt="Bitcoin Cash accepted here">
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <a href="../index.html#shop">All stickers</a>
+      <a href="../index.html#how">How to pay</a>
+      <a href="../index.html#shipping">Shipping rates</a>
+    </div>
+    <div class="footer-col">
+      <h4>Read</h4>
+      <a href="../blog.html">Internet cash guide</a>
+      <a href="../donate.html">Donate BCH</a>
+      <a href="https://whybitcoincash.com" target="_blank" rel="noopener">Why Bitcoin Cash</a>
+      <a href="https://bitcoincash.org" target="_blank" rel="noopener">bitcoincash.org</a>
+    </div>
+    <div class="footer-col">
+      <h4>Help</h4>
+      <a href="../index.html#faq">FAQ</a>
+      <a href="mailto:orders@stickers.cash">orders@stickers.cash</a>
+      <a href="mailto:orders@stickers.cash?subject=Wholesale%20%2F%20custom%20stickers">Wholesale</a>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 stickers.cash — paid exclusively in Bitcoin Cash (BCH)</span>
   </div>
 </footer>
 
