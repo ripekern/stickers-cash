@@ -1014,7 +1014,7 @@ select, input, .ship-methods{
 .article li{margin:0 0 8px}
 .article li::marker{color:var(--green);font-weight:700}
 .article strong{color:var(--dark)}
-.article a{color:var(--green-ink);text-decoration-thickness:1.5px;text-underline-offset:2px}
+.article a{color:inherit;text-decoration-thickness:1.5px;text-underline-offset:2px}
 .article a:hover{text-decoration-thickness:2px}
 .article a[href*="/deep-dives/"],
 .article a[href*="/rabbit-holes/"]{color:inherit;text-decoration:underline;font-weight:inherit}
